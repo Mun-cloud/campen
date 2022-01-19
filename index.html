@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+    <script src="https://kit.fontawesome.com/1818959bdb.js" crossorigin="anonymous"></script>
+
+<body>
+    <!-- 전체 영역 -->
+    <div class="container">
+        <!-- 로고&알람&찜한목록 -->
+        <header>
+            <!-- 로고 영역 -->
+            <a href="#" id="logo_area">
+                <h3>CAMPEN</h3>
+            </a>
+            <!-- 우측 상단 영역 -->
+            <div id="alarm_area">
+                <i class="far fa-bell"></i>
+                <i class="far fa-heart"></i>
+            </div>
+        </header>
+        <!-- 캠핀 타이틀 -->
+        <div class="main_title">
+            <span><strong>캠핀</strong>에서</span>
+            <span>막힘없이 캠핑가자!</span>
+
+        </div>
+        <!-- 캠핑장 필터 연결 -->
+        <ul id="campfilter">
+            <li id="experience" class="filter_icon">
+                <a href="#">
+                    <img src="./img/캠핀03.png" alt="체험캠핑">
+                    <span>체험캠핑</span>
+                </a>
+            </li>
+            <li id="kids" class="filter_icon">
+                <a href="#">
+                    <img src="./img/캠핀04.png" alt="키즈캠핑">
+                    <span>키즈캠핑</span>
+                </a>
+            </li>
+            <li id="campnic" class="filter_icon">
+                <a href="#">
+                    <img src="./img/캠핀05.png" alt="캠프닉">
+                    <span>캠프닉</span>
+                </a>
+            </li>
+            <li id="glamping" class="filter_icon">
+                <a href="#">
+                    <img src="./img/캠핀06.png" alt="글램핑">
+                    <span>글램핑</span>
+                </a>
+            </li>
+            <li id="pet" class="filter_icon">
+                <a href="#">
+                    <img src="./img/캠핀07.png" alt="반려동물">
+                    <span>반려동물</span>
+                </a>
+            </li>
+        </ul>
+        <!-- 이벤트 슬라이드 -->
+        <div class="slide_box">
+            <ul id="event_slides">
+                <li class="event_slide">
+                    <a href="#"><img src="./img/event_slide_08.png" alt="장박 캠핑장">
+                    </a>
+                </li>
+                <li class="event_slide">
+                    <a href="#"><img src="./img/event_slide_09.png" alt="반려동물 캠핑장">
+                    </a>
+                </li>
+                <li class="event_slide">
+                    <a href="#"><img src="./img/event_slide_10.png" alt="치유 캠핑장">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- 캠핑 Best Photo -->
+        <div id="photo">
+            <div class="area_title">
+                <div class="area_title_left">
+                    캠핑 Best Photo
+                </div>
+                <a href="#" class="area_title_btn">
+                    <i class="fas fa-camera"></i>
+                    업로드
+                </a>
+            </div>
+            <a href="#" class="commu_link" data_commu="photo">
+                <span>캠핑 다녀오셨나요?<br></span>
+                <span>나만의 추억을 남겨보세요. <i class="fas fa-chevron-right"></i></span>
+            </a>
+            <!-- Best Photo 슬라이드 -->
+            <div class="slide_box">
+                <ul id="photo_slides">
+                    <li>
+                        <a href="#">
+                            <img src="./img/best_photo-13.jpeg" alt="">
+                            <span>꽃언니</span>
+                            </img>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="./img/best_photo-14.jpeg" alt="">
+                            <span>도도캠핑</span>
+                            </img>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="./img/best_photo-15.jpeg" alt="">
+                            <span>마루캠핑</span>
+                            </img>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="./img/best_photo-16.jpeg" alt="">
+                            <span>nl0607</span>
+                            </img>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 캠핑 로그 -->
+        <div id="camp_log">
+            <div class="area_title">
+                <div class="area_title_left">
+                    캠핑로그
+                </div>
+                <div class="area_title_btn">
+                    <i class="fas fa-pen"></i>
+                    글쓰기
+                </div>
+            </div>
+            <a href="#" class="commu_link" data_commu="log">
+                <span>캠핑 다녀오셨나요?<br></span>
+                <span>나만의 캠핑 포스트를 남겨보세요. <i class="fas fa-chevron-right"></i></span>
+
+            </a>
+            <div class="slide_box">
+                <ul id="log_slides">
+                    <li>
+                        <a href="#">
+                            <div class="log_slide">
+                                <div class="log_img_box" style="background-image: url('./img/log-1.jpeg');">
+                                </div>
+                                <div class="log_text_box">
+                                    <span class="log_writer">캠퍼77964</span>
+                                    <span class="log_camp">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        동두천 돈내미캠핑장
+                                    </span>
+                                    <p>
+                                        차박을 할 수 있게 자리 마련해주신 캠장님 감사합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="log_slide">
+                                <div class="log_img_box" style="background-image: url('./img/log-2.jpeg');">
+                                </div>
+                                <div class="log_text_box">
+                                    <span class="log_writer">캠퍼77964</span>
+                                    <span class="log_camp">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        동두천 돈내미캠핑장
+                                    </span>
+                                    <p>
+                                        차박을 할 수 있게 자리 마련해주신 캠장님 감사합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="log_slide">
+                                <div class="log_img_box" style="background-image: url('./img/log-3.jpg');">
+                                </div>
+                                <div class="log_text_box">
+                                    <span class="log_writer">캠퍼77964</span>
+                                    <span class="log_camp">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        동두천 돈내미캠핑장
+                                    </span>
+                                    <p>
+                                        차박을 할 수 있게 자리 마련해주신 캠장님 감사합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="log_slide">
+                                <div class="log_img_box" style="background-image: url('./img/log-4.jpeg');">
+                                </div>
+                                <div class="log_text_box">
+                                    <span class="log_writer">캠퍼77964</span>
+                                    <span class="log_camp">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        동두천 돈내미캠핑장
+                                    </span>
+                                    <p>
+                                        차박을 할 수 있게 자리 마련해주신 캠장님 감사합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 캠핑 기획전 -->
+        <div id="exhibition">
+            <a class="area_title" href="#">
+                <div class="area_title_left">
+                    캠핑 기획전
+                </div>
+                <div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+            <ul>
+                <li class="exhi_list" data-exhi="seoul">
+                    <img src="./img/exhi_1.png" alt="서울근교 캠핑">
+                    <div class="exhi_text">
+                        <span class="exhi_title">서울근교 캠핑</span>
+                        <span class="exhi_sub">가까운 곳으로 부담 없이 다녀오세요!</span>
+                    </div>
+                </li>
+                <li class="exhi_list" data-exhi="pet">
+                    <img src="./img/exhi_2.png" alt="반려동물 캠핑">
+                    <div class="exhi_text">
+                        <span class="exhi_title">우리집 댕댕이랑 캠핑가요</span>
+                        <span class="exhi_sub">반려동물 동반 캠핑장에서 추억만들기</span>
+                    </div>
+                </li>
+                <li class="exhi_list" data-exhi="forest">
+                    <img src="./img/exhi_3.png" alt="숲속 캠핑">
+                    <div class="exhi_text">
+                        <span class="exhi_title">서울근교 캠핑</span>
+                        <span class="exhi_sub">가까운 곳으로 부담 없이 다녀오세요!</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="footer_logo">CAMPEN</div>
+            <div class="footer_clause">
+                <a href="#">서비스 이용약관</a><a href="#">개인정보 처리 방침</a>
+            </div>
+            <div class="cs">
+                <a href="#" class="cs_link">고객센터 <i class="fas fa-chevron-right"></i></a><br>
+                <span>평일 10:30~18:30<br></span>
+                <span>점심시간 13:00~14:00</span>
+            </div>
+            <div class="business_info">
+                <div>(주)넥스트에디션 사업자정보<i class="fas fa-chevron-up"></i></div>
+                <p>상호 : (주)넥스트에디션</p>
+                <p>대표이사 : 김동수</p>
+                <p>사업자등록번호 : 669-88-01204</p>
+                <p>통신판매업신고 : 2020-서울서초-2172호</p>
+                <p>주소 : 서울시 서초구 바우뫼로 213길 세안빌딩 2층</p>
+                <p>기업 제휴 문의 : contact@nextedition.co.kr</p>
+                <p>마케팅 제휴 문의 : camfit@nextedition.co.kr</p>
+            </div>
+            <p class="footer_text">(주)넥스트에디션(캠핏)은 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 따라서, (주)넥스트에디션(캠핏)은 상품의 예약, 이용 및 환불 등과 관련한
+                책임을 지지 않습니다.</p>
+        </div>
+    </footer>
+    <nav id="nav">
+        <div class="nav_btn"><i class="fas fa-home"></i><span class="nav_text">홈</span></div>
+        <div class="nav_btn"><i class="fas fa-search"></i><span class="nav_text">갬핑장 검색</span></div>
+        <div class="nav_btn"><i class="far fa-comment-alt"></i><span class="nav_text">커뮤니티</span></div>
+        <div class="nav_btn"><i class="far fa-user"></i><span class="nav_text">마이</span></div>
+    </nav>
+</body>
+
+</html>
