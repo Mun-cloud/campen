@@ -1,0 +1,231 @@
+@import "reset.css";
+body{
+    background-color: #999;
+    
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, menu, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, main, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
+    vertical-align: baseline; 
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section {
+    display: block;
+}
+
+header,section,#nav-tab {
+    max-width: 530px;
+}
+
+/* 커뮤니티 상단 메뉴탭 */
+header {
+    height:40px;
+    top:0px;
+    background-color:rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(212, 217, 214);
+    position: static;
+    display: flex;
+    z-index: 1100;
+    box-sizing: border-box;
+}
+.header-tab{
+    position: relative;
+    width: 100%;
+}
+.header-tab-menu {
+    display: inline-block;
+    height:40px;
+    width:24%;
+}
+
+.header-tab-menu-txt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 0.9rem;
+    color:#444;
+    cursor: pointer;
+}
+
+/* 컨텐츠 영역 */
+/* 컨텐츠:프로필,텍스트 */
+.commu-content{
+    margin-bottom: 8px;
+    background: rgb(255, 255, 255);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.commu-content-text {
+    padding: 12px;
+    line-height: 24px;
+}
+
+
+.commu-content-category{
+    display: inline-block;
+    padding: 0px 5px;
+    margin-bottom: 10px;
+    background: rgb(234, 238, 236);
+    border-radius: 4px;
+    color: rgb(90, 94, 91);
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.commu-content-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+}
+
+.commu-content-profile-user{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.commu-content-profile-user-img{
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    border-radius: 50%;
+    border: 1px solid rgb(201, 207, 204);
+    object-fit: cover;
+}
+
+.commu-content-profile-user-name{
+    display: flex;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.commu-content-profile-user-time{
+    color: rgb(90, 94, 91);
+    font-weight: 400;
+    font-size: 0.8rem;
+}
+
+.commu-content-desc {
+    padding-top: 8px;
+    overflow: hidden;
+    white-space: normal;
+    text-align: left;
+    color: inherit;
+}
+
+/* 컨텐츠:이미지 */
+.commu-content-img {
+    width: 100%;
+}
+
+.default{    
+    position: relative;
+    width: 100%;  
+    height: 500px;
+    margin-bottom: 3px;
+    overflow: hidden;
+}
+
+/* 컨텐츠 댓글,좋아요 */
+.commu-content-footer {
+    display: flex;
+    padding: 12px 8px;
+    border-top: 1px solid rgb(212, 217, 214);
+    font-size: 0.8rem;
+}
+
+.commu-content-like{
+    display: flex;
+    align-items: center;
+    margin: 0px 10px;
+    color: #888;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.material-icons{
+    color:#888;
+    font-size: 1.1rem;
+}
+
+/* 글쓰기버튼 */
+.write-button{
+    position: fixed;
+    bottom: 128px;
+    width: 100%;
+    max-width: 530px;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.write-button-click{
+    position: absolute;
+    right: 20px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: rgb(67, 192, 131);
+    box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px;
+    border-radius: 50%;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.write-click{
+    color: #fff;
+    font-size:1.5rem;
+}
+
+/* 하단메뉴탭 */
+#nav-tab{
+    position: fixed;
+    bottom: 0px;
+    z-index: 100;
+    max-width: 530px;
+    width: 100%;
+    background: rgb(255, 255, 255);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+nav{
+    display: flex;
+    margin: 0px auto;
+    width: 100%;
+    padding: 6px 0px 10px;
+    border-top: 1px solid rgb(212, 217, 214);
+}
+
+.nav-tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 0%;
+    height: 100%;
+    letter-spacing: -0.04em;
+    line-height: 13px;
+}
+
+.nav-icon{
+    font-size:1.3rem;
+}
+
+.nav-txt{
+    margin-top:5px;
+    font-size:0.7rem;
+    color:#888;
+}
