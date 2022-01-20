@@ -1,0 +1,31 @@
+@import url("reset.css");
+@import url("style.css");
+
+header {
+  min-height: 150px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+.result_count_box {
+  padding: 24px 0 10px 14px;
+  background-color: white;
+}
+
+.result_count_box h2 {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+#search_result_count {
+  color: rgb(67, 192, 131);
+}
+
+.glide__track {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.glide__slide img {
+  height: 100%;
+  width: 100%;
+}

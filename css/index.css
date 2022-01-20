@@ -1,10 +1,5 @@
 @import url("reset.css");
-
-/* 기본 가로사이즈 설정 */
-body {
-  max-width: 530px;
-  font-family: "Spoqa Han Sans", "Spoqa Han Sans JP", "Sans-serif";
-}
+@import url("style.css");
 
 /* 전체 영역 설정 */
 .container {
