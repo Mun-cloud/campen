@@ -68,16 +68,6 @@ strong {
 }
 
 /* 이벤트 슬라이드 */
-.slide_box {
-  width: 100%;
-  overflow: hidden;
-}
-
-#event_slides {
-  width: 300%;
-  display: flex;
-}
-
 .event_slide img {
   width: 100%;
 }

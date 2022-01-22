@@ -8,6 +8,7 @@
     <title>캠핀</title>
     <link rel="stylesheet" href="/css/index.css">
     <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css">
     <script src="https://kit.fontawesome.com/1818959bdb.js" crossorigin="anonymous"></script>
 
 <body>
@@ -65,21 +66,23 @@
             </li>
         </ul>
         <!-- 이벤트 슬라이드 -->
-        <div class="slide_box">
-            <ul id="event_slides">
-                <li class="event_slide">
-                    <a href="#"><img src="./img/event_slide_08.png" alt="장박 캠핑장">
-                    </a>
-                </li>
-                <li class="event_slide">
-                    <a href="#"><img src="./img/event_slide_09.png" alt="반려동물 캠핑장">
-                    </a>
-                </li>
-                <li class="event_slide">
-                    <a href="#"><img src="./img/event_slide_10.png" alt="치유 캠핑장">
-                    </a>
-                </li>
-            </ul>
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul id="event_slides" class="glide__slides">
+                    <li class="glide__slide event_slide">
+                        <a href="#"><img src="./img/event_slide_08.png" alt="장박 캠핑장">
+                        </a>
+                    </li>
+                    <li class="glide__slide event_slide">
+                        <a href="#"><img src="./img/event_slide_09.png" alt="반려동물 캠핑장">
+                        </a>
+                    </li>
+                    <li class="glide__slide event_slide">
+                        <a href="#"><img src="./img/event_slide_10.png" alt="치유 캠핑장">
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
         <!-- 캠핑 Best Photo -->
         <div id="photo">
@@ -289,6 +292,10 @@
         <div class="nav_btn"><i class="far fa-comment-alt"></i><span class="nav_text">커뮤니티</span></div>
         <div class="nav_btn"><i class="far fa-user"></i><span class="nav_text">마이</span></div>
     </nav>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script>
+        new Glide('.glide').mount()
+    </script>
 </body>
 
 </html>

@@ -3,7 +3,12 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: grey;
+}
+
 body {
+  background-color: #fff;
   max-width: 530px;
   font-family: "Spoqa Han Sans", "Spoqa Han Sans JP", "Sans-serif";
 }
