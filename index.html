@@ -294,7 +294,10 @@
     </nav>
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
     <script>
-        new Glide('.glide').mount()
+        const config = {
+            type: 'carousel',
+        }
+        new Glide('.glide', config).mount()
     </script>
 </body>
 
