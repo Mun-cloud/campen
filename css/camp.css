@@ -80,4 +80,17 @@
 
 .camp_box > table {
   width: 100%;
+  font-size: 14px;
+}
+
+tr {
+  height: 28px;
+}
+
+tr td:first-child {
+  color: rgb(67, 192, 131);
+}
+
+.camp_box img {
+  margin-top: 7px;
 }
