@@ -63,6 +63,11 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 /* 컨텐츠 영역 */
 /* 컨텐츠:프로필,텍스트 */
 .cnt-container {
+    margin-top:50px;
+    padding-bottom:50px;
+}
+
+.cnt-box {
     margin-bottom: 8px;
     background: rgb(255, 255, 255);
 }
@@ -74,19 +79,19 @@ a {
 }
 
 .cnt-box-txt {
-    padding: 12px;
+    padding: 13px;
     line-height: 24px;
 }
 
 
-.cnt-menu{
+.cnt-category{
     display: inline-block;
-    margin-top: 50px;
+    margin-top: 8px;
     padding: 0px 5px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     background: rgb(234, 238, 236);
-    border-radius: 4px;
-    color: rgb(90, 94, 91);
+    border-radius: 3px;
+    color: #555;
     font-weight: 500;
     font-size: 9pt;
 }
@@ -95,46 +100,48 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px;
+    margin-bottom: 10px;
 }
 
-.commu-content-profile-user{
+.cnt-user{
     display: flex;
     align-items: center;
     cursor: pointer;
 }
 
-.commu-content-profile-user-img{
-    width: 32px;
-    height: 32px;
-    margin-right: 8px;
+.cnt-user-img{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
     border-radius: 50%;
     border: 1px solid rgb(201, 207, 204);
     object-fit: cover;
 }
 
-.commu-content-profile-user-name{
+.cnt-user-name{
     display: flex;
-    font-size: 1rem;
+    font-size: 11pt;
     font-weight: 500;
+    color:#333;
 }
 
-.commu-content-profile-user-time{
-    color: rgb(90, 94, 91);
+.cnt-time{
+    color:#999;
     font-weight: 400;
-    font-size: 0.8rem;
+    font-size: 9pt;
 }
 
-.commu-content-desc {
-    padding-top: 8px;
+.cnt-desc {
+    padding-top: 10px;
     overflow: hidden;
     white-space: normal;
     text-align: left;
-    color: inherit;
+    font-size:10pt;
+    color: #333;
 }
 
 /* 컨텐츠:이미지 */
-.commu-content-img {
+.cnt-img {
     width: 100%;
 }
 
@@ -147,25 +154,29 @@ a {
 }
 
 /* 컨텐츠 댓글,좋아요 */
-.commu-content-footer {
+.cnt-footer {
     display: flex;
-    padding: 12px 8px;
-    border-top: 1px solid rgb(212, 217, 214);
-    font-size: 0.8rem;
+    padding: 14px 15px;
+    font-size: 9.5pt;
+    color: #888;
+    font-weight: 400;
 }
 
-.commu-content-like{
-    display: flex;
+.cnt-like{
+    display:flex;
     align-items: center;
-    margin: 0px 10px;
-    color: #888;
-    font-weight: 500;
     cursor: pointer;
 }
 
-.material-icons{
-    color:#888;
-    font-size: 1.1rem;
+.cnt-comment{
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.far{
+    font-size:12pt;
 }
 
 /* 글쓰기버튼 */
@@ -208,7 +219,6 @@ a {
     max-width: 530px;
     width: 100%;
     background: rgb(255, 255, 255);
-    padding-bottom: env(safe-area-inset-bottom);
 }
 
 nav{
