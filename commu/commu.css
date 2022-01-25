@@ -1,6 +1,6 @@
 @import "reset.css";
 body{
-    background-color: #999;
+    background-color: rgb(231, 240, 234);
     
 }
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, menu, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, main, menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -11,49 +11,58 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     vertical-align: baseline; 
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section {
-    display: block;
-}
 
-header,section,#nav-tab {
+
+.contaniner {
     max-width: 530px;
 }
 
 /* 커뮤니티 상단 메뉴탭 */
-header {
-    height:40px;
+.tab-container {
+    max-width: 530px;
+    height:45px;
+    width: 100%;
     top:0px;
     background-color:rgb(255, 255, 255);
     border-bottom: 1px solid rgb(212, 217, 214);
-    position: static;
+    position: fixed;
     display: flex;
-    z-index: 1100;
-    box-sizing: border-box;
-}
-.header-tab{
-    position: relative;
-    width: 100%;
-}
-.header-tab-menu {
-    display: inline-block;
-    height:40px;
-    width:24%;
+    z-index: 1000;
 }
 
-.header-tab-menu-txt {
+.tab-item {
+    display: inline-block;
+    height:40ㄴpx;
+    width:25%;
+}
+
+.tab-item.active { 
+    border-bottom: 2px solid #43C083; 
+}
+
+.tab-item.active .tab-title {
+    color: #43C083; 
+  }
+
+.tab-title {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-    font-size: 0.9rem;
-    color:#444;
+    font-size: 10.5pt;
+    font-weight: 500;
+    color:#666;
     cursor: pointer;
 }
 
+/* .cnt-container  { display: none; }
+.cnt-container .target { display: block; } */
+
+
 /* 컨텐츠 영역 */
 /* 컨텐츠:프로필,텍스트 */
-.commu-content{
+.cnt-container {
     margin-bottom: 8px;
     background: rgb(255, 255, 255);
 }
@@ -64,24 +73,25 @@ a {
     cursor: pointer;
 }
 
-.commu-content-text {
+.cnt-box-txt {
     padding: 12px;
     line-height: 24px;
 }
 
 
-.commu-content-category{
+.cnt-menu{
     display: inline-block;
+    margin-top: 50px;
     padding: 0px 5px;
     margin-bottom: 10px;
     background: rgb(234, 238, 236);
     border-radius: 4px;
     color: rgb(90, 94, 91);
     font-weight: 500;
-    font-size: 0.8rem;
+    font-size: 9pt;
 }
 
-.commu-content-profile {
+.cnt-profile {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -177,7 +187,7 @@ a {
     align-items: center;
     width: 50px;
     height: 50px;
-    background: rgb(67, 192, 131);
+    background: #43C083; 
     box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px;
     border-radius: 50%;
     text-decoration: none;

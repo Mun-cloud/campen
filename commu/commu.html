@@ -13,174 +13,95 @@
 </head>
 
 <body>
+    <div class="contaniner">
+        <!-- header: 상단탭메뉴 -->
+        <ul class="tab-container">
+            <li class="tab-item active" data-tab="tab1">
+                <a class="tab-title" href="#">전체보기</a>
+            </li>
+            <li  class="tab-item" data-tab="tab2">
+                <a class="tab-title" href="#">캠핑후기</a>
+            </li>
+            <li  class="tab-item" data-tab="tab3">
+                <a class="tab-title" href="#">캠핑한컷</a>
+            </li>
+            <li  class="tab-item" data-tab="tab4">
+                <a class="tab-title" href="#">궁금해요</a>
+            </li>
+        </ul>
 
-    <!-- header: 상단탭메뉴 -->
-    <header>
-        <div class="header-tab">
 
-            <div class="header-tab-menu">
-                <li class="header-tab-menu-txt">전체보기</li>
-            </div>
-            <div class="header-tab-menu">
-                <li class="header-tab-menu-txt">캠핑후기</li>
-            </div>
-            <div class="header-tab-menu">
-                <li class="header-tab-menu-txt">캠핑한컷</li>
-            </div>
-            <div class="header-tab-menu">
-                <li class="header-tab-menu-txt">궁금해요</li>
-            </div>
 
+        <!-- 컨텐츠 -->
+        <section class="cnt-container ">
+            <article id="tab3" class="cnt-box target">
+                <a href="#">
+                    <!-- 컨텐츠:프로필,텍스트 -->
+                    <div class="cnt-box-txt">
+                        <div class="cnt-menu">캠핑한컷</div>
+                        <div class="cnt-profile">
+                            <div class="commu-content-profile-user">
+                                <img class="commu-content-profile-user-img" src="./img/user-img.png" alt="수환">
+                                <div class="commu-content-profile-user-name">캠퍼1103</div>
+                            </div>
+                            <div class="commu-content-profile-user-time">1일 전</div>
+                        </div>
+                        <p class="commu-content-desc">겨울&노을&밀리터리조합 이쁘네요
+                        </p>
+                    </div>
+
+                    <!-- 컨텐츠:이미지 -->
+                    <div class="commu-content-img">
+                        <div class="default">
+                            <img src="./img/cont-img1.jpeg" alt="커뮤니티">
+                        </div>
+                    </div>
+                </a>
+                <div class="commu-content-footer">
+                    <div clsss="commu-content-like">
+                        <span class="material-icons">thumb_up_off_alt</span>
+                        좋아요
+                    </div>
+                    <a href="" class="commu-content-comment">
+                        <div>
+                            <span class="material-icons">chat_bubble_outline </span>
+                            댓글쓰기
+                        </div>
+                    </a>
+                </div>
+            </article>
+        </section>
+
+        <!-- 글쓰기 버튼 -->
+        <div class="write-button">
+            <a class="write-button-click" href="">
+                <span class="material-icons write-click">edit</span>
+            </a>
         </div>
-    </header>
 
-
-    <!-- 컨텐츠 -->
-    <section id="commu-contents-box">
-        <article class="commu-content">
-            <a href="">
-                <!-- 컨텐츠:프로필,텍스트 -->
-                <div class="commu-content-text">
-                    <div class="commu-content-category">캠핑한컷</div>
-                    <div class="commu-content-profile">
-                        <div class="commu-content-profile-user">
-                            <img class="commu-content-profile-user-img"src="./img/user-img.png" alt="수환">
-                            <div class="commu-content-profile-user-name">캠퍼1103</div>
-                        </div>
-                        <div  class="commu-content-profile-user-time">1일 전</div>
-                    </div>
-                    <p class="commu-content-desc">겨울&노을&밀리터리조합 이쁘네요
-                    </p>
-                </div>
-
-                <!-- 컨텐츠:이미지 -->
-                <div class="commu-content-img">
-                    <div class="default">
-                        <img src="./img/cont-img1.jpeg" alt="커뮤니티">
-                    </div>
-                </div>
-            </a>
-            <div class="commu-content-footer">
-                <div clsss="commu-content-like">
-                    <span class="material-icons">thumb_up_off_alt</span>
-                    좋아요
-                </div>
-                <a href="" class="commu-content-comment">
-                    <div>
-                        <span class="material-icons">chat_bubble_outline </span>
-                        댓글쓰기
-                    </div>
+        <!-- 하단메뉴탭 -->
+        <div id="nav-tab">
+            <nav>
+                <a class="nav-tab-item" href="">
+                    <span class="material-icons nav-icon">home</span>
+                    <label class="nav-txt">홈</label>
                 </a>
-            </div>
-        </article>
-    </section>
-
-    <section id="commu-contents-box">
-        <article class="commu-content">
-            <a href="">
-                <!-- 컨텐츠:프로필,텍스트 -->
-                <div class="commu-content-text">
-                    <div class="commu-content-category">캠핑한컷</div>
-                    <div class="commu-content-profile">
-                        <div class="commu-content-profile-user">
-                            <img class="commu-content-profile-user-img"src="./img/user-img.png" alt="수환">
-                            <div class="commu-content-profile-user-name">캠퍼1103</div>
-                        </div>
-                        <div  class="commu-content-profile-user-time">1일 전</div>
-                    </div>
-                    <p class="commu-content-desc">겨울&노을&밀리터리조합 이쁘네요
-                    </p>
-                </div>
-
-                <!-- 컨텐츠:이미지 -->
-                <div class="commu-content-img">
-                    <div class="default">
-                        <img src="./img/cont-img1.jpeg" alt="커뮤니티">
-                    </div>
-                </div>
-            </a>
-            <div class="commu-content-footer">
-                <div clsss="commu-content-like">
-                    <span class="material-icons">thumb_up_off_alt</span>
-                    좋아요
-                </div>
-                <a href="" class="commu-content-comment">
-                    <div>
-                        <span class="material-icons">chat_bubble_outline </span>
-                        댓글쓰기
-                    </div>
+                <a class="nav-tab-item" href="">
+                    <span class="material-icons nav-icon">search</span>
+                    <label class="nav-txt">캠핑장검색</label>
                 </a>
-            </div>
-        </article>
-    </section>
-
-    <section id="commu-contents-box">
-        <article class="commu-content">
-            <a href="">
-                <!-- 컨텐츠:프로필,텍스트 -->
-                <div class="commu-content-text">
-                    <div class="commu-content-category">캠핑한컷</div>
-                    <div class="commu-content-profile">
-                        <div class="commu-content-profile-user">
-                            <img class="commu-content-profile-user-img"src="./img/user-img.png" alt="수환">
-                            <div class="commu-content-profile-user-name">캠퍼1103</div>
-                        </div>
-                        <div  class="commu-content-profile-user-time">1일 전</div>
-                    </div>
-                    <p class="commu-content-desc">겨울&노을&밀리터리조합 이쁘네요
-                    </p>
-                </div>
-
-                <!-- 컨텐츠:이미지 -->
-                <div class="commu-content-img">
-                    <div class="default">
-                        <img src="./img/cont-img1.jpeg" alt="커뮤니티">
-                    </div>
-                </div>
-            </a>
-            <div class="commu-content-footer">
-                <div clsss="commu-content-like">
-                    <span class="material-icons">thumb_up_off_alt</span>
-                    좋아요
-                </div>
-                <a href="" class="commu-content-comment">
-                    <div>
-                        <span class="material-icons">chat_bubble_outline </span>
-                        댓글쓰기
-                    </div>
+                <a class="nav-tab-item" href="">
+                    <span class="material-icons nav-icon">forum</span>
+                    <label class="nav-txt">커뮤니티</label>
                 </a>
-            </div>
-        </article>
-    </section>
-
-    <!-- 글쓰기 버튼 -->
-    <div class="write-button">
-        <a class="write-button-click" href="">
-            <span class="material-icons write-click">edit</span>
-        </a>
-    </div>
-
-    <!-- 하단메뉴탭 -->
-    <div id="nav-tab">
-        <nav>
-            <a class="nav-tab-item"href="">
-                <span class="material-icons nav-icon">home</span>
-                <label class="nav-txt">홈</label>
-            </a>
-            <a class="nav-tab-item"href="">
-                <span class="material-icons nav-icon">search</span>
-                <label class="nav-txt">캠핑장검색</label>
-            </a>
-            <a class="nav-tab-item"href="">
-                <span class="material-icons nav-icon">forum</span>
-                <label class="nav-txt">커뮤니티</label>
-            </a>
-            <a class="nav-tab-item"href="">
-                <span class="material-icons nav-icon">person</span>
-                <label class="nav-txt">마이</label>
-            </a>
-        </nav>
+                <a class="nav-tab-item" href="">
+                    <span class="material-icons nav-icon">person</span>
+                    <label class="nav-txt">마이</label>
+                </a>
+            </nav>
+        </div>
     </div>
 </body>
+<script src="./commu_tap.js"></script>
 
 </html>
