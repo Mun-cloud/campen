@@ -6,16 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>캠핀</title>
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/camp.css">
     <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css">
     <script src="https://kit.fontawesome.com/1818959bdb.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="container">
         <!-- 글라이드 라이브러리 -->
-        <!-- <div class="glide">
+        <div class="glide">
             <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
                     <li class="glide__slide">
@@ -46,28 +47,31 @@
                 <button class="glide__bullet" data-glide-dir="=1"></button>
                 <button class="glide__bullet" data-glide-dir="=2"></button>
             </div>
-        
-        </div> -->
+
+        </div>
+
         <!-- 타이틀 영역 -->
-        <section class="camp_container">
+        <section class="camp_container no_margin">
             <div class="camp_box">
                 <div class="camp_name">
-                    <div class="camp_class">오토캠핑 · 글램핑 · 펜션</div>
+                    <div class="camp_class">오토캠핑·글램핑·펜션</div>
                     <div class="camp_title">구봉산오토캠핑장 나인힐스</div>
                     <div class="camp_log_count">캠핑로그 187</div>
                 </div>
-                <div class="camp_price"></div>
-            </div>
-            <div class="scroll_box">
-                <a href="#basic_info">기본 정보</a>
-                <a href="#camp_intro">캠핑장 소개</a>
-                <a href="#facility">시설 및 레저</a>
-                <a href="#manner_time">매너타임</a>
-                <a href="#camp_policy">운영정책</a>
-                <a href="camp_map">캠핑존 배치도</a>
-                <a href="">캠핑로그</a>
+                <div class="camp_price">
+                    <span>40,000</span>원 부터
+                </div>
             </div>
         </section>
+        <div class="scroll_box">
+            <a class="scroll_link" href="#basic_info">기본 정보</a>
+            <a class="scroll_link" href="#camp_intro">캠핑장 소개</a>
+            <a class="scroll_link" href="#facility">시설 및 레저</a>
+            <a class="scroll_link" href="#manner_time">매너타임</a>
+            <a class="scroll_link" href="#camp_policy">운영정책</a>
+            <a class="scroll_link" href="camp_map">캠핑존 배치도</a>
+            <a class="scroll_link" href="">캠핑로그</a>
+        </div>
 
         <!-- 기본 정보 -->
         <section class="camp_container">
@@ -193,7 +197,9 @@
                                 <span class="log_date">2022.01.25</span>
                             </div>
                         </div>
-                        <div class="log_chev"></div>
+                        <div class="log_chev">
+                            <i class="fas fa-chevron-up"></i>
+                        </div>
                     </div>
                     <a href="#">
                         <div class="log_article">
@@ -209,19 +215,23 @@
         </section>
 
         <!-- 취소환불규정 & 사업자정보 -->
-        <section class="camp_container">
+        <section class="camp_container no_margin">
             <a href="#" class="last_section">
                 <div class="section_title">
                     <div class="section_title_title">취소환불규정</div>
                     <div class="section_title_sub">환불기준(평일/주말)</div>
                 </div>
-                <div class="section_chev"></div>
+                <div class="section_chev">
+                    <i class="fas fa-chevron-up"></i>
+                </div>
             </a>
             <a href="#" class="last_section">
                 <div class="section_title">
                     <div class="section_title_title">사업자정보</div>
                 </div>
-                <div class="section_chev"></div>
+                <div class="section_chev">
+                    <i class="fas fa-chevron-up"></i>
+                </div>
             </a>
 
         </section>
