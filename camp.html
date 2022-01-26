@@ -183,35 +183,41 @@
         <!-- 캠핑장 배치도 -->
         <section class="camp_container" id="camp_map">
             <div class="box_title">캠핑존 배치도</div>
-            <img src="https://via.placeholder.com/490x370" alt="배치도">
+            <img src="img/camp_map.jpg" alt="배치도">
             <div class="caption">지도를 터치하여 크게 볼 수 있습니다.</div>
         </section>
 
         <!-- 캠핑로그 -->
-        <section class="camp_container" id="camp_log">
+        <section class="camp_container log_container" id="camp_log">
             <div class="log_header">
-                <div class="box_title">캠핑로그 <span>187</span></div>
-                <input type="checkbox" id="photo_log">
-                <span id="photo_log_text">포토 로그만 보기</span>
+                <div class="box_title">캠핑로그
+                    <span>187</span>
+                </div>
+                <div class="check_box">
+                    <input type="checkbox" id="photo_log">
+                    <span id="photo_log_text">포토 로그만 보기</span>
+                </div>
             </div>
             <div>
                 <div class="log_box">
                     <div class="log_title">
-                        <div class="user_icon"></div>
-                        <div class="log_info">
+                        <div class="user_icon"><i class="far fa-user-circle"></i></div>
+                        <div>
                             <div class="log_username">캠퍼68688</div>
                             <div class="log_data">
                                 <span class="log_view">12</span>
+                                ·
                                 <span class="log_date">2022.01.25</span>
                             </div>
                         </div>
                         <div class="log_chev">
-                            <i class="fas fa-chevron-up"></i>
+                            <i class="fas fa-chevron-right"></i>
                         </div>
                     </div>
-                    <a href="#">
+                    <a class="log_sample_box" href="#">
                         <div class="log_article">
-                            샤워실 시설이 협소한걸 제와하고 모두 만족스러운 캠핑이었습니다.
+                            샤워실 시설이 협소한걸 제외하고 모두 만족스러운 캠핑이었습니다. 샤워실 시설이 협소한걸 제외하고 모두 만족스러운 캠핑이었습니다.샤워실 시설이 협소한걸 제외하고 모두
+                            만족스러운 캠핑이었습니다.샤워실 시설이 협소한걸 제외하고 모두 만족스러운 캠핑이었습니다.샤워실 시설이 협소한걸 제외하고 모두 만족스러운 캠핑이었습니다.
                         </div>
                         <div class="log_photo">
                             <img src="https://via.placeholder.com/100x100" alt="">
@@ -219,18 +225,20 @@
                     </a>
                 </div>
             </div>
-            <button class="camp_btn">캠핑로그 더보기</button>
+            <div class="log_btn_box">
+                <button class="camp_btn">캠핑로그 더보기</button>
+            </div>
         </section>
 
         <!-- 취소환불규정 & 사업자정보 -->
-        <section class="camp_container no_margin">
+        <section class="camp_container log_container no_margin">
             <a href="#" class="last_section">
                 <div class="section_title">
                     <div class="section_title_title">취소환불규정</div>
                     <div class="section_title_sub">환불기준(평일/주말)</div>
                 </div>
                 <div class="section_chev">
-                    <i class="fas fa-chevron-up"></i>
+                    <i class="fas fa-chevron-right"></i>
                 </div>
             </a>
             <a href="#" class="last_section">
@@ -238,7 +246,7 @@
                     <div class="section_title_title">사업자정보</div>
                 </div>
                 <div class="section_chev">
-                    <i class="fas fa-chevron-up"></i>
+                    <i class="fas fa-chevron-right"></i>
                 </div>
             </a>
 
