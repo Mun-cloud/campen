@@ -55,7 +55,6 @@
 }
 
 /* 타이틀영역 > 스크롤 */
-
 .scroll_box {
   height: 40px;
   width: 100%;
@@ -64,6 +63,7 @@
   overflow: hidden;
   display: flex;
   align-items: center;
+  font-size: 13px;
 }
 
 .scroll_link {
@@ -91,6 +91,171 @@ tr td:first-child {
   color: rgb(67, 192, 131);
 }
 
+td {
+  position: relative;
+}
+
 .camp_box img {
+  width: 100%;
   margin-top: 7px;
+}
+
+.camp_basic_btn {
+  min-width: 53px;
+  width: 56px;
+  height: 25px;
+  margin: 0 0 0 auto;
+  font-size: 11px;
+  color: #fff;
+  background-color: rgb(67, 192, 131);
+  border: none;
+  font-weight: 700;
+  border-radius: 4px;
+  position: absolute;
+  right: 0;
+  bottom: 3px;
+}
+
+/* 캠핑장 소개 */
+#camp_intro_article {
+  line-height: 22px;
+  white-space: pre-line;
+  color: rgb(90, 94, 91);
+  font-size: 13px;
+}
+
+.intro_tag_box {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.intro_tag {
+  padding: 6px 10px;
+  margin: 4px 4px 0px 0px;
+  background-color: rgba(62, 204, 121, 0.18);
+  border-radius: 20px;
+  color: rgb(34, 119, 88);
+  font-size: 13px;
+}
+
+.camp_btn {
+  margin-top: 20px;
+  width: 100%;
+  height: 46px;
+  border: 1px solid rgb(212, 217, 214);
+  border-radius: 8px;
+  background-color: white;
+  color: rgb(37, 40, 38);
+  font-size: 14px;
+}
+
+/* 시설 및 레저 */
+.basic_facility {
+  width: 100%;
+  display: flex;
+  border-top: 1px solid rgb(212, 217, 214);
+  border-bottom: 1px solid rgb(212, 217, 214);
+  padding-top: 12px;
+}
+
+.additional_facility {
+  width: 100%;
+  display: flex;
+  padding-top: 12px;
+}
+
+.facility_title {
+  width: 20%;
+  color: rgb(34, 119, 88);
+  font-weight: bold;
+}
+
+.facility_area {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.facility {
+  width: 25%;
+  height: 40px;
+}
+
+.facility > span {
+  text-align: center;
+  display: block;
+  width: 90px;
+  padding: 8px 0;
+  background-color: rgba(62, 204, 121, 0.18);
+  border-radius: 20px;
+  color: rgb(34, 119, 88);
+  font-size: 13px;
+}
+
+/* 매너타임 */
+.time_area {
+  width: 100%;
+  display: flex;
+  padding: 14px 0px;
+  border-radius: 8px;
+  background-color: rgba(62, 204, 121, 0.18);
+  margin-bottom: 16px;
+}
+
+.time_area_box {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.time_area_box:first-child {
+  border-right: 1px solid rgba(34, 119, 88, 0.4);
+}
+
+.time {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: rgb(34, 119, 88);
+}
+
+.time_text {
+  color: rgb(34, 119, 88);
+  opacity: 0.6;
+  font-weight: 500;
+}
+
+.manner_article {
+  color: rgb(90, 94, 91);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 19px;
+}
+
+/* 캠핑장 운영정책 */
+.policy_anno {
+  margin-bottom: 12px;
+  font-weight: 700;
+  color: rgb(67, 192, 131);
+  font-size: 13px;
+}
+
+.policy_text {
+  color: rgb(90, 94, 91);
+  line-height: 22px;
+}
+
+#camp_map > img {
+  width: 100%;
+  height: fit-content;
+  border-radius: 10px;
+}
+
+.caption {
+  margin-top: 8px;
+  color: rgb(90, 94, 91);
+  font-size: 12px;
 }

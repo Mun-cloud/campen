@@ -12,3 +12,7 @@ body {
   max-width: 530px;
   font-family: "Spoqa Han Sans", "Spoqa Han Sans JP", "Sans-serif";
 }
+
+button {
+  cursor: pointer;
+}
