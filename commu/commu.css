@@ -162,39 +162,36 @@ a {
     font-weight: 400;
 }
 
-.cnt-like{
+.cnt-like {
     display:flex;
     align-items: center;
     cursor: pointer;
 }
 
-.cnt-comment{
+.cnt-comment {
     display: flex;
     align-items: center;
     margin-left: 15px;
     cursor: pointer;
 }
 
-.far{
+.far {
     font-size:12pt;
 }
 
 /* 글쓰기버튼 */
 .write-button{
     position: fixed;
-    bottom: 128px;
+    bottom: 130px;
     width: 100%;
     max-width: 530px;
-    padding-bottom: env(safe-area-inset-bottom);
 }
 
 .write-button-click{
     position: absolute;
     right: 20px;
     display: flex;
-    -webkit-box-pack: center;
     justify-content: center;
-    -webkit-box-align: center;
     align-items: center;
     width: 50px;
     height: 50px;
@@ -202,17 +199,16 @@ a {
     box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px;
     border-radius: 50%;
     text-decoration: none;
-    color: inherit;
     cursor: pointer;
 }
 
 .write-click{
     color: #fff;
-    font-size:1.5rem;
+    font-size:18pt;
 }
 
 /* 하단메뉴탭 */
-#nav-tab{
+#nav-container{
     position: fixed;
     bottom: 0px;
     z-index: 100;
@@ -221,31 +217,32 @@ a {
     background: rgb(255, 255, 255);
 }
 
-nav{
+.nav-tab{
     display: flex;
     margin: 0px auto;
     width: 100%;
-    padding: 6px 0px 10px;
+    padding: 9px 0px 9px;
     border-top: 1px solid rgb(212, 217, 214);
 }
 
-.nav-tab-item {
+.nav-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex: 1 1 0%;
+    flex:1 1 0%;
     height: 100%;
-    letter-spacing: -0.04em;
-    line-height: 13px;
+    letter-spacing: -0.05pt;
+    line-height: 15px;
 }
 
 .nav-icon{
-    font-size:1.3rem;
+    font-size:15pt;
+    color:#555;
 }
 
 .nav-txt{
     margin-top:5px;
-    font-size:0.7rem;
-    color:#888;
+    font-size:9pt;
+    color:#555;
 }
