@@ -57,20 +57,19 @@
 /* 타이틀영역 > 스크롤 */
 .scroll_box {
   height: 40px;
-  width: 100%;
+  /* width: 100%; */
   background-color: #fff;
   margin-bottom: 10px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
   font-size: 13px;
 }
 
-.scroll_link {
-  display: flex;
-  width: 100%;
+.scroll_link.swiper-slide {
   height: 100%;
   padding: 0 12px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 
 /* 기본 정보 */

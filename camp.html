@@ -10,6 +10,8 @@
     <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css">
     <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/1818959bdb.js" crossorigin="anonymous"></script>
 </head>
 
@@ -42,6 +44,14 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i
+                        class="fas fa-chevron-left"></i></button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i
+                        class="fas fa-chevron-right"></i></button>
+            </div>
+
             <div class="glide__bullets" data-glide-el="controls[nav]">
                 <button class="glide__bullet" data-glide-dir="=0"></button>
                 <button class="glide__bullet" data-glide-dir="=1"></button>
@@ -63,14 +73,16 @@
                 </div>
             </div>
         </section>
-        <div class="scroll_box">
-            <a class="scroll_link" href="#basic_info">기본 정보</a>
-            <a class="scroll_link" href="#camp_intro">캠핑장 소개</a>
-            <a class="scroll_link" href="#facility">시설 및 레저</a>
-            <a class="scroll_link" href="#manner_time">매너타임</a>
-            <a class="scroll_link" href="#camp_policy">운영정책</a>
-            <a class="scroll_link" href="camp_map">캠핑존 배치도</a>
-            <a class="scroll_link" href="">캠핑로그</a>
+        <div class="swiper scroll_box">
+            <div class="swiper-wrapper scroll_box">
+                <div class="scroll_link swiper-slide" href="#basic_info">기본 정보</div>
+                <div class="scroll_link swiper-slide" href="#camp_intro">캠핑장 소개</div>
+                <div class="scroll_link swiper-slide" href="#facility">시설 및 레저</div>
+                <div class="scroll_link swiper-slide" href="#manner_time">매너타임</div>
+                <div class="scroll_link swiper-slide" href="#camp_policy">운영정책</div>
+                <div class="scroll_link swiper-slide" href="camp_map">캠핑존 배치도</div>
+                <div class="scroll_link swiper-slide" href="">캠핑로그</div>
+            </div>
         </div>
 
         <!-- 기본 정보 -->
@@ -252,6 +264,13 @@
 
         </section>
     </div>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            slidesPerView: "auto",
+            spaceBetween: 0,
+            freeMode: true,
+        });
+    </script>
 </body>
 
 </html>
