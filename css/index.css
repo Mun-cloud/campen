@@ -1,10 +1,5 @@
 @import url("reset.css");
-
-/* 기본 가로사이즈 설정 */
-body {
-  max-width: 530px;
-  font-family: "Spoqa Han Sans", "Spoqa Han Sans JP", "Sans-serif";
-}
+@import url("style.css");
 
 /* 전체 영역 설정 */
 .container {
@@ -73,14 +68,14 @@ strong {
 }
 
 /* 이벤트 슬라이드 */
-.slide_box {
-  width: 100%;
-  overflow: hidden;
+.glide .glide__bullets {
+  left: 40px;
+  bottom: 20px;
 }
 
-#event_slides {
-  width: 300%;
-  display: flex;
+.glide .glide__bullet {
+  width: 6px;
+  height: 6px;
 }
 
 .event_slide img {
@@ -134,8 +129,12 @@ strong {
   display: flex;
 }
 
-#photo_slides a {
+#photo_slides #photo_slides a {
   position: relative;
+}
+
+#photo_slides .swiper-slide {
+  width: fit-content;
 }
 
 #photo_slides img {
@@ -162,6 +161,7 @@ strong {
 #log_slides {
   min-width: 200%;
   display: flex;
+  margin: 10px 0;
 }
 
 #log_slides li {
@@ -170,10 +170,10 @@ strong {
   width: 140px;
   height: 250px;
   /* border: 1px solid black; */
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  overflow: hidden;
   margin-right: 10px;
+  overflow: hidden;
 }
 
 .log_img_box {
@@ -311,6 +311,7 @@ footer {
 
 /* 네비게이션 바 */
 #nav {
+  max-width: 530px;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -319,6 +320,7 @@ footer {
   height: 60px;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   background-color: white;
+  z-index: 1000;
 }
 
 .nav_btn {

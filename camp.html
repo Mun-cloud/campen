@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캠핀</title>
+    <link rel="stylesheet" href="/css/camp.css">
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/1818959bdb.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 글라이드 라이브러리 -->
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide">
+                        <img src="./img/search_slide-1.jpg" alt="">
+                        <span>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="profile_local">경기 용인시</span>
+                        </span>
+                    </li>
+                    <li class="glide__slide">
+                        <img src="./img/search_slide-2.jpg" alt="">
+                        <span>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="profile_local">경기 용인시</span>
+                        </span>
+                    </li>
+                    <li class="glide__slide">
+                        <img src="./img/search_slide-3.jpeg" alt="">
+                        <span>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="profile_local">경기 용인시</span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i
+                        class="fas fa-chevron-left"></i></button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i
+                        class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <div class="glide__bullets" data-glide-el="controls[nav]">
+                <button class="glide__bullet" data-glide-dir="=0"></button>
+                <button class="glide__bullet" data-glide-dir="=1"></button>
+                <button class="glide__bullet" data-glide-dir="=2"></button>
+            </div>
+
+        </div>
+
+        <!-- 타이틀 영역 -->
+        <section class="camp_container no_margin">
+            <div class="camp_box">
+                <div class="camp_name">
+                    <div class="camp_class">오토캠핑·글램핑·펜션</div>
+                    <div class="camp_title">구봉산오토캠핑장 나인힐스</div>
+                    <div class="camp_log_count">캠핑로그 187</div>
+                </div>
+                <div class="camp_price">
+                    <span>40,000</span>원 부터
+                </div>
+            </div>
+        </section>
+        <div class="swiper scroll_box">
+            <div class="swiper-wrapper scroll_box">
+                <div class="scroll_link swiper-slide" href="#basic_info">기본 정보</div>
+                <div class="scroll_link swiper-slide" href="#camp_intro">캠핑장 소개</div>
+                <div class="scroll_link swiper-slide" href="#facility">시설 및 레저</div>
+                <div class="scroll_link swiper-slide" href="#manner_time">매너타임</div>
+                <div class="scroll_link swiper-slide" href="#camp_policy">운영정책</div>
+                <div class="scroll_link swiper-slide" href="camp_map">캠핑존 배치도</div>
+                <div class="scroll_link swiper-slide" href="">캠핑로그</div>
+            </div>
+        </div>
+
+        <!-- 기본 정보 -->
+        <section class="camp_container">
+            <div class="camp_box" id="basic_info">
+                <div class="box_title">기본 정보</div>
+                <table>
+                    <tr>
+                        <td>캠핑 형태</td>
+                        <td>오토캠핑, 글램핑, 펜션</td>
+                    </tr>
+                    <tr>
+                        <td>환경</td>
+                        <td>산</td>
+                    </tr>
+                    <tr>
+                        <td>대표번호</td>
+                        <td>050713448823
+                            <button class="copy_btn camp_basic_btn">복사하기</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>주소</td>
+                        <td>경기 용인시 처니구 원삼면 보개원삼로1372번길 41
+                            <button class="call_btn camp_basic_btn">연락하기</button>
+                        </td>
+                    </tr>
+
+                </table>
+                <img src="https://via.placeholder.com/490x120" alt="">
+            </div>
+        </section>
+
+        <!-- 캠핑장 소개 -->
+        <section class="camp_container" id="camp_intro">
+            <div class="box_title">캠핑장 소개</div>
+            <p id="camp_intro_article">
+                경기도 최고의 키즈캠핑장 구봉산 나인힐스!
+
+                365일 사계절 온수풀 / 실내키즈카페 / 바이킹 / 방탈출카페 / 타미야레이싱카 / 각종 이벤트
+                아이들이 쉴틈없이 놀다가는 캠핑장입니다.
+
+                서울에서 1시간 이내 도착이 가능한 서울근교의 공기좋은 캠핑장!!
+            </p>
+            <div class="intro_tag_box">
+                <div class="intro_tag">#서울인근캠핑장</div>
+                <div class="intro_tag">#경기도캠핑장</div>
+                <div class="intro_tag">#키즈캠핑장</div>
+                <div class="intro_tag">#용인캠핑장</div>
+                <div class="intro_tag">#애견동반캠핑장</div>
+                <div class="intro_tag">#온수수영장</div>
+                <div class="intro_tag">#바이킹캠핑장</div>
+                <div class="intro_tag">#그늘막캠핑장</div>
+                <div class="intro_tag">#시설좋은캠핑장</div>
+            </div>
+            <button class="camp_btn" id="intro_toggle">캠핑장 소개 더보기</button>
+        </section>
+
+        <!-- 시설 및 레저 -->
+        <section class="camp_container" id="facility">
+            <div class="box_title">시설 및 레저</div>
+            <div class="basic_facility">
+                <div class="facility_title">기본시설</div>
+                <div class="facility_area">
+                    <div class="facility"><span>화장실</span></div>
+                    <div class="facility"><span>샤워실</span></div>
+                    <div class="facility"><span>개수대</span></div>
+                    <div class="facility"><span>매점</span></div>
+                    <div class="facility"><span>카페</span></div>
+                </div>
+            </div>
+            <div class="additional_facility">
+                <div class="facility_title">부가시설</div>
+                <div class="facility_area">
+                    <div class="facility"><span>화장실</span></div>
+                    <div class="facility"><span>샤워실</span></div>
+                    <div class="facility"><span>개수대</span></div>
+                    <div class="facility"><span>매점</span></div>
+                    <div class="facility"><span>카페</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 매너타임 -->
+        <section class="camp_container" id="manner_time">
+            <div class="box_title">매너타임</div>
+            <div class="time_area">
+                <div class="time_area_box">
+                    <div class="time">오후 11:00</div>
+                    <div class="time_text">매너타임 시작</div>
+                </div>
+                <div class="time_area_box">
+                    <div class="time">오전 7:00</div>
+                    <div class="time_text">매너타임 종료</div>
+                </div>
+            </div>
+            <p class="manner_article">
+                매너타임은 수면을 위해 활동을 최소화하는 시간을 말합니다. 다른 캠퍼를 배려하여 소음을 최대한 줄여주시기 바랍니다.
+            </p>
+        </section>
+
+        <!-- 캠핑장 운영정책 -->
+        <section class="camp_container" id="camp_policy">
+            <div class="box_title">캠핑장 운영정책</div>
+            <div class="policy_anno">행복한 캠핑을 위해서 필독 후 이용 부탁드립니다.</div>
+            <p class="policy_text">캠핑장 운영정책에는 환불·양도양수·시설이용시간 등 캠핑장 이용에 관한 가이드가 포함되어 있습니다.</p>
+            <a href="#"><button class="camp_btn">캠핑장 운영정책 더보기</button></a>
+        </section>
+
+        <!-- 캠핑장 배치도 -->
+        <section class="camp_container" id="camp_map">
+            <div class="box_title">캠핑존 배치도</div>
+            <img src="img/camp_map.jpg" alt="배치도">
+            <div class="caption">지도를 터치하여 크게 볼 수 있습니다.</div>
+        </section>
+
+        <!-- 캠핑로그 -->
+        <section class="camp_container log_container" id="camp_log">
+            <div class="log_header">
+                <div class="box_title">캠핑로그
+                    <span>187</span>
+                </div>
+                <div class="check_box">
+                    <input type="checkbox" id="photo_log">
+                    <span id="photo_log_text">포토 로그만 보기</span>
+                </div>
+            </div>
+            <div>
+                <div class="log_box">
+                    <div class="log_title">
+                        <div class="user_icon"><i class="far fa-user-circle"></i></div>
+                        <div>
+                            <div class="log_username">캠퍼68688</div>
+                            <div class="log_data">
+                                <span class="log_view">12</span>
+                                ·
+                                <span class="log_date">2022.01.25</span>
+                            </div>
+                        </div>
+                        <div class="log_chev">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                    <a class="log_sample_box" href="#">
+                        <div class="log_article">
+                            샤워실 시설이 협소한걸 제외하고 모두 만족스러운 캠핑이었습니다. 샤워실 시설이 협소한걸 제외하고 모두 만족스러운 캠핑이었습니다.샤워실 시설이 협소한걸 제외하고 모두
+                            만족스러운 캠핑이었습니다.샤워실 시설이 협소한걸 제외하고 모두 만족스러운 캠핑이었습니다.샤워실 시설이 협소한걸 제외하고 모두 만족스러운 캠핑이었습니다.
+                        </div>
+                        <div class="log_photo">
+                            <img src="https://via.placeholder.com/100x100" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="log_btn_box">
+                <button class="camp_btn">캠핑로그 더보기</button>
+            </div>
+        </section>
+
+        <!-- 취소환불규정 & 사업자정보 -->
+        <section class="camp_container log_container no_margin">
+            <a href="#" class="last_section">
+                <div class="section_title">
+                    <div class="section_title_title">취소환불규정</div>
+                    <div class="section_title_sub">환불기준(평일/주말)</div>
+                </div>
+                <div class="section_chev">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+            <a href="#" class="last_section">
+                <div class="section_title">
+                    <div class="section_title_title">사업자정보</div>
+                </div>
+                <div class="section_chev">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+
+        </section>
+    </div>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            slidesPerView: "auto",
+            spaceBetween: 0,
+            freeMode: true,
+        });
+    </script>
+</body>
+
+</html>

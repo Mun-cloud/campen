@@ -6,8 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>캠핀</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="./css/main.css">
+=======
+    <link rel="stylesheet" href="/css/index.css">
+>>>>>>> 869544a008bc5d4f7e5a82b1a287f5ab0b394173
     <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/1818959bdb.js" crossorigin="anonymous"></script>
 
 <body>
@@ -34,52 +42,60 @@
         <!-- 캠핑장 필터 연결 -->
         <ul id="campfilter">
             <li id="experience" class="filter_icon">
-                <a href="#">
+                <a href="./search.html">
                     <img src="./img/캠핀03.png" alt="체험캠핑">
                     <span>체험캠핑</span>
                 </a>
             </li>
             <li id="kids" class="filter_icon">
-                <a href="#">
+                <a href="./search.html">
                     <img src="./img/캠핀04.png" alt="키즈캠핑">
                     <span>키즈캠핑</span>
                 </a>
             </li>
             <li id="campnic" class="filter_icon">
-                <a href="#">
+                <a href="./search.html">
                     <img src="./img/캠핀05.png" alt="캠프닉">
                     <span>캠프닉</span>
                 </a>
             </li>
             <li id="glamping" class="filter_icon">
-                <a href="#">
+                <a href="./search.html">
                     <img src="./img/캠핀06.png" alt="글램핑">
                     <span>글램핑</span>
                 </a>
             </li>
             <li id="pet" class="filter_icon">
-                <a href="#">
+                <a href="./search.html">
                     <img src="./img/캠핀07.png" alt="반려동물">
                     <span>반려동물</span>
                 </a>
             </li>
         </ul>
         <!-- 이벤트 슬라이드 -->
-        <div class="slide_box">
-            <ul id="event_slides">
-                <li class="event_slide">
-                    <a href="#"><img src="./img/event_slide_08.png" alt="장박 캠핑장">
-                    </a>
-                </li>
-                <li class="event_slide">
-                    <a href="#"><img src="./img/event_slide_09.png" alt="반려동물 캠핑장">
-                    </a>
-                </li>
-                <li class="event_slide">
-                    <a href="#"><img src="./img/event_slide_10.png" alt="치유 캠핑장">
-                    </a>
-                </li>
-            </ul>
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul id="event_slides" class="glide__slides">
+                    <li class="glide__slide event_slide">
+                        <a href="#"><img src="./img/event_slide_08.png" alt="장박 캠핑장">
+                        </a>
+                    </li>
+                    <li class="glide__slide event_slide">
+                        <a href="#"><img src="./img/event_slide_09.png" alt="반려동물 캠핑장">
+                        </a>
+                    </li>
+                    <li class="glide__slide event_slide">
+                        <a href="#"><img src="./img/event_slide_10.png" alt="치유 캠핑장">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="glide__bullets" data-glide-el="controls[nav]">
+                <button class="glide__bullet" data-glide-dir="=0"></button>
+                <button class="glide__bullet" data-glide-dir="=1"></button>
+                <button class="glide__bullet" data-glide-dir="=2"></button>
+            </div>
         </div>
         <!-- 캠핑 Best Photo -->
         <div id="photo">
@@ -97,30 +113,30 @@
                 <span>나만의 추억을 남겨보세요. <i class="fas fa-chevron-right"></i></span>
             </a>
             <!-- Best Photo 슬라이드 -->
-            <div class="slide_box">
-                <ul id="photo_slides">
-                    <li>
+            <div class="slide_box swiper">
+                <ul id="photo_slides" class="swiper-wrapper">
+                    <li class="swiper-slide">
                         <a href="#">
                             <img src="./img/best_photo-13.jpeg" alt="">
                             <span>꽃언니</span>
                             </img>
                         </a>
                     </li>
-                    <li>
+                    <li class="swiper-slide">
                         <a href="#">
                             <img src="./img/best_photo-14.jpeg" alt="">
                             <span>도도캠핑</span>
                             </img>
                         </a>
                     </li>
-                    <li>
+                    <li class="swiper-slide">
                         <a href="#">
                             <img src="./img/best_photo-15.jpeg" alt="">
                             <span>마루캠핑</span>
                             </img>
                         </a>
                     </li>
-                    <li>
+                    <li class="swiper-slide">
                         <a href="#">
                             <img src="./img/best_photo-16.jpeg" alt="">
                             <span>nl0607</span>
@@ -146,9 +162,9 @@
                 <span>나만의 캠핑 포스트를 남겨보세요. <i class="fas fa-chevron-right"></i></span>
 
             </a>
-            <div class="slide_box">
-                <ul id="log_slides">
-                    <li>
+            <div class="slide_box swiper">
+                <ul id="log_slides" class="swiper-wrapper">
+                    <li class="swiper-slide">
                         <a href="#">
                             <div class="log_slide">
                                 <div class="log_img_box" style="background-image: url('./img/log-1.jpeg');">
@@ -166,7 +182,7 @@
                             </div>
                         </a>
                     </li>
-                    <li>
+                    <li class="swiper-slide">
                         <a href="#">
                             <div class="log_slide">
                                 <div class="log_img_box" style="background-image: url('./img/log-2.jpeg');">
@@ -184,7 +200,7 @@
                             </div>
                         </a>
                     </li>
-                    <li>
+                    <li class="swiper-slide">
                         <a href="#">
                             <div class="log_slide">
                                 <div class="log_img_box" style="background-image: url('./img/log-3.jpg');">
@@ -202,7 +218,7 @@
                             </div>
                         </a>
                     </li>
-                    <li>
+                    <li class="swiper-slide">
                         <a href="#">
                             <div class="log_slide">
                                 <div class="log_img_box" style="background-image: url('./img/log-4.jpeg');">
@@ -289,6 +305,19 @@
         <div class="nav_btn"><i class="far fa-comment-alt"></i><span class="nav_text">커뮤니티</span></div>
         <div class="nav_btn"><i class="far fa-user"></i><span class="nav_text">마이</span></div>
     </nav>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            slidesPerView: "auto",
+            spaceBetween: 0,
+            freeMode: true,
+        });
+
+        const config = {
+            type: 'carousel',
+        }
+        new Glide('.glide', config).mount()
+    </script>
 </body>
 
 </html>
