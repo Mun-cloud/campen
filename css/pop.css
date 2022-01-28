@@ -1,0 +1,64 @@
+body {
+  position: relative;
+}
+
+.pop {
+  position: fixed;
+  top: 0px;
+  left: auto;
+  right: auto;
+  z-index: 2000;
+  max-width: 530px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgb(255, 255, 255);
+}
+
+.pop_header {
+  top: 0px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 53px;
+  width: 100%;
+  border-bottom: 1px solid rgb(234, 238, 236);
+}
+
+.pop_chev {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 20px;
+  cursor: pointer;
+  font-size: 17px;
+  padding: 10px;
+}
+
+.pop_title {
+  font-size: 16px;
+}
+
+.pop_main {
+  padding: 40px 20px;
+}
+
+.pop_small {
+  padding-bottom: 8px;
+  font-size: 12px;
+  color: rgb(26, 29, 27);
+}
+
+.pop_policy {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.pop_text {
+  padding-top: 32px;
+  white-space: pre-line;
+  word-break: break-all;
+  font-size: 14px;
+  line-height: 20px;
+}
