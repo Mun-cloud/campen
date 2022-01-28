@@ -16,3 +16,9 @@ body {
 button {
   cursor: pointer;
 }
+
+/* 글라이드 전역설정 */
+.glide .glide__bullet {
+  width: 6px;
+  height: 6px;
+}
