@@ -282,7 +282,9 @@
                 <span>점심시간 13:00~14:00</span>
             </div>
             <div class="business_info">
-                <div>(주)넥스트에디션 사업자정보<i class="fas fa-chevron-up"></i></div>
+                <div>(주)넥스트에디션 사업자정보 <i class="fas fa-chevron-down"></i>
+                </div>
+
                 <p>상호 : (주)넥스트에디션</p>
                 <p>대표이사 : 김동수</p>
                 <p>사업자등록번호 : 669-88-01204</p>
@@ -302,6 +304,7 @@
         <a href="./search.html" class="nav_btn"><i class="far fa-user"></i><span class="nav_text">마이</span></a>
     </nav>
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script src="/component.js"></script>
     <script>
         const swiper = new Swiper('.swiper', {
             slidesPerView: "auto",
@@ -311,6 +314,8 @@
 
         const config = {
             type: 'carousel',
+            autoplay: 5000,
+            hoverpause: false,
         }
         new Glide('.glide', config).mount()
     </script>

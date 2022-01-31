@@ -290,12 +290,22 @@ footer {
   margin-left: 3px;
 }
 
+.business_info {
+  height: 30px;
+  overflow: hidden;
+}
+
 .business_info div {
   margin: 12px 0;
 }
 
 .business_info p {
   margin-bottom: 7px;
+}
+
+.business_info i {
+  cursor: pointer;
+  margin-left: 3px;
 }
 
 .footer_text {
