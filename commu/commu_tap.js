@@ -1,5 +1,5 @@
 const tabItem = document.querySelectorAll(".tab-item");
-const tabContent = document.querySelectorAll(".commu-content");
+const tabContent = document.querySelectorAll(".cnt-content");
 
 tabItem.forEach((item) => {
   item.addEventListener("click", tabHandler);
