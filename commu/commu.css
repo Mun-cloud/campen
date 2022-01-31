@@ -6,6 +6,7 @@ body{
 
 .contaniner {
     max-width: 530px;
+    margin-left: 10%;
 }
 
 /* 커뮤니티 상단 메뉴탭 */
@@ -122,7 +123,15 @@ a {
     font-size: 9pt;
 }
 
-.cnt-desc {
+.cnt-Q::before {
+    margin-right: 2px;
+    content: "Q.";
+    color: rgb(67, 192, 131);
+    font-size: 14pt;
+    font-weight: 500;
+}
+
+.cnt-desc, .cnt-Q {
     padding-top: 10px;
     overflow: hidden;
     white-space: normal;
