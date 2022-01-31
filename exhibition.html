@@ -14,7 +14,7 @@
 <body>
     <div class="container">
         <div class="pop_header">
-            <div class="pop_chev"><i class="fas fa-chevron-left"></i></div>
+            <div class="pop_chev go_main"><i class="fas fa-chevron-left"></i></div>
             <div class="pop_title">우리집 댕댕이랑 캠핑가요</div>
         </div>
         <div class="exhi_img_box">
@@ -291,6 +291,16 @@
             </div>
         </div>
     </div>
+    <script>
+        const goMain = document.querySelectorAll(".go_main")
+
+        goMain.forEach(v => {
+            v.addEventListener("click", () => {
+                location.href = "./"
+            })
+        })
+
+    </script>
 </body>
 
 </html>
