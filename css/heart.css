@@ -46,6 +46,16 @@
   object-fit: cover;
 }
 
+.exhi_heart {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: red;
+  font-size: 25px;
+  z-index: 10;
+  cursor: pointer;
+}
+
 .exhi_list_info {
   margin-top: 8px;
   /* position: relative; */
