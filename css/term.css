@@ -1,0 +1,39 @@
+@import url("style.css");
+@import url("pop.css");
+
+* {
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Malgun Gothic";
+  line-height: 1.15;
+  margin: 0;
+}
+
+.pop_main {
+  padding: 40px 30px;
+  color: #5a5e5b;
+}
+
+.pop_policy {
+  font-size: 25px;
+  font-weight: 700;
+  margin-top: 18px;
+  margin-bottom: 24px;
+}
+
+.term_title {
+  color: black;
+  font-size: 14px;
+  padding-bottom: 4px;
+}
+
+.c0 {
+  display: inline-block;
+  padding-bottom: 15px;
+}
+
+/* 
+text-decoration: none;
+vertical-align: baseline;
+font-size: 10pt;
+font-style: normal; */
