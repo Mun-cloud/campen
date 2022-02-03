@@ -24,7 +24,8 @@
 .term_title {
   color: black;
   font-size: 14px;
-  padding-bottom: 4px;
+  padding-top: 15px;
+  padding-bottom: 5px;
 }
 
 .c0 {
@@ -32,6 +33,13 @@
   padding-bottom: 15px;
 }
 
+li {
+  margin-bottom: 5px;
+}
+
+p {
+  margin-bottom: 5px;
+}
 /* 
 text-decoration: none;
 vertical-align: baseline;
