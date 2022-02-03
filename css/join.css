@@ -53,6 +53,8 @@ label {
   cursor: pointer;
   height: 22px;
   margin-top: 14px;
+  position: relative;
+  z-index: 4;
 }
 
 .check_list i {
