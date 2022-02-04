@@ -1,0 +1,23 @@
+@import url("reset.css");
+@import url("style.css");
+@import url("pop.css");
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+input {
+  padding: 10px 0;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+span {
+  margin-top: -16px;
+  font-size: 12px;
+  color: rgb(37, 40, 38);
+  margin-bottom: 25px;
+}
