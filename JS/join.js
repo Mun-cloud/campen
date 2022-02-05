@@ -63,10 +63,20 @@ function checkAllHandle() {
   }
 }
 
+// 뒤로가기 버튼 클릭 이벤트
+const backBtn = document.querySelector(".pop_chev");
+
+backBtn.addEventListener("click", () => {
+  location.href = "index.html";
+});
+
 // 버튼 클릭 이벤트
 footBtn.addEventListener("click", () => {
+  console.log(footBtn.classList);
   if (footBtn.classList != "foot_btn checked") {
     alert("필수동의 항목을 체크해주세요");
+  } else {
+    location.href = "sign-up.html";
   }
 });
 
