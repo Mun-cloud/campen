@@ -23,19 +23,35 @@
             <div class="pop_main">
                 <div class="pop_policy">회원정보를 입력해주세요.</div>
                 <form>
-                    <input type="text" placeholder="이름">
-                    <input type="email" placeholder="이메일">
-                    <input type="text" placeholder="아이디">
-                    <input type="password" placeholder="비밀번호">
+                    <input id="user_name" type="text" placeholder="이름">
+                    <input id="email" type="email" placeholder="이메일">
+                    <input id="user_id" type="text" placeholder="아이디">
+                    <input id="password" type="password" placeholder="비밀번호">
                     <span class="password_guide">8자 이상, 숫자와 영문 필수 포함</span>
-                    <input type="password" placeholder="비밀번호 확인">
+                    <input id="password2" type="password" placeholder="비밀번호 확인">
                 </form>
             </div>
             <button class="foot_btn">다음</button>
         </div>
     </div>
+    <script src="JS/RegexHelper.js"></script>
     <script>
-        // 유효성 검사 진행해야 함.
+        const user_name = document.getElementById("user_name")
+        const email = document.getElementById("email")
+        const user_id = document.getElementById("user_id")
+        const password = document.getElementById("password")
+        const password2 = document.getElementById("password2")
+
+        // 유효성 검사
+        try {
+            regexHelper.value(user_name, "이름를 입력하세요.");
+            regexHelper.value(email, "이메일를 입력하세요.");
+            regexHelper.value(user_id, "아이디를 입력하세요.");
+            regexHelper.value(password, "비밀번호를 입력하세요.");
+            regexHelper.value(password2, "휴대폰 번호를 입력하세요.");
+        } catch (err) {
+            return console.log(err);
+        }
 
         const backBtn = document.querySelector(".pop_chev")
 
