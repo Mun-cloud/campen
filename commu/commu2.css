@@ -45,12 +45,7 @@ body{
 
 /* 컨텐츠 영역 */
 /* 컨텐츠:프로필,텍스트 */
-#tab2-1 {
-    padding-bottom:50px;
-}
-
 .cnt-box {
-    margin-bottom: 8px;
     background: rgb(255, 255, 255);
 }
 
@@ -138,68 +133,6 @@ a {
     padding-bottom: 5px;
 }
 
-/* .default{    
-    position: relative;
-    width: 100%;  
-    height: 500px;
-    margin-bottom: 5px;
-}
-
-.medium {
-    position: relative;
-    width: 100%;  
-    height: 250px;
-    margin-bottom: 3px;
-}
-.medium-half-container {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    height: 150px;
-    margin-bottom: 3px;
-    overflow: hidden;
-}
-.medium-half {
-    width: 49.7%;
-    height:150px;
-}
-
-
-.small-container {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    height: 150px;
-    margin-bottom: 3px;
-    overflow: hidden;
-}
-.small {
-    width: 33%;
-    height:150px;
-}
-
-.default img, .medium img,.medium-half img,.small img{
-    width:100%;
-    height: 100%;
-    object-fit :cover;
-}
-
-/* 더보기 */
-/* .small-container div:nth-child(3){
-    position: relative;
-}
-.small span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate( -50%, -50% );
-  color: #fff;
-  font-size:15pt;
-  letter-spacing:3pt;
-}  */
-
 /* 위치정보 */
 .cnt-local {
     display: flex;
@@ -236,70 +169,3 @@ a {
     cursor: pointer;
 }
 
-/* 글쓰기버튼 */
-.write-button{
-    position: fixed;
-    bottom: 130px;
-    width: 100%;
-    max-width: 530px;
-}
-
-.write-button-click{
-    position: absolute;
-    right: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    background: #43C083; 
-    box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px;
-    border-radius: 50%;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.write-click{
-    color: #fff;
-    font-size:18pt;
-}
-
-/* 하단메뉴탭 */
-#nav-container{
-    position: fixed;
-    bottom: 0px;
-    z-index: 100;
-    max-width: 530px;
-    width: 100%;
-    background: rgb(255, 255, 255);
-}
-
-.nav-tab{
-    display: flex;
-    margin: 0px auto;
-    width: 100%;
-    padding: 9px 0px 9px;
-    border-top: 1px solid rgb(212, 217, 214);
-}
-
-.nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex:1 1 0%;
-    height: 100%;
-    letter-spacing: -0.05pt;
-    line-height: 15px;
-}
-
-.nav-icon{
-    font-size:15pt;
-    color:#555;
-}
-
-.nav-txt{
-    margin-top:5px;
-    font-size:9pt;
-    color:#555;
-}
