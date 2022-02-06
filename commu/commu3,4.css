@@ -1,0 +1,212 @@
+@import "reset.css";
+body{
+    background-color: rgb(231, 240, 234);
+    
+}
+
+.contaniner {
+    max-width: 530px;
+    margin-left: 10%;
+}
+
+
+/* 커뮤니티 상세페이지 상단 */
+.top-container {
+    top:0px;
+    padding-top: 3px;
+    height:55px;
+    width: 100%;
+    display: flex;
+    z-index: 1000;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(241,245,243);
+}
+
+.back-btn {
+    width: 50px;
+}
+
+.back-btn span{
+    height:100%;
+    cursor: pointer;
+}
+
+.logo {
+    margin: 0 auto;
+    padding-right:50px;
+    overflow: hidden;
+}
+
+.logo img {
+    width:90px;
+}
+
+/* 컨텐츠 영역 */
+/* 컨텐츠:프로필,텍스트 */
+.cnt-box {
+    background: rgb(255, 255, 255);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.cnt-box-txt {
+    padding: 13px;
+    line-height: 24px;
+}
+
+
+.cnt-category{
+    display: inline-block;
+    margin-top: 8px;
+    padding: 0px 5px;
+    margin-bottom: 15px;
+    background: rgb(234, 238, 236);
+    border-radius: 3px;
+    color: #555;
+    font-weight: 500;
+    font-size: 9pt;
+}
+
+.cnt-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cnt-user{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cnt-user-img{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 1px solid rgb(201, 207, 204);
+    object-fit: cover;
+}
+
+.cnt-user-name{
+    display: flex;
+    font-size: 11pt;
+    font-weight: 500;
+    color:#333;
+}
+
+.cnt-time{
+    color:#999;
+    font-weight: 400;
+    font-size: 9pt;
+}
+
+.cnt-Q::before {
+    margin-right: 2px;
+    content: "Q.";
+    color: rgb(67, 192, 131);
+    font-size: 14pt;
+    font-weight: 500;
+}
+
+.cnt-desc, .cnt-Q {
+    padding-top: 10px;
+    overflow: hidden;
+    white-space: normal;
+    text-align: left;
+    font-size:10pt;
+    color: #333;
+}
+
+/* 컨텐츠:이미지 */
+.cnt-img img {
+    display:block;
+    width: 100%;
+    height: auto;
+    padding-bottom: 5px;
+}
+
+
+/* 컨텐츠 댓글,좋아요 */
+.cnt-footer {
+    display: flex;
+    padding: 14px 15px;
+    font-size: 10pt;
+    color: #666;
+    font-weight: 400;
+    border-bottom: 1px solid rgb(241,245,243);
+}
+
+.cnt-like {
+    display:flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cnt-comment {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+/* 상세 댓글영역 */
+.cmt1-container {
+    width: 100%;
+    background-color: #fff;
+}
+.cmt1-box {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 0px 93px;
+    color:rgb(187, 187, 187);
+}
+
+.cmt1-box span {
+    font-size:50px;
+    margin-bottom: 15px;
+}
+
+.cmt1-box p {
+    font-size: 10pt;
+    margin-bottom: 6px;
+}
+
+.cmt1-box p:nth-child(2){
+    font-size:15px;
+    font-weight: 700;
+}
+
+/* 위로올라가기버튼 */
+.up-btn {
+    position: fixed;
+    bottom: 130px;
+    width: 100%;
+    max-width: 530px;
+    z-index: 100;
+}
+
+.up-btn button {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    color:#444;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgb(225, 229, 227);
+    cursor: pointer;
+    animation: 500ms ease-in-out 300ms 1 normal both running fadeIn;
+}
+
