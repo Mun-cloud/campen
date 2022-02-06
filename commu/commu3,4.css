@@ -43,6 +43,11 @@ body{
     width:90px;
 }
 
+.option-btn {
+    height: 100%;
+    cursor: pointer;
+}
+
 /* 컨텐츠 영역 */
 /* 컨텐츠:프로필,텍스트 */
 .cnt-box {
@@ -185,6 +190,83 @@ a {
     font-weight: 700;
 }
 
+/* 이미지 업로드*/
+.cmt2-container {
+    position:fixed;
+    bottom:0px;
+    width: 100%;
+    max-width: 530px;
+}
+
+.cmt2-box{
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding:8px 16px ;
+    background: rgb(241, 245, 243);
+    border-top: 1px solid rgb(234, 238, 236);
+    
+}
+
+.photo{
+    display: flex;
+    justify-content:center;
+    margin-right: 16px;
+    cursor: pointer;
+    color: #777;
+}
+
+.upload {
+    display:none;
+}
+
+/* 텍스트 업로드 */
+.cmt2-textarea {
+    display: flex;
+    width: 100%;
+    padding: 10px 12px;
+    border: 0.5px solid rgb(90, 94, 91);
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+}
+
+.comment {
+    width: 100%;
+    height: auto;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+    border: none;
+    background: none;
+    resize: none;
+    overflow: auto;
+    font-size: 10pt;
+    color:#999;
+}
+
+.submit-btn {
+    display: none;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    min-width: fit-content;
+}
+
+.submit-btn2 {
+    font-size: 11pt;
+    font-weight: 700;
+    color: rgb(67, 192, 131);
+}
+
+.submit-btn2 button {
+    width: 100%;
+    height: 100%;
+    padding-left: 12px;
+    border: none;
+    outline: 0px;
+    cursor: pointer;
+}
+
 /* 위로올라가기버튼 */
 .up-btn {
     position: fixed;
@@ -207,6 +289,6 @@ a {
     background: rgba(255, 255, 255, 0.7);
     border: 1px solid rgb(225, 229, 227);
     cursor: pointer;
-    animation: 500ms ease-in-out 300ms 1 normal both running fadeIn;
+    /* animation: 500ms ease-in-out 300ms 1 normal both running fadeIn; */
 }
 
