@@ -19,6 +19,7 @@ body{
     display: flex;
     z-index: 1000;
     align-items: center;
+    justify-content: space-between;
     text-align: center;
     background-color: rgb(255, 255, 255);
     border-bottom: 1px solid rgb(241,245,243);
@@ -36,14 +37,20 @@ body{
 .logo {
     margin: 0 auto;
     padding-right:50px;
-    overflow: hidden;
 }
 
-.logo img {
+.logo3 {
+    margin: 0 auto;
+}
+
+.logo img, .logo3 img {
     width:90px;
 }
 
 .option-btn {
+    width: 50px;
+}
+.option-btn span {
     height: 100%;
     cursor: pointer;
 }
