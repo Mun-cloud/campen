@@ -6,6 +6,10 @@
   padding: 0;
 }
 
+.pop_main.notice {
+  padding: 20px;
+}
+
 .notice_box {
   display: flex;
   align-items: center;
@@ -49,4 +53,18 @@
 
 .pop_view_more i {
   font-size: 10px;
+}
+
+.notice_article_title {
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgb(234, 238, 236);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.notice_article_article {
+  padding-top: 16px;
+  font-size: 15px;
+  line-height: 26px;
+  word-break: break-all;
 }
