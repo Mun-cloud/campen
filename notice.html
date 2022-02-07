@@ -20,7 +20,7 @@
     </div>
     <div class="pop_main">
         <a href="#">
-            <div class="notice_box">
+            <div class="notice_box" data-notice="notice-1.html">
                 <div class="notice_info">
                     <div class="notice_title">2022년 설 연휴 휴무(고객센터 포함) 공지</div>
                     <div class="notice_date">2022.01.28</div>
@@ -68,6 +68,19 @@
         <div>더보기</div>
         <i class="fas fa-chevron-down"></i>
     </div>
+
+    <script>
+        const noticeBox = document.querySelectorAll(".notice_box")
+
+        noticeBox.forEach(v => {
+            v.addEventListener("click", (e) => {
+                const target = e.currentTarget.dataset.notice
+                if (target) {
+                    location.href = target
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>
