@@ -17,9 +17,8 @@ header {
   justify-content: space-between;
 }
 
-#logo_area h3 {
-  font-size: 23px;
-  font-weight: bold;
+#logo_area img {
+  width: 96px;
 }
 
 #alarm_area i {

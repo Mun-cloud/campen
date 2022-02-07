@@ -34,29 +34,37 @@
             <button class="foot_btn">다음</button>
         </div>
     </div>
-    <script src="JS/RegexHelper.js"></script>
+    <script src="./JS/regex_helper.js"></script>
     <script>
-        const user_name = document.getElementById("user_name")
-        const email = document.getElementById("email")
-        const user_id = document.getElementById("user_id")
-        const password = document.getElementById("password")
-        const password2 = document.getElementById("password2")
+        const regexHelper = new RegexHelper();
 
-        // 유효성 검사
-        try {
-            regexHelper.value(user_name, "이름를 입력하세요.");
-            regexHelper.value(email, "이메일를 입력하세요.");
-            regexHelper.value(user_id, "아이디를 입력하세요.");
-            regexHelper.value(password, "비밀번호를 입력하세요.");
-            regexHelper.value(password2, "휴대폰 번호를 입력하세요.");
-        } catch (err) {
-            return console.log(err);
-        }
-
+        const footBtn = document.querySelector(".foot_btn")
         const backBtn = document.querySelector(".pop_chev")
 
         backBtn.addEventListener("click", () => {
             location.href = "join.html"
+        })
+
+        footBtn.addEventListener("click", () => {
+            const regexHelper = new RegexHelper();
+
+            // 유효성 검사
+            if (!regexHelper.value("#user_name", "아이디를 입력하세요")) { return false; }
+            if (!regexHelper.min_length("#user_name", 4, "이름은 최소 4자 이상 입력 가능합니다.")) { return false; }
+
+            if (!regexHelper.value("#email", "이메일를 입력하세요")) { return false; }
+
+            if (!regexHelper.value("#user_id", "아이디를 입력하세요")) { return false; }
+            if (!regexHelper.min_length("#user_id", 4, "아이디는 최소 4자 이상 입력 가능합니다.")) { return false; }
+            if (!regexHelper.max_length("#user_id", 20, "이름은 최대 20자 까지만 입력 가능합니다.")) { return false; }
+
+            if (!regexHelper.value("#password", "비밀번호를 입력하세요")) { return false; }
+            if (!regexHelper.min_length("#password", 4, "비밀번호는 최소 4자 이상 입력 가능합니다.")) { return false; }
+            if (!regexHelper.value("#password2", "비밀번호 확인을 입력하세요")) { return false; }
+            if (!regexHelper.compare_to("#password", "#password2", "비밀번호 확인이 잘못되었습니다.")) { return false; }
+
+            // 처리 완료
+            alert("입력형식 검사 완료!!")
         })
     </script>
 </body>
