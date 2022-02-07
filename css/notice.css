@@ -1,0 +1,52 @@
+@import url("reset.css");
+@import url("style.css");
+@import url("pop.css");
+
+.pop_main {
+  padding: 0;
+}
+
+.notice_box {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(234, 238, 236);
+}
+
+.notice_info {
+  line-height: 20px;
+}
+
+.notice_title {
+  font-size: 15px;
+}
+
+.notice_date {
+  color: rgb(133, 138, 136);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.notice_chev {
+  font-size: 17px;
+}
+
+.pop_view_more {
+  background-color: rgba(0, 0, 0, 0);
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  color: rgb(133, 138, 136);
+}
+
+.pop_view_more div {
+  font-size: 13px;
+  padding-bottom: 5px;
+}
+
+.pop_view_more i {
+  font-size: 10px;
+}
