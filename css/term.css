@@ -40,3 +40,41 @@ li {
 p {
   margin-bottom: 5px;
 }
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-right: auto;
+  display: table;
+  border-collapse: separate;
+  box-sizing: border-box;
+  text-indent: initial;
+  white-space: normal;
+  line-height: normal;
+  font-weight: normal;
+  font-size: medium;
+  font-style: normal;
+  text-align: start;
+  border-spacing: 2px;
+  border-color: grey;
+  font-variant: normal;
+}
+
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+  height: 0;
+}
+
+.c54 {
+  padding: 5px;
+  border: 1px solid #000;
+  background-color: #efefef;
+}
