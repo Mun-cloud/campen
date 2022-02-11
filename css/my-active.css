@@ -6,28 +6,6 @@
   padding: 0;
 }
 
-.myTabBox {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid #000;
-}
-
-.myTab {
-  width: 30%;
-  height: 100%;
-  text-align: center;
-  font-size: 13px;
-  line-height: 50px;
-}
-
-.myTab.active {
-  color: green;
-  margin-bottom: -2px;
-  border-bottom: 3px solid green;
-}
-
 .myArticleBox {
   padding: 20px;
 }
