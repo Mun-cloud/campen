@@ -6,7 +6,8 @@ body{
 
 .contaniner {
     max-width: 530px;
-    margin-left: 10%;
+    margin-left: auto;
+  margin-right: auto;
 }
 
 /* 커뮤니티 상단 메뉴탭 */

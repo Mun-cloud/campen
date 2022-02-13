@@ -6,7 +6,8 @@ body{
 
 .contaniner {
     max-width: 530px;
-    margin-left: 10%;
+    margin-left: auto;
+  margin-right: auto;
 }
 
 
