@@ -174,6 +174,8 @@ a {
 .cmt1-container {
     width: 100%;
     background-color: #fff;
+    display: flex;
+  flex-flow: column;
 }
 
 
@@ -200,12 +202,19 @@ a {
     font-weight: 700;
 }
 
+.cmt-item {
+    height: 20px;
+    background-color: #ff0033;
+    flex:1;
+}
+
 /* 이미지 업로드*/
 .cmt2-container {
-    position:fixed;
+
     bottom:0px;
     width: 100%;
     max-width: 530px;
+
 }
 
 .cmt2-box{
