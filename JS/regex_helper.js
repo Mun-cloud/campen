@@ -54,7 +54,7 @@ class RegexHelper {
    * @param {string} msg      값이 없을 경우 표시될 메시지
    * @return {boolean} 지정된 글자수 이상인 경우 true / 미만인 경우 false
    */
-  max_length(selector, len, msg) {
+  min_length(selector, len, msg) {
     //   앞뒤의 공백을 제외하고 내용만 추출
     const field = document.querySelector(selector);
     const content = field.value.trim();

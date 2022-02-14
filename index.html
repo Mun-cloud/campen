@@ -100,12 +100,12 @@
                 <div class="area_title_left">
                     캠핑 Best Photo
                 </div>
-                <a href="#" class="area_title_btn">
+                <a href="join.html" class="area_title_btn">
                     <i class="fas fa-camera"></i>
                     업로드
                 </a>
             </div>
-            <a href="#" class="commu_link" data_commu="photo">
+            <a href="join.html" class="commu_link" data_commu="photo">
                 <span>캠핑 다녀오셨나요?<br></span>
                 <span>나만의 추억을 남겨보세요. <i class="fas fa-chevron-right"></i></span>
             </a>
@@ -149,12 +149,12 @@
                 <div class="area_title_left">
                     캠핑로그
                 </div>
-                <div class="area_title_btn">
+                <a href="join.html" class="area_title_btn">
                     <i class="fas fa-pen"></i>
                     글쓰기
-                </div>
+                </a>
             </div>
-            <a href="#" class="commu_link" data_commu="log">
+            <a href="join.html" class="commu_link" data_commu="log">
                 <span>캠핑 다녀오셨나요?<br></span>
                 <span>나만의 캠핑 포스트를 남겨보세요. <i class="fas fa-chevron-right"></i></span>
 
@@ -319,6 +319,19 @@
             hoverpause: false,
         }
         new Glide('.glide', config).mount()
+
+        /* 기획전 버튼 이동 */
+        const exhiBtn = document.querySelector(".glide")
+        exhiBtn.addEventListener("click", () => {
+            location.href = "exhibition.html"
+        })
+
+        const exhiBtns = document.querySelectorAll("#exhibition .exhi_list")
+        exhiBtns.forEach(v => {
+            v.addEventListener("click", () => {
+                location.href = "exhibition.html"
+            })
+        })
     </script>
 </body>
 

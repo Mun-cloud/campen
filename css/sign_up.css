@@ -22,6 +22,10 @@ span {
   margin-bottom: 25px;
 }
 
+.pop_main {
+  padding-bottom: 0;
+}
+
 .container {
   min-height: 100vh;
 }

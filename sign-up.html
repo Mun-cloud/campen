@@ -50,7 +50,7 @@
 
             // 유효성 검사
             if (!regexHelper.value("#user_name", "아이디를 입력하세요")) { return false; }
-            if (!regexHelper.min_length("#user_name", 4, "이름은 최소 4자 이상 입력 가능합니다.")) { return false; }
+            if (!regexHelper.max_length("#user_name", 4, "이름은 최소 4자 이상 입력 가능합니다.")) { return false; }
 
             if (!regexHelper.value("#email", "이메일를 입력하세요")) { return false; }
 
