@@ -4,6 +4,12 @@
 
 .pop_main {
   padding: 0;
+  background-color: rgb(234, 238, 236);
+}
+
+.pop_main > div {
+  margin-bottom: 5px;
+  background-color: white;
 }
 
 .myArticleBox {
@@ -38,6 +44,27 @@
   color: rgb(159, 165, 162);
 }
 
+.myArticleImg img {
+  width: 80px;
+  height: 80px;
+}
+
 .myArticleInfo {
   display: flex;
+  align-items: center;
+  line-height: 20px;
+  color: rgb(159, 165, 162);
+}
+
+.myArticleInfo > div {
+  display: flex;
+  align-items: center;
+  line-height: 20px;
+  margin-right: 5px;
+}
+
+.myArticleInfo > div > svg {
+  line-height: 18px;
+  margin-bottom: 0;
+  margin-right: 2px;
 }
