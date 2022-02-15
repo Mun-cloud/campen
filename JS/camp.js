@@ -1,3 +1,9 @@
+/**
+ * @ Filename : camp.js
+ * @ Author : 문태호
+ * @ Description : 캠핑장 상세페이지 적용 기능
+ */
+
 const swiper = new Swiper(".swiper", {
   slidesPerView: "auto",
   spaceBetween: 0,

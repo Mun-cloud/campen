@@ -1,3 +1,9 @@
+/**
+ * @ Filename : join.js
+ * @ Author : 문태호
+ * @ Description : 약관 동의 페이지 체크박스 컨트롤 JS
+ */
+
 let checker = {
   term1: false,
   term2: false,
