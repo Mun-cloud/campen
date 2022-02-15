@@ -188,8 +188,19 @@ class RegexHelper {
     return true; // 성공했음을 리턴
   }
 
+  
   /**
-   * 숫좌로만 이루어 졌는지 검사하기 위해 field()를 간접적으로 호출한다.
+   * 숫자와 영문 조합으로 이루어 졌는지 검사하기 위해 field()를 간접적으로 호출한다.
+   * @param {string} selector 입력요소에 해당하는 CSS 선택자
+   * @param {string} msg      표시할 메세지
+   * @return {boolean} 표현식을 충족할 경우 true / 그렇지 않은 경우 false
+   */
+   numEng(selector, msg) {
+    return this.field(selector, msg, /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/);
+  }
+
+  /**
+   * 숫자로만 이루어 졌는지 검사하기 위해 field()를 간접적으로 호출한다.
    * @param {string} selector 입력요소에 해당하는 CSS 선택자
    * @param {string} msg      표시할 메세지
    * @return {boolean} 표현식을 충족할 경우 true / 그렇지 않은 경우 false
