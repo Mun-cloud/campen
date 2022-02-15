@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-    <link rel="stylesheet" href="./commu3,4.css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/commu3,4.css">
 
     <title>캠핑한컷 상세</title>
 </head>
@@ -16,11 +18,11 @@
     <div class="contaniner">
         <!-- header: 상세 상단 -->
         <header class="top-container">
-            <a class="back-btn" href="commu3.html">
+            <a class="back-btn" href="../commu3.html">
                 <span class="material-icons">keyboard_backspace</span>
             </a>
             <a class="logo3" href="#">
-                <img src="./img/campen_logo.png" alt="campen">
+                <img src="../img/campen_logo.png" alt="campen">
             </a>
             <a class="option-btn" href="#">
                 <span class="material-icons-outlined">more_vert</span>
@@ -29,30 +31,32 @@
 
 
         <!-- 컨텐츠 영역 -->
-        <section id="tab3-3" class="cnt-detail target">
-             <!-- tab3-cnt3 -->
-            <article class="cnt-box target">
+        <section id="tab3-1" class="cnt-detail">
+            <!-- ab3-cnt1 -->
+            <article class="cnt-box">
                 <a href="#">
                     <!-- 컨텐츠:프로필,텍스트 -->
                     <div class="cnt-box-txt">
                         <div class="cnt-category">캠핑한컷</div>
                         <ul class="cnt-profile">
                             <li class="cnt-user">
-                                <img class="cnt-user-img" src="./img/user-img.png" alt="소소캠퍼">
-                                <span class="cnt-user-name">소소캠퍼</span>
+                                <img class="cnt-user-img" src="../img/user-img.png" alt="캠퍼1103">
+                                <span class="cnt-user-name">캠퍼1103</span>
                             </li>
-                            <li class="cnt-time">3일 전</li>
+                            <li class="cnt-time">6시간 전</li>
                         </ul>
-                        <p class="cnt-desc">겨울&노을&밀리터리조합 이쁘네요! 개인적으로 캠핑은 여름보다는 겨울이 더 좋은거같아요. <br> 겨울이 가기전에 얼른 한번 더 다녀오려고
-                            합니다.
-                            좋은장소 있으면 댓글로 남겨주세요 ~
+                        <p class="cnt-desc">
+                            근래 캠핑에서 가장 기억에 남았던것 중 하나, 아주 쏟아질듯한 별들이였어요! 날씨가 추워서 불멍은 못했지만 별멍은 엄청때리고 왔습니다ㅎㅎ 다들 구경하고 가세요!!
                         </p>
                     </div>
 
                     <!-- 컨텐츠:이미지 -->
                     <div class="cnt-img">
-                        <div class="default">
-                            <img src="./img/cont-img1.jpeg" alt="커뮤니티">
+                        <div class="medium">
+                            <img src="../img/medium.jpeg" alt="커뮤니티">
+                        </div>
+                        <div class="medium">
+                            <img src="../img/medium1.jpeg" alt="커뮤니티">
                         </div>
                     </div>
                 </a>
@@ -72,52 +76,53 @@
                     </div>
                 </div>
             </article>
-
-        </section>
-        
-        <!-- 상세 댓글영역 -->
-        <section class="cmt1-container">
-                <div class="cmt1-box">
-                    <span class="material-icons-outlined">
-                        textsms
-                        </span>
-                    <p>아직 댓글이 없어요.</p>
-                    <p>첫번째 댓글을 남겨보세요.</p>
-                </div>
         </section>
 
-        <!-- 댓글 업로드 -->
-        <section class="cmt2-container">
-                <form class="cmt2-box">
+        <!-- 댓글영역 -->
+        <section class="cmt-container">
+            <!-- 댓글 상단  -->
+            <div class="cmt1-box">
+                <span class="material-icons-outlined">
+                    textsms
+                </span>
+                <p>아직 댓글이 없어요.</p>
+                <p>첫번째 댓글을 남겨보세요.</p>
+            </div>
+
+
+            <!-- 댓글 하단 -->
+            <div class="cmt2-box">
+                <form class="form-box">
                     <!-- 이미지 업로드 -->
                     <label class="photo" for="upload-btn">
                         <span class="material-icons">
                             image
-                            </span>
+                        </span>
                         <input type="file" id="upload-btn" class="upload" accept="image/*">
                     </label>
                     <!-- 텍스트 업로드 -->
-                    <div class= "cmt2-textarea">
+                    <div class="textarea">
                         <textarea placeholder="댓글을 입력해주세요." name="comment" class="comment" rows="1"></textarea>
                         <div color="primary80" class="submit-btn submit-btn2">
                             <button type="submit">등록</button>
                         </div>
                     </div>
                 </form>
-        </section>
+            </div>
 
-              <!-- 위로 올라가기 버튼 -->
-              <div class="up-btn">
+            <!-- 위로 올라가기 버튼 -->
+            <div class="up-btn">
                 <button>
                     <span class="material-icons-outlined">
                         expand_less
-                        </span>
+                    </span>
                 </button>
             </div>
+        </section>
 
     </div>
 </body>
-<script src="./commu_tap.js"></script>
+
 <script src="https://kit.fontawesome.com/def66b134a.js" crossorigin="anonymous"></script>
 
 </html>

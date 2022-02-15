@@ -1,0 +1,100 @@
+
+body{
+    background-color: rgb(231, 240, 234);
+    
+}
+
+.contaniner {
+    max-width: 530px;
+    margin-left: auto;
+  margin-right: auto;
+  position: relative;
+    width: 100%;
+    height: fit-content;
+}
+/* my */
+.my {
+    background: rgb(255, 255, 255);
+    padding: 28px 20px;
+    margin-top: 8px;
+    border-bottom: 1px solid rgb(234, 238, 236);
+}
+
+
+
+.signup-btn {
+    width: 50%;
+    height: 48px;
+    margin-right: 10px;
+    border: 1px solid rgb(212, 217, 214);
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+    color: rgb(37, 40, 38);
+    font-family: SpoqaHanSans;
+    font-weight: 400;
+    font-size: 11pt;
+    padding: 6px 8px;
+}
+
+.signup-btn span {
+    width: 100%;
+    display: inherit;
+    align-items: inherit;
+    justify-content: inherit;
+}
+
+.my-notice, .my-set, .my-center {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.my-div {
+    width: 100%;
+    min-height: 52px;
+    margin-top: 8px;
+    padding: 16px 20px;
+    background: rgb(255, 255, 255);
+    cursor: pointer;
+    border-top: none;
+}
+
+/* 하단메뉴탭 */
+#nav-container{
+    position: fixed;
+    bottom: 0px;
+    z-index: 100;
+    max-width: 530px;
+    width: 100%;
+    background: rgb(255, 255, 255);
+}
+
+.nav-tab{
+    display: flex;
+    margin: 0px auto;
+    width: 100%;
+    padding: 9px 0px 9px;
+    border-top: 1px solid rgb(212, 217, 214);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex:1 1 0%;
+    height: 100%;
+    letter-spacing: -0.05pt;
+    line-height: 15px;
+}
+
+.nav-icon{
+    font-size:15pt;
+    color:#555;
+}
+
+.nav-txt{
+    margin-top:5px;
+    font-size:9pt;
+    color:#555;
+}

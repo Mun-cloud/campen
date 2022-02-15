@@ -60,6 +60,7 @@ body{
 /* 컨텐츠:프로필,텍스트 */
 .cnt-box {
     background: rgb(255, 255, 255);
+
 }
 
 a {
@@ -170,21 +171,20 @@ a {
     cursor: pointer;
 }
 
-/* 상세 댓글영역 */
-.cmt1-container {
+/* 댓글영역 */
+.cmt-container {
     width: 100%;
     background-color: #fff;
-    display: flex;
-  flex-flow: column;
 }
 
-
+/* 댓글 상단 */
 .cmt1-box {
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 50px 0px 93px;
     color:rgb(187, 187, 187);
+    flex:1;
 }
 
 .cmt1-box span {
@@ -202,22 +202,14 @@ a {
     font-weight: 700;
 }
 
-.cmt-item {
-    height: 20px;
-    background-color: #ff0033;
-    flex:1;
-}
 
-/* 이미지 업로드*/
-.cmt2-container {
-
-    bottom:0px;
+/* 댓글 하단 */
+.cmt2-box {
     width: 100%;
     max-width: 530px;
-
 }
 
-.cmt2-box{
+.form-box{
     position: relative;
     display: flex;
     align-items: center;
@@ -227,6 +219,7 @@ a {
     
 }
 
+/* 이미지 업로드*/
 .photo{
     display: flex;
     justify-content:center;
@@ -240,7 +233,7 @@ a {
 }
 
 /* 텍스트 업로드 */
-.cmt2-textarea {
+.textarea {
     display: flex;
     width: 100%;
     padding: 10px 12px;
