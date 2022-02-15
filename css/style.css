@@ -1,3 +1,9 @@
+/*
+    @ Filename : style.css
+    @ Author : 문태호
+    @ Description : 기본 css 적용사항
+*/
+
 /* 기본 가로사이즈 설정 */
 * {
   box-sizing: border-box;

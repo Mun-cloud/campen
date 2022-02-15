@@ -1,6 +1,8 @@
-@import url("reset.css");
-@import url("style.css");
-@import url("pop.css");
+/*
+    @ Filename : notice.css
+    @ Author : 문태호
+    @ Description : 공지사항 리스트 레이아웃
+*/
 
 .pop_main {
   padding: 0;
