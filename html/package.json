@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@glidejs/glide": "^3.5.2"
+  },
+  "name": "campen",
+  "description": "캠핏(https://camfit.co.kr/) 클론 프로젝트",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mun-cloud/campen.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mun-cloud/campen/issues"
+  },
+  "homepage": "https://github.com/Mun-cloud/campen#readme"
+}
