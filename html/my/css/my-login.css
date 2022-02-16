@@ -1,94 +1,76 @@
-
+@import "./reset.css";
 
 
 body{
     background-color: rgb(231, 240, 234);
     
 }
-
-.contaniner {
-    max-width: 530px;
-    margin-left: auto;
-  margin-right: auto;
-  position: relative;
-    width: 100%;
-    height: fit-content;
-}
-
-.cnt-profile {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.cnt-user{
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.cnt-user-img{
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-    border-radius: 50%;
-    border: 1px solid rgb(201, 207, 204);
-    object-fit: cover;
-}
-
-.cnt-user-name{
-    display: flex;
-    font-size: 11pt;
-    font-weight: 500;
-    color:#333;
-}
-.cnt-user span:last-child {
-    margin-left:300px;
-    cursor: pointer;
-}
-/* my */
-.my {
-    background: rgb(255, 255, 255);
-    padding: 28px 20px;
-    margin-top: 8px;
-    border-bottom: 1px solid rgb(234, 238, 236);
-}
-
-
-
-.signup-btn {
-    width: 50%;
-    height: 48px;
-    margin-right: 10px;
-    border: 1px solid rgb(212, 217, 214);
-    border-radius: 8px;
-    background: rgb(255, 255, 255);
-    color: rgb(37, 40, 38);
-    font-family: SpoqaHanSans;
-    font-weight: 400;
-    font-size: 11pt;
-    padding: 6px 8px;
-}
-
-.signup-btn span {
-    width: 100%;
-    display: inherit;
-    align-items: inherit;
-    justify-content: inherit;
-}
-
-.my-notice, .my-set, .my-center {
+a {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
 }
 
+.my-container {
+    max-width: 530px;
+    height:100%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    background-color: rgb(241, 245, 243);
+}
+
+/* 유저 마이 프로필 */
+.my-profile {
+    display: flex;
+    padding:20px 20px;
+    align-items: center;
+    background: rgb(255, 255, 255);
+}
+
+.my-profile img {
+    margin-right: 12px;
+    width: 15%;
+}
+
+.my-user {
+    margin-left:5px;
+}
+
+.my-user-name {
+    font-size: 14pt;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.my-user-intro {
+    display: flex;
+    align-items: center;
+    color:#555;
+    font-size:11pt;
+}
+
+.my-user-intro  span {
+    font-size: 10pt;
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+
+/* 내가작성한글,공지사항,설정 박스 */
+.my-content, .my-notice, .my-set {
+    display:block;
+    font-size:11pt;
+    color: rgb(37, 40, 38);
+    cursor: pointer;
+}
+
 .my-div {
     width: 100%;
-    min-height: 52px;
+    min-height: 40px;
+    line-height: 40px;
     margin-top: 8px;
-    padding: 16px 20px;
+    padding: 20px 20px;
     background: rgb(255, 255, 255);
     cursor: pointer;
     border-top: none;

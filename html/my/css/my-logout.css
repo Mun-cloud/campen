@@ -1,30 +1,31 @@
+@import "./reset.css";
+
 
 body{
     background-color: rgb(231, 240, 234);
     
 }
 
-.contaniner {
+.my-container {
     max-width: 530px;
+    height:100%;
     margin-left: auto;
-  margin-right: auto;
-  position: relative;
-    width: 100%;
-    height: fit-content;
+    margin-right: auto;
+    overflow: hidden;
+    background-color: rgb(241, 245, 243);
 }
-/* my */
-.my {
+
+/* 회원가입,로그인버튼*/
+.signup-login {
     background: rgb(255, 255, 255);
     padding: 28px 20px;
-    margin-top: 8px;
-    border-bottom: 1px solid rgb(234, 238, 236);
+    width: 100%;
 }
 
-
-
-.signup-btn {
-    width: 50%;
+.signup-btn, .login-btn{
+    width: 45%;
     height: 48px;
+    padding: 6px 8px;
     margin-right: 10px;
     border: 1px solid rgb(212, 217, 214);
     border-radius: 8px;
@@ -33,27 +34,23 @@ body{
     font-family: SpoqaHanSans;
     font-weight: 400;
     font-size: 11pt;
-    padding: 6px 8px;
+    cursor: pointer;
 }
 
-.signup-btn span {
-    width: 100%;
-    display: inherit;
-    align-items: inherit;
-    justify-content: inherit;
-}
-
+/* 공지사항,설정,고객센터 박스 */
 .my-notice, .my-set, .my-center {
-    text-decoration: none;
-    color: inherit;
+    display:block;
+    font-size:11pt;
+    color: rgb(37, 40, 38);
     cursor: pointer;
 }
 
 .my-div {
     width: 100%;
-    min-height: 52px;
+    min-height: 40px;
+    line-height: 40px;
     margin-top: 8px;
-    padding: 16px 20px;
+    padding: 20px 20px;
     background: rgb(255, 255, 255);
     cursor: pointer;
     border-top: none;
