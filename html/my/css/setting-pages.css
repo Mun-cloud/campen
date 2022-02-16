@@ -1,0 +1,99 @@
+@import "./reset.css";
+
+
+body{
+    background-color: rgb(231, 240, 234);
+    
+}
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.user-container {
+    max-width: 530px;
+    height:100%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    background-color: rgb(241, 245, 243);
+}
+
+/* 헤더 */
+.user-header {
+    top: 0px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    height: 52px;
+    max-width: 530px;
+    width: 100%;
+    background: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(241, 245, 243);
+    color:#333;
+}
+.user-header span {
+    width: 50px;
+    margin-left:20px;
+    font-size:13pt;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.user-header p {
+    margin: 0px auto;
+    padding-right: 70px;
+    font-size: 12.5pt;
+}
+
+/*컨텐츠 영역 */
+
+.setting-cnt {
+    padding: 20px;
+    height:700px;
+    background: rgb(255, 255, 255);
+}
+
+.cnt-text {
+    margin: 18px 0px 43px;
+}
+
+.cnt-text div {
+    font-size: 16pt;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 0px 0px 2px 5px;
+    color: rgb(5, 6, 6);
+    font-family: SpoqaHanSans;
+    font-weight: 400;
+    font-size: 12pt;
+    border: none;
+}
+
+
+
+.setting-submit {
+    width: 100%;
+    height: 56px;
+    padding: 6px 8px;
+    margin-top: 0px;
+    background: rgb(234, 238, 236);
+    border-radius: 8px;
+    color: rgb(133, 138, 136);
+    font-weight: 700;
+    font-size: 13pt;
+    border: none;
+}
+
+.setting-submit span {
+    width: 100%;
+    display: inherit;
+    align-items: inherit;
+    justify-content: inherit;
+}
+
