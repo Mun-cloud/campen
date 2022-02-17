@@ -13,7 +13,6 @@ a {
 
 .user-container {
     max-width: 530px;
-    height:100%;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
@@ -51,7 +50,7 @@ a {
 
 .setting-cnt {
     padding: 20px;
-    height:700px;
+    height:750px;
     background: rgb(255, 255, 255);
 }
 
@@ -73,27 +72,21 @@ input {
     font-weight: 400;
     font-size: 12pt;
     border: none;
+    outline: none;
 }
 
-
-
+/* 버튼 영역 */
 .setting-submit {
+    bottom: 0px;
+    position: fixed;
     width: 100%;
-    height: 56px;
-    padding: 6px 8px;
-    margin-top: 0px;
+    padding: 20px 20px;
     background: rgb(234, 238, 236);
-    border-radius: 8px;
     color: rgb(133, 138, 136);
     font-weight: 700;
     font-size: 13pt;
     border: none;
 }
 
-.setting-submit span {
-    width: 100%;
-    display: inherit;
-    align-items: inherit;
-    justify-content: inherit;
-}
+
 
