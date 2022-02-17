@@ -97,8 +97,6 @@ textarea {
 
 /* 이미지업로드 */
 .photo-container {
-    margin-bottom: 0px;
-
     padding: 20px 0px 20px 20px;
     background: rgb(255, 255, 255);
 }
@@ -133,26 +131,19 @@ textarea {
     margin-top:5px;
 }
 
-button {
-    min-width: 44px;
-    border-radius: 0px;
+/* 하단 버튼 */
+.write-submit {
+    bottom: 0px;
+    position: fixed;
     width: 100%;
-    height: 56px;
-    margin-top: 0px;
+    padding: 20px;
     background: rgb(234, 238, 236);
-    border-radius: 8px;
     color: rgb(133, 138, 136);
     font-weight: 700;
-    font-size: 11pt;
-    font-family: SpoqaHanSans;
+    font-size: 13pt;
+    border: none;
 }
 
-button .text {
-    width: 100%;
-    display: inherit;
-    align-items: inherit;
-    justify-content: inherit;
-}
 
 
 
