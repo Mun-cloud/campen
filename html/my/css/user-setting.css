@@ -108,7 +108,6 @@ a {
     margin-top: 4px;
     padding: 15px 25px;
     background: rgb(255, 255, 255);
-    cursor: pointer;
     font-size: 10.5pt;
     display: flex;
     justify-content: space-between;
@@ -120,6 +119,10 @@ a {
     color: #666;
 }
 
+.img-upload input {
+    display: none;
+}
+
 .event p {
     font-size: 9pt;
     color:#666;
@@ -128,6 +131,6 @@ a {
     font-size:35pt;
 }
 
-.img-upload input {
-    display: none;
+.img-upload, .nickname, .password, .sns, .event-set span {
+    cursor: pointer;
 }

@@ -66,13 +66,21 @@ a {
 
 input {
     width: 100%;
-    padding: 0px 0px 2px 5px;
+    padding: 0px 0px 0px 5px;
     color: rgb(5, 6, 6);
     font-family: SpoqaHanSans;
     font-weight: 400;
     font-size: 12pt;
     border: none;
     outline: none;
+}
+.password, .new-password{
+    margin-bottom: 30px;
+}
+.new-password {
+    padding-left: 5px;
+    font-size:10pt;
+    color:#333;
 }
 
 /* 버튼 영역 */
@@ -86,7 +94,9 @@ input {
     font-weight: 700;
     font-size: 13pt;
     border: none;
+    cursor: pointer;
 }
+
 
 
 
