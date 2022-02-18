@@ -16,7 +16,6 @@ a {
     height:100%;
     margin-left: auto;
     margin-right: auto;
-    overflow: hidden;
     background-color: rgb(241, 245, 243);
 }
 
@@ -46,9 +45,6 @@ a {
     padding-right: 70px;
     font-size: 12.5pt;
 }
-
-
-
 
 /* 유저 프로필 */
 .user-profile {
@@ -99,14 +95,12 @@ a {
 }
 
 /* 메뉴 */
-/* 커뮤니티 상단 메뉴탭 */
 .tab-container {
     max-width: 530px;
     height:45px;
     width: 100%;
     top:0px;
     background-color:rgb(255, 255, 255);
-
     display: flex;
 }
 
@@ -133,5 +127,86 @@ a {
     font-size: 10.5pt;
     font-weight: 500;
     color:#666;
+    cursor: pointer;
+}
+
+/* 내용영역 */
+.cnt-container a {
+    display: block;
+    margin-bottom: 1px;
+}
+
+.cnt-box {
+    padding: 25px 20px 20px;
+    background: rgb(255, 255, 255);
+}
+
+.cnt-date {
+    color: rgb(159, 165, 162);
+    font-size: 9pt;
+    font-weight: 500;
+    line-height: 100%;
+}
+
+.cnt-body {
+    margin: 10px 0px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cnt {
+    align-self: flex-start;
+    width: 73%;
+}
+
+.cnt-title {
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 13pt;
+    line-height: 100%;
+}
+
+.cnt-content {
+    font-size: 10pt;
+    color: rgb(159, 165, 162);
+    line-height: 150%;
+    font-weight: 400;
+    overflow: hidden;
+    /* 말줄임표시 */
+    text-overflow: ellipsis;
+    /* 두줄 제한 */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.cnt-img img {
+    margin: 4px 0px;
+    border-radius: 8px;
+    display: block;
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+}
+
+/* 좋아요 댓글 */
+.cnt-footer {
+    display: flex;
+    font-size: 9pt;
+    color: rgb(159, 165, 162);
+    font-weight: 400;
+}
+
+.cnt-like {
+    display:flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cnt-comment {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
     cursor: pointer;
 }
