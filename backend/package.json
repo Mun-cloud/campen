@@ -1,0 +1,19 @@
+{
+  "name": "campen-backend",
+  "version": "1.0.0",
+  "description": "캠핏 클론코딩. 캠핀. 백엔드",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "campit",
+    "campen",
+    "clone"
+  ],
+  "author": "munth (mun05170@gmail.com)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
