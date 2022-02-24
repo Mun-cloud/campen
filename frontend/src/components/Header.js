@@ -43,7 +43,7 @@ const Header = () => {
               to={`commu${index + 1}.html`}
               style={({ isActive }) => ({
                 borderBottom: isActive && "2px solid #43C083",
-                color: isActive ? "#43C083" : "red",
+                color: isActive ? "#43C083" : "#444",
               })}
             >
               {data}
