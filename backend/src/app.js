@@ -146,7 +146,7 @@ app.use("/upload", static(config.upload.dir));
 app.use("/thumb", static(config.thumbnail.dir));
 
 /** favicon 설정 */
-app.use(favicon(config.favicon_path));
+// app.use(favicon(config.favicon_path));
 
 /** 라우터(URL 분배기) 객체 설정 --> 맨 마지막에 설정 */
 const router = express.Router();
@@ -156,10 +156,10 @@ app.use("/", router);
 /*----------------------------------------------------------
  | 5) 각 URL별 백엔드 기능 정의
  -----------------------------------------------------------*/
-app.use(require("./controllers/Department")(app));
-app.use(require("./controllers/Professor")(app));
-app.use(require("./controllers/Student")(app));
-app.use(require("./controllers/Member")(app));
+// app.use(require("./controllers/Department")(app));
+// app.use(require("./controllers/Professor")(app));
+// app.use(require("./controllers/Student")(app));
+// app.use(require("./controllers/Member")(app));
 
 // 런타임 에러가 발생한 경우에 대한 일괄 처리
 app.use((err, req, res, next) => {

@@ -12,6 +12,7 @@ module.exports = (app) => {
   /** 데이터추가 --> Create(INSERT) */
   router.post("/member", async (req, res, next) => {
     const user = req.post("user");
+
     const password = req.post("password");
     const name = req.post("name");
     const birthdate = req.post("birthdate");

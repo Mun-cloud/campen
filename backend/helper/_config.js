@@ -18,7 +18,7 @@ module.exports = {
   server_port: 3000,
 
   /** public 디렉토리 경로 */
-  public_path: path.join(__dirname, "../public"),
+  public_path: path.join(__dirname, "../../html"),
 
   /** favicon 경로 */
   favicon_path: path.join(__dirname, "../public/favicon.png"),

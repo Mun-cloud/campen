@@ -40,6 +40,7 @@ const refundBtn = document.getElementById("refund_btn");
 const businessBtn = document.getElementById("business_btn");
 const pop = document.querySelectorAll(".pop");
 const popChev = document.querySelectorAll(".pop_chev");
+const popTitle = document.querySelector(".camp_main>.pop_title");
 
 // 모든 팝업창 숨김
 pop.forEach((v) => {
@@ -66,6 +67,11 @@ popChev.forEach((v) => {
   v.addEventListener("click", (e) => {
     e.currentTarget.closest(".pop").hidden = true;
   });
+});
+
+// 캠핀 로고 버튼 클릭 이벤트
+popTitle.addEventListener("click", (e) => {
+  location.href = "/";
 });
 
 // 버튼 클릭 -> 연관된 팝업 띄우기 -> chev클릭 -> 팝업 창 히든

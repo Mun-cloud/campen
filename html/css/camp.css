@@ -17,6 +17,10 @@
   color: white;
 }
 
+.camp_main > .pop_title {
+  cursor: pointer;
+}
+
 .camp_main .pop_title {
   font-size: 20px;
   font-weight: bold;
