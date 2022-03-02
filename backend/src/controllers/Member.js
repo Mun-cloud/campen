@@ -58,7 +58,7 @@ module.exports = (app) => {
    * 회원가입
    * [POST] /member
    */
-  router.post("/member/join", (req, res, next) => {
+  router.post("/member/join", async (req, res, next) => {
     // WebHelper에 추가된 기능을 활용하여 업로드 객체 반환받기
     const multipart = req.getMultipart();
 
@@ -77,15 +77,15 @@ module.exports = (app) => {
     const photo = req.file.url;
 
     // 유효성 검사
-    // try {
-    //   regexHelper.value(user_id, "아이디를 입력하세요.");
-    //   regexHelper.value(user_pw, "비밀번호를 입력하세요.");
-    //   regexHelper.value(user_name, "이름를 입력하세요.");
-    //   regexHelper.value(email, "이메일를 입력하세요.");
-    //   regexHelper.value(phone, "휴대폰 번호를 입력하세요.");
-    // } catch (err) {
-    //   return next(err);
-    // }
+    try {
+      regexHelper.value(user_id, "아이디를 입력하세요.");
+      regexHelper.value(user_pw, "비밀번호를 입력하세요.");
+      regexHelper.value(user_name, "이름를 입력하세요.");
+      regexHelper.value(email, "이메일를 입력하세요.");
+      regexHelper.value(phone, "휴대폰 번호를 입력하세요.");
+    } catch (err) {
+      return next(err);
+    }
 
     try {
       // 데이터베이스 접속
@@ -168,7 +168,7 @@ module.exports = (app) => {
 
       // 아이디와 비밀번호가 일치하는 데이터를 조회 (조회결과에서 비밀번호는 제외)
       let sql1 =
-        "SELECT id, user_id, user_name, email, phone, birthday, gender, postcode, addr1, addr2, photo, is_out, is_admin, login_date, reg_date, edit_date FROM members WHERE user_id=? AND user_pw=?";
+        "SELECT id, user_id, user_pw, user_name, email, phone, photo, intro, sns_addr, nickname, is_out, is_admin, login_date, reg_date, edit_date FROM members WHERE user_id=? AND user_pw=?";
       let args1 = [user_id, user_pw];
 
       const [result1] = await dbcon.query(sql1, args1);
@@ -292,16 +292,6 @@ module.exports = (app) => {
 
     res.sendJson;
   });
-
-  /**
-   * 회원정보 수정
-   * 회원과 관련된 처리의 경우 UPDATE나 DELETE에서 사용할 WHERE절의 PK값을
-   * 보안상의 이유로 별도 전송하지 않는다.
-   * 로그인을 할 경우 회원의 정보가 SESSION에 저장되어 있을 것이므로
-   * 모든 개별 회원에 대한 접근은 SESSION 데이터를 활용해야 한다.
-   * [PUT] /member
-   */
-  router.put("/member/join", async (req, res, next) => {});
 
   return router;
 };
