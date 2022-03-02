@@ -8,7 +8,7 @@ const logger = require("../../helper/LogHelper");
 const regexHelper = require("../../helper/RegexHelper");
 const utilHelper = require("../../helper/UtilHelper");
 const router = require("express").Router();
-const mysql2 = require("mysql2");
+const mysql2 = require("mysql2/promise");
 const axios = require("axios");
 
 /** 라우팅 정의 부분 */
@@ -137,10 +137,12 @@ module.exports = (app) => {
   });
 
   /** 데이터 추가 --> Create(INSERT) */
-  router.get("/camp1", async (req, res, next) => {
+  router.post("/getcamp", async (req, res, next) => {
     // 저장을 위한 파라미터 입력받기
     // const dname = req.post("dname");
     // const loc = req.post("loc");
+
+    /** Ajax 파라미터 정리 및 axios */
     const APIurl =
       "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/basedList";
     const KEY =
@@ -149,18 +151,21 @@ module.exports = (app) => {
     const urlParams = {
       params: {
         ServiceKey: KEY,
+        pageNo: "1",
+        numOfRows: "100",
         MobileOS: "ETC",
         MobileApp: "AppTest",
       },
     };
+
+    // 캠핑장 리스트 저장 배열
+    let campOriginData = [];
     try {
       const response = await axios.get(APIurl, urlParams);
-
-      res.sendJson(response.data.response.body.items);
+      campOriginData = response.data.response.body.items;
     } catch (err) {
       console.error(err);
     }
-
     // try {
     //   regexHelper.value(dname, "학과이름이 없습니다.");
     //   regexHelper.maxLength(dname, 10, "학과이름이 너무 깁니다.");
@@ -168,34 +173,44 @@ module.exports = (app) => {
     //   return next(err);
     // }
 
-    // /** 데이터 저장하기 */
-    // // 데이터 조회 결과가 저장될 빈 변수
-    // let json = null;
+    /** 데이터 저장하기 */
+    // 데이터 조회 결과가 저장될 빈 변수
+    let json = null;
 
-    // try {
-    //   // 데이터베이스 접속
-    //   dbcon = await mysql2.createConnection(config.database);
-    //   await dbcon.connect();
+    try {
+      // 데이터베이스 접속
+      dbcon = await mysql2.createConnection(config.database);
+      await dbcon.connect();
 
-    //   // 데이터 저장하기
-    //   const sql = "INSERT INTO department (dname, loc) VALUES (?, ?)";
-    //   const input_data = [dname, loc];
-    //   const [result1] = await dbcon.query(sql, input_data);
+      // 데이터 저장하기
+      campOriginData.item.forEach(async (v) => {
+        const sql =
+          "INSERT INTO `camp` (name, addr1, addr2, tel, lctCl, price, photo, basic_fac, add_fac, intro, tag, mapX, mapY, homepage, manner_start, manner_end, policy, map, is_reg, reg_date, edit_date) VALUES (?, ?, ?, ?, ?, null, ?, null, null, ?, null, ?, ?, ?, null, null, null, null, 'N', now(), now())";
+        const input_data = [
+          v.facltNm,
+          v.addr1,
+          v.addr2,
+          v.tel,
+          v.lctCl,
+          v.firstImageUrl,
+          v.intro,
+          v.mapX,
+          v.mapY,
+          v.homepage,
+        ];
+        const [result1] = await dbcon.query(sql, input_data);
+        // // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
+        // const sql2 = "SELECT deptno, dname, loc FROM department WHERE deptno=?";
+        // const [result2] = await dbcon.query(sql2, [result1.insertId]);
+      });
+    } catch (err) {
+      return next(err);
+    } finally {
+      dbcon.end();
+    }
 
-    //   // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-    //   const sql2 = "SELECT deptno, dname, loc FROM department WHERE deptno=?";
-    //   const [result2] = await dbcon.query(sql2, [result1.insertId]);
-
-    //   // 조회 결과를 미리 준비한 변수에 저장함
-    //   json = result2;
-    // } catch (err) {
-    //   return next(err);
-    // } finally {
-    //   dbcon.end();
-    // }
-
-    // // 모든 처리에 성공했으므로 정상 조회 결과 구성
-    // res.sendJson({ item: json });
+    // 모든 처리에 성공했으므로 정상 조회 결과 구성
+    res.send("OK");
   });
 
   /** 데이터 수정 --> Update(UPDATE) */
