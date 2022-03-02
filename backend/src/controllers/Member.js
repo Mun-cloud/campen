@@ -65,107 +65,77 @@ module.exports = (app) => {
     // 업로드 수행하기
     const upload = multipart.single("profile_img");
 
-    //  업로드 처리 후 텍스트 파라미터 받기
-    upload(req, res, async (err) => {
-      // 업로드 에러 처리
-      if (err) {
-        throw new MultipartException(err);
+    // 업로드 된 파일의 정보를 로그로 기록 (필요에 따른 선택 사항)
+    logger.debug(JSON.stringify(req.file));
+
+    // 텍스트 파라미터 받기
+    const user_id = req.post("user_id");
+    const user_pw = req.post("user_pw");
+    const user_name = req.post("user_name");
+    const email = req.post("email");
+    const phone = req.post("phone");
+    const photo = req.file.url;
+
+    // 유효성 검사
+    // try {
+    //   regexHelper.value(user_id, "아이디를 입력하세요.");
+    //   regexHelper.value(user_pw, "비밀번호를 입력하세요.");
+    //   regexHelper.value(user_name, "이름를 입력하세요.");
+    //   regexHelper.value(email, "이메일를 입력하세요.");
+    //   regexHelper.value(phone, "휴대폰 번호를 입력하세요.");
+    // } catch (err) {
+    //   return next(err);
+    // }
+
+    try {
+      // 데이터베이스 접속
+      dbcon = await mysql2.createConnection(config.database);
+      await dbcon.connect();
+
+      // 아이디가 중복되는 데이터 수를 조회(중복검사)
+      let sql1 = "SELECT COUNT(*) 'cnt' FROM members WHERE user_id=?";
+      let args1 = [user_id];
+
+      const [result1] = await dbcon.query(sql1, args1);
+      const totalCount = result1[0].cnt;
+
+      if (totalCount > 0) {
+        throw new BadRequestException("이미 사용중인 아이디 입니다.");
       }
 
-      // 업로드 된 파일의 정보를 로그로 기록 (필요에 따른 선택 사항)
-      logger.debug(JSON.stringify(req.file));
+      // 전송받은 모든 정보를 회원 테이블에 저장(INSERT)
+      let sql = "INSERT INTO `members` (";
+      sql += "user_id, user_pw, user_name, email, phone, photo, ";
+      sql +=
+        "intro, sns_addr, nickname, is_out, is_admin, login_date, reg_date, edit_date";
+      sql += ") VALUES (";
+      sql +=
+        "?, ?, ?, ?, ?, ?, null, null, null, 'N', 'N', null, now(), now());";
 
-      // 텍스트 파라미터 받기
-      const user_id = req.post("user_id");
-      const user_pw = req.post("user_pw");
-      const user_name = req.post("user_name");
-      const email = req.post("email");
-      const phone = req.post("phone");
-      const birthday = req.post("birthday");
-      const gender = req.post("gender");
-      const postcode = req.post("postcode");
-      const addr1 = req.post("addr1");
-      const addr2 = req.post("addr2");
-      const photo = req.file.url;
+      const args = [user_id, user_pw, user_name, email, phone, photo];
 
-      // 유효성 검사
-      // try {
-      //   regexHelper.value(user_id, "아이디를 입력하세요.");
-      //   regexHelper.value(user_pw, "비밀번호를 입력하세요.");
-      //   regexHelper.value(user_name, "이름를 입력하세요.");
-      //   regexHelper.value(email, "이메일를 입력하세요.");
-      //   regexHelper.value(phone, "휴대폰 번호를 입력하세요.");
-      //   regexHelper.value(birthday, "생년월일을 입력하세요.");
-      //   regexHelper.value(gender, "성별을 입력하세요.");
-      //   regexHelper.value(postcode, "우편번호를 입력하세요.");
-      //   regexHelper.value(addr1, "주소를 입력하세요.");
-      //   regexHelper.value(addr2, "주소를 입력하세요.");
-      // } catch (err) {
-      //   return next(err);
-      // }
+      await dbcon.query(sql, args);
+    } catch (err) {
+      return next(err);
+    } finally {
+      dbcon.end();
+    }
 
-      try {
-        // 데이터베이스 접속
-        dbcon = await mysql2.createConnection(config.database);
-        await dbcon.connect();
+    // 모든 구현에 성공했다면 가입 환영 메일 발송
+    const receiver = `${user_name} <${email}>`;
+    const subject = `${user_name}님의 회원가입을 환영합니다.`;
+    const html = `<p><striong>${user_name}</striong>님, 회원가입해 주셔서 감사합니다.</p><p>앞으로 많은 이용 바랍니다.</p>`;
 
-        // 아이디가 중복되는 데이터 수를 조회(중복검사)
-        let sql1 = "SELECT COUNT(*) 'cnt' FROM members WHERE user_id=?";
-        let args1 = [user_id];
+    try {
+      res.sendMail(receiver, subject, html);
+    } catch (err) {
+      throw new RuntimeException(
+        "회원가입은 완료 되었지만 가입 환영 메일 발송에 실패했습니다."
+      );
+    }
 
-        const [result1] = await dbcon.query(sql1, args1);
-        const totalCount = result1[0].cnt;
-
-        if (totalCount > 0) {
-          throw new BadRequestException("이미 사용중인 아이디 입니다.");
-        }
-
-        // 전송받은 모든 정보를 회원 테이블에 저장(INSERT)
-        let sql = "INSERT INTO `members` (";
-        sql += "user_id, user_pw, user_name, email, phone, birthday, gender, ";
-        sql +=
-          "postcode, addr1, addr2, photo, is_out, is_admin, login_date, reg_date, edit_date";
-        sql += ") VALUES (";
-        sql +=
-          "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'N', 'N', null, now(), now());";
-
-        const args = [
-          user_id,
-          user_pw,
-          user_name,
-          email,
-          phone,
-          birthday,
-          gender,
-          postcode,
-          addr1,
-          addr2,
-          photo,
-        ];
-
-        await dbcon.query(sql, args);
-      } catch (err) {
-        return next(err);
-      } finally {
-        dbcon.end();
-      }
-
-      // 모든 구현에 성공했다면 가입 환영 메일 발송
-      const receiver = `${user_name} <${email}>`;
-      const subject = `${user_name}님의 회원가입을 환영합니다.`;
-      const html = `<p><striong>${user_name}</striong>님, 회원가입해 주셔서 감사합니다.</p><p>앞으로 많은 이용 바랍니다.</p>`;
-
-      try {
-        res.sendMail(receiver, subject, html);
-      } catch (err) {
-        throw new RuntimeException(
-          "회원가입은 완료 되었지만 가입 환영 메일 발송에 실패했습니다."
-        );
-      }
-
-      // 처리 성공시에 대한 응답 처리
-      res.sendJson();
-    });
+    // 처리 성공시에 대한 응답 처리
+    res.sendJson();
   });
 
   /**
@@ -276,6 +246,14 @@ module.exports = (app) => {
       return next(new BadRequestException("로그인중이 아닙니다."));
     }
   });
+  // //  (프로필 사진 업로드) 업로드 처리 후 파라미터 받기
+  // upload(req, res, async (err) => {
+  //   // 업로드 에러 처리
+  //   if (err) {
+  //     throw new MultipartException(err);
+  //   }
+
+  // });
 
   /**
    * 회원탈퇴
