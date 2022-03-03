@@ -126,17 +126,17 @@ module.exports = (app) => {
     const subject = `${user_name}님의 회원가입을 환영합니다.`;
     const html = `<p><striong>${user_name}</striong>님, 회원가입해 주셔서 감사합니다.</p><p>앞으로 많은 이용 바랍니다.</p>`;
 
-    try {
-      res.send(receiver, subject, html);
-      // res.sendMail(receiver, subject, html);
-    } catch (err) {
-      throw new RuntimeException(
-        "회원가입은 완료 되었지만 가입 환영 메일 발송에 실패했습니다."
-      );
-    }
+    // try {
+    //   res.send(receiver, subject, html);
+    //   // res.sendMail(receiver, subject, html);
+    // } catch (err) {
+    //   throw new RuntimeException(
+    //     "회원가입은 완료 되었지만 가입 환영 메일 발송에 실패했습니다."
+    //   );
+    // }
 
     // 처리 성공시에 대한 응답 처리
-    res.sendJson();
+    res.send(subject);
   });
 
   /**
@@ -178,7 +178,7 @@ module.exports = (app) => {
       json = result1;
 
       // login_date값을 now()로 update처리
-      let sql2 = "UPDATE members SET login_date=now() WHERE id  = ?";
+      let sql2 = "UPDATE members SET login_date=now() WHERE id=?";
       dbcon.query(sql2, json[0].id);
     } catch (err) {
       return next(err);
@@ -242,12 +242,12 @@ module.exports = (app) => {
    * 모든 개별 회원에 대한 접근은 SESSION 데이터를 활용해야 한다.
    * [PUT] /member
    */
-  router.put("/member/:put/:id", async (req, res, next) => {
+  router.put("/member/:put", async (req, res, next) => {
     if (!req.session.memberInfo) {
       return next(new BadRequestException("로그인중이 아닙니다."));
     }
 
-    const id = req.get("id");
+    const id = req.session.memberInfo.id;
     const put = req.get("put");
     const input = req.post("input");
 
