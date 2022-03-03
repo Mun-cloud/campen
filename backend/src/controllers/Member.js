@@ -241,6 +241,7 @@ module.exports = (app) => {
    * 로그인을 할 경우 회원의 정보가 SESSION에 저장되어 있을 것이므로
    * 모든 개별 회원에 대한 접근은 SESSION 데이터를 활용해야 한다.
    * [PUT] /member
+   * @parma put 데이터베이스 테이블 내의 수정할 컬럼 값을 파라미터값으로 입력
    */
   router.put("/member/:put", async (req, res, next) => {
     if (!req.session.memberInfo) {
