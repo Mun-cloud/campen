@@ -260,10 +260,10 @@ module.exports = (app) => {
   });
 
   /** 데이터 삭제 --> Delete(DELETE) */
-  router.delete("/department/:deptno", async (req, res, next) => {
-    const deptno = req.get("deptno");
+  router.delete("/camp/:id", async (req, res, next) => {
+    const id = req.get("id");
 
-    if (deptno === null) {
+    if (id === null) {
       return next(new Error(400));
     }
 
@@ -276,12 +276,21 @@ module.exports = (app) => {
       // 삭제하고자 하는 원 데이터를 참조하는 자식 데이터를 먼저 삭제해야 한다.
       // 만약 자식데이터를 유지해야 한다면 참조키 값을 null로 업데이트 해야 한다.
       // 단, 자식 데이터는 결과행 수가 0이더라도 무시한다.
-      await dbcon.query("DELETE FROM student WHERE deptno=?", [deptno]);
-      await dbcon.query("DELETE FROM professor WHERE deptno=?", [deptno]);
+      await dbcon.query(
+        "UPDATE exhibition-list SET null, edit_date=now() WHERE id=?",
+        [id]
+      );
+      await dbcon.query(
+        "UPDATE contents SET null, edit_date=now() WHERE id=?",
+        [id]
+      );
+      await dbcon.query("UPDATE hearts SET null, edit_date=now() WHERE id=?", [
+        id,
+      ]);
 
       // 데이터 삭제하기
-      const sql = "DELETE FROM department WHERE deptno=?";
-      const [result1] = await dbcon.query(sql, [deptno]);
+      const sql = "DELETE FROM camp WHERE id=?";
+      const [result1] = await dbcon.query(sql, [id]);
 
       json = result1;
       // 결과 행 수가 0이라면 예외처리
