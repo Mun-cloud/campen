@@ -214,12 +214,12 @@ module.exports = (app) => {
   });
 
   /** 데이터 수정 --> Update(UPDATE) */
-  router.put("/department/:deptno", async (req, res, next) => {
-    const deptno = req.get("deptno");
-    const dname = req.post("dname");
-    const loc = req.post("loc");
+  router.put("/camp/:put/:id", async (req, res, next) => {
+    const id = req.get("id");
+    const put = req.get("put");
+    const input = req.post("input");
 
-    if (deptno === null || dname == null) {
+    if (id === null || put == null || input == null) {
       return next(new Error(400));
     }
 
@@ -233,8 +233,8 @@ module.exports = (app) => {
       await dbcon.connect();
 
       // 데이터 수정하기
-      const sql = "UPDATE department SET dname=?, loc=? WHERE deptno=?";
-      const input_data = [dname, loc, deptno];
+      const sql = `UPDATE camp SET ${put}=?, edit_date=now() WHERE id=?`;
+      const input_data = [input, id];
       const [result1] = await dbcon.query(sql, input_data);
 
       // 결과 행 수가 0이라면 예외처리
@@ -243,8 +243,9 @@ module.exports = (app) => {
       }
 
       // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-      const sql2 = "SELECT deptno, dname, loc FROM department WHERE deptno=?";
-      const [result2] = await dbcon.query(sql2, [deptno]);
+      const sql2 =
+        "SELECT name, addr1, addr2, tel, lctCl, price, photo, basic_fac, add_fac, intro, tag, mapX, mapY, homepage, manner_start, manner_end, policy, map, is_reg, reg_date, edit_date FROM camp WHERE id=?";
+      const [result2] = await dbcon.query(sql2, [id]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
       json = result2;

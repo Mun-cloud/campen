@@ -59,14 +59,15 @@ module.exports = (app) => {
    * [POST] /member
    */
   router.post("/member/join", async (req, res, next) => {
-    // WebHelper에 추가된 기능을 활용하여 업로드 객체 반환받기
-    const multipart = req.getMultipart();
+    // // WebHelper에 추가된 기능을 활용하여 업로드 객체 반환받기
+    // const multipart = req.getMultipart();
 
-    // 업로드 수행하기
-    const upload = multipart.single("profile_img");
+    // // 업로드 수행하기
+    // const upload = multipart.single("profile_img");
 
-    // 업로드 된 파일의 정보를 로그로 기록 (필요에 따른 선택 사항)
-    logger.debug(JSON.stringify(req.file));
+    // // 업로드 된 파일의 정보를 로그로 기록 (필요에 따른 선택 사항)
+    // logger.debug(JSON.stringify(req.file));
+    // const photo = req.file.url;
 
     // 텍스트 파라미터 받기
     const user_id = req.post("user_id");
@@ -74,18 +75,17 @@ module.exports = (app) => {
     const user_name = req.post("user_name");
     const email = req.post("email");
     const phone = req.post("phone");
-    const photo = req.file.url;
 
-    // 유효성 검사
-    try {
-      regexHelper.value(user_id, "아이디를 입력하세요.");
-      regexHelper.value(user_pw, "비밀번호를 입력하세요.");
-      regexHelper.value(user_name, "이름를 입력하세요.");
-      regexHelper.value(email, "이메일를 입력하세요.");
-      regexHelper.value(phone, "휴대폰 번호를 입력하세요.");
-    } catch (err) {
-      return next(err);
-    }
+    // // 유효성 검사
+    // try {
+    //   regexHelper.value(user_id, "아이디를 입력하세요.");
+    //   regexHelper.value(user_pw, "비밀번호를 입력하세요.");
+    //   regexHelper.value(user_name, "이름를 입력하세요.");
+    //   regexHelper.value(email, "이메일를 입력하세요.");
+    //   regexHelper.value(phone, "휴대폰 번호를 입력하세요.");
+    // } catch (err) {
+    //   return next(err);
+    // }
 
     try {
       // 데이터베이스 접속
@@ -110,9 +110,9 @@ module.exports = (app) => {
         "intro, sns_addr, nickname, is_out, is_admin, login_date, reg_date, edit_date";
       sql += ") VALUES (";
       sql +=
-        "?, ?, ?, ?, ?, ?, null, null, null, 'N', 'N', null, now(), now());";
+        "?, ?, ?, ?, ?, null, null, null, null, 'N', 'N', null, now(), now());";
 
-      const args = [user_id, user_pw, user_name, email, phone, photo];
+      const args = [user_id, user_pw, user_name, email, phone];
 
       await dbcon.query(sql, args);
     } catch (err) {
@@ -127,7 +127,8 @@ module.exports = (app) => {
     const html = `<p><striong>${user_name}</striong>님, 회원가입해 주셔서 감사합니다.</p><p>앞으로 많은 이용 바랍니다.</p>`;
 
     try {
-      res.sendMail(receiver, subject, html);
+      res.send(receiver, subject, html);
+      // res.sendMail(receiver, subject, html);
     } catch (err) {
       throw new RuntimeException(
         "회원가입은 완료 되었지만 가입 환영 메일 발송에 실패했습니다."
@@ -241,10 +242,92 @@ module.exports = (app) => {
    * 모든 개별 회원에 대한 접근은 SESSION 데이터를 활용해야 한다.
    * [PUT] /member
    */
-  router.put("/member/join", async (req, res, next) => {
+  router.put("/member/:put/:id", async (req, res, next) => {
     if (!req.session.memberInfo) {
       return next(new BadRequestException("로그인중이 아닙니다."));
     }
+
+    const id = req.get("id");
+    const put = req.get("put");
+    const input = req.post("input");
+
+    if (id === null || put == null || input == null) {
+      return next(new Error(400));
+    }
+
+    /** 데이터 수정하기 */
+    // 데이터 조회 결과가 저장될 빈 변수
+    let json = null;
+
+    try {
+      // 데이터베이스 접속
+      dbcon = await mysql2.createConnection(config.database);
+      await dbcon.connect();
+
+      // 데이터 수정하기
+      const sql = `UPDATE members SET ${put}=?, edit_date=now() WHERE id=?`;
+      const input_data = [input, id];
+      const [result1] = await dbcon.query(sql, input_data);
+
+      // 결과 행 수가 0이라면 예외처리
+      if (result1.affectedRows < 1) {
+        throw new Error("수정된 데이터가 없습니다.");
+      }
+
+      // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
+      const sql2 =
+        "SELECT id, user_id, user_pw, user_name, email, phone, photo, intro, sns_addr, nickname, is_out, is_admin, login_date, reg_date, edit_date FROM members WHERE id=?";
+      const [result2] = await dbcon.query(sql2, [id]);
+
+      // 조회 결과를 미리 준비한 변수에 저장함
+      json = result2;
+    } catch (err) {
+      return next(err);
+    } finally {
+      dbcon.end();
+    }
+
+    // 모든 처리에 성공했으므로 정상 조회 결과 구성
+    res.sendJson({ item: json });
+  });
+
+  /** 데이터 삭제 --> Delete(DELETE) */
+  router.delete("/department/:deptno", async (req, res, next) => {
+    const deptno = req.get("deptno");
+
+    if (deptno === null) {
+      return next(new Error(400));
+    }
+
+    /** 데이터 삭제하기 */
+    try {
+      // 데이터베이스 접속
+      dbcon = await mysql2.createConnection(config.database);
+      await dbcon.connect();
+
+      // 삭제하고자 하는 원 데이터를 참조하는 자식 데이터를 먼저 삭제해야 한다.
+      // 만약 자식데이터를 유지해야 한다면 참조키 값을 null로 업데이트 해야 한다.
+      // 단, 자식 데이터는 결과행 수가 0이더라도 무시한다.
+      await dbcon.query("DELETE FROM student WHERE deptno=?", [deptno]);
+      await dbcon.query("DELETE FROM professor WHERE deptno=?", [deptno]);
+
+      // 데이터 삭제하기
+      const sql = "DELETE FROM department WHERE deptno=?";
+      const [result1] = await dbcon.query(sql, [deptno]);
+
+      json = result1;
+      // 결과 행 수가 0이라면 예외처리
+      if (result1.affectedRows < 1) {
+        throw new Error("삭제된 데이터가 없습니다.");
+      }
+    } catch (err) {
+      return next(err);
+    } finally {
+      dbcon.end();
+    }
+
+    // 모든 처리에 성공했으므로 정상 조회 결과 구성
+    res.sendJson({ item: json });
   });
   // //  (프로필 사진 업로드) 업로드 처리 후 파라미터 받기
   // upload(req, res, async (err) => {
