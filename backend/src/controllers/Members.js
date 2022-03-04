@@ -352,6 +352,7 @@ module.exports = (app) => {
       return next(new BadRequestException("로그인중이 아닙니다."));
     }
 
+    let json;
     try {
       // 데이터베이스 접속
       dbcon = await mysql2.createConnection(config.database);
@@ -367,6 +368,7 @@ module.exports = (app) => {
         throw new Error("탈퇴처리에 실패했습니다.");
       }
 
+      json = result1;
       req.session.destroy();
     } catch (err) {
       return next(err);
@@ -374,7 +376,7 @@ module.exports = (app) => {
       dbcon.end();
     }
 
-    res.sendJson;
+    res.sendJson({ item: json });
   });
 
   return router;
