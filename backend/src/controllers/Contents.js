@@ -42,10 +42,10 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
-  /** 특정 항목에 대한 상세 조회 --> Read(SELECT) */
-  router.get("/professor/:profno", async (req, res, next) => {
-    const profno = req.get("profno");
-    if (profno === null) {
+  /** 항목별 분류 조회 --> Read(SELECT) */
+  router.get("/content/:tab", async (req, res, next) => {
+    const tab = req.get("tab");
+    if (tab === null) {
       return next(new Error(400));
     }
 
@@ -59,8 +59,8 @@ module.exports = (app) => {
 
       // 데이터 조회
       const sql =
-        "SELECT profno, name, userid, position, sal, hiredate, comm, p.deptno, d.dname FROM professor p, department d WHERE p.deptno=d.deptno and profno=?";
-      const [result] = await dbcon.query(sql, [profno]);
+        "SELECT id, tab, content, views, reg_date, edit_date, members_id, camp_id FROM contents WHERE tab=?";
+      const [result] = await dbcon.query(sql, [tab]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
       json = result;
@@ -76,28 +76,27 @@ module.exports = (app) => {
 
   /** 데이터 추가 --> Create(INSERT) */
   router.post("/professor", async (req, res, next) => {
-    // 저장을 위한 파라미터 입력받기
-    const name = req.post("name");
-    const userid = req.post("userid");
-    const position = req.post("position");
-    const sal = req.post("sal");
-    const hiredate = req.post("hiredate");
-    const comm = req.post("comm");
-    const deptno = req.post("deptno");
-
-    try {
-      regexHelper.value(name, "교수이름이 없습니다.");
-      regexHelper.value(userid, "아이디가 없습니다.");
-      regexHelper.value(position, "직급이 없습니다.");
-      regexHelper.value(sal, "급여가 없습니다.");
-      regexHelper.value(hiredate, "입사일 없습니다.");
-      regexHelper.value(deptno, "소속학과 번호가 없습니다.");
-      regexHelper.maxLength(name, 50, "이름이 너무 깁니다.");
-      regexHelper.maxLength(userid, 50, "아이디가 너무 깁니다.");
-      regexHelper.maxLength(position, 20, "직급이 너무 깁니다.");
-    } catch (err) {
-      return next(err);
+    if (!req.session.memberInfo) {
+      return next(new BadRequestException("로그인중이 아닙니다."));
     }
+    // 저장을 위한 파라미터 입력받기
+    const tab = req.post("tab");
+    const content = req.post("content");
+    const views = req.post("views");
+
+    // try {
+    //   regexHelper.value(name, "교수이름이 없습니다.");
+    //   regexHelper.value(userid, "아이디가 없습니다.");
+    //   regexHelper.value(position, "직급이 없습니다.");
+    //   regexHelper.value(sal, "급여가 없습니다.");
+    //   regexHelper.value(hiredate, "입사일 없습니다.");
+    //   regexHelper.value(deptno, "소속학과 번호가 없습니다.");
+    //   regexHelper.maxLength(name, 50, "이름이 너무 깁니다.");
+    //   regexHelper.maxLength(userid, 50, "아이디가 너무 깁니다.");
+    //   regexHelper.maxLength(position, 20, "직급이 너무 깁니다.");
+    // } catch (err) {
+    //   return next(err);
+    // }
 
     /** 데이터 저장하기 */
     // 데이터 조회 결과가 저장될 빈 변수
@@ -110,12 +109,12 @@ module.exports = (app) => {
 
       // 데이터 저장하기
       const sql =
-        "INSERT INTO professor (name, userid, position, sal, hiredate, comm, deptno) VALUES (?, ?, ?, ?, ?, ?, ?)";
-      const input_data = [name, userid, position, sal, hiredate, comm, deptno];
+        "INSERT INTO contents VALUES (null, ?, ?, ?, now(), now(), ?, null)";
+      const input_data = [tab, content, views, req.session.memberInfo.id];
       const [result1] = await dbcon.query(sql, input_data);
 
       // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-      const sql2 = "SELECT * FROM professor WHERE profno=?";
+      const sql2 = "SELECT * FROM contents WHERE id=?";
       const [result2] = await dbcon.query(sql2, [result1.insertId]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
