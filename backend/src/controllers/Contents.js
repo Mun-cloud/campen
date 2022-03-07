@@ -210,10 +210,18 @@ module.exports = (app) => {
       dbcon = await mysql2.createConnection(config.database);
       await dbcon.connect();
 
+      // 자식데이터 삭제
+      await dbcon.query("DELETE FROM contents-href WHERE id=?", [id]);
+
       // 자식데이터 null 주기
-      // await dbcon.query("UPDATE student SET id=null WHERE id=?", [
-      //   id,
-      // ]);
+      await dbcon.query(
+        "UPDATE contents-comments SET contents_id=null WHERE id=?",
+        [id]
+      );
+      await dbcon.query(
+        "UPDATE contents-likes SET contents_id=null WHERE id=?",
+        [id]
+      );
 
       // 데이터 삭제하기
       const sql = "DELETE FROM contents WHERE id=?";
