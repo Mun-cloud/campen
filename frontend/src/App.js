@@ -1,15 +1,23 @@
+import { Routes, Route } from "react-router-dom";
+
+import Meta from "./components/Meta";
 import Main from "./components/Main";
 import GlobalStyle from "./styles/GlobalStyle";
 
-import Meta from "./components/Meta";
+import Index from "./pages/Index";
 
 function App() {
   return (
-    <>
+    <div>
       <Meta />
+
       <GlobalStyle />
-      <Main />
-    </>
+
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/community" element={<Main />} />
+      </Routes>
+    </div>
   );
 }
 

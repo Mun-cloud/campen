@@ -22,10 +22,10 @@ const Meta = (props) => {
 };
 
 Meta.defaultProps = {
-  title: "카카오 검색",
+  title: "Campen",
   description: "React.js로 구현한 covid19 OpenAPI 연동",
   keywords: "React, Kakao, OpenAPI",
-  author: "호쌤",
+  author: "문태호, 양소현",
   image:
     window.location.protocol +
     "//" +
