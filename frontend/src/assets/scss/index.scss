@@ -1,0 +1,23 @@
+.container {
+  /* 헤더바 */
+  header {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    #logoArea {
+      img {
+        width: 96px;
+      }
+    }
+
+    #alarmArea {
+      i {
+        font-size: 23px;
+        margin-left: 10px;
+      }
+    }
+  }
+}

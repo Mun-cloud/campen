@@ -16,6 +16,12 @@ const Meta = (props) => {
         <meta property="og:description" content={props.description} />
         <meta property="og:image" content={props.image} />
         <meta property="og:url" content={props.url} />
+        <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+        <script
+          src="https://kit.fontawesome.com/1818959bdb.js"
+          crossorigin="anonymous"
+        ></script>
+        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
       </Helmet>
     </HelmetProvider>
   );

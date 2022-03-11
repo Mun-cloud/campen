@@ -1,0 +1,90 @@
+/*
+    @ Filename : heart.css
+    @ Author : 문태호
+    @ Description : 찜 한 목록 페이지 레이아웃
+*/
+
+@import url("reset.css");
+@import url("style.css");
+@import url("pop.css");
+
+.exhi_img_box {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.exhi_img_box img {
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+}
+
+.exhi_list_container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 20px 41px;
+  justify-content: space-between;
+}
+
+.exhi_list_box {
+  cursor: pointer;
+  margin-top: 12px;
+  margin-bottom: 10;
+  width: calc(50% - 5px);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.exhi_list_img {
+  position: relative;
+  padding-top: 100%;
+}
+
+.exhi_list_img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.exhi_heart {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: red;
+  font-size: 25px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.exhi_list_info {
+  margin-top: 8px;
+  /* position: relative; */
+}
+
+.exhi_list_gray {
+  color: rgb(118, 122, 120);
+  margin-bottom: 4px;
+}
+
+.exhi_list_title {
+  font-size: 13px;
+}
+
+.exhi_list_price {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.exhi_list_price span {
+  padding-left: 2px;
+  font-size: 12px;
+  font-weight: 400;
+}
