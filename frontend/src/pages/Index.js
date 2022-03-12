@@ -7,11 +7,9 @@ import IndexCamplog from "../components/Index/IndexCamplog";
 import IndexExhibition from "../components/Index/IndexExhibition";
 import Footer from "../components/Footer";
 
-import styles from "../assets/scss/index.scss";
-
 const Index = () => {
   return (
-    <div className={styles.container}>
+    <div style={{ width: "100%", margin: "auto", padding: "15px" }}>
       <IndexHeader />
       <IndexTitle />
       <IndexCampFilter />

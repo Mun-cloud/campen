@@ -19,7 +19,7 @@ const IndexHeader = () => {
       {/* <!-- 로고 영역 --> */}
       <a href="/" id="logoArea">
         <img
-          src={"../../assets/img/campen_logo.png"}
+          src={require("../../assets/img/campen_logo.png")}
           alt="홈페이지로 이동"
           style={{ width: "96px" }}
         />

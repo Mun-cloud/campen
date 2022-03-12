@@ -5,15 +5,12 @@
 */
 
 /* 기본 가로사이즈 설정 */
+@import url("reset.css");
 * {
   box-sizing: border-box;
 }
 
-html {
-  background-color: grey;
-}
-
-body {
+html body {
   background-color: rgb(231, 240, 234);
   max-width: 530px;
   margin: auto;
