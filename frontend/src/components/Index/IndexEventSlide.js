@@ -3,8 +3,8 @@ const IndexEventSlide = () => {
     // <!-- 이벤트 슬라이드 -->
     <div className="glide">
       <div className="glide__track" data-glide-el="track">
-        <ul id="event_slides" className="glide__slides">
-          <li className="glide__slide event_slide">
+        <ul className="glide__slides">
+          <li className="glide__slide">
             <a href="/camp">
               <img
                 src={require("../../assets/img/event_slide_08.png")}
@@ -12,7 +12,7 @@ const IndexEventSlide = () => {
               />
             </a>
           </li>
-          <li className="glide__slide event_slide">
+          <li className="glide__slide">
             <a href="/camp">
               <img
                 src={require("../../assets/img/event_slide_09.png")}
@@ -20,7 +20,7 @@ const IndexEventSlide = () => {
               />
             </a>
           </li>
-          <li className="glide__slide event_slide">
+          <li className="glide__slide">
             <a href="/camp">
               <img
                 src={require("../../assets/img/event_slide_10.png")}

@@ -22,25 +22,37 @@ const IndexBestPhoto = () => {
         <ul id="photo_slides" className="swiper-wrapper">
           <li className="swiper-slide">
             <a href="/community">
-              <img src="./img/best_photo-13.jpeg" alt="lll" />
+              <img
+                src={require("../../assets/img/best_photo-13.jpeg")}
+                alt="꽃언니"
+              />
               <span>꽃언니</span>
             </a>
           </li>
           <li className="swiper-slide">
             <a href="/community">
-              <img src="./img/best_photo-14.jpeg" alt="lll" />
+              <img
+                src={require("../../assets/img/best_photo-14.jpeg")}
+                alt="도도캠핑"
+              />
               <span>도도캠핑</span>
             </a>
           </li>
           <li className="swiper-slide">
             <a href="/community">
-              <img src="./img/best_photo-15.jpeg" alt="lll" />
+              <img
+                src={require("../../assets/img/best_photo-15.jpeg")}
+                alt="마루캠핑"
+              />
               <span>마루캠핑</span>
             </a>
           </li>
           <li className="swiper-slide">
             <a href="/community">
-              <img src="./img/best_photo-16.jpeg" alt="lll" />
+              <img
+                src={require("../../assets/img/best_photo-16.jpeg")}
+                alt="nl0607"
+              />
               <span>nl0607</span>
             </a>
           </li>
