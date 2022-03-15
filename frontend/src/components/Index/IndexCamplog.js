@@ -33,7 +33,7 @@ const IndexCamplog = () => {
               <div className="log_slide">
                 <div
                   className="log_img_box"
-                  style={{ backgroundImage: "url('./img/log-1.jpeg');" }}
+                  style={{ backgroundImage: "url('./img/log-1.jpeg')" }}
                 ></div>
                 <div className="log_text_box">
                   <span className="log_writer">캠퍼77964</span>
@@ -51,7 +51,7 @@ const IndexCamplog = () => {
               <div className="log_slide">
                 <div
                   className="log_img_box"
-                  style={{ backgroundImage: "url('./img/log-2.jpeg');" }}
+                  style={{ backgroundImage: "url('./img/log-2.jpeg')" }}
                 ></div>
                 <div className="log_text_box">
                   <span className="log_writer">캠퍼77964</span>
@@ -69,7 +69,7 @@ const IndexCamplog = () => {
               <div className="log_slide">
                 <div
                   className="log_img_box"
-                  style={{ backgroundImage: "url('./img/log-3.jpeg');" }}
+                  style={{ backgroundImage: "url('./img/log-3.jpeg')" }}
                 ></div>
                 <div className="log_text_box">
                   <span className="log_writer">캠퍼77964</span>
@@ -87,7 +87,7 @@ const IndexCamplog = () => {
               <div className="log_slide">
                 <div
                   className="log_img_box"
-                  style={{ backgroundImage: "url('./img/log-4.jpeg');" }}
+                  style={{ backgroundImage: "url('./img/log-4.jpeg')" }}
                 ></div>
                 <div className="log_text_box">
                   <span className="log_writer">캠퍼77964</span>
