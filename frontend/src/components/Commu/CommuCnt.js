@@ -6,7 +6,7 @@ const CntContainer = styled.
 const CommuCnt = () => {
   return (
     <div>
-
+      <CommuDetail />
       {/* <!-- 컨텐츠:프로필,텍스트 --> */}
       <div class="cnt-box-txt">
         <div class="cnt-category">캠핑한컷</div>
