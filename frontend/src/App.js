@@ -29,8 +29,8 @@ function App() {
         <Route path="/" element={<Index />} />
         <Route path="/search" element={<Search />} />
         <Route path="/search/:id" element={<Camp />} />
-        <Route path="/exhibition" element={<Exhibition />} />
-        <Route path="/exhilist" element={<ExhiList />} />
+        <Route path="/exhibition" element={<ExhiList />} />
+        <Route path="/exhibition/:id" element={<Exhibition />} />
         <Route path="/heart" element={<Heart />} />
         <Route path="/join" element={<Join />} />
         <Route path="/sign-up" element={<SignUp />} />
