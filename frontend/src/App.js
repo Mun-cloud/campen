@@ -9,6 +9,7 @@ import "./assets/css/style.css";
 import Index from "./pages/Index";
 import Search from "./pages/Search";
 import Camp from "./pages/Camp";
+import Exhibition from "./pages/Exhibition";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Index />} />
         <Route path="/search" element={<Search />} />
         <Route path="/search/:id" element={<Camp />} />
+        <Route path="/exhibition" element={<Exhibition />} />
       </Routes>
 
       <Nav />
