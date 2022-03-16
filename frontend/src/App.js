@@ -28,7 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/search/:id" element={<Camp />} />
+        <Route path="/camp/:id" element={<Camp />} />
         <Route path="/exhibition" element={<ExhiList />} />
         <Route path="/exhibition/:id" element={<Exhibition />} />
         <Route path="/heart" element={<Heart />} />

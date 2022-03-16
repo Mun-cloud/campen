@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 const SearchResultBox = () => {
   return (
-    <div>
+    <Link to="/camp/1">
       <div className="glide">
         <div className="glide__track" data-glide-el="track">
           <ul className="glide__slides">
@@ -138,7 +140,7 @@ const SearchResultBox = () => {
           <span id="charge">40,000</span>원 부터
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

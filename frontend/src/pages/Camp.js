@@ -1,6 +1,5 @@
 import CampBasicInfo from "../components/Camp/CampBasicInfo";
 import CampFacility from "../components/Camp/CampFacility";
-import CampHeader from "../components/Camp/CampHeader";
 import CampIntro from "../components/Camp/CampIntro";
 import CampLog from "../components/Camp/CampLog";
 import CampMannerTime from "../components/Camp/CampMannerTime";
@@ -13,11 +12,14 @@ import CampTitleBox from "../components/Camp/CampTitleBox";
 import CampRefundPop from "../components/Camp/CampRefundPop";
 import CampBusinessPop from "../components/Camp/CampBusinessPop";
 import Footer from "../components/Footer";
+import BasicHeaderBar from "../components/BasicHeaderBar";
+import CampImgSlide from "../components/Camp/CampImgSlide";
 
 const Camp = () => {
   return (
     <div>
-      <CampHeader />
+      <BasicHeaderBar title="CAMPEN" />
+      <CampImgSlide />
       <CampTitleBox />
       <CampSwiperScroll />
       <CampBasicInfo />
