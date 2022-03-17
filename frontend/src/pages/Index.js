@@ -9,14 +9,16 @@ import Footer from "../components/Footer";
 
 const Index = () => {
   return (
-    <div style={{ width: "100%", margin: "auto", padding: "15px" }}>
-      <IndexHeader />
-      <IndexTitle />
-      <IndexCampFilter />
-      <IndexEventSlide />
-      <IndexBestPhoto />
-      <IndexCamplog />
-      <IndexExhibition />
+    <div>
+      <div style={{ padding: "15px" }}>
+        <IndexHeader />
+        <IndexTitle />
+        <IndexCampFilter />
+        <IndexEventSlide />
+        <IndexBestPhoto />
+        <IndexCamplog />
+        <IndexExhibition />
+      </div>
       <Footer />
     </div>
   );

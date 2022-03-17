@@ -1,26 +1,119 @@
+import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const FootDiv = styled.footer`
+  background-color: #f7faf8;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 10px;
+  .container {
+    width: 100%;
+    margin: auto;
+    padding: 15px;
+  }
+
+  .footer_logo {
+    padding-top: 25px;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+
+  .footer_clause {
+    padding: 15px 0;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+  }
+
+  .footer_clause a {
+    margin-right: 20px;
+  }
+
+  .cs {
+    padding: 12px 0;
+    font-size: 11px;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+  }
+
+  .cs span {
+    display: block;
+    margin-top: 6px;
+  }
+
+  .cs .cs_link {
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+  }
+
+  .cs .cs_link i {
+    margin-left: 3px;
+  }
+
+  .business_info {
+    height: 30px;
+    overflow: hidden;
+  }
+
+  .business_info div {
+    margin: 12px 0;
+  }
+
+  .business_info p {
+    margin-bottom: 7px;
+  }
+
+  .business_info i {
+    cursor: pointer;
+    margin-left: 3px;
+  }
+
+  .footer_text {
+    padding-top: 10px;
+    padding-bottom: 100px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.3);
+    line-height: 15px;
+  }
+`;
+
 const Footer = () => {
+  const [visible, setVisible] = useState(false);
+  const footChev = useRef();
+  const businessInfo = useRef();
+
+  const onClick = () => {
+    if (visible === false) {
+      setVisible(true);
+      footChev.current.classList = "fas fa-chevron-up";
+      businessInfo.current.style.height = "134px";
+    } else {
+      setVisible(false);
+      footChev.current.classList = "fas fa-chevron-down";
+      businessInfo.current.style.height = "30px";
+    }
+  };
+
   return (
-    <footer>
+    <FootDiv>
       <div className="container">
         <div className="footer_logo">CAMPEN</div>
         <div className="footer_clause">
-          <a href="#">서비스 이용약관</a>
-          <a href="#">개인정보 처리 방침</a>
+          <Link to="/term">서비스 이용약관</Link>
+          <Link to="/term">개인정보 처리 방침</Link>
         </div>
         <div className="cs">
-          <a href="#" className="cs_link">
+          <div className="cs_link">
             고객센터 <i className="fas fa-chevron-right"></i>
-          </a>
-          <br />
+          </div>
           <span>
             평일 10:30~18:30
             <br />
           </span>
           <span>점심시간 13:00~14:00</span>
         </div>
-        <div className="business_info">
-          <div>
-            (주)넥스트에디션 사업자정보 <i className="fas fa-chevron-down"></i>
+        <div className="business_info" ref={businessInfo}>
+          <div onClick={onClick}>
+            (주)넥스트에디션 사업자정보{" "}
+            <i className="fas fa-chevron-down" ref={footChev}></i>
           </div>
 
           <p>상호 : (주)넥스트에디션</p>
@@ -37,7 +130,7 @@ const Footer = () => {
           등과 관련한 책임을 지지 않습니다.
         </p>
       </div>
-    </footer>
+    </FootDiv>
   );
 };
 

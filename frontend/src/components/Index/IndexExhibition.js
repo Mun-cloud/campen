@@ -1,8 +1,57 @@
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const Exhibition = styled.div`
+  margin-top: 60px;
+
+  .area_title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .area_title_left {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .area_title {
+    margin-bottom: 30px;
+  }
+
+  .exhi_list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+    img {
+      width: 90px;
+      height: 90px;
+      border-radius: 10px;
+      margin-right: 20px;
+    }
+  }
+
+  .exhi_text {
+    span {
+      display: block;
+      font-size: 13px;
+    }
+
+    .exhi_title {
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  }
+`;
 
 const IndexExhibition = () => {
   return (
-    <div id="exhibition">
+    <Exhibition>
       <Link className="area_title" to="/exhibition">
         <div className="area_title_left">캠핑 기획전</div>
         <div>
@@ -44,7 +93,7 @@ const IndexExhibition = () => {
           </div>
         </Link>
       </ul>
-    </div>
+    </Exhibition>
   );
 };
 
