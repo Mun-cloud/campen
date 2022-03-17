@@ -1,4 +1,8 @@
 import style from "styled-components";
+import { Navlink } from "react-router-dom";
+import Password from "./SubUserSettingMenu/Sns";
+import NickName from "./SubUserSettingMenu/NickName";
+import Sns from "./SubUserSettingMenu/Sns";
 
 const UserSettingMenu = () => {
   return (
@@ -9,24 +13,24 @@ const UserSettingMenu = () => {
         <input type="file" id="upload-button" accept="image/*" />
       </label>
 
-      <a href="./setting-pages/nickname-set.html" class="nickname-set">
+      <Navlink to={<NickName />}>
         <div class="nickname user-div">
           닉네임
           <span> 인생한번</span>
         </div>
-      </a>
+      </Navlink>
 
       <div class="id user-div">
         아이디
         <span> ssonnni</span>
       </div>
 
-      <a href="./setting-pages/password-set.html" class="password-set">
+      <Navlink to={<Password />}>
         <div class="password user-div">
           비밀번호
           <span>**********</span>
         </div>
-      </a>
+      </Navlink>
 
       <div class="email user-div">
         이메일
@@ -38,9 +42,9 @@ const UserSettingMenu = () => {
         <span>010-1234-5678</span>
       </div>
 
-      <a href="./setting-pages/sns.html" class="sns-set">
+      <Navlink to={<Sns />}>
         <div class="sns user-div">SNS</div>
-      </a>
+      </Navlink>
 
       <div class="event-set user-div">
         <div class="event">
