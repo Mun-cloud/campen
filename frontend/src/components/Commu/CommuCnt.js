@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import CommuDetail from "../components/Commu/CommuDetail";
 
-const CntContainer = styled.
-
 const CommuCnt = () => {
   return (
     <div>
