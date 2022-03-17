@@ -1,42 +1,58 @@
+import styled from "styled-components";
+import { Swiper, SwiperSlide } from "swiper/react"; // basic
+import SwiperCore, { Autoplay, Pagination } from "swiper";
+import "swiper/css"; //basic
+import "swiper/css/pagination";
+
+SwiperCore.use([Autoplay, Pagination]);
+
+const SwiperImg = styled.img`
+  width: 100%;
+`;
+
 const IndexEventSlide = () => {
   return (
     // <!-- 이벤트 슬라이드 -->
-    <div className="glide">
-      <div className="glide__track" data-glide-el="track">
-        <ul className="glide__slides">
-          <li className="glide__slide">
-            <a href="/camp">
-              <img
-                src={require("../../assets/img/event_slide_08.png")}
-                alt="장박 캠핑장"
-              />
-            </a>
-          </li>
-          <li className="glide__slide">
-            <a href="/camp">
-              <img
-                src={require("../../assets/img/event_slide_09.png")}
-                alt="반려동물 캠핑장"
-              />
-            </a>
-          </li>
-          <li className="glide__slide">
-            <a href="/camp">
-              <img
-                src={require("../../assets/img/event_slide_10.png")}
-                alt="치유 캠핑장"
-              />
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div className="glide__bullets" data-glide-el="controls[nav]">
-        <button className="glide__bullet" data-glide-dir="=0"></button>
-        <button className="glide__bullet" data-glide-dir="=1"></button>
-        <button className="glide__bullet" data-glide-dir="=2"></button>
-      </div>
-    </div>
+    <Swiper
+      spaceBetween={0}
+      slidesPerView={"auto"}
+      loopedSlides={3}
+      longSwipesMs={300}
+      loop={true}
+      speed={400}
+      centeredSlides={true}
+      autoplay={{
+        delay: 5000,
+        disableOnInteraction: false,
+      }}
+      scrollbar={{ draggable: true }}
+      pagination={{ clickable: true }}
+    >
+      <SwiperSlide className="glide__slide slider">
+        <a href="/camp">
+          <SwiperImg
+            src={require("../../assets/img/event_slide_08.png")}
+            alt="장박 캠핑장"
+          />
+        </a>
+      </SwiperSlide>
+      <SwiperSlide className="glide__slide slider">
+        <a href="/camp">
+          <SwiperImg
+            src={require("../../assets/img/event_slide_09.png")}
+            alt="반려동물 캠핑장"
+          />
+        </a>
+      </SwiperSlide>
+      <SwiperSlide className="glide__slide slider">
+        <a href="/camp">
+          <SwiperImg
+            src={require("../../assets/img/event_slide_10.png")}
+            alt="치유 캠핑장"
+          />
+        </a>
+      </SwiperSlide>
+    </Swiper>
   );
 };
 

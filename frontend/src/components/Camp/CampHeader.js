@@ -1,10 +1,23 @@
+import { useNavigate } from "react-router-dom";
+
 const CampHeader = () => {
+  let go = useNavigate();
   return (
-    <div class="camp_main pop_header">
-      <div class="pop_chev refund_chev">
-        <i class="fas fa-chevron-left"></i>
+    <div className="pop_header">
+      <div className="pop_chev go_main">
+        <i
+          onClick={() => go(-1)}
+          className="fas fa-chevron-left"
+          style={{ cursor: "pointer" }}
+        ></i>
       </div>
-      <p class="pop_title">CAMPEN</p>
+      <div
+        onClick={() => go("/")}
+        className="pop_title"
+        style={{ cursor: "pointer" }}
+      >
+        CAMPEN
+      </div>
     </div>
   );
 };

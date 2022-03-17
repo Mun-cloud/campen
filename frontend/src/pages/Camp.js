@@ -12,13 +12,13 @@ import CampTitleBox from "../components/Camp/CampTitleBox";
 import CampRefundPop from "../components/Camp/CampRefundPop";
 import CampBusinessPop from "../components/Camp/CampBusinessPop";
 import Footer from "../components/Footer";
-import BasicHeaderBar from "../components/BasicHeaderBar";
 import CampImgSlide from "../components/Camp/CampImgSlide";
+import CampHeader from "../components/Camp/CampHeader";
 
 const Camp = () => {
   return (
     <div>
-      <BasicHeaderBar title="CAMPEN" />
+      <CampHeader />
       <CampImgSlide />
       <CampTitleBox />
       <CampSwiperScroll />
