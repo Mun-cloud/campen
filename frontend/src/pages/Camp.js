@@ -12,14 +12,32 @@ import CampTitleBox from "../components/Camp/CampTitleBox";
 import CampRefundPop from "../components/Camp/CampRefundPop";
 import CampBusinessPop from "../components/Camp/CampBusinessPop";
 import Footer from "../components/Footer";
-import CampImgSlide from "../components/Camp/CampImgSlide";
 import CampHeader from "../components/Camp/CampHeader";
+import SearchSwiper from "../components/Search/SearchSwiper";
+
+import styled from "styled-components";
+
+const CampPage = styled.div`
+  position: relative;
+
+  section {
+    background-color: #fff;
+    padding: 24px 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .no_margin {
+    margin-bottom: 0;
+  }
+`;
 
 const Camp = () => {
   return (
-    <div>
+    <CampPage>
       <CampHeader />
-      <CampImgSlide />
+      <SearchSwiper />
       <CampTitleBox />
       <CampSwiperScroll />
       <CampBasicInfo />
@@ -34,7 +52,7 @@ const Camp = () => {
       <CampRefundPop />
       <CampBusinessPop />
       <Footer />
-    </div>
+    </CampPage>
   );
 };
 

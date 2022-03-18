@@ -11,6 +11,7 @@ SwiperCore.use([Navigation, Pagination]);
 const MySwiper = styled(Swiper)`
   width: 100%;
   cursor: pointer;
+  height: 298px;
 
   .glide__slide {
     height: 100%;
@@ -53,7 +54,7 @@ const SearchSwiper = () => {
       className="glide"
     >
       <SwiperSlide className="glide__slide">
-        <Link to="/camp">
+        <Link to="/camp/1">
           <img src={require("../../assets/img/search_slide-1.jpg")} alt="" />
           <span>
             <i className="fas fa-map-marker-alt"></i>
