@@ -17,9 +17,7 @@ const IndexEventSlide = () => {
       spaceBetween={0}
       slidesPerView={"auto"}
       loopedSlides={3}
-      longSwipesMs={300}
       loop={true}
-      speed={400}
       centeredSlides={true}
       autoplay={{
         delay: 5000,

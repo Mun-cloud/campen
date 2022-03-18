@@ -41,7 +41,7 @@ const SectionTitle = styled.div`
 
 const IndexSectionTitle = ({ title, btn, sub1, sub2, mt, url }) => {
   return (
-    <SectionTitle styled={{ marginTop: { mt } }}>
+    <SectionTitle style={{ marginTop: mt }}>
       <div className="area_title">
         <div className="area_title_left">{title}</div>
         <Link to={url} className="area_title_btn">
