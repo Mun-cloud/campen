@@ -1,6 +1,13 @@
+import styled from "styled-components";
+
+const Header = styled.header`
+  min-height: 150px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+`;
+
 const SearchHeader = () => {
   return (
-    <div>
+    <Header>
       <input type="text" placeholder="캠핑장명을 검색해 보세요" />
       <div>
         <input type="date" placeholder="날짜" />
@@ -15,7 +22,7 @@ const SearchHeader = () => {
         <div>입지형태</div>
         <div>기본시설</div>
       </div>
-    </div>
+    </Header>
   );
 };
 

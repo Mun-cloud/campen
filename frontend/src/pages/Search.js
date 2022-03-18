@@ -2,9 +2,15 @@ import styled from "styled-components";
 
 import SearchHeader from "../components/Search/SearchHeader";
 import SearchResultBox from "../components/Search/SearchResultBox";
-import SearchTagBox from "../components/Search/SearchTagBox";
 
-const ResultCountCount = styled.div``;
+const ResultCountCount = styled.div`
+  padding: 24px 0 10px 14px;
+  background-color: white;
+  h2 {
+    font-size: 17px;
+    font-weight: bold;
+  }
+`;
 
 const Search = () => {
   return (
@@ -16,7 +22,6 @@ const Search = () => {
         </h2>
       </ResultCountCount>
       <SearchResultBox />
-      <SearchTagBox />
     </div>
   );
 };
