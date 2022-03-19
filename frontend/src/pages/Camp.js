@@ -19,7 +19,7 @@ import styled from "styled-components";
 
 const CampPage = styled.div`
   position: relative;
-
+  background-color: #eaeeec;
   section {
     background-color: #fff;
     padding: 24px 20px;

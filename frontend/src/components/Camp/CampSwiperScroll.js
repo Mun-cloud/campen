@@ -2,7 +2,6 @@ import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import SwiperCore, { FreeMode } from "swiper";
 import "swiper/css"; //basic
 import "swiper/css/free-mode";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 SwiperCore.use([FreeMode]);
