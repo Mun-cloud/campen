@@ -325,6 +325,7 @@
   line-height: 22px;
 }
 
+/* 캠핑장 배치도 */
 #camp_map > img {
   width: 100%;
   height: fit-content;
