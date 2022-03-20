@@ -31,6 +31,12 @@ const CampPage = styled.div`
   .no_margin {
     margin-bottom: 0;
   }
+
+  .box_title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
 `;
 
 const Camp = () => {

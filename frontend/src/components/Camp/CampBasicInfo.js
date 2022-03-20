@@ -70,7 +70,7 @@ const CampBasicInfo = () => {
           <tr>
             <td>주소</td>
             <td>
-              경기 용인시 처니구 원삼면 보개원삼로1372번길 41
+              경기 용인시 처인구 원삼면 보개원삼로1372번길 41
               <button className="camp_basic_btn">연락하기</button>
             </td>
           </tr>

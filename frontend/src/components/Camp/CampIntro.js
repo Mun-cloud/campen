@@ -1,6 +1,58 @@
+import styled from "styled-components";
+
+const CampIntroBox = styled.section`
+  #camp_intro_article {
+    line-height: 22px;
+    white-space: pre-line;
+    color: rgb(90, 94, 91);
+    font-size: 13px;
+  }
+
+  .close {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    text-align: left;
+    overflow-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+
+  .intro_tag_box {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .intro_tag_box.hidden {
+    display: none;
+  }
+
+  .intro_tag {
+    padding: 6px 10px;
+    margin: 4px 4px 0px 0px;
+    background-color: rgba(62, 204, 121, 0.18);
+    border-radius: 20px;
+    color: rgb(34, 119, 88);
+    font-size: 13px;
+  }
+
+  .camp_btn {
+    margin-top: 20px;
+    width: 100%;
+    height: 46px;
+    border: 1px solid rgb(212, 217, 214);
+    border-radius: 8px;
+    background-color: white;
+    color: rgb(37, 40, 38);
+    font-size: 14px;
+  }
+`;
+
 const CampIntro = () => {
   return (
-    <section className="camp_container" id="camp_intro">
+    <CampIntroBox>
       <div className="box_title">캠핑장 소개</div>
       <p id="camp_intro_article" className="close">
         경기도 최고의 키즈캠핑장 구봉산 나인힐스! 365일 사계절 온수풀 /
@@ -22,7 +74,7 @@ const CampIntro = () => {
       <button className="camp_btn" id="intro_toggle">
         캠핑장 소개 더보기
       </button>
-    </section>
+    </CampIntroBox>
   );
 };
 
