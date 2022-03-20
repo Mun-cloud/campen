@@ -1,6 +1,51 @@
+import styled from "styled-components";
+
+const MannerTimeBox = styled.section`
+  .time_area {
+    width: 100%;
+    display: flex;
+    padding: 14px 0px;
+    border-radius: 8px;
+    background-color: rgba(62, 204, 121, 0.18);
+    margin-bottom: 16px;
+  }
+
+  .time_area_box {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .time_area_box:first-child {
+    border-right: 1px solid rgba(34, 119, 88, 0.4);
+  }
+
+  .time {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 6px;
+    color: rgb(34, 119, 88);
+  }
+
+  .time_text {
+    color: rgb(34, 119, 88);
+    opacity: 0.6;
+    font-weight: 500;
+  }
+
+  .manner_article {
+    color: rgb(90, 94, 91);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 19px;
+  }
+`;
+
 const CampMannerTime = () => {
   return (
-    <section className="camp_container" id="manner_time">
+    <MannerTimeBox>
       <div className="box_title">매너타임</div>
       <div className="time_area">
         <div className="time_area_box">
@@ -16,7 +61,7 @@ const CampMannerTime = () => {
         매너타임은 수면을 위해 활동을 최소화하는 시간을 말합니다. 다른 캠퍼를
         배려하여 소음을 최대한 줄여주시기 바랍니다.
       </p>
-    </section>
+    </MannerTimeBox>
   );
 };
 
