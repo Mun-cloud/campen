@@ -6,6 +6,7 @@
 const config = require("../../helper/_config");
 const logger = require("../../helper/LogHelper");
 const regexHelper = require("../../helper/RegexHelper");
+const BadRequestException = require("../../exceptions/BadRequestException");
 const utilHelper = require("../../helper/UtilHelper");
 const router = require("express").Router();
 const mysql2 = require("mysql2/promise");
@@ -39,6 +40,7 @@ module.exports = (app) => {
     }
 
     // 모든 처리에 성공했으므로 정상 조회 결과 구성
+    console.log(json.content);
     res.sendJson({ item: json });
   });
 
@@ -82,7 +84,6 @@ module.exports = (app) => {
     // 저장을 위한 파라미터 입력받기
     const tab = req.post("tab");
     const content = req.post("content");
-    const views = req.post("views");
 
     // try {
     //   regexHelper.value(name, "교수이름이 없습니다.");
@@ -109,8 +110,8 @@ module.exports = (app) => {
 
       // 데이터 저장하기
       const sql =
-        "INSERT INTO contents VALUES (null, ?, ?, ?, now(), now(), ?, null)";
-      const input_data = [tab, content, views, req.session.memberInfo.id];
+        "INSERT INTO contents VALUES (null, ?, ?, 0, now(), now(), ?, null)";
+      const input_data = [tab, content, req.session.memberInfo.id];
       const [result1] = await dbcon.query(sql, input_data);
 
       // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
@@ -131,7 +132,7 @@ module.exports = (app) => {
 
   /** 데이터 수정 --> Update(UPDATE) */
   router.put("/content/:id", async (req, res, next) => {
-    id, tab, content, views, reg_date, edit_date, members_id, camp_id;
+    // id, tab, content, views, reg_date, edit_date, members_id, camp_id;
     const id = req.get("id");
     const content = req.post("content");
 
@@ -151,14 +152,14 @@ module.exports = (app) => {
 
     function foundNull() {
       [id, content].forEach((v) => {
-        if (v === null) {
+        if (v === null || v === "") {
           return false;
         }
       });
     }
 
-    if (!foundNull) {
-      return next(new Error(400));
+    if (!foundNull()) {
+      return next(new BadRequestException("게시글의 내용을 입력해 주십시오."));
     }
 
     /** 데이터 수정하기 */
@@ -201,7 +202,7 @@ module.exports = (app) => {
     const id = req.get("id");
 
     if (id === null) {
-      return next(new Error(400));
+      return next(new BadRequestException("잘못된 경로입니다."));
     }
 
     /** 데이터 삭제하기 */
@@ -211,15 +212,17 @@ module.exports = (app) => {
       await dbcon.connect();
 
       // 자식데이터 삭제
-      await dbcon.query("DELETE FROM contents-href WHERE id=?", [id]);
+      await dbcon.query("DELETE FROM `contents-href` WHERE 'contents_id'=?", [
+        id,
+      ]);
 
       // 자식데이터 null 주기
       await dbcon.query(
-        "UPDATE contents-comments SET contents_id=null WHERE id=?",
+        "UPDATE `contents-comments` SET `contents_id`=null WHERE 'contents_id'=?",
         [id]
       );
       await dbcon.query(
-        "UPDATE contents-likes SET contents_id=null WHERE id=?",
+        "UPDATE `contents-likes` SET `contents_id`=null WHERE 'contents_id'=?",
         [id]
       );
 

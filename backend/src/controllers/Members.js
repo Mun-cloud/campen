@@ -76,17 +76,17 @@ module.exports = (app) => {
     const email = req.post("email");
     const phone = req.post("phone");
 
-    // // 유효성 검사
-    // try {
-    //   regexHelper.value(user_id, "아이디를 입력하세요.");
-    //   regexHelper.value(user_pw, "비밀번호를 입력하세요.");
-    //   regexHelper.value(user_name, "이름를 입력하세요.");
-    //   regexHelper.value(email, "이메일를 입력하세요.");
-    //   regexHelper.value(phone, "휴대폰 번호를 입력하세요.");
-    // } catch (err) {
-    //   return next(err);
-    // }
-
+    // 유효성 검사
+    try {
+      regexHelper.value(user_id, "아이디를 입력하세요.");
+      // regexHelper.value(user_pw, "비밀번호를 입력하세요.");
+      // regexHelper.value(user_name, "이름를 입력하세요.");
+      // regexHelper.value(email, "이메일를 입력하세요.");
+      // regexHelper.value(phone, "휴대폰 번호를 입력하세요.");
+    } catch (err) {
+      return next(err);
+    }
+    let json;
     try {
       // 데이터베이스 접속
       dbcon = await mysql2.createConnection(config.database);
@@ -113,8 +113,8 @@ module.exports = (app) => {
         "?, ?, ?, ?, ?, null, null, null, null, 'N', 'N', null, now(), now());";
 
       const args = [user_id, user_pw, user_name, email, phone];
-
-      await dbcon.query(sql, args);
+      const [result2] = await dbcon.query(sql, args);
+      json = result1;
     } catch (err) {
       return next(err);
     } finally {
@@ -136,7 +136,7 @@ module.exports = (app) => {
     // }
 
     // 처리 성공시에 대한 응답 처리
-    res.send(subject);
+    res.sendJson({ item: json });
   });
 
   /**
@@ -173,24 +173,26 @@ module.exports = (app) => {
       let args1 = [user_id, user_pw];
 
       const [result1] = await dbcon.query(sql1, args1);
-
+      // console.log(result1);
+      // const totalCount = result1[0].cnt;
+      // if (totalCount < 1) {
+      //   throw new BadRequestException("회원정보가 일치하지 않습니다");
+      // }
       // 조회된 회원정보 객체를 저장하고 있는 1차원 배열(원소는 1개)
       json = result1;
-
+      // 조회된 데이터가 없다면? WHERE절이 맞지 않다는 의미 -> 아이디, 비번 틀림
+      if (json == null || json.length == 0) {
+        return next(
+          new BadRequestException("아이디나 비밀번호가 잘못되었습니다.")
+        );
+      }
       // login_date값을 now()로 update처리
       let sql2 = "UPDATE members SET login_date=now() WHERE id=?";
-      dbcon.query(sql2, json[0].id);
+      await dbcon.query(sql2, json[0].id);
     } catch (err) {
       return next(err);
     } finally {
       dbcon.end();
-    }
-
-    // 조회된 데이터가 없다면? WHERE절이 맞지 않다는 의미 -> 아이디, 비번 틀림
-    if (json == null || json.length == 0) {
-      return next(
-        new BadRequestException("아이디나 비밀번호가 잘못되었습니다.")
-      );
     }
 
     // 탈퇴한 회원은 로그인 금지
@@ -201,7 +203,7 @@ module.exports = (app) => {
     // 조회 결과를 세션에 저장.
     req.session.memberInfo = json[0];
 
-    res.sendJson();
+    res.sendJson({ item: json });
   });
 
   /**
@@ -292,52 +294,52 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
-  /** 데이터 삭제 --> Delete(DELETE) */
-  router.delete("/member/:id", async (req, res, next) => {
-    const id = req.get("id");
+  // /** 데이터 삭제 --> Delete(DELETE) */
+  // router.delete("/member/:id", async (req, res, next) => {
+  //   const id = req.get("id");
 
-    if (id === null) {
-      return next(new Error(400));
-    }
-
-    /** 데이터 삭제하기 */
-    try {
-      // 데이터베이스 접속
-      dbcon = await mysql2.createConnection(config.database);
-      await dbcon.connect();
-
-      // 삭제하고자 하는 원 데이터를 참조하는 자식 데이터를 먼저 삭제해야 한다.
-      // 만약 자식데이터를 유지해야 한다면 참조키 값을 null로 업데이트 해야 한다.
-      // 단, 자식 데이터는 결과행 수가 0이더라도 무시한다.
-      // await dbcon.query("DELETE FROM student WHERE deptno=?", [deptno]);
-      // await dbcon.query("DELETE FROM professor WHERE deptno=?", [deptno]);
-
-      // 데이터 삭제하기
-      const sql = "UPDATE members SET is_out='Y', edit_date=now() WHERE id=?";
-      const [result1] = await dbcon.query(sql, [deptno]);
-
-      json = result1;
-      // 결과 행 수가 0이라면 예외처리
-      if (result1.affectedRows < 1) {
-        throw new Error("삭제된 데이터가 없습니다.");
-      }
-    } catch (err) {
-      return next(err);
-    } finally {
-      dbcon.end();
-    }
-
-    // 모든 처리에 성공했으므로 정상 조회 결과 구성
-    res.sendJson({ item: json });
-  });
-  // //  (프로필 사진 업로드) 업로드 처리 후 파라미터 받기
-  // upload(req, res, async (err) => {
-  //   // 업로드 에러 처리
-  //   if (err) {
-  //     throw new MultipartException(err);
+  //   if (id === null) {
+  //     return next(new Error(400));
   //   }
 
+  //   /** 데이터 삭제하기 */
+  //   try {
+  //     // 데이터베이스 접속
+  //     dbcon = await mysql2.createConnection(config.database);
+  //     await dbcon.connect();
+
+  //     // 삭제하고자 하는 원 데이터를 참조하는 자식 데이터를 먼저 삭제해야 한다.
+  //     // 만약 자식데이터를 유지해야 한다면 참조키 값을 null로 업데이트 해야 한다.
+  //     // 단, 자식 데이터는 결과행 수가 0이더라도 무시한다.
+  //     // await dbcon.query("DELETE FROM student WHERE deptno=?", [deptno]);
+  //     // await dbcon.query("DELETE FROM professor WHERE deptno=?", [deptno]);
+
+  //     // 데이터 삭제하기
+  //     const sql = "UPDATE members SET is_out='Y', edit_date=now() WHERE id=?";
+  //     const [result1] = await dbcon.query(sql, [deptno]);
+
+  //     json = result1;
+  //     // 결과 행 수가 0이라면 예외처리
+  //     if (result1.affectedRows < 1) {
+  //       throw new Error("삭제된 데이터가 없습니다.");
+  //     }
+  //   } catch (err) {
+  //     return next(err);
+  //   } finally {
+  //     dbcon.end();
+  //   }
+
+  //   // 모든 처리에 성공했으므로 정상 조회 결과 구성
+  //   res.sendJson({ item: json });
   // });
+  // // //  (프로필 사진 업로드) 업로드 처리 후 파라미터 받기
+  // // upload(req, res, async (err) => {
+  // //   // 업로드 에러 처리
+  // //   if (err) {
+  // //     throw new MultipartException(err);
+  // //   }
+
+  // // });
 
   /**
    * 회원탈퇴

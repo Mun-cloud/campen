@@ -131,7 +131,7 @@ module.exports = (app) => {
 
   /** 데이터 수정 --> Update(UPDATE) */
   router.put("/content/:id", async (req, res, next) => {
-    id, tab, content, views, reg_date, edit_date, members_id, camp_id;
+    // id, tab, content, views, reg_date, edit_date, members_id, camp_id;
     const id = req.get("id");
     const content = req.post("content");
 
