@@ -14,6 +14,7 @@ import SearchSwiper from "../components/Search/SearchSwiper";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const CampPage = styled.div`
   position: relative;
@@ -53,14 +54,16 @@ const CampPage = styled.div`
 `;
 
 const Camp = () => {
-  // const [campData, setCampdata] = useState([]);
+  let { id } = useParams();
+  const [campdata, setCampdata] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
-        const response = await axios.get("/campdata");
+        const response = await axios.get(`/campdata/${id}`);
+        setCampdata(response.data);
 
-        console.log(response.data);
+        console.log(campdata);
       } catch (err) {
         console.error(err);
       }

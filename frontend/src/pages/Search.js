@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 import SearchHeader from "../components/Search/SearchHeader";
 import SearchResultBox from "../components/Search/SearchResultBox";
@@ -13,6 +15,17 @@ const ResultCountCount = styled.div`
 `;
 
 const Search = () => {
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await axios.get("/campdata");
+
+        console.log(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }, []);
   return (
     <div>
       <SearchHeader />

@@ -89,7 +89,7 @@ module.exports = (app) => {
       await dbcon.connect();
 
       let sql =
-        "SELECT id, name, addr1, addr2, tel, lctCl, price, photo, basic-fac, add-fac, intro, tag, mapX, mapY, homepage, manner-start, manner-end, policy, map, is_reg, reg_date, edit_date FROM camp";
+        "SELECT id, name, addr1, addr2, tel, lctCl, price, photo, 'basic-fac', 'add-fac', intro, tag, mapX, mapY, homepage, 'manner-start', 'manner-end', policy, map, is_reg, reg_date, edit_date FROM camp";
       const [result] = await dbcon.query(sql);
 
       // 조회 결과를 미리 준비한 변수에 저장함
@@ -105,7 +105,7 @@ module.exports = (app) => {
   });
 
   /** 특정 항목에 대한 상세 조회 --> Read(SELECT) */
-  router.get("/camp/:id", async (req, res, next) => {
+  router.get("/campdata/:id", async (req, res, next) => {
     const id = req.get("id");
     if (id === null) {
       return next(new Error(400));
@@ -121,7 +121,7 @@ module.exports = (app) => {
 
       // 데이터 조회
       const sql =
-        "SELECT id, name, addr1, addr2, tel, lctCl, price, photo, basic-fac, add-fac, intro, tag, mapX, mapY, homepage, manner-start, manner-end, policy, map, is_reg, reg_date, edit_date FROM camp WHERE id=?";
+        "SELECT id, name, addr1, addr2, tel, lctCl, price, photo, 'basic-fac', 'add-fac', intro, tag, mapX, mapY, homepage, 'manner-start', 'manner-end', policy, map, is_reg, reg_date, edit_date FROM camp WHERE id=?";
       const [result] = await dbcon.query(sql, [id]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
@@ -244,7 +244,7 @@ module.exports = (app) => {
 
       // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
       const sql2 =
-        "SELECT name, addr1, addr2, tel, lctCl, price, photo, basic_fac, add_fac, intro, tag, mapX, mapY, homepage, manner_start, manner_end, policy, map, is_reg, reg_date, edit_date FROM camp WHERE id=?";
+        "SELECT id, name, addr1, addr2, tel, lctCl, price, photo, 'basic-fac', 'add-fac', intro, tag, mapX, mapY, homepage, 'manner-start', 'manner-end', policy, map, is_reg, reg_date, edit_date FROM camp WHERE id=?";
       const [result2] = await dbcon.query(sql2, [id]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
