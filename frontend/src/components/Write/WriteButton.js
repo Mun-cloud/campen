@@ -1,32 +1,21 @@
-import style from "styled-components";
+import styled from "styled-components";
 
-const TabContainer = styled.ul`
+const WriteSubmit = styled.button`
   max-width: 530px;
-  height: 45px;
+  bottom: 0px;
   width: 100%;
-  top: 0px;
-  background-color: rgb(255, 255, 255);
-  border-bottom: 1px solid rgb(212, 217, 214);
-  position: fixed;
-  display: flex;
-  z-index: 1000;
-`;
+  height: 55px;
+  font-size: 11.5pt;
+  background: rgb(234, 238, 236);
+  color: rgb(133, 138, 136);
+  font-weight: 700;
+  font-size: 12pt;
+  border: none;
+  cursor: pointer;
 
-const TabItem = styled.li`
-  display: inline-block;
-  height: 45px;
-  width: 25%;
-
-  a {
-    display: flex;
+  span {
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
-    font-size: 10.5pt;
-    font-weight: 500;
-    color: #666;
-    cursor: pointer;
   }
 `;
 
@@ -34,9 +23,9 @@ const WriteButton = () => {
   return (
     <>
       {/* <!-- 하단 버튼 --> */}
-      <button type="button" class="write-submit">
+      <WriteSubmit type="button">
         <span>최소 10자 이상 입력해주세요.</span>
-      </button>
+      </WriteSubmit>
     </>
   );
 };
