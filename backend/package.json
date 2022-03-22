@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "캠핏 클론코딩. 캠핀. 백엔드",
   "main": "index.js",
+  "proxy": "http://localhost:3001",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,8 +1,110 @@
-const sample = () => {
+import { useRef, useState } from "react";
+import styled from "styled-components";
+
+const RefundBox = styled.div`
+  position: fixed;
+  top: 0px;
+  left: auto;
+  right: auto;
+  z-index: 2000;
+  max-width: 530px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgb(255, 255, 255);
+
+  .pop_header {
+    top: 0px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 53px;
+    width: 100%;
+    border-bottom: 1px solid rgb(234, 238, 236);
+  }
+
+  .pop_chev {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    left: 20px;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 10px;
+  }
+
+  .pop_title {
+    font-size: 16px;
+  }
+
+  .pop_main {
+    padding: 40px 20px;
+  }
+
+  .pop_small {
+    padding-bottom: 8px;
+    font-size: 12px;
+    color: rgb(26, 29, 27);
+  }
+  /* 취소환불규정 팝업 */
+  .refund_section {
+    padding-top: 32px;
+    font-size: 12px;
+  }
+
+  .refund_section_title {
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgb(234, 238, 236);
+    font-size: 13px;
+    font-weight: 700;
+    color: rgb(67, 192, 131);
+  }
+
+  .refund_text_box {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px;
+    border-bottom: 1px solid rgb(234, 238, 236);
+  }
+
+  .refund_section_partition {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0px 4px;
+    border-bottom: 1px solid rgb(234, 238, 236);
+  }
+
+  .refund_section_partition > * {
+    flex: 1 1 0%;
+  }
+
+  .refund_partition_right {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .refund_gay_text {
+    color: rgb(90, 94, 91);
+  }
+
+  .refund_days {
+    padding-bottom: 6px;
+  }
+`;
+
+const CampRefundPop = () => {
+  const refundPop = useRef();
+
   return (
-    <div className="pop refund_pop">
+    <RefundBox className="pop refund_pop" ref={refundPop}>
       <div className="pop_header">
-        <div className="pop_chev refund_chev">
+        <div
+          onClick={(props) => {
+            console.log(props);
+          }}
+          className="pop_chev refund_chev"
+        >
           <i className="fas fa-chevron-left"></i>
         </div>
         <p className="pop_title">취소환불규정</p>
@@ -182,8 +284,8 @@ const sample = () => {
           </div>
         </div>
       </div>
-    </div>
+    </RefundBox>
   );
 };
 
-export default sample;
+export default CampRefundPop;

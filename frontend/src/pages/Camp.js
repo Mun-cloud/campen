@@ -5,17 +5,15 @@ import CampLog from "../components/Camp/CampLog";
 import CampMannerTime from "../components/Camp/CampMannerTime";
 import CampMap from "../components/Camp/CampMap";
 import CampPolicy from "../components/Camp/CampPolicy";
-import CampPolicyPop from "../components/Camp/CampPolicyPop";
-import CampRefundBusiness from "../components/Camp/CampRefundBusiness";
 import CampSwiperScroll from "../components/Camp/CampSwiperScroll";
 import CampTitleBox from "../components/Camp/CampTitleBox";
-import CampRefundPop from "../components/Camp/CampRefundPop";
-import CampBusinessPop from "../components/Camp/CampBusinessPop";
 import Footer from "../components/Footer";
 import CampHeader from "../components/Camp/CampHeader";
 import SearchSwiper from "../components/Search/SearchSwiper";
 
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const CampPage = styled.div`
   position: relative;
@@ -26,6 +24,10 @@ const CampPage = styled.div`
     margin-bottom: 10px;
     font-size: 14px;
     font-weight: 500;
+  }
+
+  #zero_padding {
+    padding: 0;
   }
 
   .no_margin {
@@ -51,6 +53,20 @@ const CampPage = styled.div`
 `;
 
 const Camp = () => {
+  // const [campData, setCampdata] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await axios.get("/campdata");
+
+        console.log(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }, []);
+
   return (
     <CampPage>
       <CampHeader />
@@ -62,12 +78,8 @@ const Camp = () => {
       <CampFacility />
       <CampMannerTime />
       <CampPolicy />
-      <CampPolicyPop />
       <CampMap />
       <CampLog />
-      <CampRefundBusiness />
-      <CampRefundPop />
-      <CampBusinessPop />
       <Footer />
     </CampPage>
   );

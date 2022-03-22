@@ -16,7 +16,7 @@ module.exports = (app) => {
   let dbcon = null;
 
   /** 전체 목록 조회(페이지번호 구현) --> Read(SELECT) */
-  router.get("/camp", async (req, res, next) => {
+  router.get("/campdata", async (req, res, next) => {
     //검색어 파라미터 받기 -> 검색어가 없을 경우 전체 목록 조회이므로 유효성검사 안함.
     const query = req.get("query");
 
@@ -53,7 +53,7 @@ module.exports = (app) => {
 
       // 데이터 조회
       let sql2 =
-        "SELECT id, name, addr1, addr2, tel, lctCl, price, photo, basic-fac, add-fac, intro, tag, mapX, mapY, homepage, manner-start, manner-end, policy, map, is_reg, reg_date, edit_date FROM camp";
+        "SELECT id, name, addr1, addr2, tel, lctCl, price, photo, 'basic-fac', 'add-fac', intro, tag, mapX, mapY, homepage, 'manner-start', 'manner-end', policy, map, is_reg, reg_date, edit_date FROM camp";
 
       // SQL문에 설정할 치환값
       let args2 = [];

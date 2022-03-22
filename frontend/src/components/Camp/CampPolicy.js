@@ -1,4 +1,6 @@
+import { useState } from "react";
 import styled from "styled-components";
+import CampPolicyPop from "./CampPolicyPop";
 
 const PolicyBox = styled.section`
   .policy_anno {
@@ -15,6 +17,7 @@ const PolicyBox = styled.section`
 `;
 
 const CampPolicy = () => {
+  const [popvisible, setPopvisible] = useState(false);
   return (
     <PolicyBox className="camp_container" id="camp_policy">
       <div className="box_title">캠핑장 운영정책</div>
@@ -25,9 +28,14 @@ const CampPolicy = () => {
         캠핑장 운영정책에는 환불·양도양수·시설이용시간 등 캠핑장 이용에 관한
         가이드가 포함되어 있습니다.
       </p>
-      <button className="camp_btn" id="policy_btn">
+      <button
+        className="camp_btn"
+        id="policy_btn"
+        onClick={() => setPopvisible(true)}
+      >
         캠핑장 운영정책 더보기
       </button>
+      {popvisible ? <CampPolicyPop /> : null}
     </PolicyBox>
   );
 };

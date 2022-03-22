@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 50
+    },
+    "auditLog": "D:\\portfolio\\campen\\backend\\_files\\_logs\\.5b8fbdb9419b3945cc5c462943f3239a605cba6f-audit.json",
+    "files": [
+        {
+            "date": 1647945836711,
+            "name": "D:\\portfolio\\campen\\backend\\_files\\_logs\\log_220322.log",
+            "hash": "b2857544cf51ea19cf331d00adcb77a7"
+        }
+    ],
+    "hashType": "md5"
+}
