@@ -32,7 +32,7 @@ const TabItem = styled.li`
   }
 `;
 
-const Header = () => {
+const CommuHeader = () => {
   return (
     <div>
       {/* 상단 탭메뉴 */}
@@ -55,4 +55,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default CommuHeader;
