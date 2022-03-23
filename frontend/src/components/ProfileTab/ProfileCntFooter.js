@@ -1,10 +1,30 @@
-import style from "styled-components";
+import styled from "styled-components";
+
+const CntFooter = styled.div`
+  display: flex;
+  font-size: 9pt;
+  color: rgb(159, 165, 162);
+  font-weight: 400;
+
+  .cnt-like {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .cnt-comment {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    cursor: pointer;
+  }
+`;
 
 const ProfileCntFooter = () => {
   return (
     <>
       {/* <!-- 컨텐츠:좋아요,댓글 --> */}
-      <div class="cnt-footer">
+      <CntFooter>
         <div clsss="cnt-like" href="#">
           <a href="#">
             <i class="far fa-heart"></i>
@@ -17,7 +37,7 @@ const ProfileCntFooter = () => {
             댓글쓰기
           </a>
         </div>
-      </div>
+      </CntFooter>
     </>
   );
 };

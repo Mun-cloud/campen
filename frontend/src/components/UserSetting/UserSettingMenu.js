@@ -13,7 +13,7 @@ const UserSettingMenu = () => {
         <input type="file" id="upload-button" accept="image/*" />
       </label>
 
-      <Navlink to={<NickName />}>
+      <Navlink to="./SubUserSettingMenu/NickName">
         <div class="nickname user-div">
           닉네임
           <span> 인생한번</span>
@@ -25,7 +25,7 @@ const UserSettingMenu = () => {
         <span> ssonnni</span>
       </div>
 
-      <Navlink to={<Password />}>
+      <Navlink to="./SubUserSettingMenu/Sns">
         <div class="password user-div">
           비밀번호
           <span>**********</span>
@@ -42,7 +42,7 @@ const UserSettingMenu = () => {
         <span>010-1234-5678</span>
       </div>
 
-      <Navlink to={<Sns />}>
+      <Navlink to="./SubUserSettingMenu/Sns">
         <div class="sns user-div">SNS</div>
       </Navlink>
 

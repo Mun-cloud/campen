@@ -106,14 +106,12 @@ a {
 }
 
 /* 내용영역 */
-.cnt-container a {
-  display: block;
-  margin-bottom: 1px;
-}
 
 .cnt-box {
   padding: 25px 20px 20px;
   background: rgb(255, 255, 255);
+  display: block;
+  margin-bottom: 1px;
 }
 
 .cnt-date {

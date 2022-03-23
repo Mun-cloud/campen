@@ -1,18 +1,49 @@
-import style from "styled-components";
+import styled from "styled-components";
 import SubSettingHeader from "../SubUserSettingMenu/SubSettingHeader";
 import SubSettingTitle from "../SubUserSettingMenu/SubSettingTitle";
 import SubSettingButton from "../SubUserSettingMenu/SubSettingButton";
 
+const UserContainer = styled.div`
+  max-width: 530px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  background-color: rgb(241, 245, 243);
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+`;
+
+const Cnt = styled.div`
+  padding: 20px;
+  height: 750px;
+  background: rgb(255, 255, 255);
+
+  input {
+    width: 100%;
+    padding: 0px 0px 0px 5px;
+    color: rgb(5, 6, 6);
+    font-family: SpoqaHanSans;
+    font-weight: 400;
+    font-size: 12pt;
+    border: none;
+    outline: none;
+  }
+`;
+
 const Password = () => {
   return (
     <>
-      <div class="user-container">
+      <UserContainer>
         {/* <!-- 헤더 --> */}
         <SubSettingHeader>
           <p>SNS 설정</p>
         </SubSettingHeader>
 
-        <div class="setting-cnt">
+        <Cnt>
           {/*  <!-- 타이틀영역 --> */}
           <SubSettingTitle>
             <div>SNS를</div>
@@ -40,10 +71,10 @@ const Password = () => {
             class="password"
             style="border: solid 0.5px rgb(211, 211, 211);"
           />
-        </div>
+        </Cnt>
 
         <SubSettingButton />
-      </div>
+      </UserContainer>
     </>
   );
 };
