@@ -1,13 +1,23 @@
+import styled from "styled-components";
+
 import WriteHeader from "../components/Write/WriteHeader";
 import WriteCnt from "../components/Write/WriteCnt";
 import WriteButton from "../components/Write/WriteButton";
 
+const Container = styled.div`
+  max-width: 530px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
 const Write = () => {
   return (
     <>
-      <WriteHeader />
-      <WriteCnt />
-      <WriteButton />
+      <Container>
+        <WriteHeader />
+        <WriteCnt />
+        <WriteButton />
+      </Container>
     </>
   );
 };
