@@ -29,6 +29,57 @@ const CntBtn = styled.div`
   }
 `;
 
+const Cnt = styled.div`
+  border-top: 1px solid rgb(234, 238, 236);
+
+  textarea {
+    padding: 20px 0px;
+    border: none;
+    width: 100%;
+    height: 520px;
+    font-family: SpoqaHanSans;
+    font-weight: 400;
+    font-size: 10pt;
+    outline: none;
+    resize: none;
+  }
+`;
+
+const PhotoContainer = styled.div`
+  padding: 20px 0px 20px 20px;
+  background: rgb(255, 255, 255);
+`;
+
+const PhotoBox = styled.div`
+  margin-top: auto;
+`;
+
+const PhotoUpload = styled.div`
+  margin-top: auto;
+`;
+
+const Photo = styled.label`
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border: 1px solid rgb(212, 217, 214);
+  border-radius: 8px;
+
+  span {
+    font-size: 17pt;
+  }
+
+  div {
+    font-size: 10.5pt;
+    color: #555;
+    margin-top: 5px;
+  }
+`;
+
 const WriteCnt = () => {
   return (
     <>
@@ -41,28 +92,28 @@ const WriteCnt = () => {
             <span class="material-icons-outlined">expand_more</span>
           </CntBtn>
           {/* <!-- 글쓰기 입력영역 --> */}
-          <div class="cnt">
+          <Cnt>
             <textarea
               height="100%"
               placeholder="이곳에 글을 작성해주세요.최소 10자 이상 입력해주세요."
               name="constents"
               maxlength="3000"
             ></textarea>
-          </div>
+          </Cnt>
         </CntBox>
 
         {/* <!-- 이미지 업로드 --> */}
-        <div class="photo-container">
-          <div class="photo-box">
-            <div class="photo-upload">
+        <PhotoContainer>
+          <PhotoBox>
+            <PhotoUpload>
               {/* <!-- 이미지 업로드 --> */}
-              <label class="photo" for="upload-btn">
+              <Photo for="upload-btn">
                 <span class="material-icons">image</span>
-                <div class="photo-count">0/10</div>
-              </label>
-            </div>
-          </div>
-        </div>
+                <div>0/10</div>
+              </Photo>
+            </PhotoUpload>
+          </PhotoBox>
+        </PhotoContainer>
       </CntContainer>
     </>
   );
