@@ -1,21 +1,52 @@
-import style from "styled-components";
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+
+const TabContainer = styled.ul`
+  max-width: 530px;
+  height: 45px;
+  width: 100%;
+  top: 0px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+`;
+
+const TabItem = styled.li`
+  display: inline-block;
+  height: 45px;
+  width: 50%;
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 10.5pt;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+  }
+`;
 
 const ProfileTabmenu = () => {
   return (
     <>
-      {/* <!-- 메뉴 --> */}
-      <ul class="tab-container">
-        <li class="tab-item active" data-tab="tab1">
-          <a class="tab-title" href="./profile1.html">
-            게시글 1
-          </a>
-        </li>
-        <li class="tab-item" data-tab="tab2">
-          <a class="tab-title" href="./profile1-2.html">
-            캠핑후기 1
-          </a>
-        </li>
-      </ul>
+      {/*탭메뉴 */}
+      <TabContainer>
+        {["게시글1", "게시글2"].map((data, index) => (
+          <TabItem data-tab={`tab${index + 1}`}>
+            <NavLink
+              to={`profile1-${index + 1}.html`}
+              style={({ isActive }) => ({
+                borderBottom: isActive && "2px solid #43C083",
+                color: isActive ? "#43C083" : "#444",
+              })}
+            >
+              {data}
+            </NavLink>
+          </TabItem>
+        ))}
+      </TabContainer>
     </>
   );
 };
