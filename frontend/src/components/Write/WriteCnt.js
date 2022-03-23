@@ -1,18 +1,45 @@
 import styled from "styled-components";
 
-const 
+const CntContainer = styled.div`
+  padding: 0px 20px;
+  background: rgb(255, 255, 255);
+`;
+
+const CntBox = styled.div`
+  border-bottom: 1px solid rgb(234, 238, 236);
+`;
+const CntBtn = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0px;
+  width: 100%;
+  height: 56px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+
+  p {
+    font-size: 11pt;
+    font-weight: 400;
+  }
+
+  span {
+    font-size: 17pt;
+  }
+`;
 
 const WriteCnt = () => {
   return (
     <>
       {/* <!-- 컨텐츠 --> */}
-      <div class="cnt-container">
-        <div class="cnt-box">
+      <CntContainer>
+        <CntBox>
           {/* <!-- 글쓰기 주제 선택버튼 --> */}
-          <button class="cnt-button">
+          <CntBtn>
             <p>게시글의 주제를 선택해주세요.</p>
             <span class="material-icons-outlined">expand_more</span>
-          </button>
+          </CntBtn>
           {/* <!-- 글쓰기 입력영역 --> */}
           <div class="cnt">
             <textarea
@@ -22,7 +49,7 @@ const WriteCnt = () => {
               maxlength="3000"
             ></textarea>
           </div>
-        </div>
+        </CntBox>
 
         {/* <!-- 이미지 업로드 --> */}
         <div class="photo-container">
@@ -36,7 +63,7 @@ const WriteCnt = () => {
             </div>
           </div>
         </div>
-      </div>
+      </CntContainer>
     </>
   );
 };

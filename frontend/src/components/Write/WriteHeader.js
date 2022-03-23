@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const TopContainer = styled.header`
+const TopContainer = styled.div`
 max-width: 530px;
 margin-left: auto;
 margin-right: auto
@@ -16,15 +16,35 @@ margin-right: auto
   border-bottom: 1px solid rgb(241, 245, 243);
 `;
 
+const BackBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 52px;
+  cursor: pointer;
+  text-decoration: none;
+
+  span {
+    font-size: 12pt;
+    cursor: pointer;
+  }
+`;
+
+const Title = styled.p`
+  margin: 0px auto;
+  padding-right: 52px;
+  font-size: 12.5pt;
+`;
+
 const WriteHeader = () => {
   return (
     <>
       {/* <!-- 글쓰기 상단  --> */}
       <TopContainer>
-        <a class="back-btn" href="../commu/commu2.html">
+        <BackBtn href="../commu/commu2.html">
           <span class="material-icons-outlined">arrow_back_ios</span>
-        </a>
-        <p class="title">글쓰기</p>
+        </BackBtn>
+        <Title>글쓰기</Title>
       </TopContainer>
     </>
   );
