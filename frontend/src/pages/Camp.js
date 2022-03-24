@@ -15,6 +15,7 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 const CampPage = styled.div`
   position: relative;
@@ -57,25 +58,28 @@ const Camp = () => {
   let { id } = useParams();
   const go = useNavigate();
 
-  // 리덕스 스토어에 저장되어 있는 상태값 받기
-  const { rt, rtmsg, item, loading } = useSelector((state) => state.camp);
+  const [thisCamp, setThisCamp] = useState([]);
 
-  // 현재 주소창 id값의 해당하는 데이터를 store의 item 값에서 찾아서 thisCamp에 저장.
-  const thisCamp = item.find((v) => {
-    if (v.id === id) {
-      return true;
-    }
-  });
-  console.log(thisCamp);
-  if (thisCamp === undefined) {
-    alert("캠핑장 정보가 존재하지 않습니다.");
-    go(-1);
-  }
+  useEffect(() => {
+    (async () => {
+      let response;
+      try {
+        response = await axios.get(`/campdata/${id}`);
+        setThisCamp(response.data.item);
+      } catch (err) {
+        console.error(err);
+      }
+      if (response.data.item.length < 1) {
+        alert("캠핑장 정보가 존재하지 않습니다.");
+        go("/search");
+      }
+    })();
+  }, []);
 
   return (
     <>
       {/* 결과값이 실패인 경우 에러메시지 표시, 성공인 경우 목록 컴포넌트 호출 */}
-      {thisCamp === undefined ? (
+      {thisCamp.length < 1 ? (
         <button
           onClick={() => {
             go(-1);
@@ -85,17 +89,17 @@ const Camp = () => {
         </button>
       ) : (
         <CampPage>
-          <CampHeader />
-          <SearchSwiper />
-          <CampTitleBox />
-          <CampSwiperScroll />
-          <CampBasicInfo />
-          <CampIntro />
-          <CampFacility />
-          <CampMannerTime />
-          <CampPolicy />
-          <CampMap />
-          <CampLog />
+          <CampHeader item={thisCamp} />
+          <SearchSwiper item={thisCamp} />
+          <CampTitleBox item={thisCamp} />
+          <CampSwiperScroll item={thisCamp} />
+          <CampBasicInfo item={thisCamp} />
+          <CampIntro item={thisCamp} />
+          <CampFacility item={thisCamp} />
+          <CampMannerTime item={thisCamp} />
+          <CampPolicy item={thisCamp} />
+          <CampMap item={thisCamp} />
+          <CampLog item={thisCamp} />
           <Footer />
         </CampPage>
       )}
