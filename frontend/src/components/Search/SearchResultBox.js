@@ -39,7 +39,8 @@ const ResultInfo = styled.div`
   }
 `;
 
-const SearchResultBox = () => {
+const SearchResultBox = ({ item }) => {
+  console.log(item);
   const navigate = useNavigate();
   return (
     <div>
@@ -51,8 +52,8 @@ const SearchResultBox = () => {
       >
         <div className="result_text">
           <div className="rusult_info">
-            <div id="camp_class">오토캠핑 글램핑 펜션</div>
-            <div id="camp_name">구봉산오토캠핑장 나인힐스</div>
+            <div id="camp_class">{item.addr1}</div>
+            <div id="camp_name">{item.name}</div>
           </div>
           <div id="camp_log_box">
             캠핑로그 <span id="camp_log_count">184</span>개

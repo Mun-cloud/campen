@@ -63,7 +63,9 @@ const Search = () => {
               캠핏 검색결과 <span id="search_result_count">49개</span>
             </h2>
           </ResultCountCount>
-          <SearchResultBox inview={ref} />
+          {item.item.map((v) => (
+            <SearchResultBox item={v} inview={ref} />
+          ))}
         </>
       )}
     </div>

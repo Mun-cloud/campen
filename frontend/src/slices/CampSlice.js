@@ -39,12 +39,11 @@ const campSlice = createSlice({
     },
     /** Ajax 요청 성공 */
     [getCampList.fulfilled]: (state, { meta, payload }) => {
-      console.log(payload);
       return {
         ...state,
         rt: payload.status,
         rtmsg: payload.statusText,
-        item: payload,
+        item: payload.data,
         loading: false,
       };
     },
