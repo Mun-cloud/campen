@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import CopyBtn from "../CopyBtn";
 
 const CampBox = styled.div`
   .box_title {
@@ -46,7 +47,7 @@ const CampBox = styled.div`
   }
 `;
 
-const CampBasicInfo = () => {
+const CampBasicInfo = ({ item }) => {
   return (
     <section>
       <CampBox id="basic_info">
@@ -59,20 +60,28 @@ const CampBasicInfo = () => {
             </tr>
             <tr>
               <td>환경</td>
-              <td>산</td>
+              <td>{item.lctCl}</td>
             </tr>
             <tr>
               <td>대표번호</td>
               <td>
-                050713448823
-                <button className="camp_basic_btn">복사하기</button>
+                {item.tel && item.tel}
+                <CopyBtn
+                  cls="camp_basic_btn"
+                  text="복사하기"
+                  copy={item.tel && item.tel}
+                />
               </td>
             </tr>
             <tr>
               <td>주소</td>
               <td>
                 경기 용인시 처인구 원삼면 보개원삼로1372번길 41
-                <button className="camp_basic_btn">연락하기</button>
+                <CopyBtn
+                  cls="camp_basic_btn"
+                  text="복사하기"
+                  copy="경기 용인시 처인구 원삼면 보개원삼로1372번길 41"
+                />
               </td>
             </tr>
           </tbody>

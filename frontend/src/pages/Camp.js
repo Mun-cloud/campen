@@ -65,7 +65,7 @@ const Camp = () => {
       let response;
       try {
         response = await axios.get(`/campdata/${id}`);
-        setThisCamp(response.data.item);
+        setThisCamp(response.data.item[0]);
       } catch (err) {
         console.error(err);
       }
@@ -79,7 +79,7 @@ const Camp = () => {
   return (
     <>
       {/* 결과값이 실패인 경우 에러메시지 표시, 성공인 경우 목록 컴포넌트 호출 */}
-      {thisCamp.length < 1 ? (
+      {thisCamp === undefined ? (
         <button
           onClick={() => {
             go(-1);
