@@ -13,8 +13,11 @@ import SearchSwiper from "../components/Search/SearchSwiper";
 
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getBlogList } from "../slices/BlogSlice";
+import { Oval } from "react-loader-spinner";
+import { useInView } from "react-intersection-observer";
+import { useNavigate, useParams } from "react-router-dom";
 
 const CampPage = styled.div`
   position: relative;
@@ -55,36 +58,46 @@ const CampPage = styled.div`
 
 const Camp = () => {
   let { id } = useParams();
-  const [campdata, setCampdata] = useState([]);
+  const go = useNavigate();
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await axios.get(`/campdata/${id}`);
-        setCampdata(response.data);
+  // 리덕스 스토어에 저장되어 있는 상태값 받기
+  const { rt, rtmsg, item, loading } = useSelector((state) => state.camp);
 
-        console.log(campdata);
-      } catch (err) {
-        console.error(err);
-      }
-    })();
-  }, []);
+  // 현재 주소창 id값의 해당하는 데이터를 store의 item 값에서 찾아서 thisCamp에 저장.
+  const thisCamp = item.find((v) => {
+    if (v.id === id) {
+      return true;
+    }
+  });
 
   return (
-    <CampPage>
-      <CampHeader />
-      <SearchSwiper />
-      <CampTitleBox />
-      <CampSwiperScroll />
-      <CampBasicInfo />
-      <CampIntro />
-      <CampFacility />
-      <CampMannerTime />
-      <CampPolicy />
-      <CampMap />
-      <CampLog />
-      <Footer />
-    </CampPage>
+    <>
+      {/* 결과값이 실패인 경우 에러메시지 표시, 성공인 경우 목록 컴포넌트 호출 */}
+      {thisCamp === undefined ? (
+        <button
+          onClick={() => {
+            go(-1);
+          }}
+        >
+          뒤로가기
+        </button>
+      ) : (
+        <CampPage>
+          <CampHeader />
+          <SearchSwiper />
+          <CampTitleBox />
+          <CampSwiperScroll />
+          <CampBasicInfo />
+          <CampIntro />
+          <CampFacility />
+          <CampMannerTime />
+          <CampPolicy />
+          <CampMap />
+          <CampLog />
+          <Footer />
+        </CampPage>
+      )}
+    </>
   );
 };
 

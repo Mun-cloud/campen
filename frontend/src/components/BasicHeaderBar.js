@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 const BasicHeaderBar = ({ title }) => {
-  let go = useNavigate();
+  const go = useNavigate();
   return (
     <div className="pop_header">
       <div className="pop_chev go_main">
