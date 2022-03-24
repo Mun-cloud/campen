@@ -13,10 +13,7 @@ import SearchSwiper from "../components/Search/SearchSwiper";
 
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getBlogList } from "../slices/BlogSlice";
-import { Oval } from "react-loader-spinner";
-import { useInView } from "react-intersection-observer";
+import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
 const CampPage = styled.div`
@@ -69,6 +66,11 @@ const Camp = () => {
       return true;
     }
   });
+  console.log(thisCamp);
+  if (thisCamp === undefined) {
+    alert("캠핑장 정보가 존재하지 않습니다.");
+    go(-1);
+  }
 
   return (
     <>

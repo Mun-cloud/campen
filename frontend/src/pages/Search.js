@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useDispatch, useSelector } from "react-redux";
-import { Oval } from "react-loader-spinner";
 import styled from "styled-components";
 
 import SearchHeader from "../components/Search/SearchHeader";

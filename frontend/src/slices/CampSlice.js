@@ -8,14 +8,12 @@ export const getCampList = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     let result;
 
-    if (payload.query) {
-      try {
-        const response = await axios.get("/campdata");
-      } catch (err) {
-        result = rejectWithValue(err.response);
-      }
-      return result;
+    try {
+      result = await axios.get("/campdata");
+    } catch (err) {
+      result = rejectWithValue(err.response);
     }
+    return result;
   }
 );
 
@@ -41,11 +39,12 @@ const campSlice = createSlice({
     },
     /** Ajax 요청 성공 */
     [getCampList.fulfilled]: (state, { meta, payload }) => {
+      console.log(payload);
       return {
         ...state,
         rt: payload.status,
         rtmsg: payload.statusText,
-        item: payload.data,
+        item: payload,
         loading: false,
       };
     },
