@@ -52,7 +52,6 @@ const CampIntroBox = styled.section`
 `;
 
 const CampIntro = ({ item }) => {
-  console.log(item.intro);
   const [detail, setDetail] = useState(false);
   const onClick = () => {
     detail ? setDetail(false) : setDetail(true);
@@ -61,22 +60,28 @@ const CampIntro = ({ item }) => {
   return (
     <CampIntroBox>
       <div className="box_title">캠핑장 소개</div>
+      {/* state값에 따른 내용 길이 변경(className값 변경) */}
       <p id="camp_intro_article" className={detail ? "" : "close"}>
         {item.intro}
       </p>
-      <div className={detail ? "intro_tag_box" : "intro_tag_box hidden"}>
-        <div className="intro_tag">#서울인근캠핑장</div>
-        <div className="intro_tag">#경기도캠핑장</div>
-        <div className="intro_tag">#키즈캠핑장</div>
-        <div className="intro_tag">#용인캠핑장</div>
-        <div className="intro_tag">#애견동반캠핑장</div>
-        <div className="intro_tag">#온수수영장</div>
-        <div className="intro_tag">#바이킹캠핑장</div>
-        <div className="intro_tag">#그늘막캠핑장</div>
-        <div className="intro_tag">#시설좋은캠핑장</div>
-      </div>
+      {/* 태그값 유무 확인 */}
+      {item.tag && (
+        // state 값에 따른 태그값 표시 유무(className 값 변경)
+        <div className={detail ? "intro_tag_box" : "intro_tag_box hidden"}>
+          {/* 태그값을 정렬화하여 값 앞에 #을 붙여주고 반복문 수행 */}
+          {item.tag
+            .split(", ")
+            .map((word) => (word.startsWith("#") ? word : `#${word}`))
+            .map((tag, index) => (
+              <div className="intro_tag" key={index}>
+                {tag}
+              </div>
+            ))}
+        </div>
+      )}
+      {/* state값에 따라 버튼 내용 변경 */}
       <button className="camp_btn" id="intro_toggle" onClick={onClick}>
-        {detail ? "캠핑장 소개 더보기" : "접기"}
+        {detail ? "접기" : "캠핑장 소개 더보기"}
       </button>
     </CampIntroBox>
   );

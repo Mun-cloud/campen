@@ -53,7 +53,7 @@ module.exports = (app) => {
 
       // 데이터 조회
       let sql2 =
-        "SELECT id, name, addr1, addr2, tel, lctCl, price, photo, 'basic-fac', 'add-fac', cast(intro as char(10000))as intro, tag, mapX, mapY, homepage, 'manner-start', 'manner-end', policy, map, is_reg, reg_date, edit_date FROM camp";
+        "SELECT id, name, addr1, addr2, tel, lctCl, price, cast(photo as char(10000)) as photo, 'basic-fac', 'add-fac', cast(intro as char(10000))as intro, cast(tag as char(10000)) as tag, mapX, mapY, cast(homepage as char(10000)) as homepage, 'manner-start', 'manner-end', policy, map, is_reg, reg_date, edit_date FROM camp";
 
       // SQL문에 설정할 치환값
       let args2 = [];
@@ -89,7 +89,7 @@ module.exports = (app) => {
       await dbcon.connect();
 
       let sql =
-        "SELECT id, name, addr1, addr2, tel, lctCl, price, photo, 'basic-fac', 'add-fac', cast(intro as char(10000))as intro, tag, mapX, mapY, homepage, 'manner-start', 'manner-end', policy, map, is_reg, reg_date, edit_date FROM camp";
+        "SELECT id, name, addr1, addr2, tel, lctCl, price, cast(photo as char(10000)) as photo, 'basic-fac', 'add-fac', cast(intro as char(10000))as intro, cast(tag as char(10000)) as tag, mapX, mapY, cast(homepage as char(10000)) as homepage, 'manner-start', 'manner-end', policy, map, is_reg, reg_date, edit_date FROM camp";
       const [result] = await dbcon.query(sql);
 
       // 조회 결과를 미리 준비한 변수에 저장함
@@ -121,7 +121,7 @@ module.exports = (app) => {
 
       // 데이터 조회
       const sql =
-        "SELECT id, name, addr1, addr2, tel, lctCl, price, photo, 'basic-fac', 'add-fac', cast(intro as char(10000))as intro, tag, mapX, mapY, homepage, 'manner-start', 'manner-end', policy, map, is_reg, reg_date, edit_date FROM camp WHERE id=?";
+        "SELECT id, name, addr1, addr2, tel, lctCl, price, cast(photo as char(10000)) as photo, 'basic-fac', 'add-fac', cast(intro as char(10000))as intro, cast(tag as char(10000)) as tag, mapX, mapY, cast(homepage as char(10000)) as homepage, 'manner-start', 'manner-end', policy, map, is_reg, reg_date, edit_date FROM camp WHERE id=?";
       const [result] = await dbcon.query(sql, [id]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
@@ -186,7 +186,7 @@ module.exports = (app) => {
       /** induty 일반캠핑장, 오토캠핑장, 글램핑 구분 데이터 추가.. */
       campOriginData.item.forEach(async (v) => {
         const sql =
-          "INSERT INTO `camp` (name, addr1, addr2, tel, lctCl, price, photo, basic_fac, add_fac, cast(intro as char(10000))as intro, tag, mapX, mapY, homepage, manner_start, manner_end, policy, map, is_reg, reg_date, edit_date) VALUES (?, ?, ?, ?, ?, null, ?, null, null, ?, null, ?, ?, ?, null, null, null, null, 'N', now(), now())";
+          "INSERT INTO `camp` (name, addr1, addr2, tel, lctCl, price, cast(photo as char(10000)) as photo, basic_fac, add_fac, cast(intro as char(10000))as intro, cast(tag as char(10000)) as tag, mapX, mapY, cast(homepage as char(10000)) as homepage, manner_start, manner_end, policy, map, is_reg, reg_date, edit_date) VALUES (?, ?, ?, ?, ?, null, ?, null, null, ?, null, ?, ?, ?, null, null, null, null, 'N', now(), now())";
         const input_data = [
           v.facltNm,
           v.addr1,
@@ -215,7 +215,7 @@ module.exports = (app) => {
   });
 
   /** 데이터 수정 --> Update(UPDATE) */
-  router.put("/camp/:put/:id", async (req, res, next) => {
+  router.put("/campdata/:put/:id", async (req, res, next) => {
     const id = req.get("id");
     const put = req.get("put");
     const input = req.post("input");
@@ -245,7 +245,7 @@ module.exports = (app) => {
 
       // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
       const sql2 =
-        "SELECT id, name, addr1, addr2, tel, lctCl, price, photo, 'basic-fac', 'add-fac', cast(intro as char(10000))as intro, tag, mapX, mapY, homepage, 'manner-start', 'manner-end', policy, map, is_reg, reg_date, edit_date FROM camp WHERE id=?";
+        "SELECT id, name, addr1, addr2, tel, lctCl, price, cast(photo as char(10000)) as photo, 'basic-fac', 'add-fac', cast(intro as char(10000))as intro, cast(tag as char(10000)) as tag, mapX, mapY, cast(homepage as char(10000)) as homepage, 'manner-start', 'manner-end', policy, map, is_reg, reg_date, edit_date FROM camp WHERE id=?";
       const [result2] = await dbcon.query(sql2, [id]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
