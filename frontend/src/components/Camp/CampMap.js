@@ -14,14 +14,18 @@ const MapBox = styled.section`
   }
 `;
 
-const CampMap = () => {
-  return (
-    <MapBox className="camp_container" id="camp_map">
-      <div className="box_title">캠핑존 배치도</div>
-      <img src={require("../../assets/img/camp_map.jpg")} alt="배치도" />
-      <div className="caption">지도를 터치하여 크게 볼 수 있습니다.</div>
-    </MapBox>
-  );
+const CampMap = ({ item }) => {
+  if (item.photo === undefined) {
+    return null;
+  } else {
+    return (
+      <MapBox className="camp_container" id="camp_map">
+        <div className="box_title">캠핑존 배치도</div>
+        <img src={item.photo} alt="배치도" />
+        {/* <div className="caption">지도를 터치하여 크게 볼 수 있습니다.</div> */}
+      </MapBox>
+    );
+  }
 };
 
 export default CampMap;
