@@ -18,6 +18,13 @@ import Settings from "./pages/Settings";
 import SignUp from "./pages/SignUp";
 import Notice from "./pages/Notice";
 
+import Commu from "./pages/Commu";
+import MyLogin from "./pages/MyLogin";
+import MyLogout from "./pages/MyLogout";
+import Profile from "./pages/Profile";
+import UserSetting from "./pages/UserSetting";
+import Write from "./pages/Write";
+
 function App() {
   return (
     <div>
@@ -37,6 +44,12 @@ function App() {
         <Route path="/my-active" element={<MyActive />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/notice/*" element={<Notice />} />
+        <Route path="/commu" element={<Commu />} />
+        <Route path="/mylogin " element={<MyLogin />} />
+        <Route path="/mylogout " element={<MyLogout />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/usersetting" element={<UserSetting />} />
+        <Route path="/write" element={<Write />} />
       </Routes>
 
       <Nav />
