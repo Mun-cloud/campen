@@ -5,6 +5,7 @@
 */
 
 /* 기본 가로사이즈 설정 */
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
 @import url("reset.css");
 * {
   box-sizing: border-box;

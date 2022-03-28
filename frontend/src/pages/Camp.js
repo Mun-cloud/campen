@@ -13,7 +13,6 @@ import SearchSwiper from "../components/Search/SearchSwiper";
 
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -95,8 +94,12 @@ const Camp = () => {
           <CampSwiperScroll item={thisCamp} />
           <CampBasicInfo item={thisCamp} />
           <CampIntro item={thisCamp} />
-          <CampFacility item={thisCamp} />
-          <CampMannerTime item={thisCamp} />
+          {thisCamp.basic_fac && thisCamp.add_fac && (
+            <CampFacility item={thisCamp} />
+          )}
+          {thisCamp.manner_start && thisCamp.manner_end && (
+            <CampMannerTime item={thisCamp} />
+          )}
           <CampPolicy item={thisCamp} />
           <CampMap item={thisCamp} />
           <CampLog item={thisCamp} />

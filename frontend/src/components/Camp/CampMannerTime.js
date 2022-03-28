@@ -43,17 +43,17 @@ const MannerTimeBox = styled.section`
   }
 `;
 
-const CampMannerTime = () => {
+const CampMannerTime = ({ item }) => {
   return (
     <MannerTimeBox>
       <div className="box_title">매너타임</div>
       <div className="time_area">
         <div className="time_area_box">
-          <div className="time">오후 11:00</div>
+          <div className="time">{item.manner_start}</div>
           <div className="time_text">매너타임 시작</div>
         </div>
         <div className="time_area_box">
-          <div className="time">오전 7:00</div>
+          <div className="time">{item.manner_end}</div>
           <div className="time_text">매너타임 종료</div>
         </div>
       </div>

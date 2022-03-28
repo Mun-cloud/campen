@@ -48,6 +48,15 @@ const CampBox = styled.div`
 `;
 
 const CampBasicInfo = ({ item }) => {
+  // 주소 합치기
+  let addr = "";
+  if (item.addr1) {
+    addr += item.addr1;
+  }
+  if (item.addr2) {
+    addr += item.addr2;
+  }
+
   return (
     <section>
       <CampBox id="basic_info">
@@ -65,23 +74,15 @@ const CampBasicInfo = ({ item }) => {
             <tr>
               <td>대표번호</td>
               <td>
-                {item.tel && item.tel}
-                <CopyBtn
-                  cls="camp_basic_btn"
-                  text="복사하기"
-                  copy={item.tel && item.tel}
-                />
+                {item.tel}
+                <CopyBtn cls="camp_basic_btn" text="복사하기" copy={item.tel} />
               </td>
             </tr>
             <tr>
               <td>주소</td>
               <td>
-                경기 용인시 처인구 원삼면 보개원삼로1372번길 41
-                <CopyBtn
-                  cls="camp_basic_btn"
-                  text="복사하기"
-                  copy="경기 용인시 처인구 원삼면 보개원삼로1372번길 41"
-                />
+                {addr}
+                <CopyBtn cls="camp_basic_btn" text="복사하기" copy={addr} />
               </td>
             </tr>
           </tbody>

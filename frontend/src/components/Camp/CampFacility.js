@@ -44,50 +44,34 @@ const FacilityBox = styled.section`
   }
 `;
 
-const CampFacility = () => {
+const CampFacility = ({ item }) => {
   return (
     <FacilityBox className="camp_container" id="facility">
       <div className="box_title">시설 및 레저</div>
-      <div className="basic_facility">
-        <div className="facility_title">기본시설</div>
-        <div className="facility_area">
-          <div className="facility">
-            <span>화장실</span>
-          </div>
-          <div className="facility">
-            <span>샤워실</span>
-          </div>
-          <div className="facility">
-            <span>개수대</span>
-          </div>
-          <div className="facility">
-            <span>매점</span>
-          </div>
-          <div className="facility">
-            <span>카페</span>
+      {item.basic_fac === undefined ? null : (
+        <div className="basic_facility">
+          <div className="facility_title">기본시설</div>
+          <div className="facility_area">
+            {item.basic_fac.split(", ").map((basic, index) => (
+              <div className="facility" key={index}>
+                <span>{basic}</span>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-      <div className="additional_facility">
-        <div className="facility_title">부가시설</div>
-        <div className="facility_area">
-          <div className="facility">
-            <span>화장실</span>
-          </div>
-          <div className="facility">
-            <span>샤워실</span>
-          </div>
-          <div className="facility">
-            <span>개수대</span>
-          </div>
-          <div className="facility">
-            <span>매점</span>
-          </div>
-          <div className="facility">
-            <span>카페</span>
+      )}
+      {item.add_fac === undefined ? null : (
+        <div className="additional_facility">
+          <div className="facility_title">부가시설</div>
+          <div className="facility_area">
+            {item.add_fac.split(", ").map((add, index) => (
+              <div className="facility" key={index}>
+                <span>{add}</span>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      )}
     </FacilityBox>
   );
 };
