@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styled from "styled-components";
-import CampPolicyPop from "./CampPolicyPop";
 
 const PolicyBox = styled.section`
   .policy_anno {
@@ -16,8 +15,7 @@ const PolicyBox = styled.section`
   }
 `;
 
-const CampPolicy = () => {
-  const [popvisible, setPopvisible] = useState(false);
+const CampPolicy = ({ popViewFunction }) => {
   return (
     <PolicyBox className="camp_container" id="camp_policy">
       <div className="box_title">캠핑장 운영정책</div>
@@ -31,11 +29,12 @@ const CampPolicy = () => {
       <button
         className="camp_btn"
         id="policy_btn"
-        onClick={() => setPopvisible(true)}
+        onClick={() => {
+          popViewFunction(true);
+        }}
       >
         캠핑장 운영정책 더보기
       </button>
-      {popvisible ? <CampPolicyPop /> : null}
     </PolicyBox>
   );
 };

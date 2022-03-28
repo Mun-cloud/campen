@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 const PoliciPop = styled.div`
@@ -23,7 +22,6 @@ const PoliciPop = styled.div`
     width: 100%;
     border-bottom: 1px solid rgb(234, 238, 236);
   }
-
   .pop_chev {
     position: absolute;
     display: flex;
@@ -62,20 +60,14 @@ const PoliciPop = styled.div`
   }
 `;
 
-const CampPolicyPop = () => {
-  const pop = useRef();
-
-  useEffect(() => {
-    pop.current.hidden = false;
-  }, []);
-
+const CampPolicyPop = ({ popViewFunction }) => {
   return (
-    <PoliciPop ref={pop}>
+    <PoliciPop>
       <div className="pop_header">
         <div
           className="pop_chev policy_chev"
           onClick={(e) => {
-            pop.current.hidden = true;
+            popViewFunction(false);
           }}
         >
           <i className="fas fa-chevron-left policy_btn_chev"></i>

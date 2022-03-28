@@ -5,6 +5,7 @@ import CampLog from "../components/Camp/CampLog";
 import CampMannerTime from "../components/Camp/CampMannerTime";
 import CampMap from "../components/Camp/CampMap";
 import CampPolicy from "../components/Camp/CampPolicy";
+import CampPolicyPop from "../components/Camp/CampPolicyPop";
 import CampSwiperScroll from "../components/Camp/CampSwiperScroll";
 import CampTitleBox from "../components/Camp/CampTitleBox";
 import Footer from "../components/Footer";
@@ -56,6 +57,12 @@ const CampPage = styled.div`
 const Camp = () => {
   let { id } = useParams();
   const go = useNavigate();
+  const [popView, setPopView] = useState(false);
+
+  // 팝업 구현. 하위컴포넌트에서 데이터 받기
+  const popViewFunction = (popView) => {
+    setPopView(popView);
+  };
 
   const [thisCamp, setThisCamp] = useState([]);
 
@@ -100,7 +107,8 @@ const Camp = () => {
           {thisCamp.manner_start && thisCamp.manner_end && (
             <CampMannerTime item={thisCamp} />
           )}
-          <CampPolicy item={thisCamp} />
+          <CampPolicy item={thisCamp} popViewFunction={popViewFunction} />
+          {popView ? <CampPolicyPop popViewFunction={popViewFunction} /> : null}
           <CampMap item={thisCamp} />
           <CampLog item={thisCamp} />
           <Footer />
