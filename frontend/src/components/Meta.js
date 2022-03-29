@@ -16,10 +16,6 @@ const Meta = (props) => {
         <meta property="og:description" content={props.description} />
         <meta property="og:image" content={props.image} />
         <meta property="og:url" content={props.url} />
-        <script
-          src="https://kit.fontawesome.com/1818959bdb.js"
-          crossorigin="anonymous"
-        ></script>
       </Helmet>
     </HelmetProvider>
   );

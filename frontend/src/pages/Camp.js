@@ -90,7 +90,6 @@ const Camp = () => {
           },
         };
         const photorespon = await axios.get(APIurl, urlParams);
-        console.log(photorespon);
         setPictuers(photorespon.data.response.body);
       } catch (err) {
         console.error(err);
@@ -106,7 +105,6 @@ const Camp = () => {
     (async () => {})();
   }, []);
 
-  console.log(pictures);
   return (
     <>
       {/* 결과값이 실패인 경우 에러메시지 표시, 성공인 경우 목록 컴포넌트 호출 */}

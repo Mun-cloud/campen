@@ -1,3 +1,6 @@
+/* global kakao */
+
+import { useEffect } from "react";
 import styled from "styled-components";
 import CopyBtn from "../CopyBtn";
 
@@ -25,9 +28,11 @@ const CampBox = styled.div`
     position: relative;
   }
 
-  img {
+  #map {
     width: 100%;
+    height: 120px;
     margin-top: 7px;
+    border-radius: 15px;
   }
 
   .camp_basic_btn {
@@ -56,6 +61,21 @@ const CampBasicInfo = ({ item }) => {
   if (item.addr2) {
     addr += item.addr2;
   }
+
+  const { kakao } = window;
+
+  useEffect(() => {
+    let container = document.getElementById("map");
+
+    let options = {
+      center: new window.kakao.maps.LatLng(item.mapY, item.mapX),
+      level: 6,
+    };
+
+    let map = new window.kakao.maps.Map(container, options);
+
+    console.log("loading kakaomap");
+  }, []);
 
   return (
     <section>
@@ -87,7 +107,7 @@ const CampBasicInfo = ({ item }) => {
             </tr>
           </tbody>
         </table>
-        <img src="https://via.placeholder.com/490x120" alt="" />
+        <div id="map"></div>
       </CampBox>
     </section>
   );
