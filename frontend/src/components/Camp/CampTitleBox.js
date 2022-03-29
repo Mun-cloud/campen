@@ -32,20 +32,11 @@ const TitleSection = styled.section`
 `;
 
 const CampTitleBox = ({ item }) => {
-  // 주소 합치기
-  let addr = "";
-  if (item.addr1) {
-    addr += item.addr1;
-  }
-  if (item.addr2) {
-    addr += item.addr2;
-  }
-
   return (
     <TitleSection className="camp_container no_margin">
       <div className="camp_box">
         <div className="camp_name">
-          <div className="camp_class">{addr}</div>
+          <div className="camp_class">{item.lineIntro}</div>
           <div className="camp_title">{item.name}</div>
           <div className="camp_log_count">캠핑로그 187</div>
         </div>

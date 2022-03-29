@@ -52,7 +52,7 @@ const CampFacility = ({ item }) => {
         <div className="basic_facility">
           <div className="facility_title">기본시설</div>
           <div className="facility_area">
-            {item.basic_fac.split(", ").map((basic, index) => (
+            {item.basic_fac.split(",").map((basic, index) => (
               <div className="facility" key={index}>
                 <span>{basic}</span>
               </div>
@@ -64,7 +64,7 @@ const CampFacility = ({ item }) => {
         <div className="additional_facility">
           <div className="facility_title">부가시설</div>
           <div className="facility_area">
-            {item.add_fac.split(", ").map((add, index) => (
+            {item.add_fac.split(",").map((add, index) => (
               <div className="facility" key={index}>
                 <span>{add}</span>
               </div>

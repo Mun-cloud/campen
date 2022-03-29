@@ -58,13 +58,13 @@ const Camp = () => {
   let { id } = useParams();
   const go = useNavigate();
   const [popView, setPopView] = useState(false);
+  const [pictures, setPictuers] = useState([]);
+  const [thisCamp, setThisCamp] = useState([]);
 
   // 팝업 구현. 하위컴포넌트에서 데이터 받기
   const popViewFunction = (popView) => {
     setPopView(popView);
   };
-
-  const [thisCamp, setThisCamp] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -72,6 +72,25 @@ const Camp = () => {
       try {
         response = await axios.get(`/campdata/${id}`);
         setThisCamp(response.data.item[0]);
+      } catch (err) {
+        console.error(err);
+      }
+      try {
+        const APIurl =
+          "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/imageList";
+        const KEY =
+          "5APlXd7ZkPeuONbcZe2isYf2o238wB9owyYEmdkJEV7AeGwMGLtF2cB2ku18d/iA5dcfs9UX/wA+qck++FPT3A==";
+
+        const urlParams = {
+          params: {
+            ServiceKey: KEY,
+            MobileOS: "ETC",
+            MobileApp: "AppTest",
+            contentId: thisCamp.contentId,
+          },
+        };
+        const photorespon = await axios.get(APIurl, urlParams);
+        setPictuers(photorespon.data.response.body.items);
       } catch (err) {
         console.error(err);
       }
@@ -96,7 +115,7 @@ const Camp = () => {
       ) : (
         <CampPage>
           <CampHeader item={thisCamp} />
-          <SearchSwiper item={thisCamp} />
+          <SearchSwiper item={thisCamp} pictures={pictures} />
           <CampTitleBox item={thisCamp} />
           <CampSwiperScroll item={thisCamp} />
           <CampBasicInfo item={thisCamp} />
