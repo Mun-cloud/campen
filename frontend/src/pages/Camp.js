@@ -58,7 +58,7 @@ const Camp = () => {
   let { id } = useParams();
   const go = useNavigate();
   const [popView, setPopView] = useState(false);
-  const [pictures, setPictuers] = useState([]);
+  const [pictures, setPictuers] = useState();
   const [thisCamp, setThisCamp] = useState([]);
 
   // 팝업 구현. 하위컴포넌트에서 데이터 받기
@@ -86,11 +86,12 @@ const Camp = () => {
             ServiceKey: KEY,
             MobileOS: "ETC",
             MobileApp: "AppTest",
-            contentId: thisCamp.contentId,
+            contentId: response.data.item[0].contentId,
           },
         };
         const photorespon = await axios.get(APIurl, urlParams);
-        setPictuers(photorespon.data.response.body.items);
+        console.log(photorespon);
+        setPictuers(photorespon.data.response.body);
       } catch (err) {
         console.error(err);
       }
@@ -101,6 +102,11 @@ const Camp = () => {
     })();
   }, []);
 
+  useEffect(() => {
+    (async () => {})();
+  }, []);
+
+  console.log(pictures);
   return (
     <>
       {/* 결과값이 실패인 경우 에러메시지 표시, 성공인 경우 목록 컴포넌트 호출 */}
@@ -115,7 +121,9 @@ const Camp = () => {
       ) : (
         <CampPage>
           <CampHeader item={thisCamp} />
-          <SearchSwiper item={thisCamp} pictures={pictures} />
+          {pictures === undefined ? null : (
+            <SearchSwiper item={thisCamp} pictures={pictures} />
+          )}
           <CampTitleBox item={thisCamp} />
           <CampSwiperScroll item={thisCamp} />
           <CampBasicInfo item={thisCamp} />

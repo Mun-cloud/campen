@@ -4,7 +4,6 @@ import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/css"; //basic
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Link } from "react-router-dom";
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -37,7 +36,7 @@ const MySwiper = styled(Swiper)`
     }
   }
 `;
-const SearchSwiper = () => {
+const SearchSwiper = ({ item, pictures }) => {
   return (
     <MySwiper
       navigation={true}
@@ -53,87 +52,17 @@ const SearchSwiper = () => {
       }}
       className="glide"
     >
-      <SwiperSlide className="glide__slide">
-        <Link to="/camp/1">
-          <img src={require("../../assets/img/search_slide-1.jpg")} alt="" />
-          <span>
-            <i className="fas fa-map-marker-alt"></i>
-            <span id="profile_local">경기 용인시</span>
-          </span>
-        </Link>
-      </SwiperSlide>
-      <SwiperSlide className="glide__slide">
-        <Link to="/camp">
-          <img src={require("../../assets/img/search_slide-2.jpg")} alt="" />
-          <span>
-            <i className="fas fa-map-marker-alt"></i>
-            <span id="profile_local">경기 용인시</span>
-          </span>
-        </Link>
-      </SwiperSlide>
-      <SwiperSlide className="glide__slide">
-        <Link to="/camp">
-          <img src={require("../../assets/img/search_slide-3.jpeg")} alt="" />
-          <span>
-            <i className="fas fa-map-marker-alt"></i>
-            <span id="profile_local">경기 용인시</span>
-          </span>
-        </Link>
-      </SwiperSlide>
-      <SwiperSlide className="glide__slide">
-        <Link to="/camp">
-          <img src={require("../../assets/img/search_slide-1.jpg")} alt="" />
-          <span>
-            <i className="fas fa-map-marker-alt"></i>
-            <span id="profile_local">경기 용인시</span>
-          </span>
-        </Link>
-      </SwiperSlide>
-      <SwiperSlide className="glide__slide">
-        <Link to="/camp">
-          <img src={require("../../assets/img/search_slide-2.jpg")} alt="" />
-          <span>
-            <i className="fas fa-map-marker-alt"></i>
-            <span id="profile_local">경기 용인시</span>
-          </span>
-        </Link>
-      </SwiperSlide>
-      <SwiperSlide className="glide__slide">
-        <Link to="/camp">
-          <img src={require("../../assets/img/search_slide-3.jpeg")} alt="" />
-          <span>
-            <i className="fas fa-map-marker-alt"></i>
-            <span id="profile_local">경기 용인시</span>
-          </span>
-        </Link>
-      </SwiperSlide>
-      <SwiperSlide className="glide__slide">
-        <Link to="/camp">
-          <img src={require("../../assets/img/search_slide-1.jpg")} alt="" />
-          <span>
-            <i className="fas fa-map-marker-alt"></i>
-            <span id="profile_local">경기 용인시</span>
-          </span>
-        </Link>
-      </SwiperSlide>
-      <SwiperSlide className="glide__slide">
-        <Link to="/camp">
-          <img src={require("../../assets/img/search_slide-2.jpg")} alt="" />
-          <span>
-            <i className="fas fa-map-marker-alt"></i>
-            <span id="profile_local">경기 용인시</span>
-          </span>
-        </Link>
-      </SwiperSlide>
-      <SwiperSlide className="glide__slide">
-        <Link to="/camp">
-          <img src={require("../../assets/img/search_slide-3.jpeg")} alt="" />
-          <span>
-            <i className="fas fa-map-marker-alt"></i>
-            <span id="profile_local">경기 용인시</span>
-          </span>
-        </Link>
-      </SwiperSlide>
+      {pictures !== undefined
+        ? pictures.items.item.map((v, i) => (
+            <SwiperSlide className="glide__slide" key={i}>
+              <img src={v.imageUrl} alt={item.name} />
+              <span>
+                <i className="fas fa-map-marker-alt"></i>
+                <span id="profile_local">{item.addr1}</span>
+              </span>
+            </SwiperSlide>
+          ))
+        : null}
     </MySwiper>
   );
 };
