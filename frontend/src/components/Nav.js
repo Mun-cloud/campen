@@ -11,14 +11,14 @@ const Nav = () => {
         <i className="fas fa-search"></i>
         <span className="nav_text">갬핑장 검색</span>
       </Link>
-      <a href="./search.html" className="nav_btn">
+      <Link to="/commu" className="nav_btn">
         <i className="far fa-comment-alt"></i>
         <span className="nav_text">커뮤니티</span>
-      </a>
-      <a href="./search.html" className="nav_btn">
+      </Link>
+      <Link to="/mylogin" className="nav_btn">
         <i className="far fa-user"></i>
         <span className="nav_text">마이</span>
-      </a>
+      </Link>
     </nav>
   );
 };
