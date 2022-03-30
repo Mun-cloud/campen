@@ -2,15 +2,13 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Pop = styled.div`
-  position: fixed;
+  position: relative;
   top: 0px;
   left: auto;
   right: auto;
   z-index: 2000;
-  max-width: 530px;
   width: 100%;
-  height: 100%;
-  overflow: auto;
+  height: 53px;
   background: rgb(255, 255, 255);
 `;
 

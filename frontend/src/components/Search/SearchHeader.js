@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = styled.header`
@@ -6,8 +7,14 @@ const Header = styled.header`
 `;
 
 const SearchHeader = () => {
+  const go = useNavigate();
   return (
     <Header>
+      <i
+        onClick={() => go(-1)}
+        className="fas fa-chevron-left"
+        style={{ cursor: "pointer" }}
+      ></i>
       <input type="text" placeholder="캠핑장명을 검색해 보세요" />
       <div>
         <input type="date" placeholder="날짜" />
