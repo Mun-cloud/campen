@@ -29,8 +29,8 @@ const ProfileUser = () => {
     <>
       {/*  <!-- 유저프로필 --> */}
       <UserProfile>
-        <img src="../commu/img/user-img.png" alt="프로필" />
-        <div class="user-name">캠퍼1103</div>
+        <img src={require("../../assets/img/user-img.png")} alt="프로필" />
+        <div className="user-name">캠퍼1103</div>
       </UserProfile>
     </>
   );

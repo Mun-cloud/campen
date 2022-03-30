@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Box = styled.div`
@@ -23,21 +24,21 @@ const MyLoginCnt = () => {
     <>
       {/* <!-- 공지사항,설정,고객센터 박스  --> */}
       <Box>
-        <a className="my-content" href="#">
+        <Link className="my-content" to="/profile">
           <div className="my-div">내가 작성한글</div>
-        </a>
+        </Link>
       </Box>
 
       <Box>
-        <a className="my-notice" href="#">
+        <Link className="my-notice" to="/notice">
           <div className="my-div">공지사항</div>
-        </a>
+        </Link>
       </Box>
 
       <Box>
-        <a className="my-set" href="#">
+        <Link className="my-set" to="/usersetting">
           <div className="my-div">설정</div>
-        </a>
+        </Link>
       </Box>
     </>
   );

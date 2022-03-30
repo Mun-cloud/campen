@@ -25,15 +25,15 @@ const ProfileCntFooter = () => {
     <>
       {/* <!-- 컨텐츠:좋아요,댓글 --> */}
       <CntFooter>
-        <div clsss="cnt-like" href="#">
+        <div className="cnt-like">
           <a href="#">
-            <i class="far fa-heart"></i>
+            <i className="far fa-heart"></i>
             좋아요
           </a>
         </div>
-        <div class="cnt-comment" href="#">
+        <div className="cnt-comment">
           <a href="#">
-            <i class="far fa-comment"></i>
+            <i className="far fa-comment"></i>
             댓글쓰기
           </a>
         </div>

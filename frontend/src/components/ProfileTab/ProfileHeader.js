@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = styled.div`
@@ -25,16 +26,26 @@ const Header = styled.div`
     padding-right: 70px;
     font-size: 12.5pt;
   }
+
+  div {
+    cursor: pointer;
+  }
 `;
 
 const ProfileHeader = () => {
+  const go = useNavigate();
+
   return (
     <>
       {/* <!-- 헤더 --> */}
       <Header>
-        <a href="#">
+        <div
+          onClick={() => {
+            go(-1);
+          }}
+        >
           <span class="material-icons-outlined">arrow_back_ios</span>
-        </a>
+        </div>
         <p>프로필</p>
       </Header>
     </>

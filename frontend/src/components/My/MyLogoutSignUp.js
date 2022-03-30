@@ -26,7 +26,7 @@ const MyLogoutSignUp = () => {
     <>
       <SignupLogin>
         {/* 회원가입 */}
-        <a href="#" class="signup">
+        <a href="#" className="signup">
           <Btn
             type="button
                 "
@@ -37,7 +37,7 @@ const MyLogoutSignUp = () => {
         </a>
 
         {/*   <!-- 로그인 --> */}
-        <a href="#" class="login">
+        <a href="#" className="login">
           <Btn
             type="button
                 "

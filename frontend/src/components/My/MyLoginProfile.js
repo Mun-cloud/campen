@@ -7,7 +7,7 @@ const MyProfile = styled.div`
   align-items: center;
   background: rgb(255, 255, 255);
 
-  .my-profile img {
+  img {
     margin-right: 12px;
     width: 15%;
   }
@@ -42,7 +42,7 @@ const MyLoginProfile = () => {
       {/*  <!-- 유저 마이 프로필 --> */}
       <Link to="/user-setting">
         <MyProfile>
-          <img src="./img/user-img.png" alt="상" />
+          <img src={require("../../assets/img/user-img.png")} alt="상" />
           <div className="my-user">
             <h3 className="my-user-name">인생한번</h3>
             <p className="my-user-intro">
