@@ -37,34 +37,36 @@ const MySwiper = styled(Swiper)`
   }
 `;
 const SearchSwiper = ({ item, pictures }) => {
-  return (
-    <MySwiper
-      navigation={true}
-      spaceBetween={0}
-      slidesPerView={"auto"}
-      loop={true}
-      centeredSlides={true}
-      scrollbar={{ draggable: true }}
-      pagination={{
-        clickable: true,
-        dynamicBullets: true,
-        dynamicMainBullets: 5,
-      }}
-      className="glide"
-    >
-      {pictures !== undefined
-        ? pictures.items.item.map((v, i) => (
-            <SwiperSlide className="glide__slide" key={i}>
-              <img src={v.imageUrl} alt={item.name} />
-              <span>
-                <i className="fas fa-map-marker-alt"></i>
-                <span id="profile_local">{item.addr1}</span>
-              </span>
-            </SwiperSlide>
-          ))
-        : null}
-    </MySwiper>
-  );
+  if (pictures.items.item !== undefined) {
+    return (
+      <MySwiper
+        navigation={true}
+        spaceBetween={0}
+        slidesPerView={"auto"}
+        loop={true}
+        centeredSlides={true}
+        scrollbar={{ draggable: true }}
+        pagination={{
+          clickable: true,
+          dynamicBullets: true,
+          dynamicMainBullets: 5,
+        }}
+        className="glide"
+      >
+        {pictures.items.item.map((v, i) => (
+          <SwiperSlide className="glide__slide" key={i}>
+            <img src={v.imageUrl} alt={item.name} />
+            <span>
+              <i className="fas fa-map-marker-alt"></i>
+              <span id="profile_local">{item.addr1}</span>
+            </span>
+          </SwiperSlide>
+        ))}
+      </MySwiper>
+    );
+  } else {
+    return null;
+  }
 };
 
 export default SearchSwiper;

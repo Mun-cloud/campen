@@ -101,10 +101,6 @@ const Camp = () => {
     })();
   }, []);
 
-  useEffect(() => {
-    (async () => {})();
-  }, []);
-
   return (
     <>
       {/* 결과값이 실패인 경우 에러메시지 표시, 성공인 경우 목록 컴포넌트 호출 */}
@@ -125,8 +121,8 @@ const Camp = () => {
           <CampTitleBox item={thisCamp} />
           <CampSwiperScroll item={thisCamp} />
           <CampBasicInfo item={thisCamp} />
-          <CampIntro item={thisCamp} />
-          {thisCamp.basic_fac && thisCamp.add_fac && (
+          {thisCamp.intro && <CampIntro item={thisCamp} />}
+          {(thisCamp.basic_fac || thisCamp.add_fac) && (
             <CampFacility item={thisCamp} />
           )}
           {thisCamp.manner_start && thisCamp.manner_end && (
@@ -134,7 +130,7 @@ const Camp = () => {
           )}
           <CampPolicy item={thisCamp} popViewFunction={popViewFunction} />
           {popView ? <CampPolicyPop popViewFunction={popViewFunction} /> : null}
-          <CampMap item={thisCamp} />
+          {thisCamp.photo && <CampMap item={thisCamp} />}
           <CampLog item={thisCamp} />
           <Footer />
         </CampPage>

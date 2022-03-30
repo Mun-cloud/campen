@@ -63,11 +63,12 @@ const CampBasicInfo = ({ item }) => {
   }
 
   useEffect(() => {
+    console.log(item.mapY, item.mapX);
     let container = document.getElementById("map");
 
     let options = {
       center: new window.kakao.maps.LatLng(item.mapY, item.mapX),
-      level: 6,
+      level: 4,
     };
 
     let map = new window.kakao.maps.Map(container, options);
@@ -78,7 +79,7 @@ const CampBasicInfo = ({ item }) => {
     marker.setMap(map);
 
     console.log("loading kakaomap");
-  }, []);
+  }, [item]);
 
   return (
     <section>

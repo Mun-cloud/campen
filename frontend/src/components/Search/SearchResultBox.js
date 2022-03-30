@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import SearchSwiper from "./SearchSwiper";
 import SearchTagBox from "./SearchTagBox";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const ResultInfo = styled.div`
   width: 100%;
@@ -40,14 +42,40 @@ const ResultInfo = styled.div`
 `;
 
 const SearchResultBox = ({ item }) => {
-  console.log(item);
   const navigate = useNavigate();
+  const [pictures, setPictuers] = useState();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const APIurl =
+          "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/imageList";
+        const KEY =
+          "5APlXd7ZkPeuONbcZe2isYf2o238wB9owyYEmdkJEV7AeGwMGLtF2cB2ku18d/iA5dcfs9UX/wA+qck++FPT3A==";
+
+        const urlParams = {
+          params: {
+            ServiceKey: KEY,
+            MobileOS: "ETC",
+            MobileApp: "AppTest",
+            contentId: item.contentId,
+          },
+        };
+        const response = await axios.get(APIurl, urlParams);
+        setPictuers(response.data.response.body);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }, []);
   return (
     <div>
-      <SearchSwiper />
+      {pictures !== undefined ? (
+        <SearchSwiper item={item} pictures={pictures} />
+      ) : null}
       <ResultInfo
         onClick={() => {
-          navigate("/camp/1");
+          navigate(`/camp/${item.id}`);
         }}
       >
         <div className="result_text">
