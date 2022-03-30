@@ -19,13 +19,15 @@ const CntBtn = styled.div`
   background-color: #fff;
   cursor: pointer;
 
-  p {
-    font-size: 11pt;
-    font-weight: 400;
-  }
-
-  span {
-    font-size: 17pt;
+  select {
+    margin: 0 auto;
+    width: 470px;
+    padding: 10px 5px;
+    border-width: 0;
+    cursor: pointer;
+    outline: none;
+    font-weight: 500;
+    font-size: 14px;
   }
 `;
 
@@ -36,7 +38,7 @@ const Cnt = styled.div`
     padding: 20px 0px;
     border: none;
     width: 100%;
-    height: 520px;
+    height: 490px;
     font-family: SpoqaHanSans;
     font-weight: 400;
     font-size: 10pt;
@@ -88,8 +90,11 @@ const WriteCnt = () => {
         <CntBox>
           {/* <!-- 글쓰기 주제 선택버튼 --> */}
           <CntBtn>
-            <p>게시글의 주제를 선택해주세요.</p>
-            <span className="material-icons-outlined">expand_more</span>
+            <select>
+              <option value="0">캠핑한컷</option>
+              <option value="1">캠핑후기</option>
+              <option value="2">궁금해요</option>
+            </select>
           </CntBtn>
           {/* <!-- 글쓰기 입력영역 --> */}
           <Cnt>
