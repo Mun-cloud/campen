@@ -102,8 +102,8 @@ const Join = () => {
             <i className="fas fa-chevron-right"></i>
           </div>
         </Checkbox>
-        <Button class="foot_btn">다음</Button>
       </JoinContainer>
+      <Button class="foot_btn">다음</Button>
     </>
   );
 };
