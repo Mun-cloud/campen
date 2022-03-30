@@ -4,6 +4,7 @@ import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/css"; //basic
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useNavigate } from "react-router-dom";
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -37,6 +38,7 @@ const MySwiper = styled(Swiper)`
   }
 `;
 const SearchSwiper = ({ item, pictures }) => {
+  const go = useNavigate();
   if (pictures.items.item !== undefined) {
     return (
       <MySwiper
@@ -54,7 +56,13 @@ const SearchSwiper = ({ item, pictures }) => {
         className="glide"
       >
         {pictures.items.item.map((v, i) => (
-          <SwiperSlide className="glide__slide" key={i}>
+          <SwiperSlide
+            className="glide__slide"
+            key={i}
+            onClick={() => {
+              go(`/camp/${item.id}`);
+            }}
+          >
             <img src={v.imageUrl} alt={item.name} />
             <span>
               <i className="fas fa-map-marker-alt"></i>

@@ -7,7 +7,7 @@ import IndexCamplog from "../components/Index/IndexCamplog";
 import IndexExhibition from "../components/Index/IndexExhibition";
 import Footer from "../components/Footer";
 
-const Index = () => {
+const Index = ({ handleNavView }) => {
   return (
     <div>
       <div style={{ padding: "15px" }}>
