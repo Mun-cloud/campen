@@ -1,9 +1,17 @@
 import BasicHeaderBar from "../components/BasicHeaderBar";
 import styled from "styled-components";
 
+import { useRef, useState } from "react";
+
+const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  position: relative;
+`;
+
 const JoinContainer = styled.div`
   padding: 40px 20px;
-  min-height: 100vh;
+  height: 100%;
 `;
 
 const JoinHeader = styled.div`
@@ -70,33 +78,52 @@ const Button = styled.button`
 `;
 
 const Join = () => {
+  const [allCheck, setAllCheck] = useState();
+
+  const check1 = useRef();
+  const check2 = useRef();
+  const check3 = useRef();
+
   return (
-    <>
+    <Container>
       <BasicHeaderBar title="약관동의" />
       <JoinContainer>
         <JoinHeader>가입약관을 읽고 동의를 해주세요.</JoinHeader>
         <Checkbox className="check_box">
           <label>
-            <input type="checkbox" id="check_all" />
+            <input
+              type="checkbox"
+              id="check_all"
+              onClick={() => {
+                setAllCheck(true);
+              }}
+            />
             전체동의하기
           </label>
           <div className="check_list" id="term1">
             <label>
-              <input type="checkbox" className="check_term" />
+              <input
+                ref={check1}
+                onClick={() => {
+                  console.log(check1.current.checked);
+                }}
+                type="checkbox"
+                className="check_term"
+              />
               서비스 이용약관 (필수)
             </label>
             <i className="fas fa-chevron-right"></i>
           </div>
           <div className="check_list" id="term2">
             <label>
-              <input type="checkbox" className="check_term" />
+              <input ref={check2} type="checkbox" className="check_term" />
               개인정보 처리방침 (필수)
             </label>
             <i className="fas fa-chevron-right"></i>
           </div>
           <div className="check_list" id="term3">
             <label>
-              <input type="checkbox" className="check_term" />
+              <input ref={check3} type="checkbox" className="check_term" />
               이벤트/마케팅 수신동의 (선택)
             </label>
             <i className="fas fa-chevron-right"></i>
@@ -104,7 +131,7 @@ const Join = () => {
         </Checkbox>
       </JoinContainer>
       <Button class="foot_btn">다음</Button>
-    </>
+    </Container>
   );
 };
 

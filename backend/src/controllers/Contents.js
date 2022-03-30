@@ -78,9 +78,9 @@ module.exports = (app) => {
 
   /** 데이터 추가 --> Create(INSERT) */
   router.post("/content", async (req, res, next) => {
-    if (!req.session.memberInfo) {
-      return next(new BadRequestException("로그인중이 아닙니다."));
-    }
+    // if (!req.session.memberInfo) {
+    //   return next(new BadRequestException("로그인중이 아닙니다."));
+    // }
     // 저장을 위한 파라미터 입력받기
     const tab = req.post("tab");
     const content = req.post("content");
@@ -110,12 +110,13 @@ module.exports = (app) => {
 
       // 데이터 저장하기
       const sql =
-        "INSERT INTO contents VALUES (null, ?, ?, 0, now(), now(), ?, null)";
-      const input_data = [tab, content, req.session.memberInfo.id];
+        "INSERT INTO contents VALUES (null, ?, ?, 0, now(), now(), null, null)";
+      const input_data = [tab, content];
       const [result1] = await dbcon.query(sql, input_data);
 
       // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-      const sql2 = "SELECT * FROM contents WHERE id=?";
+      const sql2 =
+        "SELECT id, tab, cast(content as char(10000)) as content, views, reg_date, edit_date, members_id, camp_id FROM contents WHERE id=?";
       const [result2] = await dbcon.query(sql2, [result1.insertId]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
