@@ -44,12 +44,12 @@ function App() {
         <Route path="/my-active" element={<MyActive />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/notice/*" element={<Notice />} />
-        <Route path="/commu" element={<Commu />} />
-        <Route path="/mylogin " element={<MyLogin />} />
-        <Route path="/mylogout " element={<MyLogout />} />
+        {/* <Route path="/commu" element={<Commu />} /> */}
+        <Route path="/mylogin" element={<MyLogin />} />
+        {/* <Route path="/mylogout" element={<MyLogout />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/usersetting" element={<UserSetting />} />
-        <Route path="/write" element={<Write />} />
+        <Route path="/write" element={<Write />} /> */}
       </Routes>
 
       <Nav />

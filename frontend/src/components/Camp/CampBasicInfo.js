@@ -62,8 +62,6 @@ const CampBasicInfo = ({ item }) => {
     addr += item.addr2;
   }
 
-  const { kakao } = window;
-
   useEffect(() => {
     let container = document.getElementById("map");
 
@@ -73,6 +71,11 @@ const CampBasicInfo = ({ item }) => {
     };
 
     let map = new window.kakao.maps.Map(container, options);
+    let markerPosition = new kakao.maps.LatLng(item.mapY, item.mapX);
+    let marker = new kakao.maps.Marker({
+      position: markerPosition,
+    });
+    marker.setMap(map);
 
     console.log("loading kakaomap");
   }, []);

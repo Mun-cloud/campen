@@ -23,20 +23,20 @@ const MyLoginCnt = () => {
     <>
       {/* <!-- 공지사항,설정,고객센터 박스  --> */}
       <Box>
-        <a class="my-content" href="#">
-          <div class="my-div">내가 작성한글</div>
+        <a className="my-content" href="#">
+          <div className="my-div">내가 작성한글</div>
         </a>
       </Box>
 
       <Box>
-        <a class="my-notice" href="#">
-          <div class="my-div">공지사항</div>
+        <a className="my-notice" href="#">
+          <div className="my-div">공지사항</div>
         </a>
       </Box>
 
       <Box>
-        <a class="my-set" href="#">
-          <div class="my-div">설정</div>
+        <a className="my-set" href="#">
+          <div className="my-div">설정</div>
         </a>
       </Box>
     </>

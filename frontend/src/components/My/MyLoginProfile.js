@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const MyProfile = styled.div`
@@ -39,18 +40,18 @@ const MyLoginProfile = () => {
   return (
     <>
       {/*  <!-- 유저 마이 프로필 --> */}
-      <a to="./user-setting.html">
+      <Link to="/user-setting">
         <MyProfile>
           <img src="./img/user-img.png" alt="상" />
-          <div class="my-user">
-            <h3 class="my-user-name">인생한번</h3>
-            <p class="my-user-intro">
+          <div className="my-user">
+            <h3 className="my-user-name">인생한번</h3>
+            <p className="my-user-intro">
               나는 자연인을 꿈꿉니다.
-              <span class="material-icons-outlined">arrow_forward_ios</span>
+              <span className="material-icons-outlined">arrow_forward_ios</span>
             </p>
           </div>
         </MyProfile>
-      </a>
+      </Link>
     </>
   );
 };
