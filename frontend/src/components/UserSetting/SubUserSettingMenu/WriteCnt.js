@@ -89,7 +89,7 @@ const WriteCnt = () => {
           {/* <!-- 글쓰기 주제 선택버튼 --> */}
           <CntBtn>
             <p>게시글의 주제를 선택해주세요.</p>
-            <span class="material-icons-outlined">expand_more</span>
+            <span className="material-icons-outlined">expand_more</span>
           </CntBtn>
           {/* <!-- 글쓰기 입력영역 --> */}
           <Cnt>
@@ -108,7 +108,7 @@ const WriteCnt = () => {
             <PhotoUpload>
               {/* <!-- 이미지 업로드 --> */}
               <Photo for="upload-btn">
-                <span class="material-icons">image</span>
+                <span className="material-icons">image</span>
                 <div>0/10</div>
               </Photo>
             </PhotoUpload>

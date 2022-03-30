@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Writebtn = styled.div`
@@ -32,9 +33,9 @@ const CommuWrite = () => {
     <div>
       {/* <!-- 글쓰기 버튼 --> */}
       <Writebtn>
-        <a class="write-button-click" href="./write.html">
-          <span class="material-icons write-click">edit</span>
-        </a>
+        <Link className="write-button-click" to="/write">
+          <span className="material-icons write-click">edit</span>
+        </Link>
       </Writebtn>
     </div>
   );

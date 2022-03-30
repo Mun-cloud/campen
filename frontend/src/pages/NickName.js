@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import SubSettingHeader from "../SubUserSettingMenu/SubSettingHeader";
-import SubSettingTitle from "../SubUserSettingMenu/SubSettingTitle";
-import SubSettingButton from "../SubUserSettingMenu/SubSettingButton";
+import BasicHeaderBar from "../components/BasicHeaderBar";
+import SubSettingButton from "../components/UserSetting/SubUserSettingMenu/SubSettingButton";
+import { useNavigate } from "react-router-dom";
 
 const UserContainer = styled.div`
   max-width: 530px;
@@ -19,8 +19,18 @@ const UserContainer = styled.div`
 
 const Cnt = styled.div`
   padding: 20px;
-  height: 750px;
+  height: 670px;
   background: rgb(255, 255, 255);
+
+  .title {
+    margin: 18px 0px 43px;
+
+    div {
+      font-size: 16pt;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+  }
 
   input {
     width: 100%;
@@ -35,26 +45,33 @@ const Cnt = styled.div`
 `;
 
 const NickName = () => {
+  const go = useNavigate();
   return (
     <>
       <UserContainer>
         {/* <!-- 헤더 --> */}
-        <SubSettingHeader>
-          <p>닉네임 변경</p>
-        </SubSettingHeader>
+        <BasicHeaderBar title="닉네임 변경">
+          <div
+            onClick={() => {
+              go(-1);
+            }}
+          >
+            <span class="material-icons-outlined">arrow_back_ios</span>
+          </div>
+        </BasicHeaderBar>
 
         {/*  <!-- 컨텐츠 영역  --> */}
         <Cnt>
-          <SubSettingTitle>
+          <div className="title">
             <div>새로운 닉네임을</div>
             <div>입력해주세요.</div>
-          </SubSettingTitle>
+          </div>
           <input
             placeholder="변경할 닉네임을 입력해주세요."
             type="text"
             name="user-intro"
           />
-          <hr style="border: solid 0.5px rgb(211, 211, 211);" />
+          <hr style={{ border: " solid 0.5px rgb(211, 211, 211)" }} />
         </Cnt>
 
         <SubSettingButton />

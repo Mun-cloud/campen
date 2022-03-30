@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const TopContainer = styled.div`
 max-width: 530px;
@@ -37,12 +38,19 @@ const Title = styled.p`
 `;
 
 const WriteHeader = () => {
+  const go = useNavigate();
   return (
     <>
       {/* <!-- 글쓰기 상단  --> */}
       <TopContainer>
         <BackBtn href="../commu/commu2.html">
-          <span class="material-icons-outlined">arrow_back_ios</span>
+          <div
+            onClick={() => {
+              go(-1);
+            }}
+          >
+            <span class="material-icons-outlined">arrow_back_ios</span>
+          </div>
         </BackBtn>
         <Title>글쓰기</Title>
       </TopContainer>

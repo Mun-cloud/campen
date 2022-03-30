@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import WriteHeader from "../components/Write/WriteHeader";
-import WriteCnt from "../components/Write/WriteCnt";
+import WriteCnt from "../components/UserSetting/SubUserSettingMenu/WriteCnt";
 import WriteButton from "../components/Write/WriteButton";
 
 const Container = styled.div`

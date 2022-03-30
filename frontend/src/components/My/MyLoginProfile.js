@@ -40,7 +40,7 @@ const MyLoginProfile = () => {
   return (
     <>
       {/*  <!-- 유저 마이 프로필 --> */}
-      <Link to="/user-setting">
+      <Link to="/usersetting">
         <MyProfile>
           <img src={require("../../assets/img/user-img.png")} alt="상" />
           <div className="my-user">

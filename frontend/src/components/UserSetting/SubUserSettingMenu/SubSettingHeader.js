@@ -19,12 +19,6 @@ const Header = styled.div`
     font-weight: 700;
     cursor: pointer;
   }
-
-  p {
-    margin: 0px auto;
-    padding-right: 70px;
-    font-size: 12.5pt;
-  }
 `;
 
 const SubSettingHeader = () => {

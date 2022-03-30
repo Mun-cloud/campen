@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Profile = styled.div`
@@ -51,12 +52,12 @@ const UserSettingProfile = () => {
     <>
       {/* <!-- 유저프로필 --> */}
       <Profile>
-        <img src="../commu/img/user-img.png" alt="프로필" />
+        <img src={require("../../assets/img/user-img.png")} alt="프로필" />
         <div class="user-name">인생한번</div>
-        <a class="user-intro" href="#">
+        <Link class="user-intro" to="/userintro">
           <p>나는 자연인을 꿈꿉니다.</p>
           <span class="material-icons"> edit</span>
-        </a>
+        </Link>
       </Profile>
     </>
   );

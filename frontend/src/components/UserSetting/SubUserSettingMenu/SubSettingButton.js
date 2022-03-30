@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 const Btn = styled.button`
   max-width: 530px;
-  position: fixed;
-  bottom: 0px;
+
+  bottom: 100px;
   width: 100%;
-  height: 55px;
+  height: 70px;
   font-size: 11.5pt;
   background: rgb(234, 238, 236);
   color: rgb(133, 138, 136);

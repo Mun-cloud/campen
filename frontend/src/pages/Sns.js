@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import SubSettingHeader from "../SubUserSettingMenu/SubSettingHeader";
-import SubSettingTitle from "../SubUserSettingMenu/SubSettingTitle";
-import SubSettingButton from "../SubUserSettingMenu/SubSettingButton";
+import BasicHeaderBar from "../components/BasicHeaderBar";
+import SubSettingButton from "../components/UserSetting/SubUserSettingMenu/SubSettingButton";
 
 const UserContainer = styled.div`
   max-width: 530px;
@@ -19,8 +18,18 @@ const UserContainer = styled.div`
 
 const Cnt = styled.div`
   padding: 20px;
-  height: 750px;
+  height: 670px;
   background: rgb(255, 255, 255);
+
+  .title {
+    margin: 18px 0px 43px;
+
+    div {
+      font-size: 16pt;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+  }
 
   input {
     width: 100%;
@@ -39,16 +48,15 @@ const Password = () => {
     <>
       <UserContainer>
         {/* <!-- 헤더 --> */}
-        <SubSettingHeader>
-          <p>SNS 설정</p>
-        </SubSettingHeader>
+
+        <BasicHeaderBar title="SNS 설정"></BasicHeaderBar>
 
         <Cnt>
           {/*  <!-- 타이틀영역 --> */}
-          <SubSettingTitle>
+          <div className="title">
             <div>SNS를</div>
             <div>입력해주세요.</div>
-          </SubSettingTitle>
+          </div>
 
           {/*  <!-- 컨테츠영역 --> */}
 
@@ -58,8 +66,8 @@ const Password = () => {
             name="user-intro"
           />
           <hr
-            class="password"
-            style="border: solid 0.5px rgb(211, 211, 211);"
+            className="password"
+            style={{ border: "solid 0.5px rgb(211, 211, 211)" }}
           />
 
           <input
@@ -68,8 +76,8 @@ const Password = () => {
             name="user-intro"
           />
           <hr
-            class="password"
-            style="border: solid 0.5px rgb(211, 211, 211);"
+            className="password"
+            style={{ border: "solid 0.5px rgb(211, 211, 211)" }}
           />
         </Cnt>
 

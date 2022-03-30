@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = styled.div`
@@ -28,13 +29,19 @@ const Header = styled.div`
 `;
 
 const UserSettingHeader = () => {
+  const go = useNavigate();
   return (
     <>
       {/* <!-- 헤더 --> */}
       <Header>
-        <a href="./my-login.html">
+        <div
+          onClick={() => {
+            go(-1);
+          }}
+        >
           <span class="material-icons-outlined">arrow_back_ios</span>
-        </a>
+        </div>
+
         <p>내 정보 관리</p>
       </Header>
     </>

@@ -24,6 +24,10 @@ import MyLogout from "./pages/MyLogout";
 import Profile from "./pages/Profile";
 import UserSetting from "./pages/UserSetting";
 import Write from "./pages/Write";
+import UserIntro from "./pages/UserIntro";
+import Password from "./pages/Password";
+import Nickname from "./pages/NickName";
+import Sns from "./pages/Sns";
 
 function App() {
   return (
@@ -50,6 +54,10 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/usersetting" element={<UserSetting />} />
         <Route path="/write" element={<Write />} />
+        <Route path="/userintro" element={<UserIntro />} />
+        <Route path="/password" element={<Password />} />
+        <Route path="/nickname" element={<Nickname />} />
+        <Route path="/sns" element={<Sns />} />
       </Routes>
 
       <Nav />
