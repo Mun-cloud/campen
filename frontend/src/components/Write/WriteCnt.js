@@ -82,6 +82,25 @@ const Photo = styled.label`
   }
 `;
 
+const WriteSubmit = styled.button`
+  max-width: 530px;
+  bottom: 0px;
+  width: 100%;
+  height: 70px;
+  font-size: 11.5pt;
+  background: rgb(234, 238, 236);
+  color: rgb(133, 138, 136);
+  font-weight: 700;
+  font-size: 12pt;
+  border: none;
+  cursor: pointer;
+
+  span {
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
 const WriteCnt = () => {
   return (
     <>
@@ -99,6 +118,7 @@ const WriteCnt = () => {
           {/* <!-- 글쓰기 입력영역 --> */}
           <Cnt>
             <textarea
+              className="text-box"
               height="100%"
               placeholder="이곳에 글을 작성해주세요.최소 10자 이상 입력해주세요."
               name="constents"
@@ -120,6 +140,12 @@ const WriteCnt = () => {
           </PhotoBox>
         </PhotoContainer>
       </CntContainer>
+      <WriteSubmit
+        type="button"
+        disabled={!(.length > 5)}
+      >
+        <span>최소 10자 이상 입력해주세요.</span>
+      </WriteSubmit>
     </>
   );
 };

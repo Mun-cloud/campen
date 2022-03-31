@@ -16,6 +16,7 @@ const Write = () => {
       <Container>
         <WriteHeader />
         <WriteCnt />
+
         <WriteButton />
       </Container>
     </>
