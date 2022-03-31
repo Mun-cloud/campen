@@ -13,7 +13,6 @@ const Container = styled.div`
 const SignContainer = styled.div`
   padding: 40px 20px;
   padding-bottom: 0;
-  height: 100%;
 `;
 
 const Form = styled.form`
@@ -44,7 +43,7 @@ const Button = styled.button`
   font-size: 16px;
   border: none;
   position: absolute;
-  bottom: 0;
+  bottom: 59px;
   transition: background-color 0.1s ease-in;
 
   &.checked {
@@ -177,7 +176,11 @@ const SignUp = () => {
           />
         </Form>
       </SignContainer>
-      <Button disabled={!isFill} onClick={regax}>
+      <Button
+        disabled={!isFill}
+        onClick={regax}
+        className={isFill ? "checked" : ""}
+      >
         다음
       </Button>
     </Container>
