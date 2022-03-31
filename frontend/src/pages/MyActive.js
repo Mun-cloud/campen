@@ -1,11 +1,83 @@
 import BasicHeaderBar from "../components/BasicHeaderBar";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  padding: 0;
+  background-color: rgb(234, 238, 236);
+
+  > div {
+    margin-bottom: 5px;
+    background-color: white;
+  }
+
+  .myArticleBox {
+    padding: 20px;
+  }
+  .myArticleDate {
+    color: rgb(159, 165, 162);
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 100%;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .myArticleTitleBox {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .myArticleSub {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 140%;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    color: rgb(159, 165, 162);
+  }
+
+  .myArticleImg img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .myArticleInfo {
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+    color: rgb(159, 165, 162);
+  }
+
+  .myArticleInfo > div {
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+    margin-right: 5px;
+  }
+
+  .myArticleInfo > div > svg {
+    line-height: 18px;
+    margin-bottom: 0;
+    margin-right: 2px;
+  }
+`;
 
 const MyActive = () => {
   return (
-    <div>
+    <Container>
       <BasicHeaderBar title="나의 활동" />
       <div>
-        <a href="#">
+        <Link to="/">
           <div className="myArticleBox">
             <div className="myArticleDate">22.02.10</div>
             <div className="myArticleTitleBox">
@@ -36,12 +108,12 @@ const MyActive = () => {
                   <path
                     d="M17.24 8.73924L17.2399 8.73931L17.246 8.75C17.2899 8.826 17.313 8.91223 17.313 9C17.313 9.08379 17.292 9.16617 17.2519 9.23959C16.7329 10.029 15.6127 11.6062 14.1333 12.9841C12.6317 14.3826 10.8411 15.5 8.98906 15.5C7.13574 15.5 5.36727 14.4011 3.885 13.0193C2.41639 11.6502 1.30502 10.0748 0.767126 9.2657C0.715147 9.18499 0.6875 9.09102 0.6875 8.995C0.6875 8.89895 0.715156 8.80496 0.767126 8.72426C1.30296 7.91831 2.43177 6.3446 3.91098 4.97714C5.40462 3.59632 7.17496 2.50064 8.99746 2.5C11.1433 2.5144 12.9687 3.62954 14.3957 4.99612C15.8207 6.36067 16.7993 7.93047 17.24 8.73924Z"
                     stroke="current"
-                    stroke-miterlimit="10"
+                    strokeMiterlimit="10"
                   ></path>
                   <path
                     d="M12.418 9.02997C12.418 10.963 10.851 12.53 8.91797 12.53C6.98497 12.53 5.41797 10.963 5.41797 9.02997C5.41797 7.09697 6.98497 5.52997 8.91797 5.52997C10.851 5.52997 12.418 7.09697 12.418 9.02997Z"
                     stroke="current"
-                    stroke-miterlimit="10"
+                    strokeMiterlimit="10"
                   ></path>
                 </svg>
                 0
@@ -78,9 +150,9 @@ const MyActive = () => {
               </div>
             </div>
           </div>
-        </a>
+        </Link>
       </div>
-    </div>
+    </Container>
   );
 };
 

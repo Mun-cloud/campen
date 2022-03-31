@@ -194,7 +194,7 @@ const Join = () => {
         }
         disabled={!(checkList[0].checked && checkList[1].checked)}
         onClick={() => {
-          go("/sing-up");
+          go("/sign-up");
         }}
       >
         다음

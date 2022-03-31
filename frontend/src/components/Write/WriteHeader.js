@@ -49,7 +49,7 @@ const WriteHeader = () => {
               go(-1);
             }}
           >
-            <span class="material-icons-outlined">arrow_back_ios</span>
+            <span className="material-icons-outlined">arrow_back_ios</span>
           </div>
         </BackBtn>
         <Title>글쓰기</Title>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const LogBox = styled.section`
@@ -140,7 +141,7 @@ const CampLog = () => {
               <i className="fas fa-chevron-right"></i>
             </div>
           </div>
-          <a className="log_sample_box" href="#">
+          <Link className="log_sample_box" to="/commu">
             <div className="log_article">
               샤워실 시설이 협소한걸 제외하고 모두 만족스러운 캠핑이었습니다.
               샤워실 시설이 협소한걸 제외하고 모두 만족스러운
@@ -152,7 +153,7 @@ const CampLog = () => {
             <div className="log_photo">
               <img src="https://via.placeholder.com/100x100" alt="" />
             </div>
-          </a>
+          </Link>
         </div>
       </div>
       <div className="log_btn_box">

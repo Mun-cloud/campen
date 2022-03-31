@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 import WriteHeader from "../components/Write/WriteHeader";
 import WriteCnt from "../components/Write/WriteCnt";
@@ -11,13 +12,24 @@ const Container = styled.div`
 `;
 
 const Write = () => {
+  const [text, setText] = useState("");
+  const [tab, setTab] = useState("0");
+
+  function textCnt(text) {
+    setText(text);
+  }
+
+  function getTab(tab) {
+    setTab(tab);
+  }
+
   return (
     <>
       <Container>
         <WriteHeader />
-        <WriteCnt />
+        <WriteCnt textCnt={textCnt} getTab={getTab} />
 
-        <WriteButton />
+        <WriteButton text={text} tab={tab} />
       </Container>
     </>
   );

@@ -74,7 +74,6 @@ module.exports = (app) => {
     const user_pw = req.post("user_pw");
     const user_name = req.post("user_name");
     const email = req.post("email");
-    const phone = req.post("phone");
 
     // 유효성 검사
     try {
@@ -105,14 +104,14 @@ module.exports = (app) => {
 
       // 전송받은 모든 정보를 회원 테이블에 저장(INSERT)
       let sql = "INSERT INTO `members` (";
-      sql += "user_id, user_pw, user_name, email, phone, photo, ";
+      sql += "user_id, user_pw, user_name, email, photo, ";
       sql +=
         "intro, sns_addr, nickname, is_out, is_admin, login_date, reg_date, edit_date";
       sql += ") VALUES (";
       sql +=
-        "?, ?, ?, ?, ?, null, null, null, null, 'N', 'N', null, now(), now());";
+        "?, ?, ?, ?, null, null, null, null, 'N', 'N', null, now(), now());";
 
-      const args = [user_id, user_pw, user_name, email, phone];
+      const args = [user_id, user_pw, user_name, email];
       const [result2] = await dbcon.query(sql, args);
       json = result1;
     } catch (err) {
@@ -169,7 +168,7 @@ module.exports = (app) => {
 
       // 아이디와 비밀번호가 일치하는 데이터를 조회 (조회결과에서 비밀번호는 제외)
       let sql1 =
-        "SELECT id, user_id, user_pw, user_name, email, phone, photo, intro, sns_addr, nickname, is_out, is_admin, login_date, reg_date, edit_date FROM members WHERE user_id=? AND user_pw=?";
+        "SELECT id, user_id, user_pw, user_name, email, photo, intro, sns_addr, nickname, is_out, is_admin, login_date, reg_date, edit_date FROM members WHERE user_id=? AND user_pw=?";
       let args1 = [user_id, user_pw];
 
       const [result1] = await dbcon.query(sql1, args1);
@@ -279,7 +278,7 @@ module.exports = (app) => {
 
       // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
       const sql2 =
-        "SELECT id, user_id, user_pw, user_name, email, phone, photo, intro, sns_addr, nickname, is_out, is_admin, login_date, reg_date, edit_date FROM members WHERE id=?";
+        "SELECT id, user_id, user_pw, user_name, email, photo, intro, sns_addr, nickname, is_out, is_admin, login_date, reg_date, edit_date FROM members WHERE id=?";
       const [result2] = await dbcon.query(sql2, [id]);
 
       // 조회 결과를 미리 준비한 변수에 저장함

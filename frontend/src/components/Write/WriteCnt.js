@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const CntContainer = styled.div`
@@ -82,26 +83,7 @@ const Photo = styled.label`
   }
 `;
 
-const WriteSubmit = styled.button`
-  max-width: 530px;
-  bottom: 0px;
-  width: 100%;
-  height: 70px;
-  font-size: 11.5pt;
-  background: rgb(234, 238, 236);
-  color: rgb(133, 138, 136);
-  font-weight: 700;
-  font-size: 12pt;
-  border: none;
-  cursor: pointer;
-
-  span {
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
-const WriteCnt = () => {
+const WriteCnt = ({ textCnt, getTab }) => {
   return (
     <>
       {/* <!-- 컨텐츠 --> */}
@@ -109,7 +91,11 @@ const WriteCnt = () => {
         <CntBox>
           {/* <!-- 글쓰기 주제 선택버튼 --> */}
           <CntBtn>
-            <select>
+            <select
+              onChange={(e) => {
+                getTab(e.currentTarget.value);
+              }}
+            >
               <option value="0">캠핑한컷</option>
               <option value="1">캠핑후기</option>
               <option value="2">궁금해요</option>
@@ -122,7 +108,10 @@ const WriteCnt = () => {
               height="100%"
               placeholder="이곳에 글을 작성해주세요.최소 10자 이상 입력해주세요."
               name="constents"
-              maxlength="3000"
+              maxLength="3000"
+              onChange={(e) => {
+                textCnt(e.currentTarget.value);
+              }}
             ></textarea>
           </Cnt>
         </CntBox>
@@ -132,7 +121,7 @@ const WriteCnt = () => {
           <PhotoBox>
             <PhotoUpload>
               {/* <!-- 이미지 업로드 --> */}
-              <Photo for="upload-btn">
+              <Photo htmlFor="upload-btn">
                 <span className="material-icons">image</span>
                 <div>0/10</div>
               </Photo>
@@ -140,12 +129,6 @@ const WriteCnt = () => {
           </PhotoBox>
         </PhotoContainer>
       </CntContainer>
-      {/* <WriteSubmit
-        type="button"
-        disabled={!(.length < 10)}
-      >
-        <span>최소 10자 이상 입력해주세요.</span>
-      </WriteSubmit> */}
     </>
   );
 };

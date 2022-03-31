@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import axios from "axios";
 
 const WriteSubmit = styled.button`
   max-width: 530px;
@@ -19,11 +20,23 @@ const WriteSubmit = styled.button`
   }
 `;
 
-const WriteButton = () => {
+const postCommu = async (content, tab) => {
+  try {
+    const response = await axios.post("/content", { tab, content });
+    console.log(response.data.item[0]);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const WriteButton = ({ text, tab }) => {
   return (
     <>
       {/* <!-- 하단 버튼 --> */}
-      <WriteSubmit type="button">
+      <WriteSubmit
+        disabled={!(text.length > 10)}
+        onClick={() => postCommu(text, tab)}
+      >
         <span>최소 10자 이상 입력해주세요.</span>
       </WriteSubmit>
     </>
