@@ -1,24 +1,44 @@
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 import BasicHeaderBar from "../components/BasicHeaderBar";
+
+const Container = styled.div`
+  height: 100vh;
+  background-color: rgb(234, 238, 236);
+
+  .settings_container {
+    background-color: #fff;
+    margin-top: 8px;
+    padding: 16px 20px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  div > a:nth-child(2) > .settings_container {
+    margin-top: 0;
+    border-top: 1px solid rgb(241, 245, 243);
+  }
+`;
 
 const Settings = () => {
   return (
-    <div>
+    <Container>
       <BasicHeaderBar title="설정" />
-      <a href="#">
+      <Link to="/usersetting">
         <div className="settings_container">내 정보 수정</div>
-      </a>
+      </Link>
       <div>
-        <a href="term1.html">
+        <Link to="/term1">
           <div className="settings_container">서비스 이용약관</div>
-        </a>
-        <a href="term2.html">
+        </Link>
+        <Link to="/term2">
           <div className="settings_container">개인정보 처리방침</div>
-        </a>
+        </Link>
       </div>
-      <a href="#">
+      <Link to="#">
         <div className="settings_container">회원탈퇴</div>
-      </a>
-    </div>
+      </Link>
+    </Container>
   );
 };
 

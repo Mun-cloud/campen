@@ -11,7 +11,6 @@ const Container = styled.div`
 
 const JoinContainer = styled.div`
   padding: 40px 20px;
-  height: 100%;
 `;
 
 const JoinHeader = styled.div`
@@ -73,7 +72,7 @@ const Button = styled.button`
   font-size: 16px;
   border: none;
   position: absolute;
-  bottom: 0;
+  bottom: 59px;
   transition: background-color 0.1s ease-in;
 
   &.checked {
