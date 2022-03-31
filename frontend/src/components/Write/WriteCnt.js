@@ -142,7 +142,7 @@ const WriteCnt = () => {
       </CntContainer>
       <WriteSubmit
         type="button"
-        disabled={!(.length > 5)}
+        disabled={!(.length < 10)}
       >
         <span>최소 10자 이상 입력해주세요.</span>
       </WriteSubmit>
