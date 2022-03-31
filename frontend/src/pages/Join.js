@@ -1,7 +1,7 @@
 import BasicHeaderBar from "../components/BasicHeaderBar";
 import styled from "styled-components";
-
-import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Container = styled.div`
   width: 100%;
@@ -75,14 +75,21 @@ const Button = styled.button`
   position: absolute;
   bottom: 0;
   transition: background-color 0.1s ease-in;
+
+  &.checked {
+    background-color: rgb(67, 192, 131);
+    color: white;
+  }
 `;
 
 const Join = () => {
-  const [allCheck, setAllCheck] = useState();
+  const [checkList, setCheckList] = useState([
+    { name: "check1", checked: false },
+    { name: "check2", checked: false },
+    { name: "check3", checked: false },
+  ]);
 
-  const check1 = useRef();
-  const check2 = useRef();
-  const check3 = useRef();
+  const go = useNavigate();
 
   return (
     <Container>
@@ -92,45 +99,106 @@ const Join = () => {
         <Checkbox className="check_box">
           <label>
             <input
+              name="checkall"
               type="checkbox"
               id="check_all"
-              onClick={() => {
-                setAllCheck(true);
+              checked={
+                checkList.find((v) => (v.checked ? false : true)) === undefined
+              }
+              onChange={(e) => {
+                setCheckList(
+                  checkList.map((v) => {
+                    return { ...v, checked: e.currentTarget.checked };
+                  })
+                );
               }}
             />
             전체동의하기
           </label>
-          <div className="check_list" id="term1">
+          <div className="check_list">
             <label>
               <input
-                ref={check1}
-                onClick={() => {
-                  console.log(check1.current.checked);
+                name="check1"
+                onChange={(e) => {
+                  setCheckList(
+                    checkList.map((v) =>
+                      e.target.name === v.name
+                        ? { ...v, checked: e.currentTarget.checked }
+                        : { ...v }
+                    )
+                  );
                 }}
+                checked={checkList[0].checked}
                 type="checkbox"
                 className="check_term"
               />
               서비스 이용약관 (필수)
             </label>
-            <i className="fas fa-chevron-right"></i>
+            <i
+              className="fas fa-chevron-right"
+              onClick={() => go("/term1")}
+            ></i>
           </div>
-          <div className="check_list" id="term2">
+          <div className="check_list">
             <label>
-              <input ref={check2} type="checkbox" className="check_term" />
+              <input
+                name="check2"
+                onChange={(e) => {
+                  setCheckList(
+                    checkList.map((v) =>
+                      e.target.name === v.name
+                        ? { ...v, checked: e.currentTarget.checked }
+                        : { ...v }
+                    )
+                  );
+                }}
+                checked={checkList[1].checked}
+                type="checkbox"
+                className="check_term"
+              />
               개인정보 처리방침 (필수)
             </label>
-            <i className="fas fa-chevron-right"></i>
+            <i
+              className="fas fa-chevron-right"
+              onClick={() => go("/term2")}
+            ></i>
           </div>
-          <div className="check_list" id="term3">
+          <div className="check_list">
             <label>
-              <input ref={check3} type="checkbox" className="check_term" />
+              <input
+                name="check3"
+                checked={checkList[2].checked}
+                type="checkbox"
+                className="check_term"
+                onChange={(e) => {
+                  setCheckList(
+                    checkList.map((v) =>
+                      e.target.name === v.name
+                        ? { ...v, checked: e.currentTarget.checked }
+                        : { ...v }
+                    )
+                  );
+                }}
+              />
               이벤트/마케팅 수신동의 (선택)
             </label>
             <i className="fas fa-chevron-right"></i>
           </div>
         </Checkbox>
       </JoinContainer>
-      <Button class="foot_btn">다음</Button>
+      <Button
+        className={
+          checkList[0].checked && checkList[1].checked
+            ? "foot_btn checked"
+            : "foot_btn"
+        }
+        disabled={!(checkList[0].checked && checkList[1].checked)}
+        onClick={() => {
+          go("/sing-up");
+        }}
+      >
+        다음
+      </Button>
     </Container>
   );
 };

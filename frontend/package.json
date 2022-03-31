@@ -18,6 +18,7 @@
     "react-helmet": "^6.1.0",
     "react-helmet-async": "^1.2.3",
     "react-intersection-observer": "^8.33.1",
+    "react-query": "^3.34.19",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",

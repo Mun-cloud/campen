@@ -140,12 +140,12 @@ const WriteCnt = () => {
           </PhotoBox>
         </PhotoContainer>
       </CntContainer>
-      <WriteSubmit
+      {/* <WriteSubmit
         type="button"
         disabled={!(.length < 10)}
       >
         <span>최소 10자 이상 입력해주세요.</span>
-      </WriteSubmit>
+      </WriteSubmit> */}
     </>
   );
 };
