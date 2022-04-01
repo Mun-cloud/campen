@@ -34,6 +34,7 @@ const LogSwiper = styled(Swiper)`
 
   .log_text_box {
     font-size: 12px;
+    font-weight: 400;
     display: flex;
     flex-direction: column;
     padding: 15px 10px;
@@ -44,6 +45,8 @@ const LogSwiper = styled(Swiper)`
   .log_writer {
     color: rgba(0, 0, 0, 0.5);
     margin-bottom: 4px;
+    font-size: 12px;
+    font-weight: 400;
   }
 
   .log_camp {
@@ -54,6 +57,12 @@ const LogSwiper = styled(Swiper)`
     -webkit-box-orient: vertical;
     word-wrap: break-word;
     margin-bottom: 30px;
+    font-size: 12px;
+    font-weight: 400;
+
+    i {
+      margin-right: 3px;
+    }
   }
 
   .log_text_box p {
@@ -63,6 +72,8 @@ const LogSwiper = styled(Swiper)`
     -webkit-line-clamp: 2; /* 라인 수 */
     -webkit-box-orient: vertical;
     word-wrap: break-word;
+    font-size: 12px;
+    font-weight: 400;
   }
 `;
 

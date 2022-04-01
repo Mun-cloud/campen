@@ -1,12 +1,14 @@
+import { useQuery } from "react-query";
 import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
+import { getNoticeList } from "../api";
 import BasicHeaderBar from "../components/BasicHeaderBar";
 import NoticeArticle from "../components/Notice/NoticeArticle";
 import NoticeList from "../components/Notice/NoticeList";
 
 const Container = styled.div`
-  padding: 0;
-  height: 100vh;
+  padding-bottom: 59px;
+  min-height: 100vh;
 
   .notice_box {
     display: flex;
@@ -69,18 +71,18 @@ const Container = styled.div`
 `;
 
 const Notice = () => {
+  // react-query를 통한 ajax 연동
+  const { isLoading, data } = useQuery("allNotice", getNoticeList);
+
   return (
     <Container>
       <BasicHeaderBar title="공지사항" />
-      <Routes>
-        <Route path="/" element={<NoticeList />} />
-        <Route path="/:id" element={<NoticeArticle />} />
-      </Routes>
-
-      <div className="pop_view_more">
-        <div>더보기</div>
-        <i className="fas fa-chevron-down"></i>
-      </div>
+      {isLoading ? null : (
+        <Routes>
+          <Route path="/" element={<NoticeList data={data} />} />
+          <Route path="/:id" element={<NoticeArticle data={data} />} />
+        </Routes>
+      )}
     </Container>
   );
 };

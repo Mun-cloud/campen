@@ -22,6 +22,7 @@ const SectionTitle = styled.div`
     border-radius: 7px;
     font-size: 13px;
     font-weight: bold;
+    font-weight: 400;
   }
 
   .commu_link {
@@ -31,6 +32,7 @@ const SectionTitle = styled.div`
     font-weight: bold;
     margin-top: 7px;
     margin-bottom: 23px;
+    font-weight: 400;
 
     span {
       display: block;

@@ -160,6 +160,7 @@ app.use(require("./controllers/Camps")(app));
 app.use(require("./controllers/Contents")(app));
 // app.use(require("./controllers/Student")(app));
 app.use(require("./controllers/Members")(app));
+app.use(require("./controllers/Notices")(app));
 
 // 런타임 에러가 발생한 경우에 대한 일괄 처리
 app.use((err, req, res, next) => {
