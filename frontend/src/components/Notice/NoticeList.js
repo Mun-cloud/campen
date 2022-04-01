@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 const NoticeList = () => {
   return (
     <div className="pop_main">
-      <a href="#">
+      <Link to="1">
         <div className="notice_box" data-notice="notice-1.html">
           <div className="notice_info">
             <div className="notice_title">
@@ -13,8 +15,8 @@ const NoticeList = () => {
             <i className="fas fa-chevron-right"></i>
           </div>
         </div>
-      </a>
-      <a href="#">
+      </Link>
+      <Link to="#">
         <div className="notice_box">
           <div className="notice_info">
             <div className="notice_title">
@@ -26,8 +28,8 @@ const NoticeList = () => {
             <i className="fas fa-chevron-right"></i>
           </div>
         </div>
-      </a>
-      <a href="#">
+      </Link>
+      <Link to="#">
         <div className="notice_box">
           <div className="notice_info">
             <div className="notice_title">
@@ -39,8 +41,8 @@ const NoticeList = () => {
             <i className="fas fa-chevron-right"></i>
           </div>
         </div>
-      </a>
-      <a href="#">
+      </Link>
+      <Link to="#">
         <div className="notice_box">
           <div className="notice_info">
             <div className="notice_title">
@@ -52,7 +54,7 @@ const NoticeList = () => {
             <i className="fas fa-chevron-right"></i>
           </div>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };
