@@ -86,19 +86,21 @@ module.exports = (app) => {
   /** 데이터 수정 --> Update(UPDATE) */
   router.put("/notice/:id", async (req, res, next) => {
     const id = req.get("id");
-    const notice = req.post("notice");
+    const title = req.post("title");
+    const content = req.post("content");
 
-    function foundNull() {
-      [id, notice].forEach((v) => {
-        if (v === null || v === "") {
-          return false;
-        }
-      });
-    }
+    // function foundNull() {
+    //   [id, title, content].forEach((v) => {
+    //     if (v === null || v === "") {
+    //       console.log(v);
+    //       return false;
+    //     }
+    //   });
+    // }
 
-    if (!foundNull()) {
-      return next(new BadRequestException("게시글의 내용을 입력해 주십시오."));
-    }
+    // if (!foundNull()) {
+    //   return next(new BadRequestException("게시글의 내용을 입력해 주십시오."));
+    // }
 
     let json = null;
 
@@ -108,8 +110,8 @@ module.exports = (app) => {
       await dbcon.connect();
 
       // 데이터 수정하기
-      const sql = "UPDATE notice SET notice=? WHERE id=?";
-      const input_data = [notice, id];
+      const sql = "UPDATE notice SET title=?, content=? WHERE id=?";
+      const input_data = [title, content, id];
       const [result1] = await dbcon.query(sql, input_data);
 
       // 결과 행 수가 0이라면 예외처리
@@ -118,7 +120,8 @@ module.exports = (app) => {
       }
 
       // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-      const sql2 = "SELECT * FROM notice WHERE id=?";
+      const sql2 =
+        "SELECT id, title, cast(content as char(10000)) as content, reg_date, edit_date, members_id FROM notice WHERE id=?";
       const [result2] = await dbcon.query(sql2, [id]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
@@ -146,19 +149,6 @@ module.exports = (app) => {
       // 데이터베이스 접속
       dbcon = await mysql2.createConnection(config.database);
       await dbcon.connect();
-
-      // 자식데이터 삭제
-      await dbcon.query("DELETE FROM `notice-href` WHERE 'notice_id'=?", [id]);
-
-      // 자식데이터 null 주기
-      await dbcon.query(
-        "UPDATE `notice-comments` SET `notice_id`=null WHERE 'notice_id'=?",
-        [id]
-      );
-      await dbcon.query(
-        "UPDATE `notice-likes` SET `notice_id`=null WHERE 'notice_id'=?",
-        [id]
-      );
 
       // 데이터 삭제하기
       const sql = "DELETE FROM notice WHERE id=?";
