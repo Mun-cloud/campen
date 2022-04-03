@@ -60,7 +60,8 @@ const Search = () => {
           <SearchHeader />
           <ResultCountCount>
             <h2>
-              캠핏 검색결과 <span id="search_result_count">49개</span>
+              캠핏 검색결과{" "}
+              <span id="search_result_count">{item.item.length}개</span>
             </h2>
           </ResultCountCount>
           {item.item.map((v) => {
