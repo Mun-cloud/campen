@@ -7,8 +7,6 @@ const WriteSubmit = styled.button`
   width: 100%;
   height: 70px;
   font-size: 11.5pt;
-  background: rgb(234, 238, 236);
-  color: rgb(133, 138, 136);
   font-weight: 700;
   font-size: 12pt;
   border: none;
@@ -33,12 +31,21 @@ const WriteButton = ({ text, tab }) => {
   return (
     <>
       {/* <!-- 하단 버튼 --> */}
-      <WriteSubmit
-        disabled={!(text.length > 10)}
-        onClick={() => postCommu(text, tab)}
-      >
-        <span>최소 10자 이상 입력해주세요.</span>
-      </WriteSubmit>
+      <div disabled={!(text.length > 10)} onClick={() => postCommu(text, tab)}>
+        {text.length < 10 && (
+          <WriteSubmit style={{ backgroundColor: "rgb(234, 238, 236)" }}>
+            <span style={{ color: "rgb(133, 138, 136)" }}>
+              10자 이상 입력해주세요.
+            </span>
+          </WriteSubmit>
+        )}
+
+        {text.length > 10 && (
+          <WriteSubmit style={{ backgroundColor: "#43C083" }}>
+            <span style={{ color: "rgb(255, 255, 255)" }}>작성완료</span>
+          </WriteSubmit>
+        )}
+      </div>
     </>
   );
 };
