@@ -35,14 +35,14 @@ const WriteButton = ({ text, tab }) => {
         {text.length < 10 && (
           <WriteSubmit style={{ backgroundColor: "rgb(234, 238, 236)" }}>
             <span style={{ color: "rgb(133, 138, 136)" }}>
-              10자 이상 입력해주세요.
+              최소 10자 이상 입력해주세요
             </span>
           </WriteSubmit>
         )}
 
-        {text.length > 10 && (
+        {text.length >= 10 && (
           <WriteSubmit style={{ backgroundColor: "#43C083" }}>
-            <span style={{ color: "rgb(255, 255, 255)" }}>작성완료</span>
+            <span style={{ color: "rgb(255, 255, 255)" }}>작성 완료</span>
           </WriteSubmit>
         )}
       </div>
