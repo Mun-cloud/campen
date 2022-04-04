@@ -28,31 +28,24 @@ const WriteSubmit = styled.button`
 const postCommu = async (content, tab) => {
   try {
     const response = await axios.post("/content", { tab, content });
-    console.log(response.data.item[0]);
+    console.log(response);
   } catch (err) {
     console.error(err);
   }
 };
 
-const WriteButton = ({ text, tab }) => {
+const WriteButton = ({ btnText, cntTab }) => {
   return (
     <>
       {/* <!-- 하단 버튼 --> */}
-      {/* <div > */}
+
       <WriteSubmit
-        className={text.length > 10 ? "active" : ""}
-        disabled={!(text.length > 10)}
-        onClick={() => postCommu(text, tab)}
+        className={btnText.length >= 10 ? "active" : ""}
+        disabled={!(btnText.length >= 10)}
+        onClick={() => postCommu(btnText, cntTab)}
       >
         10자 이상 입력해주세요.
       </WriteSubmit>
-
-      {/* {text.length > 10 && (
-          <WriteSubmit style={{ backgroundColor: "#43C083" }}>
-            <span style={{ color: "rgb(255, 255, 255)" }}>작성완료</span>
-          </WriteSubmit>
-        )} */}
-      {/* </div> */}
     </>
   );
 };

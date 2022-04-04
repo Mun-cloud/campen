@@ -15,21 +15,21 @@ const Write = () => {
   const [text, setText] = useState("");
   const [tab, setTab] = useState("0");
 
-  function textCnt(text) {
+  const cntText = (text) => {
     setText(text);
-  }
+  };
 
-  function getTab(tab) {
+  const cntTab = (tab) => {
     setTab(tab);
-  }
+  };
 
   return (
     <>
       <Container>
         <WriteHeader />
-        <WriteCnt textCnt={textCnt} getTab={getTab} />
+        <WriteCnt cntText={cntText} cntTab={cntTab} />
 
-        <WriteButton text={text} tab={tab} />
+        <WriteButton btnText={text} cntTab={tab} />
       </Container>
     </>
   );

@@ -82,7 +82,7 @@ const Photo = styled.label`
   }
 `;
 
-const WriteCnt = ({ textCnt, getTab }) => {
+const WriteCnt = ({ cntText, cntTab }) => {
   return (
     <>
       {/* <!-- 컨텐츠 --> */}
@@ -92,7 +92,7 @@ const WriteCnt = ({ textCnt, getTab }) => {
           <CntBtn>
             <select
               onChange={(e) => {
-                getTab(e.currentTarget.value);
+                cntTab(e.currentTarget.value);
               }}
             >
               <option value="0">캠핑한컷</option>
@@ -109,7 +109,7 @@ const WriteCnt = ({ textCnt, getTab }) => {
               name="constents"
               maxLength="3000"
               onChange={(e) => {
-                textCnt(e.currentTarget.value);
+                cntText(e.currentTarget.value);
               }}
             ></textarea>
           </Cnt>

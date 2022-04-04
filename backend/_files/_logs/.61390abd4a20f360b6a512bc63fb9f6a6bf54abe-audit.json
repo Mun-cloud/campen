@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 50
+    },
+    "auditLog": "/Users/ssonnni/Desktop/Fullstack/0.team_proj/campen/backend/_files/_logs/.61390abd4a20f360b6a512bc63fb9f6a6bf54abe-audit.json",
+    "files": [
+        {
+            "date": 1649052505513,
+            "name": "/Users/ssonnni/Desktop/Fullstack/0.team_proj/campen/backend/_files/_logs/error_220404.log",
+            "hash": "bb264519d6f8bfaab16879026f630005"
+        }
+    ],
+    "hashType": "md5"
+}

@@ -32,13 +32,18 @@ const TabItem = styled.li`
   }
 `;
 
-const CommuHeader = () => {
+const CommuHeader = ({ tab }) => {
   return (
     <div>
       {/* 상단 탭메뉴 */}
       <TabContainer>
         {["전체보기", "캠핑후기", "캠핑한컷", "궁금해요"].map((data, index) => (
-          <TabItem data-tab={`tab${index + 1}`}>
+          <TabItem
+            data-tab={`tab${index + 1}`}
+            onChange={(e) => {
+              tab(e.currentTarget.value);
+            }}
+          >
             <NavLink
               to={`commu${index + 1}.html`}
               style={({ isActive }) => ({
