@@ -38,18 +38,17 @@ const CommuHeader = ({ tab }) => {
       {/* 상단 탭메뉴 */}
       <TabContainer>
         {["전체보기", "캠핑후기", "캠핑한컷", "궁금해요"].map((data, index) => (
-          <TabItem
-            data-tab={`tab${index + 1}`}
-            onChange={(e) => {
-              tab(e.currentTarget.value);
-            }}
-          >
+          <TabItem data-tab={`tab${index + 1}`}>
             <NavLink
-              to={`commu${index + 1}.html`}
+              to={`/commu${index + 1}`}
               style={({ isActive }) => ({
                 borderBottom: isActive && "2px solid #43C083",
                 color: isActive ? "#43C083" : "#444",
               })}
+              id={data}
+              onClick={(e) => {
+                tab(e.currentTarget.id);
+              }}
             >
               {data}
             </NavLink>
