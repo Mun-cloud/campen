@@ -14,8 +14,6 @@ const WriteSubmit = styled.button`
   background-color: rgb(234, 238, 236);
   color: rgb(133, 138, 136);
 
-  transition: background-color 0.3s ease-in-out;
-
   &.active {
     background-color: #43c083;
     color: rgb(255, 255, 255);
@@ -40,7 +38,6 @@ const WriteButton = ({ text, tab }) => {
   return (
     <>
       {/* <!-- 하단 버튼 --> */}
-<<<<<<< HEAD
       {/* <div > */}
       <WriteSubmit
         className={text.length > 10 ? "active" : ""}
@@ -51,23 +48,8 @@ const WriteButton = ({ text, tab }) => {
       </WriteSubmit>
 
       {/* {text.length > 10 && (
-=======
-      <div disabled={!(text.length > 10)} onClick={() => postCommu(text, tab)}>
-        {text.length < 10 && (
-          <WriteSubmit style={{ backgroundColor: "rgb(234, 238, 236)" }}>
-            <span style={{ color: "rgb(133, 138, 136)" }}>
-              최소 10자 이상 입력해주세요
-            </span>
-          </WriteSubmit>
-        )}
-
-        {text.length >= 10 && (
-<<<<<<< Updated upstream
-=======
->>>>>>> 060483037325bae68ded0be5cdee4d2657874ad9
->>>>>>> Stashed changes
           <WriteSubmit style={{ backgroundColor: "#43C083" }}>
-            <span style={{ color: "rgb(255, 255, 255)" }}>작성 완료</span>
+            <span style={{ color: "rgb(255, 255, 255)" }}>작성완료</span>
           </WriteSubmit>
         )} */}
       {/* </div> */}
