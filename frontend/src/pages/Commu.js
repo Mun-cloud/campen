@@ -1,12 +1,12 @@
 import CommuHeader from "../components/Commu/CommuHeader";
-// import CommuCnt from "../components/Commu/CommuCnt";
-// import CommuCntFooter from "../components/Commu/CommuCntFooter";
-// import CommuWrite from "../components/Commu/CommuWrite";
+import CommuCnt from "../components/Commu/CommuCnt";
+import CommuCntFooter from "../components/Commu/CommuCntFooter";
+import CommuWrite from "../components/Commu/CommuWrite";
 import { useEffect } from "react";
 import axios from "axios";
 
 const Commu = () => {
-  useEffect(
+  useEffect(() => {
     (async () => {
       try {
         const response = await axios.get("/content");
@@ -14,9 +14,8 @@ const Commu = () => {
       } catch (error) {
         console.error(error);
       }
-    })(),
-    []
-  );
+    })();
+  }, []);
 
   // const [tab, setTab] = useState("0");
 
@@ -28,9 +27,9 @@ const Commu = () => {
     <div>
       <CommuHeader tab={commuTab} />
 
-      {/* <CommuCnt /> */}
-      {/* <CommuCntFooter /> */}
-      {/* <CommuWrite /> */}
+      <CommuCnt />
+      <CommuCntFooter />
+      <CommuWrite />
     </div>
   );
 };
