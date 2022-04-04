@@ -2,7 +2,11 @@ import CommuHeader from "../components/Commu/CommuHeader";
 import CommuCnt from "../components/Commu/CommuCnt";
 import CommuCntFooter from "../components/Commu/CommuCntFooter";
 import CommuWrite from "../components/Commu/CommuWrite";
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
+=======
+import { useEffect } from "react";
+>>>>>>> 01b14f6519e7267eb77348f95f0dc01a96c66e5a
 import axios from "axios";
 
 const Commu = () => {
