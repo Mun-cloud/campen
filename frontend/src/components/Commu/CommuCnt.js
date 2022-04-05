@@ -154,8 +154,8 @@ const CntImg = styled.div`
   }
 `;
 
-const CommuCnt = ({ dataFilter }) => {
-  console.log(dataFilter);
+const CommuCnt = ({ data }) => {
+  console.log(data);
   return (
     <>
       {/* <!-- 컨텐츠:프로필,텍스트 --> */}

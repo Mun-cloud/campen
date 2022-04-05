@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const TabContainer = styled.ul`
@@ -19,7 +19,7 @@ const TabItem = styled.li`
   height: 45px;
   width: 25%;
 
-  a {
+  div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,33 +27,107 @@ const TabItem = styled.li`
     height: 100%;
     font-size: 10.5pt;
     font-weight: 500;
-    color: #666;
+    color: #444;
     cursor: pointer;
+
+    &.active {
+      border-bottom: 2px solid #43c083;
+      color: #43c083;
+    }
   }
 `;
 
-const CommuHeader = ({ tab }) => {
+const CommuHeader = ({ getData }) => {
+  const [seletedTab, setSelectedTab] = useState("전체보기");
+
+  useEffect(() => {
+    (async () => {
+      let originData = [];
+      let filterData = [];
+      try {
+        originData = (await axios.get("/content")).data.item;
+      } catch (error) {
+        console.error(error);
+      }
+      // eslint-disable-next-line default-case
+      switch (seletedTab) {
+        case "캠핑한컷":
+          filterData = originData.filter((v) => {
+            if (v.tab === 0) {
+              return true;
+            }
+          });
+          break;
+        case "캠핑후기":
+          filterData = originData.filter((v) => {
+            if (v.tab === 1) {
+              return true;
+            }
+          });
+          break;
+        case "궁금해요":
+          filterData = originData.filter((v) => {
+            if (v.tab === 2) {
+              return true;
+            }
+          });
+          break;
+        case "전체보기":
+          filterData = originData;
+          break;
+      }
+      getData(filterData);
+    })();
+  }, [seletedTab]);
+
   return (
     <div>
       {/* 상단 탭메뉴 */}
       <TabContainer>
-        {["전체보기", "캠핑후기", "캠핑한컷", "궁금해요"].map((data, index) => (
-          <TabItem data-tab={`tab${index + 1}`}>
-            <NavLink
-              to={`/commu${index + 1}`}
-              style={({ isActive }) => ({
-                borderBottom: isActive && "2px solid #43C083",
-                color: isActive ? "#43C083" : "#444",
-              })}
-              id={data}
-              onClick={(e) => {
-                tab(e.currentTarget.id);
-              }}
-            >
-              {data}
-            </NavLink>
-          </TabItem>
-        ))}
+        <TabItem>
+          <div
+            id="전체보기"
+            onClick={(e) => {
+              setSelectedTab(e.target.id);
+            }}
+            className={seletedTab === "전체보기" ? "active" : ""}
+          >
+            전체보기
+          </div>
+        </TabItem>
+        <TabItem>
+          <div
+            id="캠핑후기"
+            onClick={(e) => {
+              setSelectedTab(e.target.id);
+            }}
+            className={seletedTab === "캠핑후기" ? "active" : ""}
+          >
+            캠핑후기
+          </div>
+        </TabItem>
+        <TabItem>
+          <div
+            id="캠핑한컷"
+            onClick={(e) => {
+              setSelectedTab(e.target.id);
+            }}
+            className={seletedTab === "캠핑한컷" ? "active" : ""}
+          >
+            캠핑한컷
+          </div>
+        </TabItem>
+        <TabItem>
+          <div
+            id="궁금해요"
+            onClick={(e) => {
+              setSelectedTab(e.target.id);
+            }}
+            className={seletedTab === "궁금해요" ? "active" : ""}
+          >
+            궁금해요
+          </div>
+        </TabItem>
       </TabContainer>
     </div>
   );

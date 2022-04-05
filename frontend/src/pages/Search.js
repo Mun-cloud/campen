@@ -47,7 +47,29 @@ const Search = () => {
       setPage(page + 1);
     }
   }, [inView]);
-  return (
+
+  const [location, setLocation] = useState("");
+  const getLocation = (location) => {
+    setLocation(location);
+  };
+
+  // console.log(item);
+  useEffect(() => {
+    let regex = new RegExp(location);
+    const a = item.item.filter((v) => regex.test(v.addr1));
+    console.log(a);
+  }, [location]);
+
+  const [searchKey, setSearchKey] = useState("");
+  const getSearchKey = (key) => {
+    setSearchKey(key);
+  };
+
+  console.log(searchKey);
+
+  return loading ? (
+    "loading..."
+  ) : (
     <div>
       {/* 결과값이 실패인 경우 에러메시지 표시, 성공인 경우 목록 컴포넌트 호출 */}
       {rt !== 200 ? (
@@ -57,7 +79,7 @@ const Search = () => {
         </div>
       ) : (
         <>
-          <SearchHeader />
+          <SearchHeader getLocation={getLocation} getSearchKey={getSearchKey} />
           <ResultCountCount>
             <h2>
               캠핏 검색결과{" "}
