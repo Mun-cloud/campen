@@ -48,24 +48,41 @@ const Search = () => {
     }
   }, [inView]);
 
+  // 지역 옵션 선택값
   const [location, setLocation] = useState("");
   const getLocation = (location) => {
     setLocation(location);
   };
+  // location 값에 따라 정규식 보낼 값
+  const locationRegex = (location) => {
+    switch (location) {
+      case "경북":
+        return "경북|경상북도";
+      case "경남":
+        return "경남|경상남도";
+      case "전북":
+        return "전북|전라북도";
+      case "전남":
+        return "전남|전라남도";
+      default:
+        return location;
+    }
+  };
 
-  // console.log(item);
-  useEffect(() => {
-    let regex = new RegExp(location);
-    const a = item.item.filter((v) => regex.test(v.addr1));
-    console.log(a);
-  }, [location]);
-
+  // 검색 키워드 받기
   const [searchKey, setSearchKey] = useState("");
   const getSearchKey = (key) => {
     setSearchKey(key);
   };
 
-  console.log(searchKey);
+  // 전체 캠핑장 데이터 필터링 함수
+  const handleFilter = () => {
+    let document = [];
+    document = item.item.filter((v) =>
+      new RegExp(locationRegex(location)).test(v.addr1)
+    );
+    return document.filter((v) => new RegExp(searchKey).test(v.name));
+  };
 
   return loading ? (
     "loading..."
@@ -80,15 +97,23 @@ const Search = () => {
       ) : (
         <>
           <SearchHeader getLocation={getLocation} getSearchKey={getSearchKey} />
+
           <ResultCountCount>
             <h2>
               캠핏 검색결과{" "}
-              <span id="search_result_count">{item.item.length}개</span>
+              <span id="search_result_count">{handleFilter().length}개</span>
             </h2>
           </ResultCountCount>
-          {item.item.map((v) => {
-            return <SearchResultBox item={v} inview={ref} key={v.id} />;
-          })}
+
+          {item.item.filter((v) =>
+            new RegExp(locationRegex(location)).test(v.addr1)
+          ).length === 0 ? (
+            <div>검색결과가 없습니다.</div>
+          ) : (
+            handleFilter().map((v) => {
+              return <SearchResultBox item={v} inview={ref} key={v.id} />;
+            })
+          )}
         </>
       )}
     </div>

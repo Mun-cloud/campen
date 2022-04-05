@@ -40,7 +40,6 @@ module.exports = (app) => {
     }
 
     // 모든 처리에 성공했으므로 정상 조회 결과 구성
-    console.log(json.content);
     res.sendJson({ item: json });
   });
 
