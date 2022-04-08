@@ -7,11 +7,17 @@ export const getCampList = createAsyncThunk(
   "CAMP/GET_LIST",
   async (payload, { rejectWithValue }) => {
     let result;
-
-    try {
-      result = await axios.get("/campdata");
-    } catch (err) {
-      result = rejectWithValue(err.response);
+    if (payload.query) {
+      try {
+        result = await axios.get("/campdata", {
+          params: {
+            query: payload.query,
+            page: payload.page,
+          },
+        });
+      } catch (err) {
+        result = rejectWithValue(err.response);
+      }
     }
     return result;
   }

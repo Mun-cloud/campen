@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useParams } from "react-router-dom";
 import styled from "styled-components";
+import qs from "qs";
 
 import SearchHeader from "../components/Search/SearchHeader";
 import SearchResultBox from "../components/Search/SearchResultBox";
@@ -17,6 +19,11 @@ const ResultCountCount = styled.div`
 `;
 
 const Search = () => {
+  const { search } = useLocation();
+
+  const { query } = qs.parse(search, { ignoreQueryPrefix: true });
+  console.log(query);
+
   // 페이지 번호 상태값
   const [page, setPage] = useState(1);
 
@@ -32,14 +39,14 @@ const Search = () => {
   // 검색이 실행되면 페이지 번호 초기화
   useEffect(() => {
     setPage(1);
-  }, []);
+  }, [query]);
 
   // query값이 변경될 때만 실행되는 hook을 통해 액션함수 디스패치
   useEffect(() => {
     if (!loading) {
-      dispatch(getCampList({ page }));
+      dispatch(getCampList({ page, query }));
     }
-  }, [page]);
+  }, [page, query]);
 
   useEffect(() => {
     // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면
@@ -70,18 +77,16 @@ const Search = () => {
   };
 
   // 검색 키워드 받기
-  const [searchKey, setSearchKey] = useState("");
-  const getSearchKey = (key) => {
-    setSearchKey(key);
-  };
+  // const [searchKey, setSearchKey] = useState("");
+  // const getSearchKey = (key) => {
+  //   setSearchKey(key);
+  // };
 
   // 전체 캠핑장 데이터 필터링 함수
   const handleFilter = () => {
-    let document = [];
-    document = item.item.filter((v) =>
+    return item.item.filter((v) =>
       new RegExp(locationRegex(location)).test(v.addr1)
     );
-    return document.filter((v) => new RegExp(searchKey).test(v.name));
   };
 
   return loading ? (
@@ -96,7 +101,7 @@ const Search = () => {
         </div>
       ) : (
         <>
-          <SearchHeader getLocation={getLocation} getSearchKey={getSearchKey} />
+          <SearchHeader getLocation={getLocation} />
 
           <ResultCountCount>
             <h2>

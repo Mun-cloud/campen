@@ -2,8 +2,6 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import SearchSwiper from "./SearchSwiper";
 import SearchTagBox from "./SearchTagBox";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import { useQuery } from "react-query";
 import { getImageList } from "../../api";
 
