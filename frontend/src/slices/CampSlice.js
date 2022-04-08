@@ -7,17 +7,15 @@ export const getCampList = createAsyncThunk(
   "CAMP/GET_LIST",
   async (payload, { rejectWithValue }) => {
     let result;
-    if (payload.query) {
-      try {
-        result = await axios.get("/campdata", {
-          params: {
-            query: payload.query,
-            page: payload.page,
-          },
-        });
-      } catch (err) {
-        result = rejectWithValue(err.response);
-      }
+    try {
+      result = await axios.get("/campdata", {
+        params: {
+          query: payload.query,
+          page: payload.page,
+        },
+      });
+    } catch (err) {
+      result = rejectWithValue(err.response);
     }
     return result;
   }
@@ -45,6 +43,9 @@ const campSlice = createSlice({
     },
     /** Ajax 요청 성공 */
     [getCampList.fulfilled]: (state, { meta, payload }) => {
+      if (meta.arg.page > 1) {
+        payload.data.item = state.item.item.concat(payload.data.item);
+      }
       return {
         ...state,
         rt: payload.status,

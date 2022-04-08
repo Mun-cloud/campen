@@ -22,7 +22,6 @@ const Search = () => {
   const { search } = useLocation();
 
   const { query } = qs.parse(search, { ignoreQueryPrefix: true });
-  console.log(query);
 
   // 페이지 번호 상태값
   const [page, setPage] = useState(1);
@@ -115,9 +114,12 @@ const Search = () => {
           ).length === 0 ? (
             <div>검색결과가 없습니다.</div>
           ) : (
-            handleFilter().map((v) => {
-              return <SearchResultBox item={v} inview={ref} key={v.id} />;
-            })
+            <>
+              {handleFilter().map((v) => (
+                <SearchResultBox item={v} key={v.id} />
+              ))}
+              {handleFilter().length > 3 && <div ref={ref}></div>}
+            </>
           )}
         </>
       )}
