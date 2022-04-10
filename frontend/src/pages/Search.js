@@ -59,27 +59,6 @@ const Search = () => {
   const getLocation = (location) => {
     setLocation(location);
   };
-  // location 값에 따라 정규식 보낼 값
-  const locationRegex = (location) => {
-    switch (location) {
-      case "경북":
-        return "경북|경상북도";
-      case "경남":
-        return "경남|경상남도";
-      case "전북":
-        return "전북|전라북도";
-      case "전남":
-        return "전남|전라남도";
-      default:
-        return location;
-    }
-  };
-
-  // 검색 키워드 받기
-  // const [searchKey, setSearchKey] = useState("");
-  // const getSearchKey = (key) => {
-  //   setSearchKey(key);
-  // };
 
   // 전체 캠핑장 데이터 필터링 함수
   const handleFilter = () => {
