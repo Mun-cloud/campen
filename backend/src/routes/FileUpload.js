@@ -37,9 +37,8 @@ module.exports = (app) => {
           new Date().getTime().toString() + extName.toLowerCase();
         // 업로드 정보에 백엔드의 업로드 파일 이름을 추가한다.
         file.savename = saveName;
-        file.path = path.join(file.dir, saveName);
         // 업로드 정보에 파일에 접근할 수 있는 URL값 추가
-        file.url = path.join(config.upload.dir, saveName).replace(/\\/gi, "/");
+        file.url = path.join("/upload", saveName).replace(/\\/gi, "/");
         // 구성된 정보를 req 객체에 추가
         if (req.file instanceof Array) {
           req.file.push(file);

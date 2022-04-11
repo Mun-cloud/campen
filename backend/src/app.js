@@ -161,6 +161,7 @@ app.use(require("./controllers/Contents")(app));
 // app.use(require("./controllers/Student")(app));
 app.use(require("./controllers/Members")(app));
 app.use(require("./controllers/Notices")(app));
+app.use(require("./controllers/Exhibition")(app));
 
 app.use(require("./routes/FileUpload")(app));
 

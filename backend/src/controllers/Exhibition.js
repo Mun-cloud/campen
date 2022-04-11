@@ -59,7 +59,7 @@ module.exports = (app) => {
 
       // 데이터 조회
       const sql =
-        "SELECT e.id, e.photo, c.id campId, c.name name, c.lineIntro lineIntro  FROM exhibition e, `exhibition-list` l, camp c where e.id=l.exhibition_id and l.camp_id=c.id and e.id=?";
+        "SELECT e.id, e.photo, e.title, c.id campId, c.name name, c.lineIntro lineIntro, cast(c.photo as char(10000)) campPhoto, c.lctCl FROM exhibition e, `exhibition-list` l, camp c where e.id=l.exhibition_id and l.camp_id=c.id and e.id=?";
       const [result] = await dbcon.query(sql, [id]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
