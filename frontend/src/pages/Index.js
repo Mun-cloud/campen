@@ -8,6 +8,7 @@ import IndexExhibition from "../components/Index/IndexExhibition";
 import Footer from "../components/Footer";
 
 const Index = ({ handleNavView }) => {
+  console.log(sessionStorage);
   return (
     <div>
       <div style={{ padding: "15px" }}>

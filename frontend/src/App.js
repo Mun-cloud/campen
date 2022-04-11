@@ -28,6 +28,7 @@ import UserIntro from "./pages/UserIntro";
 import Password from "./pages/Password";
 import Nickname from "./pages/NickName";
 import Sns from "./pages/Sns";
+import Login from "./styles/Login";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route path="/my-active" element={<MyActive />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/notice/*" element={<Notice />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/commu" element={<Commu />} />
         <Route path="/mylogin" element={<MyLogin />} />
         <Route path="/mylogout" element={<MyLogout />} />
