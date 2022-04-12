@@ -1,12 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 // import { useDispatch, useSelector } from "react-redux";
 // import { getUserData } from "../slices/UserSlice";
 
 const Login = () => {
+  const go = useNavigate();
   const [id, setId] = useState();
   const [pw, setPw] = useState();
-  const [userData, setUserData] = useState();
+  // const [userData, setUserData] = useState();
 
   //   const { rt, rtmsg, item, loading } = useSelector((state) => state.user);
 
@@ -20,12 +22,14 @@ const Login = () => {
     try {
       res = (await axios.post("/member/login", { user_id: id, user_pw: pw }))
         .data.item[0];
-      console.log(res);
-      sessionStorage.setItem("userData", JSON.stringify(res));
-      sessionStorage.setItem("isLogin", true);
-      setUserData(JSON.parse(sessionStorage.getItem("userData")));
+      // sessionStorage.setItem("userData", JSON.stringify(res));
+      // sessionStorage.setItem("isLogin", true);
+      // setUserData(JSON.parse(sessionStorage.getItem("userData")));
+      alert(`${res.user_name}님 환영합니다.`);
+      go("/");
     } catch (err) {
       console.error(err);
+      alert(err.response.data.rtmsg);
     }
   };
   return (
