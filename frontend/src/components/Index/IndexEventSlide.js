@@ -3,6 +3,10 @@ import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import SwiperCore, { Autoplay, Pagination } from "swiper";
 import "swiper/css"; //basic
 import "swiper/css/pagination";
+import { useQuery } from "react-query";
+import { getExhibition } from "../../api";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 SwiperCore.use([Autoplay, Pagination]);
 
@@ -11,6 +15,8 @@ const SwiperImg = styled.img`
 `;
 
 const IndexEventSlide = () => {
+  const { isLoading, data } = useQuery("allExhibition", getExhibition);
+
   return (
     // <!-- 이벤트 슬라이드 -->
     <Swiper
@@ -26,30 +32,14 @@ const IndexEventSlide = () => {
       scrollbar={{ draggable: true }}
       pagination={{ clickable: true }}
     >
-      <SwiperSlide className="glide__slide slider">
-        <a href="/camp">
-          <SwiperImg
-            src={require("../../assets/img/event_slide_08.png")}
-            alt="장박 캠핑장"
-          />
-        </a>
-      </SwiperSlide>
-      <SwiperSlide className="glide__slide slider">
-        <a href="/camp">
-          <SwiperImg
-            src={require("../../assets/img/event_slide_09.png")}
-            alt="반려동물 캠핑장"
-          />
-        </a>
-      </SwiperSlide>
-      <SwiperSlide className="glide__slide slider">
-        <a href="/camp">
-          <SwiperImg
-            src={require("../../assets/img/event_slide_10.png")}
-            alt="치유 캠핑장"
-          />
-        </a>
-      </SwiperSlide>
+      {!isLoading &&
+        data.map((v) => (
+          <SwiperSlide className="glide__slide slider" key={v.id}>
+            <Link to={`/exhibition/${v.id}`}>
+              <SwiperImg src={v.photo} alt={v.title} />
+            </Link>
+          </SwiperSlide>
+        ))}
     </Swiper>
   );
 };

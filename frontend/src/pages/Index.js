@@ -9,9 +9,7 @@ import Footer from "../components/Footer";
 import { useSelector } from "react-redux";
 
 const Index = ({ handleNavView }) => {
-  const { item } = useSelector((state) => state.user);
-
-  console.log(item);
+  // const { item } = useSelector((state) => state.user);
 
   return (
     <div>
