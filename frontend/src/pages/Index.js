@@ -6,20 +6,12 @@ import IndexBestPhoto from "../components/Index/IndexBestPhoto";
 import IndexCamplog from "../components/Index/IndexCamplog";
 import IndexExhibition from "../components/Index/IndexExhibition";
 import Footer from "../components/Footer";
-import axios from "axios";
-import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Index = ({ handleNavView }) => {
-  const [user, setUser] = useState();
-  const checkLogin = async () => {
-    try {
-      let res = await axios.get("/member/info");
-      console.log(res);
-      setUser(res);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const { item } = useSelector((state) => state.user);
+
+  console.log(item);
 
   return (
     <div>

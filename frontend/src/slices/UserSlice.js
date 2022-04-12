@@ -29,6 +29,7 @@ const userSlice = createSlice({
     rtmsg: null, // 에러메세지
     item: [], // Ajax 처리를 통해 수신된 데이터
     loading: false, // 로딩 여부
+    login: false,
   },
   // 내부 action 및 동기 action (Ajax처리시에는 사용하지 않음)
   reducer: {},
@@ -50,6 +51,7 @@ const userSlice = createSlice({
         rtmsg: payload.statusText,
         item: payload.data.item[0],
         loading: false,
+        login: true,
       };
     },
     [getUserData.rejected]: (state, { payload }) => {
@@ -59,6 +61,7 @@ const userSlice = createSlice({
         rtmsg: payload?.statusText ? payload.statusText : "Server Error",
         item: payload?.data,
         loading: false,
+        login: false,
       };
     },
   },
