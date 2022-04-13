@@ -11,6 +11,7 @@ const UserContainer = styled.div`
   margin-right: auto;
   overflow: hidden;
   background-color: rgb(241, 245, 243);
+  padding-bottom: 60px;
 
   a {
     text-decoration: none;
@@ -21,13 +22,11 @@ const UserContainer = styled.div`
 
 const UserSetting = () => {
   return (
-    <>
-      <UserContainer>
-        <UserSettingHeader />
-        <UserSettingProfile />
-        <UserSettingMenu />
-      </UserContainer>
-    </>
+    <UserContainer>
+      <UserSettingHeader />
+      <UserSettingProfile />
+      <UserSettingMenu />
+    </UserContainer>
   );
 };
 

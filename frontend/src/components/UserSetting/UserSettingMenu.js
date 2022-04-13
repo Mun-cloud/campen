@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const UserContainer = styled.div`
   .user-div {
@@ -41,59 +42,48 @@ const UserContainer = styled.div`
 `;
 
 const UserSettingMenu = () => {
+  const { item: user } = useSelector((state) => state.user);
+
   return (
-    <>
-      {/* <!-- 세부세팅기능 --> */}
-      <UserContainer>
-        <label className="img-upload" for="upload-button">
-          <div className="user-div">프로필 사진 변경</div>
-          <input type="file" id="upload-button" accept="image/*" />
-        </label>
+    <UserContainer>
+      <label className="img-upload" htmlFor="upload-button">
+        <div className="user-div">프로필 사진 변경</div>
+        <input type="file" id="upload-button" accept="image/*" />
+      </label>
 
-        <Link to="/nickname">
-          <div className="nickname user-div">
-            닉네임
-            <span> 인생한번</span>
-          </div>
-        </Link>
-
-        <div className="id user-div">
-          아이디
-          <span> ssonnni</span>
+      <Link to="/nickname">
+        <div className="nickname user-div">
+          닉네임
+          <span>{user.nickname}</span>
         </div>
+      </Link>
 
-        <Link to="/password">
-          <div className="password user-div">
-            비밀번호
-            <span>**********</span>
-          </div>
-        </Link>
+      <div className="id user-div">
+        아이디
+        <span>{user.user_id}</span>
+      </div>
 
-        <div className="email user-div">
-          이메일
-          <span> sohyun@gmail.com</span>
+      <Link to="/password">
+        <div className="password user-div">
+          비밀번호
+          <span>{"*".repeat(user.user_pw.length)}</span>
         </div>
+      </Link>
 
-        <div className="phone user-div">
-          휴대폰 번호
-          <span>010-1234-5678</span>
-        </div>
+      <div className="email user-div">
+        이메일
+        <span>{user.email}</span>
+      </div>
 
-        <Link to="/sns">
-          <div className="sns user-div">SNS</div>
-        </Link>
+      {/* <div className="phone user-div">
+        휴대폰 번호
+        <span>010-1234-5678</span>
+      </div> */}
 
-        <div className="event-set user-div">
-          <div className="event">
-            이벤트/마케팅 수신 동의
-            <p>회원가입 시 설정됨</p>
-          </div>
-          <div>
-            <span className="material-icons">toggle_on</span>
-          </div>
-        </div>
-      </UserContainer>
-    </>
+      <Link to="/sns">
+        <div className="sns user-div">SNS</div>
+      </Link>
+    </UserContainer>
   );
 };
 

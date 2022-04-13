@@ -17,10 +17,7 @@ import MyActive from "./pages/MyActive";
 import Settings from "./pages/Settings";
 import SignUp from "./pages/SignUp";
 import Notice from "./pages/Notice";
-
 import Commu from "./pages/Commu";
-import MyLogin from "./pages/MyLogin";
-import MyLogout from "./pages/MyLogout";
 import Profile from "./pages/Profile";
 import UserSetting from "./pages/UserSetting";
 import Write from "./pages/Write";
@@ -31,6 +28,7 @@ import Sns from "./pages/Sns";
 import Login from "./styles/Login";
 import Board from "./pages/Board";
 import Log from "./pages/Log";
+import MyPage from "./pages/MyPage";
 
 function App() {
   return (
@@ -55,9 +53,8 @@ function App() {
         <Route path="/commu/*" element={<Commu />} />
         <Route path="/board/:id" element={<Board />} />
         <Route path="/log/:id" element={<Log />} />
-        <Route path="/mylogin" element={<MyLogin />} />
-        <Route path="/mylogout" element={<MyLogout />} />
-        <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/usersetting" element={<UserSetting />} />
         <Route path="/write" element={<Write />} />
         <Route path="/userintro" element={<UserIntro />} />

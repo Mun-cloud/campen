@@ -380,5 +380,38 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
+  /**
+   * 아이디 params로 user 찾기
+   */
+
+  router.get("/member/:id", async (req, res, next) => {
+    // 파라미터 받기
+    const id = req.get("id");
+
+    // 데이터 조회 결과가 저장될 빈 변수
+    let json = null;
+
+    try {
+      // 데이터베이스 접속
+      dbcon = await mysql2.createConnection(config.database);
+      await dbcon.connect();
+
+      // 아이디가 중복되는 데이터 수를 조회
+      let sql1 =
+        "SELECT id, user_id, user_name, email, photo, intro, sns_addr, nickname FROM members WHERE id=?";
+      let args1 = [id];
+
+      const [result1] = await dbcon.query(sql1, args1);
+
+      json = result1[0];
+    } catch (err) {
+      return next(err);
+    } finally {
+      dbcon.end();
+    }
+
+    res.sendJson(json);
+  });
+
   return router;
 };

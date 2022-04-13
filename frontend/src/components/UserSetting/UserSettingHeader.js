@@ -31,20 +31,17 @@ const Header = styled.div`
 const UserSettingHeader = () => {
   const go = useNavigate();
   return (
-    <>
-      {/* <!-- 헤더 --> */}
-      <Header>
-        <div
-          onClick={() => {
-            go(-1);
-          }}
-        >
-          <span class="material-icons-outlined">arrow_back_ios</span>
-        </div>
+    <Header>
+      <div
+        onClick={() => {
+          go(-1);
+        }}
+      >
+        <span className="material-icons-outlined">arrow_back_ios</span>
+      </div>
 
-        <p>내 정보 관리</p>
-      </Header>
-    </>
+      <p>내 정보 관리</p>
+    </Header>
   );
 };
 
