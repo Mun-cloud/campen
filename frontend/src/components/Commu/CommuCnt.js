@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import dayjs from "dayjs";
 
 const CntBox = styled.div`
   margin-top: 50px;
@@ -156,41 +158,84 @@ const CntImg = styled.div`
 
 const CommuCnt = ({ data }) => {
   console.log(data);
+
+  useEffect(() => {}, [data]);
+
+  let date = data && data.map((v) => v.edit_date);
+
+  // const localDate = dayjs.utc(date).local().format("MM/DD/YY h:mm A");
+
+  // console.log(localDate);
+
+  // const curr = new Date();
+  // console.log(curr);
+
+  // function displayedAt(curruntDate) {
+  //   const milliSeconds = new Date() - curruntDate;
+  //   const seconds = milliSeconds / 1000;
+  //   if (seconds < 60) return `방금 전`;
+  //   console.log(seconds);
+  //   const minutes = seconds / 60;
+  //   if (minutes < 60) return `${Math.floor(minutes)}분 전`;
+  //   const hours = minutes / 60;
+  //   if (hours < 24) return `${Math.floor(hours)}시간 전`;
+  //   const days = hours / 24;
+  //   if (days < 7) return `${Math.floor(days)}일 전`;
+  //   const weeks = days / 7;
+  //   if (weeks < 5) return `${Math.floor(weeks)}주 전`;
+  //   const months = days / 30;
+  //   if (months < 12) return `${Math.floor(months)}개월 전`;
+  //   const years = days / 365;
+  //   return `${Math.floor(years)}년 전`;
+  // }
+
   return (
     <>
       {/* <!-- 컨텐츠:프로필,텍스트 --> */}
-      <CntBox>
-        <NavLink to="../components/Commu/CommuDetail">
-          <CntBoxText>
-            <div className="cnt-category">캠핑한컷</div>
-            <ul className="cnt-profile">
-              <li className="cnt-user">
-                <img
-                  className="cnt-user-img"
-                  src={require("../../assets/img/user-img.png")}
-                  alt="캠퍼1103"
-                />
-                <span className="cnt-user-name">캠퍼1103</span>
-              </li>
-              <li className="cnt-time">6시간 전</li>
-            </ul>
-            <p className="cnt-desc">
-              근래 캠핑에서 가장 기억에 남았던것 중 하나, 아주 쏟아질듯한
-              별들이였어요! 날씨가 추워서 불멍은 못했지만 별멍은 엄청때리고
-              왔습니다ㅎㅎ 다들 구경하고 가세요!!
-            </p>
-          </CntBoxText>
 
-          {/* <!-- 컨텐츠:이미지 --> */}
-          <CntImg>
-            <div className="medium">
-              <img src="./img/medium.jpeg" alt="커뮤니티" />
-            </div>
-            <div className="medium">
-              <img src="./img/medium1.jpeg" alt="커뮤니티" />
-            </div>
-          </CntImg>
-        </NavLink>
+      <CntBox>
+        {data &&
+          data.map((i) => {
+            return (
+              <>
+                <NavLink to="../components/Commu/CommuDetail" key={i.id}>
+                  <CntBoxText>
+                    <div className="cnt-category">{i.tab}</div>
+                    <ul className="cnt-profile">
+                      <li className="cnt-user">
+                        <img
+                          className="cnt-user-img"
+                          src={require("../../assets/img/user-img.png")}
+                          alt="캠퍼1103"
+                        />
+                        <span className="cnt-user-name">{i.camp_id}</span>
+                      </li>
+                      <li className="cnt-time">
+                        {dayjs(data.edit_date).format("YY/MM/DD hh:mm")}
+                      </li>
+                    </ul>
+                    <p className="cnt-desc"></p>
+                  </CntBoxText>
+
+                  {/* <!-- 컨텐츠:이미지 --> */}
+                  <CntImg>
+                    <div className="medium">
+                      <img
+                        src={require("../../assets/img/medium.jpeg")}
+                        alt="커뮤니티"
+                      />
+                    </div>
+                    <div className="medium">
+                      <img
+                        src={require("../../assets/img/medium1.jpeg")}
+                        alt="커뮤니티"
+                      />
+                    </div>
+                  </CntImg>
+                </NavLink>
+              </>
+            );
+          })}
       </CntBox>
     </>
   );
