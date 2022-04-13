@@ -44,9 +44,9 @@ module.exports = (app) => {
   });
 
   /** 항목별 분류 조회 --> Read(SELECT) */
-  router.get("/content/:tab", async (req, res, next) => {
-    const tab = req.get("tab");
-    if (tab === null) {
+  router.get("/content/:id", async (req, res, next) => {
+    const id = req.get("id");
+    if (id === null) {
       return next(new Error(400));
     }
 
@@ -60,8 +60,8 @@ module.exports = (app) => {
 
       // 데이터 조회
       const sql =
-        "SELECT id, tab, cast(content as char(10000)) content, views, reg_date, edit_date, members_id, camp_id FROM contents WHERE tab=?";
-      const [result] = await dbcon.query(sql, [tab]);
+        "SELECT id, tab, cast(content as char(10000)) content, views, reg_date, edit_date, members_id, camp_id FROM contents WHERE id=?";
+      const [result] = await dbcon.query(sql, [id]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
       json = result;

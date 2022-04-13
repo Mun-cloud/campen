@@ -63,7 +63,6 @@ const CampBasicInfo = ({ item }) => {
   }
 
   useEffect(() => {
-    console.log(item.mapY, item.mapX);
     let container = document.getElementById("map");
 
     let options = {
@@ -93,7 +92,7 @@ const CampBasicInfo = ({ item }) => {
             </tr>
             <tr>
               <td>환경</td>
-              <td>{item.lctCl.replaceAll(",", ", ")}</td>
+              <td>{item.lctCl && item.lctCl.replaceAll(",", ", ")}</td>
             </tr>
             <tr>
               <td>대표번호</td>

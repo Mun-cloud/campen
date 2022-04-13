@@ -90,6 +90,9 @@ const Camp = () => {
           },
         };
         const photorespon = await axios.get(APIurl, urlParams);
+        photorespon.data.response.body.items.item.map((v) =>
+          console.log(v.imageUrl)
+        );
         setPictuers(photorespon.data.response.body);
       } catch (err) {
         console.error(err);
