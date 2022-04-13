@@ -1,6 +1,11 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "dayjs": "^1.11.0",
     "express": "^4.17.3"
+=======
+    "express": "^4.17.3",
+    "react-hook-form": "^7.29.0"
+>>>>>>> f0b8ad39d2df54a3852867d25639caa289461bd9
   }
 }

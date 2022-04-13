@@ -28,3 +28,19 @@ export const getImageList = async (contentId) => {
     console.error(err);
   }
 };
+
+export const getExhibition = async () => {
+  try {
+    return (await axios.get("/exhi")).data.item;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const getExhibitionCamp = async (id) => {
+  try {
+    return (await await axios.get(`/exhi/${id}`)).data.item;
+  } catch (err) {
+    console.error(err);
+  }
+};

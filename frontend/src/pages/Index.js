@@ -6,8 +6,11 @@ import IndexBestPhoto from "../components/Index/IndexBestPhoto";
 import IndexCamplog from "../components/Index/IndexCamplog";
 import IndexExhibition from "../components/Index/IndexExhibition";
 import Footer from "../components/Footer";
+import { useSelector } from "react-redux";
 
 const Index = ({ handleNavView }) => {
+  // const { item } = useSelector((state) => state.user);
+
   return (
     <div>
       <div style={{ padding: "15px" }}>

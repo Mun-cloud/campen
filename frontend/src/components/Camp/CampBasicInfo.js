@@ -93,7 +93,7 @@ const CampBasicInfo = ({ item }) => {
             </tr>
             <tr>
               <td>환경</td>
-              <td>{item.lctCl}</td>
+              <td>{item.lctCl.replaceAll(",", ", ")}</td>
             </tr>
             <tr>
               <td>대표번호</td>

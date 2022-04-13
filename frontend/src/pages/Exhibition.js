@@ -1,21 +1,54 @@
 import BasicHeaderBar from "../components/BasicHeaderBar";
 import CampListGrid from "../components/CampListGrid";
+import { getExhibitionCamp } from "../api";
+import { useQuery } from "react-query";
+import styled from "styled-components";
+import { useParams } from "react-router-dom";
+
+const Container = styled.div`
+  padding-bottom: 60px;
+
+  .exhi_img_box {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .exhi_img_box img {
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    object-fit: cover;
+  }
+
+  .exhi_list_container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 20px 41px;
+    justify-content: space-between;
+  }
+`;
 
 const Exhibition = () => {
-  return (
-    <div>
-      <BasicHeaderBar title="우리집 댕댕이랑 캠핑가요" />
+  const { id } = useParams();
+  const { isLoading, data } = useQuery("allExhibition", () =>
+    getExhibitionCamp(id)
+  );
+  console.log(data);
+
+  return isLoading ? (
+    "Now Loading..."
+  ) : (
+    <Container>
+      <BasicHeaderBar title={data[0].title} />
       <div className="exhi_img_box">
-        <img
-          src={require("../assets/img/event_slide_09.png")}
-          alt="반려동물 캠핑장"
-        />
+        <img src={data[0].photo} alt={data[0].title} />
       </div>
       <div className="exhi_list_container">
-        {/* exhi 데이터베이스.map */}
-        <CampListGrid />
+        {data.map((v) => (
+          <CampListGrid item={v} key={v.campId} />
+        ))}
       </div>
-    </div>
+    </Container>
   );
 };
 

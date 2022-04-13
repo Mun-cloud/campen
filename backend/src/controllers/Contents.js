@@ -27,7 +27,7 @@ module.exports = (app) => {
 
       // 데이터 조회
       let sql2 =
-        "SELECT id, tab, content, views, reg_date, edit_date, members_id, camp_id FROM contents";
+        "SELECT id, tab, cast(content as char(10000)) content, views, reg_date, edit_date, members_id, camp_id FROM contents";
 
       const [result2] = await dbcon.query(sql2);
 
@@ -60,7 +60,7 @@ module.exports = (app) => {
 
       // 데이터 조회
       const sql =
-        "SELECT id, tab, content, views, reg_date, edit_date, members_id, camp_id FROM contents WHERE tab=?";
+        "SELECT id, tab, cast(content as char(10000)) content, views, reg_date, edit_date, members_id, camp_id FROM contents WHERE tab=?";
       const [result] = await dbcon.query(sql, [tab]);
 
       // 조회 결과를 미리 준비한 변수에 저장함

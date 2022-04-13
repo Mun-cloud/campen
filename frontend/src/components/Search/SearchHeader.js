@@ -37,9 +37,14 @@ const Header = styled.header`
   }
 `;
 
-const SearchHeader = ({ getLocation, getSearchKey }) => {
+const SearchHeader = ({ getLocation }) => {
   const go = useNavigate();
   const [keyword, setKeyword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    go(`/search?query=${encodeURIComponent(keyword)}`);
+  };
 
   return (
     <Header>
@@ -49,12 +54,7 @@ const SearchHeader = ({ getLocation, getSearchKey }) => {
           className="fas fa-chevron-left"
           style={{ cursor: "pointer" }}
         ></i>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            getSearchKey(keyword);
-          }}
-        >
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="캠핑장명을 검색해 보세요"
