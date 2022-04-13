@@ -57,7 +57,7 @@ function App() {
         <Route path="/log/:id" element={<Log />} />
         <Route path="/mylogin" element={<MyLogin />} />
         <Route path="/mylogout" element={<MyLogout />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/:id" element={<Profile />} />
         <Route path="/usersetting" element={<UserSetting />} />
         <Route path="/write" element={<Write />} />
         <Route path="/userintro" element={<UserIntro />} />

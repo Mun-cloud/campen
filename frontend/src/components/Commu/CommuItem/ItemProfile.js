@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const CntBox = styled.div`
@@ -86,15 +87,16 @@ const ItemProfile = ({ content }) => {
           <div className="cnt-category">{category}</div>
 
           <ul className="cnt-profile">
-            <li className="cnt-user">
-              <img
-                className="cnt-user-img"
-                src={require("../../../assets/img/user-img.png")}
-                alt="캠퍼1103"
-              />
-              <span className="cnt-user-name">{content.members_id}</span>
-            </li>
-
+            <Link to={`/profile/${content.members_id}`}>
+              <li className="cnt-user">
+                <img
+                  className="cnt-user-img"
+                  src={require("../../../assets/img/user-img.png")}
+                  alt="캠퍼1103"
+                />
+                <span className="cnt-user-name">{content.members_id}</span>
+              </li>
+            </Link>
             <li className="cnt-time">{content.reg_date}</li>
           </ul>
         </div>
