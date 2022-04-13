@@ -50,11 +50,14 @@ const SubDetailHeader = () => {
     <div>
       {/* <!-- header: 상세 상단 --> */}
       <TopContainer>
-        <a class="back-btn" href="../commu2.html">
-          <span class="material-icons">keyboard_backspace</span>
+        <a className="back-btn" href="../commu2.html">
+          <span className="material-icons">keyboard_backspace</span>
         </a>
-        <a class="logo" href="#">
-          <img src="../img/campen_logo.png" alt="campen" />
+        <a className="logo" href="#">
+          <img
+            src={require("../../../assets/img/campen_logo.png")}
+            alt="campen"
+          />
         </a>
       </TopContainer>
     </div>

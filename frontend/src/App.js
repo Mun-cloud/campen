@@ -29,6 +29,8 @@ import Password from "./pages/Password";
 import Nickname from "./pages/NickName";
 import Sns from "./pages/Sns";
 import Login from "./styles/Login";
+import Board from "./pages/Board";
+import Log from "./pages/Log";
 
 function App() {
   return (
@@ -50,7 +52,9 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/notice/*" element={<Notice />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/commu" element={<Commu />} />
+        <Route path="/commu/*" element={<Commu />} />
+        <Route path="/board/:id" element={<Board />} />
+        <Route path="/log/:id" element={<Log />} />
         <Route path="/mylogin" element={<MyLogin />} />
         <Route path="/mylogout" element={<MyLogout />} />
         <Route path="/profile" element={<Profile />} />

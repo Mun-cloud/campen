@@ -67,19 +67,18 @@ const SubDetailProfile = () => {
     <div>
       <CntBox>
         {/* 프로필, 컨텐츠 업로드 시간 */}
-        <div class="cnt-category">캠핑후기</div>
-        <ul class="cnt-profile">
+        <div className="cnt-category">캠핑후기</div>
+        <ul className="cnt-profile">
           <a href="../profile1-2.html">
-            <li class="cnt-user">
+            <li className="cnt-user">
               <img
-                class="cnt-user-img"
-                src="../img/user-img.png"
+                src={require("../../../assets/img/user-img.png")}
                 alt="캠퍼1103"
               />
-              <span class="cnt-user-name">캠퍼1103</span>
+              <span className="cnt-user-name">캠퍼1103</span>
             </li>
           </a>
-          <li class="cnt-time">40분 전</li>
+          <li className="cnt-time">40분 전</li>
         </ul>
       </CntBox>
     </div>
