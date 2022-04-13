@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -48,18 +49,19 @@ const Profile = styled.div`
 `;
 
 const UserSettingProfile = () => {
+  const { item: user } = useSelector((state) => state.user);
   return (
-    <>
-      {/* <!-- 유저프로필 --> */}
-      <Profile>
-        <img src={require("../../assets/img/user-img.png")} alt="프로필" />
-        <div class="user-name">인생한번</div>
-        <Link class="user-intro" to="/userintro">
-          <p>나는 자연인을 꿈꿉니다.</p>
-          <span class="material-icons"> edit</span>
-        </Link>
-      </Profile>
-    </>
+    <Profile>
+      <img
+        src={user.photo ? user.photo : require("../../assets/img/user-img.png")}
+        alt={user.user_name}
+      />
+      <div className="user-name">{user.user_name}</div>
+      <Link className="user-intro" to="/userintro">
+        <p>{user.intro}</p>
+        <span className="material-icons"> edit</span>
+      </Link>
+    </Profile>
   );
 };
 

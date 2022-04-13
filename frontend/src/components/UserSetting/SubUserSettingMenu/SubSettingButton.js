@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 const Btn = styled.button`
-  max-width: 530px;
-
-  bottom: 100px;
-  width: 100%;
+  position: fixed;
+  bottom: 60px;
+  width: 530px;
   height: 70px;
   font-size: 11.5pt;
   background: rgb(234, 238, 236);
@@ -15,14 +14,11 @@ const Btn = styled.button`
   cursor: pointer;
 `;
 
-const SubSettingButton = () => {
+const SubSettingButton = ({ fn }) => {
   return (
-    <>
-      {/*  <!-- 버튼 영역 --> */}
-      <Btn type="button">
-        <span>변경하기</span>
-      </Btn>
-    </>
+    <Btn type="button" onClick={fn && fn}>
+      <span>변경하기</span>
+    </Btn>
   );
 };
 

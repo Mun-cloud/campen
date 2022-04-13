@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import MyLogoutSignUp from "../components/My/MyLogoutSignUp";
-import MyLogoutCnt from "../components/My/MyLogoutCnt";
+import MyLogoutSignUp from "./MyLogoutSignUp";
+import MyLogoutCnt from "./MyLogoutCnt";
 
 const MyContainer = styled.div`
   max-width: 530px;

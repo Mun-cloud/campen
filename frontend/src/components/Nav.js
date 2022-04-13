@@ -51,7 +51,7 @@ const Nav = () => {
           <i className="far fa-comment-alt"></i>
           <span className="nav_text">커뮤니티</span>
         </Link>
-        <Link to="/mylogin" className="nav_btn">
+        <Link to="/mypage" className="nav_btn">
           <i className="far fa-user"></i>
           <span className="nav_text">마이</span>
         </Link>

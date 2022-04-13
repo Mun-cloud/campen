@@ -1,10 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUserData } from "../slices/UserSlice";
 
 const Login = () => {
+  const { item } = useSelector((state) => state.user);
   const go = useNavigate();
   const [id, setId] = useState();
   const [pw, setPw] = useState();
@@ -15,12 +16,11 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      let res = (
-        
-        await axios.post("/member/login", { user_id: id, user_pw: pw })
-      ).data.item[0];
+      // let res = (
+      //   await axios.post("/member/login", { user_id: id, user_pw: pw })
+      // ).data.item[0];
       dispatch(getUserData({ user_id: id, user_pw: pw }));
-      alert(`${res.user_name}님 환영합니다.`);
+      alert(`${item.user_name}님 환영합니다.`);
       go("/");
     } catch (err) {
       console.error(err);

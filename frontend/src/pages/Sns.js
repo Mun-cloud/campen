@@ -1,12 +1,15 @@
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import styled from "styled-components";
 import BasicHeaderBar from "../components/BasicHeaderBar";
 import SubSettingButton from "../components/UserSetting/SubUserSettingMenu/SubSettingButton";
 
 const UserContainer = styled.div`
-  max-width: 530px;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
+  margin: auto;
+  height: 100vh;
+  padding-bottom: 60px;
   background-color: rgb(241, 245, 243);
 
   a {
@@ -18,7 +21,8 @@ const UserContainer = styled.div`
 
 const Cnt = styled.div`
   padding: 20px;
-  height: 670px;
+  height: 100%;
+  margin-bottom: -60px;
   background: rgb(255, 255, 255);
 
   .title {
@@ -44,46 +48,48 @@ const Cnt = styled.div`
 `;
 
 const Password = () => {
+  const { item } = useSelector((state) => state.user);
+  const [value, setValue] = useState("");
+  const go = useNavigate();
+
+  useEffect(() => {
+    item.sns_addr && setValue(item.sns_addr);
+  }, [item]);
+
+  const onClick = async () => {
+    try {
+      const res = await axios.put("/member/sns_addr", { input: value });
+      console.log(res);
+    } catch (err) {
+      alert(err.rtmsg);
+    }
+    go(-1);
+  };
+
   return (
-    <>
-      <UserContainer>
-        {/* <!-- 헤더 --> */}
+    <UserContainer>
+      <BasicHeaderBar title="SNS 설정" />
 
-        <BasicHeaderBar title="SNS 설정"></BasicHeaderBar>
+      <Cnt>
+        <div className="title">
+          <div>SNS를</div>
+          <div>입력해주세요.</div>
+        </div>
 
-        <Cnt>
-          {/*  <!-- 타이틀영역 --> */}
-          <div className="title">
-            <div>SNS를</div>
-            <div>입력해주세요.</div>
-          </div>
+        <input
+          placeholder="SNS 아이디를 입력해주세요."
+          type="text"
+          value={value}
+          onChange={(e) => setValue(e.currentTarget.value)}
+        />
+        <hr
+          className="password"
+          style={{ border: "solid 0.5px rgb(211, 211, 211)" }}
+        />
+      </Cnt>
 
-          {/*  <!-- 컨테츠영역 --> */}
-
-          <input
-            placeholder="인스타그램 아이디를 입력해주세요."
-            type="text"
-            name="user-intro"
-          />
-          <hr
-            className="password"
-            style={{ border: "solid 0.5px rgb(211, 211, 211)" }}
-          />
-
-          <input
-            placeholder="블로그 주소를 입력해주세요."
-            type="text"
-            name="user-intro"
-          />
-          <hr
-            className="password"
-            style={{ border: "solid 0.5px rgb(211, 211, 211)" }}
-          />
-        </Cnt>
-
-        <SubSettingButton />
-      </UserContainer>
-    </>
+      <SubSettingButton fn={onClick} />
+    </UserContainer>
   );
 };
 

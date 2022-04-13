@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const SignupLogin = styled.div`
@@ -26,7 +27,7 @@ const MyLogoutSignUp = () => {
     <>
       <SignupLogin>
         {/* 회원가입 */}
-        <a href="#" className="signup">
+        <Link to="/sign-up" className="signup">
           <Btn
             type="button
                 "
@@ -34,10 +35,10 @@ const MyLogoutSignUp = () => {
           >
             <span>회원가입</span>
           </Btn>
-        </a>
+        </Link>
 
         {/*   <!-- 로그인 --> */}
-        <a href="#" className="login">
+        <Link to="/login" className="login">
           <Btn
             type="button
                 "
@@ -45,7 +46,7 @@ const MyLogoutSignUp = () => {
           >
             <span>로그인</span>
           </Btn>
-        </a>
+        </Link>
       </SignupLogin>
     </>
   );
