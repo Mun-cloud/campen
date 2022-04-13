@@ -16,6 +16,7 @@ const Login = () => {
 
     try {
       let res = (
+        
         await axios.post("/member/login", { user_id: id, user_pw: pw })
       ).data.item[0];
       dispatch(getUserData({ user_id: id, user_pw: pw }));

@@ -189,6 +189,18 @@ const CommuCnt = ({ data }) => {
   //   return `${Math.floor(years)}년 전`;
   // }
 
+  const categoryFn = (id) => {
+    let result = "";
+    if (id === 0) {
+      result = "캠핑한컷";
+    } else if (id === 1) {
+      result = "캠핑후기";
+    } else if (id === 2) {
+      result = "궁금해요";
+    }
+    return result;
+  };
+
   return (
     <>
       {/* <!-- 컨텐츠:프로필,텍스트 --> */}
@@ -197,43 +209,41 @@ const CommuCnt = ({ data }) => {
         {data &&
           data.map((i) => {
             return (
-              <>
-                <NavLink to="../components/Commu/CommuDetail" key={i.id}>
-                  <CntBoxText>
-                    <div className="cnt-category">{i.tab}</div>
-                    <ul className="cnt-profile">
-                      <li className="cnt-user">
-                        <img
-                          className="cnt-user-img"
-                          src={require("../../assets/img/user-img.png")}
-                          alt="캠퍼1103"
-                        />
-                        <span className="cnt-user-name">{i.camp_id}</span>
-                      </li>
-                      <li className="cnt-time">
-                        {dayjs(data.edit_date).format("YY/MM/DD hh:mm")}
-                      </li>
-                    </ul>
-                    <p className="cnt-desc"></p>
-                  </CntBoxText>
+              <NavLink to="../components/Commu/CommuDetail" key={i.id}>
+                <CntBoxText>
+                  <div className="cnt-category">{categoryFn(i.id)}</div>
+                  <ul className="cnt-profile">
+                    <li className="cnt-user">
+                      <img
+                        className="cnt-user-img"
+                        src={require("../../assets/img/user-img.png")}
+                        alt="캠퍼1103"
+                      />
+                      <span className="cnt-user-name">{i.camp_id}</span>
+                    </li>
+                    <li className="cnt-time">
+                      {dayjs(data.edit_date).format("YY/MM/DD hh:mm")}
+                    </li>
+                  </ul>
+                  <p className="cnt-desc"></p>
+                </CntBoxText>
 
-                  {/* <!-- 컨텐츠:이미지 --> */}
-                  <CntImg>
-                    <div className="medium">
-                      <img
-                        src={require("../../assets/img/medium.jpeg")}
-                        alt="커뮤니티"
-                      />
-                    </div>
-                    <div className="medium">
-                      <img
-                        src={require("../../assets/img/medium1.jpeg")}
-                        alt="커뮤니티"
-                      />
-                    </div>
-                  </CntImg>
-                </NavLink>
-              </>
+                {/* <!-- 컨텐츠:이미지 --> */}
+                <CntImg>
+                  <div className="medium">
+                    <img
+                      src={require("../../assets/img/medium.jpeg")}
+                      alt="커뮤니티"
+                    />
+                  </div>
+                  <div className="medium">
+                    <img
+                      src={require("../../assets/img/medium1.jpeg")}
+                      alt="커뮤니티"
+                    />
+                  </div>
+                </CntImg>
+              </NavLink>
             );
           })}
       </CntBox>

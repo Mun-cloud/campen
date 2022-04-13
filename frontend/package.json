@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:3002",
   "dependencies": {
     "@glidejs/glide": "^3.5.2",
     "@reduxjs/toolkit": "^1.8.0",
@@ -10,6 +10,7 @@
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
     "axios": "^0.26.1",
+    "dayjs": "^1.11.0",
     "glidejs": "^2.1.0",
     "node-sass": "^7.0.1",
     "qs": "^6.10.3",
