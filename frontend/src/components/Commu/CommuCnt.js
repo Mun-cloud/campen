@@ -70,7 +70,6 @@ const CommuCnt = ({ data }) => {
               return <Category2 data={v} />;
             }
           })}
-        ;
       </CntBox>
     </>
   );

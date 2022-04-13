@@ -1,3 +1,4 @@
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const TopContainer = styled.div`
@@ -45,23 +46,30 @@ const TopContainer = styled.div`
   }
 `;
 
-const SubDetailHeader = () => {
+const ItemHeader = () => {
+  const go = useNavigate();
   return (
-    <div>
+    <>
       {/* <!-- header: 상세 상단 --> */}
       <TopContainer>
-        <a className="back-btn" href="../commu2.html">
+        <div
+          className="back-btn"
+          onClick={() => {
+            go(-1);
+          }}
+        >
           <span className="material-icons">keyboard_backspace</span>
-        </a>
-        <a className="logo" href="#">
+        </div>
+
+        <Link to="/" className="logo">
           <img
             src={require("../../../assets/img/campen_logo.png")}
             alt="campen"
           />
-        </a>
+        </Link>
       </TopContainer>
-    </div>
+    </>
   );
 };
 
-export default SubDetailHeader;
+export default ItemHeader;

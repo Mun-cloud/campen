@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import CommuCntFooter from "./CommuCntFooter";
 
@@ -171,7 +172,7 @@ const Category2 = ({ data }) => {
   return (
     <>
       <CntBox>
-        <a href="./pages/commu4-1.html">
+        <Link to={`/board/${data.id}`}>
           {/* <!-- 컨텐츠:프로필,텍스트 --> */}
           <CntBoxText>
             <div className="cnt-category">궁금해요</div>
@@ -191,7 +192,7 @@ const Category2 = ({ data }) => {
 
           {/* <!-- 컨텐츠:이미지 --> */}
           <CntImg />
-        </a>
+        </Link>
 
         {/* <!-- 컨텐츠:좋아요,댓글 --> */}
         <CommuCntFooter />

@@ -62,27 +62,45 @@ const CntBox = styled.div`
   }
 `;
 
-const SubDetailProfile = () => {
-  return (
+const ItemProfile = ({ content }) => {
+  console.log(content);
+
+  let category = "";
+  if (content) {
+    if (content.tab === 0) {
+      category = "캠핑한컷";
+    } else if (content.tab === 1) {
+      category = "캠핑후기";
+    } else if (content.tab === 2) {
+      category = "궁금해요";
+    }
+  }
+
+  return !content ? (
+    "Loading..."
+  ) : (
     <div>
       <CntBox>
         {/* 프로필, 컨텐츠 업로드 시간 */}
-        <div className="cnt-category">캠핑후기</div>
-        <ul className="cnt-profile">
-          <a href="../profile1-2.html">
+        <div className="cnt-box-txt">
+          <div className="cnt-category">{category}</div>
+
+          <ul className="cnt-profile">
             <li className="cnt-user">
               <img
+                className="cnt-user-img"
                 src={require("../../../assets/img/user-img.png")}
                 alt="캠퍼1103"
               />
-              <span className="cnt-user-name">캠퍼1103</span>
+              <span className="cnt-user-name">{content.members_id}</span>
             </li>
-          </a>
-          <li className="cnt-time">40분 전</li>
-        </ul>
+
+            <li className="cnt-time">{content.reg_date}</li>
+          </ul>
+        </div>
       </CntBox>
     </div>
   );
 };
 
-export default SubDetailProfile;
+export default ItemProfile;

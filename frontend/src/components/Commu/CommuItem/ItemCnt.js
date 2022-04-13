@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 const CntContainer = styled.div`
+  .cnt-box-txt {
+    padding: 13px;
+    line-height: 24px;
+  }
+
   .cnt-Q::before {
     margin-right: 2px;
     content: "Q.";
@@ -42,27 +47,26 @@ const CntContainer = styled.div`
   }
 `;
 
-const SubDetailCnt = () => {
-  return (
+const ItemCnt = ({ content }) => {
+  console.log(content);
+  return !content ? (
+    "Loading..."
+  ) : (
     <div>
       <CntContainer>
         {/* <!-- header: 상세 상단 --> */}
-        <p className="cnt-desc">
-          너무너무 잘 쉬다 왔어요~ 일요일에 가니 사람도 없고 완전 전세캠했습니다
-          ㅎㅎ 캠지기님도 넘 친절하고 뷰도 가리는거 없이 좋았네요 사람이
-          없기도했지만 한눈에봐도 사이트 간격이 넓은편입니다 또 놀러갈
-          예정이에요 ㅎㅎㅎ
-        </p>
+        <div className="cnt-box-txt">
+          <p className="cnt-desc">{content.content}</p>
 
-        {/*  <!-- 컨텐츠:위치정보 --> */}
-        <div className="cnt-local">
-          <i className="fas fa-map-marker-alt"></i>
-          <span className="local-txt">
-            강화도산들애캠핑수영장 대형11번~27번 27번
-          </span>
+          {/*  <!-- 컨텐츠:위치정보 --> */}
+          <div className="cnt-local">
+            <i className="fas fa-map-marker-alt"></i>
+            <span className="local-txt">{content.camp_id}</span>
+          </div>
         </div>
 
         {/* 컨텐츠:이미지 */}
+
         <div className="cnt-img">
           <div className="medium">
             <img
@@ -90,4 +94,4 @@ const SubDetailCnt = () => {
   );
 };
 
-export default SubDetailCnt;
+export default ItemCnt;
