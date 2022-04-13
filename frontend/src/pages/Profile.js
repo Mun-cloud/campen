@@ -14,8 +14,7 @@ const Profile = () => {
     (async () => {
       try {
         const response = await axios.get(`/member/${id}`);
-        setContent(response.data.item);
-        console.log(response.data.item);
+        setContent(response.data);
       } catch (err) {
         console.error(err);
       }
