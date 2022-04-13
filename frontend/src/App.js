@@ -54,7 +54,7 @@ function App() {
         <Route path="/board/:id" element={<Board />} />
         <Route path="/log/:id" element={<Log />} />
         <Route path="/mypage" element={<MyPage />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/:id" element={<Profile />} />
         <Route path="/usersetting" element={<UserSetting />} />
         <Route path="/write" element={<Write />} />
         <Route path="/userintro" element={<UserIntro />} />
