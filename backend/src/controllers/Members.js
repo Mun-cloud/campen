@@ -398,12 +398,17 @@ module.exports = (app) => {
 
       // 아이디가 중복되는 데이터 수를 조회
       let sql1 =
-        "SELECT m.id, user_id, user_name, email, photo, intro, sns_addr, nickname, c.id content_id, c.reg_date contentRegDate, c.tab, cast(c.content as char(10000)) content FROM members m, contents c WHERE m.id = c.members_id and m.id=?";
+        "SELECT id, user_id, user_name, email, photo, intro, sns_addr, nickname FROM members WHERE id=?";
       let args1 = [id];
 
       const [result1] = await dbcon.query(sql1, args1);
 
+      let sql2 =
+        "SELECT id contentId, reg_date, tab, cast(content as char(10000)) content FROM contents WHERE members_id=?";
+      const [result2] = await dbcon.query(sql2, [id]);
+
       json = result1[0];
+      json.contents = result2;
     } catch (err) {
       return next(err);
     } finally {
