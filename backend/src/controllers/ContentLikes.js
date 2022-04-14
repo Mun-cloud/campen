@@ -16,7 +16,7 @@ module.exports = (app) => {
   let dbcon = null;
 
   /** 항목별 분류 조회 --> Read(SELECT) */
-  router.post("/content/get_content_like", async (req, res, next) => {
+  router.post("/content_like/get", async (req, res, next) => {
     const id = req.post("user_id");
     if (id === null) {
       return next(new Error(400));
@@ -48,7 +48,7 @@ module.exports = (app) => {
   });
 
   /** 데이터 추가 --> Create(INSERT) */
-  router.post("/content/like", async (req, res, next) => {
+  router.post("/content_like/like", async (req, res, next) => {
     // 저장을 위한 파라미터 입력받기
     const user_id = req.post("user_id");
     const content_id = req.post("content_id");
@@ -85,7 +85,7 @@ module.exports = (app) => {
   });
 
   /** 데이터 삭제 --> Delete(DELETE) */
-  router.delete("/content/like", async (req, res, next) => {
+  router.delete("/content_like/like", async (req, res, next) => {
     const user_id = req.post("user_id");
     const content_id = req.post("content_id");
 
@@ -101,7 +101,7 @@ module.exports = (app) => {
 
       // 데이터 삭제하기
       const sql =
-        "DELETE FROM `contents-likes` WHERE members_id=? and contents_id=?";
+        "DELETE FROM `contents-likes` WHERE `members_id`=? and `contents_id`=?";
       const [result1] = await dbcon.query(sql, [user_id, content_id]);
 
       json = result1;
