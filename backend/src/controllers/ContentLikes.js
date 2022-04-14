@@ -16,8 +16,8 @@ module.exports = (app) => {
   let dbcon = null;
 
   /** 항목별 분류 조회 --> Read(SELECT) */
-  router.post("/get_content_like", async (req, res, next) => {
-    const id = req.post("id");
+  router.post("/content/get_content_like", async (req, res, next) => {
+    const id = req.post("user_id");
     if (id === null) {
       return next(new Error(400));
     }
@@ -63,13 +63,13 @@ module.exports = (app) => {
       await dbcon.connect();
 
       // 데이터 저장하기
-      const sql = "INSERT INTO contents VALUES (null, now(), ?, ?)";
+      const sql = "INSERT INTO `contents-likes` VALUES (null, now(), ?, ?)";
       const input_data = [user_id, content_id];
       const [result1] = await dbcon.query(sql, input_data);
 
       // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
       const sql2 =
-        "SELECT id, members_id, contents_id, reg_dateFROM contents-likes WHERE id=?";
+        "SELECT id, members_id, contents_id, reg_date FROM `contents-likes` WHERE id=?";
       const [result2] = await dbcon.query(sql2, [result1.insertId]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
