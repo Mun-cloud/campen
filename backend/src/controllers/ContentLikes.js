@@ -15,37 +15,9 @@ const mysql2 = require("mysql2/promise");
 module.exports = (app) => {
   let dbcon = null;
 
-  /** 전체 목록 조회 --> Read(SELECT) */
-  router.get("/content", async (req, res, next) => {
-    // 데이터 조회 결과가 저장될 빈 변수
-    let json = null;
-
-    try {
-      // 데이터베이스 접속
-      dbcon = await mysql2.createConnection(config.database);
-      await dbcon.connect();
-
-      // 데이터 조회
-      let sql2 =
-        "SELECT c.id, c.tab, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, camp_id FROM contents c, members m where c.members_id=m.id";
-
-      const [result2] = await dbcon.query(sql2);
-
-      // 조회 결과를 미리 준비한 변수에 저장함
-      json = result2;
-    } catch (err) {
-      return next(err);
-    } finally {
-      dbcon.end();
-    }
-
-    // 모든 처리에 성공했으므로 정상 조회 결과 구성
-    res.sendJson({ item: json });
-  });
-
   /** 항목별 분류 조회 --> Read(SELECT) */
-  router.get("/content/:id", async (req, res, next) => {
-    const id = req.get("id");
+  router.post("/get_content_like", async (req, res, next) => {
+    const id = req.post("id");
     if (id === null) {
       return next(new Error(400));
     }
@@ -60,7 +32,7 @@ module.exports = (app) => {
 
       // 데이터 조회
       const sql =
-        "SELECT c.id, c.tab, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, camp_id FROM contents c, members m WHERE c.members_id=m.id and c.id=?";
+        "SELECT l.id, members_id, contents_id, m.nickname, m.user_name FROM `contents-likes` l, members m WHERE l.members_id=m.id and m.id=?";
       const [result] = await dbcon.query(sql, [id]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
@@ -76,7 +48,7 @@ module.exports = (app) => {
   });
 
   /** 데이터 추가 --> Create(INSERT) */
-  router.post("/content", async (req, res, next) => {
+  router.post("/content/like", async (req, res, next) => {
     // if (!req.session.memberInfo) {
     //   return next(new BadRequestException("로그인중이 아닙니다."));
     // }
