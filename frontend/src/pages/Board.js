@@ -15,6 +15,7 @@ const Board = () => {
       try {
         const response = await axios.get(`/content/${id}`);
         setContent(response.data.item[0]);
+        console.log(response.data);
       } catch (err) {
         console.error(err);
       }

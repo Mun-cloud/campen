@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -64,8 +66,6 @@ const CntBox = styled.div`
 `;
 
 const ItemProfile = ({ content }) => {
-  console.log(content);
-
   let category = "";
   if (content) {
     if (content.tab === 0) {
@@ -94,7 +94,11 @@ const ItemProfile = ({ content }) => {
                   src={require("../../../assets/img/user-img.png")}
                   alt="캠퍼1103"
                 />
-                <span className="cnt-user-name">{content.members_id}</span>
+                <span className="cnt-user-name">
+                  {content.nickname
+                    ? content.nickname
+                    : `캠퍼${content.members_id}`}
+                </span>
               </li>
             </Link>
             <li className="cnt-time">{content.reg_date}</li>

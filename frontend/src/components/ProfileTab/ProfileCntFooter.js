@@ -5,6 +5,7 @@ const CntFooter = styled.div`
   font-size: 9pt;
   color: rgb(159, 165, 162);
   font-weight: 400;
+  padding-bottom: 20px;
 
   .cnt-like {
     display: flex;

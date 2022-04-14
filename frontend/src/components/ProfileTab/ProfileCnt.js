@@ -1,11 +1,16 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 
-const CntBox = styled.div`
+import ProfileCntFooter from "./ProfileCntFooter";
+
+const CntContainer = styled.div`
   display: block;
   margin-bottom: 1px;
   padding: 25px 20px 20px;
   background: rgb(255, 255, 255);
-
+`;
+const CntBox = styled.div`
+  padding-bottom: 10px;
   .cnt-date {
     color: rgb(159, 165, 162);
     font-size: 9pt;
@@ -56,34 +61,35 @@ const CntBox = styled.div`
   }
 `;
 
-const ProfileCnt = () => {
-  return (
-    <>
-      <CntBox>
-        {/*  <!-- 날짜 --> */}
-        <div className="cnt-date">22.02.06</div>
+const ProfileCnt = ({ content }) => {
+  return !content ? null : (
+    <CntContainer>
+      {content.contents.map((v) => (
+        <>
+          <CntBox>
+            {/*  <!-- 날짜 --> */}
+            <div className="cnt-date">{v.reg_date}</div>
 
-        {/*  <!-- 컨텐츠 내용 --> */}
-        <div className="cnt-body">
-          {/* <!-- 제목,본문 --> */}
-          <div className="cnt">
-            <h3 className="cnt-title">캠핑한컷</h3>
-            <div className="cnt-content">
-              근래 캠핑에서 가장 기억에 남았던것 중 하나, 아주 쏟아질듯한
-              별들이였어요! 날씨가 추워서 불멍은 못했지만 별멍은 엄청때리고
-              왔습니다ㅎㅎ 다들 구경하고 가세요!!
+            {/*  <!-- 컨텐츠 내용 --> */}
+            <div className="cnt-body">
+              {/* <!-- 제목,본문 --> */}
+              <div className="cnt">
+                <h3 className="cnt-title">{v.tab}</h3>
+                <div className="cnt-content">{v.content}</div>
+              </div>
+              {/*  <!-- 이미지 --> */}
+              <div className="cnt-img">
+                <img
+                  src={require("../../assets/img/medium.jpeg")}
+                  alt="컨텐츠 이미지"
+                />
+              </div>
             </div>
-          </div>
-          {/*  <!-- 이미지 --> */}
-          <div className="cnt-img">
-            <img
-              src={require("../../assets/img/medium.jpeg")}
-              alt="컨텐츠 이미지"
-            />
-          </div>
-        </div>
-      </CntBox>
-    </>
+          </CntBox>
+          <ProfileCntFooter />
+        </>
+      ))}
+    </CntContainer>
   );
 };
 

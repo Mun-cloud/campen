@@ -24,13 +24,15 @@ const UserProfile = styled.div`
   }
 `;
 
-const ProfileUser = () => {
+const ProfileUser = ({ content }) => {
   return (
     <>
       {/*  <!-- 유저프로필 --> */}
       <UserProfile>
         <img src={require("../../assets/img/user-img.png")} alt="프로필" />
-        <div className="user-name">캠퍼1103</div>
+        <div className="user-name">
+          {content.nickname ? content.nickname : `캠퍼${content.members_id}`}
+        </div>
       </UserProfile>
     </>
   );

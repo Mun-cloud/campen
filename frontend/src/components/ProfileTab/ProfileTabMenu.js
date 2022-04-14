@@ -28,7 +28,7 @@ const TabItem = styled.li`
   }
 `;
 
-const ProfileTabmenu = () => {
+const ProfileTabMenu = () => {
   return (
     <>
       {/*탭메뉴 */}
@@ -51,4 +51,4 @@ const ProfileTabmenu = () => {
   );
 };
 
-export default ProfileTabmenu;
+export default ProfileTabMenu;

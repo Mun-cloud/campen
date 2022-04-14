@@ -2,9 +2,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const CntBox = styled.div`
-  margin-top: 50px;
-  padding-bottom: 50px;
-
   .cnt-box {
     margin-bottom: 8px;
     background: rgb(255, 255, 255);
@@ -185,37 +182,37 @@ const Category1 = ({ data }) => {
   console.log(data);
   return (
     <>
-      <CntBox key={data.id}>
-        {/* <!-- 컨텐츠:프로필,텍스트 --> */}
-        <Link to={`/log/${data.id}`}>
-          <CntBoxText>
-            <div className="cnt-category">캠핑후기</div>
-            <ul className="cnt-profile">
-              <a href="../profile1-2.html">
-                <li className="cnt-user">
-                  <img
-                    className="cnt-user-img"
-                    src={require("../../assets/img/user-img.png")}
-                    alt="캠퍼1103"
-                  />
-                  <span className="cnt-user-name">{data.id}</span>
-                </li>
-              </a>
-              <li className="cnt-time">{data.edit_date}</li>
-            </ul>
+      <div style={{ marginBottom: "8px" }}>
+        <CntBox key={data.id}>
+          {/* <!-- 컨텐츠:프로필,텍스트 --> */}
+          <Link to={`/log/${data.id}`}>
+            <CntBoxText>
+              <div className="cnt-category">캠핑후기</div>
+              <ul className="cnt-profile">
+                <a href="../profile1-2.html">
+                  <li className="cnt-user">
+                    <img
+                      className="cnt-user-img"
+                      src={require("../../assets/img/user-img.png")}
+                      alt="캠퍼1103"
+                    />
+                    <span className="cnt-user-name">{data.id}</span>
+                  </li>
+                </a>
+                <li className="cnt-time">{data.edit_date}</li>
+              </ul>
 
-            <p className="cnt-desc">{data.content}</p>
+              <p className="cnt-desc">{data.content}</p>
 
-            {/* <!-- 컨텐츠:위치정보 --> */}
-            <div className="cnt-local">
-              <i className="fas fa-map-marker-alt"></i>
-              <span className="local-txt">{data.camp_id}</span>
-            </div>
-          </CntBoxText>
+              {/* <!-- 컨텐츠:위치정보 --> */}
+              <div className="cnt-local">
+                <i className="fas fa-map-marker-alt"></i>
+                <span className="local-txt">{data.camp_id}</span>
+              </div>
+            </CntBoxText>
 
-          {/* <!-- 컨텐츠:이미지 --> */}
-          <CntImg>
-            <div className="default">
+            {/* <!-- 컨텐츠:이미지 --> */}
+            <CntImg>
               <div className="medium">
                 <img
                   src={require("../../assets/img/medium4.jpeg")}
@@ -236,19 +233,19 @@ const Category1 = ({ data }) => {
                   />
                 </div>
               </div>
-            </div>
-          </CntImg>
-        </Link>
-      </CntBox>
-      {/* <!-- 컨텐츠:좋아요,댓글 --> */}
-      <CntFooter>
-        <div className="cnt-like" href="#">
-          <a href="#">
-            <i className="far fa-heart"></i>
-            좋아요
-          </a>
-        </div>
-      </CntFooter>
+            </CntImg>
+          </Link>
+        </CntBox>
+        {/* <!-- 컨텐츠:좋아요,댓글 --> */}
+        <CntFooter>
+          <div className="cnt-like" href="#">
+            <a href="#">
+              <i className="far fa-heart"></i>
+              좋아요
+            </a>
+          </div>
+        </CntFooter>
+      </div>
     </>
   );
 };

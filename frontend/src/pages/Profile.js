@@ -1,7 +1,8 @@
 import ProfileHeader from "../components/ProfileTab/ProfileHeader";
 import ProfileUser from "../components/ProfileTab/ProfileUser";
+import ProfileTabMenu from "../components/ProfileTab/ProfileTabMenu";
 import ProfileCnt from "../components/ProfileTab/ProfileCnt";
-import ProfileCntFooter from "../components/ProfileTab/ProfileCntFooter";
+
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -15,6 +16,7 @@ const Profile = () => {
       try {
         const response = await axios.get(`/member/${id}`);
         setContent(response.data);
+        console.log(response.data);
       } catch (err) {
         console.error(err);
       }
@@ -24,9 +26,9 @@ const Profile = () => {
   return (
     <>
       <ProfileHeader />
-      <ProfileUser />
+      <ProfileUser content={content} />
+      <ProfileTabMenu />
       <ProfileCnt content={content} />
-      <ProfileCntFooter />
     </>
   );
 };

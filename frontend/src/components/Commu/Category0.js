@@ -183,7 +183,9 @@ const Category0 = ({ data }) => {
                   src={require("../../assets/img/user-img.png")}
                   alt="인생캠핑"
                 />
-                <span className="cnt-user-name">{data.nickname}</span>
+                <span className="cnt-user-name">
+                  {data.nickname ? data.nickname : `캠퍼${data.members_id}`}
+                </span>
               </li>
               <li className="cnt-time">{data.edit_date}</li>
             </ul>
