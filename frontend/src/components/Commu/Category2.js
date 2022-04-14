@@ -183,7 +183,7 @@ const Category2 = ({ data }) => {
                   src={require("../../assets/img/user-img.png")}
                   alt="수상한캠핑"
                 />
-                <span className="cnt-user-name">수상한캠핑</span>
+                <span className="cnt-user-name">{data.nickname}</span>
               </li>
               <li className="cnt-time"> {data.edit_date}</li>
             </ul>

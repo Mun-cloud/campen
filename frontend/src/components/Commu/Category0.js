@@ -169,7 +169,6 @@ const CntImg = styled.div`
 `;
 
 const Category0 = ({ data }) => {
-  console.log(data);
   return (
     <>
       <CntBox key={data.id}>
@@ -184,7 +183,7 @@ const Category0 = ({ data }) => {
                   src={require("../../assets/img/user-img.png")}
                   alt="인생캠핑"
                 />
-                <span className="cnt-user-name">{data.members_id}</span>
+                <span className="cnt-user-name">{data.nickname}</span>
               </li>
               <li className="cnt-time">{data.edit_date}</li>
             </ul>
