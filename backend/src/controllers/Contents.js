@@ -215,14 +215,13 @@ module.exports = (app) => {
       await dbcon.query("DELETE FROM `contents-href` WHERE 'contents_id'=?", [
         id,
       ]);
+      await dbcon.query("DELETE FROM `contents-likes` WHERE 'contents_id'=?", [
+        id,
+      ]);
 
       // 자식데이터 null 주기
       await dbcon.query(
         "UPDATE `contents-comments` SET `contents_id`=null WHERE 'contents_id'=?",
-        [id]
-      );
-      await dbcon.query(
-        "UPDATE `contents-likes` SET `contents_id`=null WHERE 'contents_id'=?",
         [id]
       );
 

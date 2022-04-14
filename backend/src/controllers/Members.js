@@ -398,7 +398,7 @@ module.exports = (app) => {
 
       // 아이디가 중복되는 데이터 수를 조회
       let sql1 =
-        "SELECT id, user_id, user_name, email, photo, intro, sns_addr, nickname FROM members WHERE id=?";
+        "SELECT m.id, user_id, user_name, email, photo, intro, sns_addr, nickname, c.id content_id, c.reg_date contentRegDate, c.title, c.content FROM members m, contents c WHERE m.id = c.members_id and m.id=?";
       let args1 = [id];
 
       const [result1] = await dbcon.query(sql1, args1);
