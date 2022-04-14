@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import qs from "qs";
 
 import SearchHeader from "../components/Search/SearchHeader";
 import SearchResultBox from "../components/Search/SearchResultBox";
 import { getCampList } from "../slices/CampSlice";
+import axios from "axios";
 
 const ResultCountCount = styled.div`
   padding: 24px 0 10px 14px;

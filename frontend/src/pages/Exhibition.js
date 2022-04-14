@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 const Container = styled.div`
   padding-bottom: 60px;
 
+  min-height: 100vh;
+
   .exhi_img_box {
     width: 100%;
     margin-bottom: 8px;
@@ -30,10 +32,9 @@ const Container = styled.div`
 
 const Exhibition = () => {
   const { id } = useParams();
-  const { isLoading, data } = useQuery("allExhibition", () =>
+  const { isLoading, data } = useQuery("Exhibition", () =>
     getExhibitionCamp(id)
   );
-  console.log(data);
 
   return isLoading ? (
     "Now Loading..."

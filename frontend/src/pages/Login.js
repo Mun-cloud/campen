@@ -16,11 +16,11 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      // let res = (
-      //   await axios.post("/member/login", { user_id: id, user_pw: pw })
-      // ).data.item[0];
+      let res = (
+        await axios.post("/member/login", { user_id: id, user_pw: pw })
+      ).data.item[0];
       dispatch(getUserData({ user_id: id, user_pw: pw }));
-      alert(`${item.user_name}님 환영합니다.`);
+      alert(`${res.user_name}님 환영합니다.`);
       go("/");
     } catch (err) {
       console.error(err);
@@ -46,7 +46,6 @@ const Login = () => {
         />
         <button>로그인</button>
       </form>
-      <button>로그아웃</button>
     </div>
   );
 };

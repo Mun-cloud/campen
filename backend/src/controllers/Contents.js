@@ -43,7 +43,7 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
-  /** 항목별 분류 조회 --> Read(SELECT) */
+  /** contents 상세조회 --> Read(SELECT) */
   router.get("/content/:id", async (req, res, next) => {
     const id = req.get("id");
     if (id === null) {

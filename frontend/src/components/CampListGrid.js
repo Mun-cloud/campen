@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ListBox = styled.div`
   cursor: pointer;
@@ -50,14 +52,49 @@ const ListBox = styled.div`
     font-size: 12px;
     font-weight: 400;
   }
+
+  .exhi_heart {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: rgb(67, 192, 131);
+    font-size: 25px;
+    z-index: 100;
+    cursor: pointer;
+  }
 `;
 
 const CampListGrid = ({ item, heart = "false" }) => {
+  const go = useNavigate();
+  const heartDelete = async (event) => {
+    try {
+      await axios.delete("/hearts", {
+        data: {
+          user_id: item.members_id,
+          camp_id: event.currentTarget.id,
+        },
+      });
+      window.location.replace("/heart");
+    } catch (err) {
+      console.log(err.response.data.rtmsg);
+    }
+  };
+
   return (
     <ListBox>
       <div className="exhi_list_img">
-        <img src={item.campPhoto} alt={item.name} />
-        {heart === "true" && <i class="fas fa-heart exhi_heart"></i>}
+        <img
+          src={item.campPhoto}
+          alt={item.name}
+          onClick={() => go(`/camp/${item.camp_id}`)}
+        />
+        {heart === "true" && (
+          <i
+            onClick={heartDelete}
+            className="fas fa-heart exhi_heart"
+            id={item.camp_id}
+          ></i>
+        )}
       </div>
       <div className="exhi_list_info">
         <p className="exhi_list_gray">

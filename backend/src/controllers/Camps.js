@@ -88,8 +88,8 @@ module.exports = (app) => {
       dbcon = await mysql2.createConnection(config.database);
       await dbcon.connect();
 
-      let sql =
-        "SELECT id, contentId, name, addr1, addr2, tel, lctCl, price, photo, `basic_fac`, `add_fac`, lineIntro, intro, tag, mapX, mapY, homepage, `manner_start`, `manner_end`, policy, map, is_reg, reg_date, edit_date FROM camp";
+      let sql = "SELECT COUNT(*) cnt FROM camp";
+      // "SELECT id, contentId, name, addr1, addr2, tel, lctCl, price, photo, `basic_fac`, `add_fac`, lineIntro, intro, tag, mapX, mapY, homepage, `manner_start`, `manner_end`, policy, map, is_reg, reg_date, edit_date FROM camp";
       const [result] = await dbcon.query(sql);
 
       // 조회 결과를 미리 준비한 변수에 저장함

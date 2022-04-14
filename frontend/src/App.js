@@ -25,10 +25,10 @@ import UserIntro from "./pages/UserIntro";
 import Password from "./pages/Password";
 import Nickname from "./pages/NickName";
 import Sns from "./pages/Sns";
-import Login from "./styles/Login";
 import Board from "./pages/Board";
 import Log from "./pages/Log";
 import MyPage from "./pages/MyPage";
+import Login from "./pages/Login";
 
 function App() {
   return (

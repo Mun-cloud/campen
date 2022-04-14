@@ -3,8 +3,7 @@ import MyLogoutSignUp from "./MyLogoutSignUp";
 import MyLogoutCnt from "./MyLogoutCnt";
 
 const MyContainer = styled.div`
-  max-width: 530px;
-  height: 100%;
+  height: 100vh;
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
@@ -19,12 +18,10 @@ const MyContainer = styled.div`
 
 const MyLogout = () => {
   return (
-    <>
-      <MyContainer>
-        <MyLogoutSignUp />
-        <MyLogoutCnt />
-      </MyContainer>
-    </>
+    <MyContainer>
+      <MyLogoutSignUp />
+      <MyLogoutCnt />
+    </MyContainer>
   );
 };
 

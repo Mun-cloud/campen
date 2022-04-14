@@ -113,6 +113,10 @@ module.exports = (app) => {
 
       const args = [user_id, user_pw, user_name, email];
       const [result2] = await dbcon.query(sql, args);
+
+      let sql2 = `UPDATE members SET nickname=? WHERE id=?`;
+      await dbcon.query(sql2, [`캠퍼 ${result2.insertId}`, result2.insertId]);
+
       json = result1;
     } catch (err) {
       return next(err);

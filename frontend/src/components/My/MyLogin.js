@@ -1,5 +1,3 @@
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import MyLoginCnt from "./MyLoginCnt";
 import MyLoginProfile from "./MyLoginProfile";
@@ -20,12 +18,6 @@ const MyContainer = styled.div`
 `;
 
 const MyLogin = () => {
-  const { login } = useSelector((state) => state.user);
-  const go = useNavigate();
-  if (!login) {
-    go("/mypage");
-  }
-
   return (
     <MyContainer>
       <MyLoginProfile />

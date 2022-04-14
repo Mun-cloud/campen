@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 const UserContainer = styled.div`
   .user-div {
@@ -43,6 +44,18 @@ const UserContainer = styled.div`
 
 const UserSettingMenu = () => {
   const { item: user } = useSelector((state) => state.user);
+  const go = useNavigate();
+
+  const logout = async () => {
+    try {
+      await axios.delete("/member/logout");
+      alert("로그아웃 되었습니다.");
+      go("/");
+    } catch (err) {
+      console.error(err);
+      alert(err.rtmsg);
+    }
+  };
 
   return (
     <UserContainer>
@@ -75,14 +88,13 @@ const UserSettingMenu = () => {
         <span>{user.email}</span>
       </div>
 
-      {/* <div className="phone user-div">
-        휴대폰 번호
-        <span>010-1234-5678</span>
-      </div> */}
-
       <Link to="/sns">
         <div className="sns user-div">SNS</div>
       </Link>
+
+      <div className="phone user-div" onClick={logout}>
+        로그아웃
+      </div>
     </UserContainer>
   );
 };

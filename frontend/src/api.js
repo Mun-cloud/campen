@@ -39,7 +39,7 @@ export const getExhibition = async () => {
 
 export const getExhibitionCamp = async (id) => {
   try {
-    return (await await axios.get(`/exhi/${id}`)).data.item;
+    return (await axios.get(`/exhi/${id}`)).data.item;
   } catch (err) {
     console.error(err);
   }
