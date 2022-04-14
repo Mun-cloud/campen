@@ -1,5 +1,5 @@
+import { useState } from "react";
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
 
 const TabContainer = styled.ul`
   max-width: 530px;
@@ -15,7 +15,7 @@ const TabItem = styled.li`
   height: 45px;
   width: 50%;
 
-  a {
+  div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,31 +23,70 @@ const TabItem = styled.li`
     height: 100%;
     font-size: 10.5pt;
     font-weight: 500;
-    color: #666;
+    color: #444;
     cursor: pointer;
+
+    &.active {
+      border-bottom: 2px solid #43c083;
+      color: #43c083;
+    }
   }
 `;
 
-const ProfileTabMenu = () => {
+const ProfileTabMenu = ({ content, tabValue }) => {
+  console.log(content);
+
+  const [seletedTab, setSelectedTab] = useState("게시글");
+
+  tabValue(seletedTab);
+
   return (
     <>
-      {/*탭메뉴 */}
+      {/* 상단 탭메뉴 */}
       <TabContainer>
-        {["게시글1", "게시글2"].map((data, index) => (
-          <TabItem data-tab={`tab${index + 1}`}>
-            <NavLink
-              to={`profile1-${index + 1}.html`}
-              style={({ isActive }) => ({
-                borderBottom: isActive && "2px solid #43C083",
-                color: isActive ? "#43C083" : "#444",
-              })}
-            >
-              {data}
-            </NavLink>
-          </TabItem>
-        ))}
+        <TabItem>
+          <div
+            id="게시글"
+            onClick={(e) => {
+              setSelectedTab(e.target.id);
+            }}
+            className={seletedTab === "게시글" ? "active" : ""}
+          >
+            게시글
+          </div>
+        </TabItem>
+        <TabItem>
+          <div
+            id="캠핑후기"
+            onClick={(e) => {
+              setSelectedTab(e.target.id);
+            }}
+            className={seletedTab === "캠핑후기" ? "active" : ""}
+          >
+            캠핑후기
+          </div>
+        </TabItem>
       </TabContainer>
     </>
+
+    // <>
+    //   {/*탭메뉴 */}
+    //   <TabContainer>
+    //     {["게시글1", "게시글2"].map((data, index) => (
+    //       <TabItem data-tab={`tab${index + 1}`}>
+    //         <NavLink
+    //           to={`profile1-${index + 1}.html`}
+    //           style={({ isActive }) => ({
+    //             borderBottom: isActive && "2px solid #43C083",
+    //             color: isActive ? "#43C083" : "#444",
+    //           })}
+    //         >
+    //           {data}
+    //         </NavLink>
+    //       </TabItem>
+    //     ))}
+    //   </TabContainer>
+    // </>
   );
 };
 

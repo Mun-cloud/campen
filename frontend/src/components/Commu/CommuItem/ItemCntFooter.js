@@ -165,7 +165,7 @@ const ItemCntFooter = () => {
           <div className="cmt2-box">
             <form className="form-box">
               {/* <!-- 이미지 업로드 --> */}
-              <label className="photo" for="upload-btn">
+              <label className="photo" htmlFor="upload-btn">
                 <span className="material-icons">image</span>
                 <input
                   type="file"

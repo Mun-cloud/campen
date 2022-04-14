@@ -10,25 +10,30 @@ import axios from "axios";
 const Profile = () => {
   const { id } = useParams();
   const [content, setContent] = useState();
+  const [tab, setTab] = useState();
 
   useEffect(() => {
     (async () => {
       try {
         const response = await axios.get(`/member/${id}`);
         setContent(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       } catch (err) {
         console.error(err);
       }
     })();
   }, [id]);
 
+  const tabValue = (data) => {
+    setTab(data);
+  };
+
   return (
     <>
       <ProfileHeader />
       <ProfileUser content={content} />
-      <ProfileTabMenu />
-      <ProfileCnt content={content} />
+      <ProfileTabMenu content={content} tabValue={tabValue} />
+      <ProfileCnt content={content} tabValue={tab} />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import ProfileCntFooter from "./ProfileCntFooter";
@@ -61,34 +61,57 @@ const CntBox = styled.div`
   }
 `;
 
-const ProfileCnt = ({ content }) => {
+const ProfileCnt = ({ content, tabValue }) => {
+  console.log(tabValue);
+
+  let filter = [];
+  if (content && tabValue) {
+    if (tabValue === "게시글") {
+      filter = content.contents.filter((v) => {
+        if (v.tab === 0 || v.tab === 2) {
+          console.log(v.tab);
+          return true;
+        }
+      });
+    } else if (tabValue === "캠핑후기") {
+      filter = content.contents.filter((v) => {
+        if (v.tab === 1) {
+          return true;
+        }
+      });
+    }
+  }
+
   return !content ? null : (
     <CntContainer>
-      {content.contents.map((v) => (
-        <>
-          <CntBox>
-            {/*  <!-- 날짜 --> */}
-            <div className="cnt-date">{v.reg_date}</div>
+      {filter &&
+        filter.map((v) => (
+          <>
+            <Link to={`/board/${v.contentId}`}>
+              <CntBox>
+                {/*  <!-- 날짜 --> */}
+                <div className="cnt-date">{v.reg_date}</div>
 
-            {/*  <!-- 컨텐츠 내용 --> */}
-            <div className="cnt-body">
-              {/* <!-- 제목,본문 --> */}
-              <div className="cnt">
-                <h3 className="cnt-title">{v.tab}</h3>
-                <div className="cnt-content">{v.content}</div>
-              </div>
-              {/*  <!-- 이미지 --> */}
-              <div className="cnt-img">
-                <img
-                  src={require("../../assets/img/medium.jpeg")}
-                  alt="컨텐츠 이미지"
-                />
-              </div>
-            </div>
-          </CntBox>
-          <ProfileCntFooter />
-        </>
-      ))}
+                {/*  <!-- 컨텐츠 내용 --> */}
+                <div className="cnt-body">
+                  {/* <!-- 제목,본문 --> */}
+                  <div className="cnt">
+                    <h3 className="cnt-title">{v.tab}</h3>
+                    <div className="cnt-content">{v.content}</div>
+                  </div>
+                  {/*  <!-- 이미지 --> */}
+                  <div className="cnt-img">
+                    <img
+                      src={require("../../assets/img/medium.jpeg")}
+                      alt="컨텐츠 이미지"
+                    />
+                  </div>
+                </div>
+              </CntBox>
+            </Link>
+            <ProfileCntFooter />
+          </>
+        ))}
     </CntContainer>
   );
 };
