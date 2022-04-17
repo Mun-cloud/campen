@@ -20,6 +20,7 @@ const Login = () => {
         await axios.post("/member/login", { user_id: id, user_pw: pw })
       ).data.item[0];
       dispatch(getUserData({ user_id: id, user_pw: pw }));
+
       alert(`${res.user_name}님 환영합니다.`);
       go("/");
     } catch (err) {
