@@ -36,16 +36,27 @@ const Search = () => {
   // 액션함수를 호출하기 위한 디스패치 함수 생성
   const dispatch = useDispatch();
 
+  const [allCamp, setAllCamp] = useState();
+
   // 검색이 실행되면 페이지 번호 초기화
   useEffect(() => {
+    (async () => {
+      let response = await axios.get("/campdata/all", {
+        params: {
+          query,
+        },
+      });
+      setAllCamp(response.data.item);
+    })();
     setPage(1);
   }, [query]);
 
   // query값이 변경될 때만 실행되는 hook을 통해 액션함수 디스패치
   useEffect(() => {
     if (!loading) {
-      dispatch(getCampList({ page, query }));
+      dispatch(getCampList({ query }));
     }
+    // }, [query]);
   }, [page, query]);
 
   useEffect(() => {
@@ -99,8 +110,7 @@ const Search = () => {
 
           <ResultCountCount>
             <h2>
-              캠핏 검색결과{" "}
-              <span id="search_result_count">{handleFilter().length}개</span>
+              캠핏 검색결과 <span id="search_result_count">{allCamp}개</span>
             </h2>
           </ResultCountCount>
 

@@ -50,15 +50,10 @@ const Heart = () => {
         setHearts((await axios.get(`/hearts/${data.id}`)).data.item);
       } catch (err) {
         alert("로그인 페이지로 이동합니다.");
-        console.error(err);
         go("/login");
       }
     })();
   }, []);
-
-  useEffect(() => {
-    console.log(hearts);
-  }, [hearts]);
 
   return (
     <Container>

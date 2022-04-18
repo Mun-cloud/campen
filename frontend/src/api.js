@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// 전체 notice값 GET
 export const getNoticeList = async () => {
   try {
     return (await axios.get("/notice")).data;
@@ -8,6 +9,7 @@ export const getNoticeList = async () => {
   }
 };
 
+// 고캠핑 API의 ID값에 따른 이미지 URL 받아오기
 export const getImageList = async (contentId) => {
   try {
     const APIurl =
@@ -29,6 +31,7 @@ export const getImageList = async (contentId) => {
   }
 };
 
+// 전체 기획전 리스트 가져오기
 export const getExhibition = async () => {
   try {
     return (await axios.get("/exhi")).data.item;
@@ -37,6 +40,7 @@ export const getExhibition = async () => {
   }
 };
 
+// 기획전에 해당하는 CAMP 데이터 받기
 export const getExhibitionCamp = async (id) => {
   try {
     return (await axios.get(`/exhi/${id}`)).data.item;

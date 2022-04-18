@@ -33,6 +33,7 @@ const UserContainer = styled.div`
     font-size: 35pt;
   }
 
+  .phone,
   .img-upload,
   .nickname,
   .password,
@@ -50,7 +51,7 @@ const UserSettingMenu = () => {
     try {
       await axios.delete("/member/logout");
       alert("로그아웃 되었습니다.");
-      go("/");
+      window.location.replace("/");
     } catch (err) {
       console.error(err);
       alert(err.rtmsg);

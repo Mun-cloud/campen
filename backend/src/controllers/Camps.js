@@ -82,18 +82,31 @@ module.exports = (app) => {
   });
 
   /** 전체 목록 조회 --> Read(SELECT) */
-  router.get("/camp/all", async (req, res, next) => {
+  router.get("/campdata/all", async (req, res, next) => {
+    const query = req.get("query");
     let json = null;
     try {
       dbcon = await mysql2.createConnection(config.database);
       await dbcon.connect();
 
-      let sql = "SELECT COUNT(*) cnt FROM camp";
+      // let sql = "SELECT COUNT(*) cnt FROM camp";
       // "SELECT id, contentId, name, addr1, addr2, tel, lctCl, price, photo, `basic_fac`, `add_fac`, lineIntro, intro, tag, mapX, mapY, homepage, `manner_start`, `manner_end`, policy, map, is_reg, reg_date, edit_date FROM camp";
-      const [result] = await dbcon.query(sql);
+      // const [result] = await dbcon.query(sql);
+
+      // 전체 데이터 수를 조회
+      let sql1 = "SELECT COUNT(*) 'cnt' FROM camp";
+      let args1 = [];
+
+      if (query != null) {
+        sql1 += " WHERE name LIKE concat('%', ?, '%')";
+        args1.push(query);
+      }
+
+      const [result1] = await dbcon.query(sql1, args1);
+      const totalCount = result1[0].cnt;
 
       // 조회 결과를 미리 준비한 변수에 저장함
-      json = result;
+      json = totalCount;
     } catch (err) {
       return next(err);
     } finally {

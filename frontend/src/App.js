@@ -29,8 +29,23 @@ import Board from "./pages/Board";
 import Log from "./pages/Log";
 import MyPage from "./pages/MyPage";
 import Login from "./pages/Login";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { getUserData } from "./slices/UserSlice";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        let data = (await axios.get("/member/info")).data.item;
+        dispatch(getUserData({ user_id: data.user_id, user_pw: data.user_pw }));
+      } catch (err) {}
+    })();
+  }, []);
+
   return (
     <div>
       <Meta />
