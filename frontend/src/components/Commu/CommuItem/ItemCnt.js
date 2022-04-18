@@ -48,6 +48,7 @@ const CntContainer = styled.div`
 `;
 
 const ItemCnt = ({ content }) => {
+  console.log(content);
   return !content ? (
     "Loading..."
   ) : (

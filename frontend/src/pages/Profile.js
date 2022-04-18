@@ -11,13 +11,13 @@ const Profile = () => {
   const { id } = useParams();
   const [content, setContent] = useState();
   const [tab, setTab] = useState();
+  console.log(content);
 
   useEffect(() => {
     (async () => {
       try {
         const response = await axios.get(`/member/${id}`);
         setContent(response.data);
-        // console.log(response.data);
       } catch (err) {
         console.error(err);
       }

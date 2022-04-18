@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const TabContainer = styled.ul`
@@ -34,11 +34,25 @@ const TabItem = styled.li`
 `;
 
 const ProfileTabMenu = ({ content, tabValue }) => {
-  console.log(content);
+  const [left, setLeft] = useState(0);
+  const [right, setRight] = useState(0);
+  useEffect(() => {
+    let leftCount = 0;
+    let rightCount = 0;
+    content?.contents.forEach((v) => {
+      if (v.tab === 0 || v.tab === 2) {
+        leftCount++;
+      } else if (v.tab === 1) {
+        rightCount++;
+      }
+      setLeft(leftCount);
+      setRight(rightCount);
+    });
+  }, [content]);
 
-  const [seletedTab, setSelectedTab] = useState("게시글");
+  const [selectedTab, setSelectedTab] = useState("게시글");
 
-  tabValue(seletedTab);
+  useEffect(() => tabValue(selectedTab), [selectedTab]);
 
   return (
     <>
@@ -48,11 +62,12 @@ const ProfileTabMenu = ({ content, tabValue }) => {
           <div
             id="게시글"
             onClick={(e) => {
+              console.log(e.target.id);
               setSelectedTab(e.target.id);
             }}
-            className={seletedTab === "게시글" ? "active" : ""}
+            className={selectedTab === "게시글" ? "active" : ""}
           >
-            게시글
+            {`게시글${left}`}
           </div>
         </TabItem>
         <TabItem>
@@ -61,32 +76,13 @@ const ProfileTabMenu = ({ content, tabValue }) => {
             onClick={(e) => {
               setSelectedTab(e.target.id);
             }}
-            className={seletedTab === "캠핑후기" ? "active" : ""}
+            className={selectedTab === "캠핑후기" ? "active" : ""}
           >
-            캠핑후기
+            {`캠핑후기${right}`}
           </div>
         </TabItem>
       </TabContainer>
     </>
-
-    // <>
-    //   {/*탭메뉴 */}
-    //   <TabContainer>
-    //     {["게시글1", "게시글2"].map((data, index) => (
-    //       <TabItem data-tab={`tab${index + 1}`}>
-    //         <NavLink
-    //           to={`profile1-${index + 1}.html`}
-    //           style={({ isActive }) => ({
-    //             borderBottom: isActive && "2px solid #43C083",
-    //             color: isActive ? "#43C083" : "#444",
-    //           })}
-    //         >
-    //           {data}
-    //         </NavLink>
-    //       </TabItem>
-    //     ))}
-    //   </TabContainer>
-    // </>
   );
 };
 

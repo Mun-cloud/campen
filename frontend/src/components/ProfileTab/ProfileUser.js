@@ -32,7 +32,7 @@ const ProfileUser = ({ content }) => {
       <UserProfile>
         <img src={require("../../assets/img/user-img.png")} alt="프로필" />
         <div className="user-name">
-          {content.nickname ? content.nickname : `캠퍼${content.members_id}`}
+          {content.nickname ? content.nickname : `캠퍼${content.id}`}
         </div>
       </UserProfile>
     </>

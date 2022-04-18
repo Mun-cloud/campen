@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import ProfileCntFooter from "./ProfileCntFooter";
+import ProfileCntFooter2 from "./ProfileCntFooter2";
 
 const CntContainer = styled.div`
   display: block;
@@ -62,25 +64,26 @@ const CntBox = styled.div`
 `;
 
 const ProfileCnt = ({ content, tabValue }) => {
-  console.log(tabValue);
-
-  let filter = [];
-  if (content && tabValue) {
-    if (tabValue === "게시글") {
-      filter = content.contents.filter((v) => {
-        if (v.tab === 0 || v.tab === 2) {
-          console.log(v.tab);
-          return true;
-        }
-      });
-    } else if (tabValue === "캠핑후기") {
-      filter = content.contents.filter((v) => {
-        if (v.tab === 1) {
-          return true;
-        }
-      });
+  const [filter, setFilter] = useState([]);
+  useEffect(() => {
+    if (content && tabValue) {
+      let filterArr = [];
+      if (tabValue === "게시글") {
+        filterArr = content.contents.filter((v) => {
+          if (v.tab === 0 || v.tab === 2) {
+            return true;
+          }
+        });
+      } else if (tabValue === "캠핑후기") {
+        filterArr = content.contents.filter((v) => {
+          if (v.tab === 1) {
+            return true;
+          }
+        });
+      }
+      setFilter(filterArr);
     }
-  }
+  }, [content, tabValue]);
 
   return !content ? null : (
     <CntContainer>
@@ -109,7 +112,7 @@ const ProfileCnt = ({ content, tabValue }) => {
                 </div>
               </CntBox>
             </Link>
-            <ProfileCntFooter />
+            {v.tab === 1 ? <ProfileCntFooter2 /> : <ProfileCntFooter />}
           </>
         ))}
     </CntContainer>
