@@ -66,6 +66,7 @@ const CntBox = styled.div`
 `;
 
 const ItemProfile = ({ content }) => {
+  console.log(content);
   let category = "";
   if (content) {
     if (content.tab === 0) {
