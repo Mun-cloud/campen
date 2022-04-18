@@ -169,6 +169,8 @@ const CntImg = styled.div`
 `;
 
 const Category0 = ({ data }) => {
+  // const { item } = useSelector((state) => state.camp);
+
   return (
     <>
       <CntBox key={data.id}>
@@ -224,7 +226,7 @@ const Category0 = ({ data }) => {
           </CntImg>
         </Link>
       </CntBox>
-      <CommuCntFooter />
+      <CommuCntFooter id={data.id} />
     </>
   );
 };
