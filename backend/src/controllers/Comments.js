@@ -7,6 +7,9 @@ const config = require("../../helper/_config");
 const logger = require("../../helper/LogHelper");
 const regexHelper = require("../../helper/RegexHelper");
 const utilHelper = require("../../helper/UtilHelper");
+const BadRequestException = require("../../exceptions/BadRequestException");
+const RuntimeException = require("../../exceptions/RuntimeException");
+const MultipartException = require("../../exceptions/MultipartException");
 const router = require("express").Router();
 const mysql2 = require("mysql2/promise");
 
@@ -42,10 +45,10 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
-  /** 항목별 분류 조회 --> Read(SELECT) */
-  router.get("/content/:tab", async (req, res, next) => {
-    const tab = req.get("tab");
-    if (tab === null) {
+  /** members Id 조회 --> Read(SELECT) */
+  router.get("/comments/members/:memberId", async (req, res, next) => {
+    const id = req.get("memberId");
+    if (id === null) {
       return next(new Error(400));
     }
 
@@ -59,8 +62,40 @@ module.exports = (app) => {
 
       // 데이터 조회
       const sql =
-        "SELECT id, tab, content, views, reg_date, edit_date, members_id, camp_id FROM contents WHERE tab=?";
-      const [result] = await dbcon.query(sql, [tab]);
+        "SELECT id, comment, reg_date, edit_date, members_id, contents_id FROM comments WHERE members_id=?";
+      const [result] = await dbcon.query(sql, [id]);
+
+      // 조회 결과를 미리 준비한 변수에 저장함
+      json = result;
+    } catch (err) {
+      return next(err);
+    } finally {
+      dbcon.end();
+    }
+
+    // 모든 처리에 성공했으므로 정상 조회 결과 구성
+    res.sendJson({ item: json });
+  });
+
+  /** contents Id 조회 --> Read(SELECT) */
+  router.get("/comments/contents/:contentId", async (req, res, next) => {
+    const id = req.get("contentId");
+    if (id === null) {
+      return next(new Error(400));
+    }
+
+    // 데이터 조회 결과가 저장될 빈 변수
+    let json = null;
+
+    try {
+      // 데이터베이스 접속
+      dbcon = await mysql2.createConnection(config.database);
+      await dbcon.connect();
+
+      // 데이터 조회
+      const sql =
+        "SELECT id, comment, reg_date, edit_date, members_id, contents_id FROM comments WHERE contents_id=?";
+      const [result] = await dbcon.query(sql, [id]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
       json = result;
@@ -75,14 +110,26 @@ module.exports = (app) => {
   });
 
   /** 데이터 추가 --> Create(INSERT) */
-  router.post("/content", async (req, res, next) => {
+  router.post("/comments", async (req, res, next) => {
     if (!req.session.memberInfo) {
       return next(new BadRequestException("로그인중이 아닙니다."));
     }
     // 저장을 위한 파라미터 입력받기
-    const tab = req.post("tab");
-    const content = req.post("content");
-    const views = req.post("views");
+    const comments = req.post("comments");
+    const membersId = req.post("membersId");
+    const contentsId = req.post("contentsId");
+
+    function foundNull() {
+      [comments, membersId, contentsId].forEach((v) => {
+        if (v === null) {
+          return false;
+        }
+      });
+    }
+
+    if (!foundNull) {
+      return next(new BadRequestException("전송값에 오류가 있습니다."));
+    }
 
     /** 데이터 저장하기 */
     // 데이터 조회 결과가 저장될 빈 변수
@@ -94,13 +141,12 @@ module.exports = (app) => {
       await dbcon.connect();
 
       // 데이터 저장하기
-      const sql =
-        "INSERT INTO contents VALUES (null, ?, ?, ?, now(), now(), ?, null)";
-      const input_data = [tab, content, views, req.session.memberInfo.id];
+      const sql = "INSERT INTO comments VALUES (null, ?, now(), now(), ?, ?)";
+      const input_data = [comments, membersId, contentsId];
       const [result1] = await dbcon.query(sql, input_data);
 
       // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-      const sql2 = "SELECT * FROM contents WHERE id=?";
+      const sql2 = "SELECT * FROM comments WHERE id=?";
       const [result2] = await dbcon.query(sql2, [result1.insertId]);
 
       // 조회 결과를 미리 준비한 변수에 저장함

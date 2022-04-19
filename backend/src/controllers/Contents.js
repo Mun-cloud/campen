@@ -6,8 +6,10 @@
 const config = require("../../helper/_config");
 const logger = require("../../helper/LogHelper");
 const regexHelper = require("../../helper/RegexHelper");
-const BadRequestException = require("../../exceptions/BadRequestException");
 const utilHelper = require("../../helper/UtilHelper");
+const BadRequestException = require("../../exceptions/BadRequestException");
+const RuntimeException = require("../../exceptions/RuntimeException");
+const MultipartException = require("../../exceptions/MultipartException");
 const router = require("express").Router();
 const mysql2 = require("mysql2/promise");
 
@@ -221,7 +223,7 @@ module.exports = (app) => {
 
       // 자식데이터 null 주기
       await dbcon.query(
-        "UPDATE `contents-comments` SET `contents_id`=null WHERE 'contents_id'=?",
+        "UPDATE `comments` SET `contents_id`=null WHERE 'contents_id'=?",
         [id]
       );
 
