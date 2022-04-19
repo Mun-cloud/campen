@@ -164,6 +164,7 @@ app.use(require("./controllers/Notices")(app));
 app.use(require("./controllers/Exhibition")(app));
 app.use(require("./controllers/ContentLikes")(app));
 app.use(require("./controllers/Hearts")(app));
+app.use(require("./controllers/Comments")(app));
 
 app.use(require("./routes/FileUpload")(app));
 
