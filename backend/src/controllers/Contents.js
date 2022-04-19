@@ -79,9 +79,9 @@ module.exports = (app) => {
 
   /** 데이터 추가 --> Create(INSERT) */
   router.post("/content", async (req, res, next) => {
-    // if (!req.session.memberInfo) {
-    //   return next(new BadRequestException("로그인중이 아닙니다."));
-    // }
+    if (!req.session.memberInfo) {
+      return next(new BadRequestException("로그인중이 아닙니다."));
+    }
     // 저장을 위한 파라미터 입력받기
     const tab = req.post("tab");
     const content = req.post("content");
@@ -99,6 +99,18 @@ module.exports = (app) => {
     // } catch (err) {
     //   return next(err);
     // }
+
+    function foundNull() {
+      [tab, content].forEach((v) => {
+        if (v === null) {
+          return false;
+        }
+      });
+    }
+
+    if (!foundNull) {
+      return next(new Error(400));
+    }
 
     /** 데이터 저장하기 */
     // 데이터 조회 결과가 저장될 빈 변수
@@ -134,7 +146,9 @@ module.exports = (app) => {
 
   /** 데이터 수정 --> Update(UPDATE) */
   router.put("/content/:id", async (req, res, next) => {
-    // id, tab, content, views, reg_date, edit_date, members_id, camp_id;
+    if (!req.session.memberInfo) {
+      return next(new BadRequestException("로그인중이 아닙니다."));
+    }
     const id = req.get("id");
     const content = req.post("content");
 
@@ -201,6 +215,9 @@ module.exports = (app) => {
 
   /** 데이터 삭제 --> Delete(DELETE) */
   router.delete("/content/:id", async (req, res, next) => {
+    if (!req.session.memberInfo) {
+      return next(new BadRequestException("로그인중이 아닙니다."));
+    }
     const id = req.get("id");
 
     if (id === null) {

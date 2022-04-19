@@ -51,6 +51,9 @@ module.exports = (app) => {
 
   /** 데이터 추가 --> Create(INSERT) */
   router.post("/hearts", async (req, res, next) => {
+    if (!req.session.memberInfo) {
+      return next(new BadRequestException("로그인중이 아닙니다."));
+    }
     // 저장을 위한 파라미터 입력받기
     const user_id = req.post("user_id");
     const camp_id = req.post("camp_id");
@@ -88,6 +91,9 @@ module.exports = (app) => {
 
   /** 데이터 삭제 --> Delete(DELETE) */
   router.delete("/hearts", async (req, res, next) => {
+    if (!req.session.memberInfo) {
+      return next(new BadRequestException("로그인중이 아닙니다."));
+    }
     const user_id = req.delete("user_id");
     const camp_id = req.delete("camp_id");
     if (user_id === null || camp_id === null) {

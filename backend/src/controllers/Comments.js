@@ -115,12 +115,12 @@ module.exports = (app) => {
       return next(new BadRequestException("로그인중이 아닙니다."));
     }
     // 저장을 위한 파라미터 입력받기
-    const comments = req.post("comments");
+    const comment = req.post("comment");
     const membersId = req.post("membersId");
     const contentsId = req.post("contentsId");
 
     function foundNull() {
-      [comments, membersId, contentsId].forEach((v) => {
+      [comment, membersId, contentsId].forEach((v) => {
         if (v === null) {
           return false;
         }
@@ -142,11 +142,12 @@ module.exports = (app) => {
 
       // 데이터 저장하기
       const sql = "INSERT INTO comments VALUES (null, ?, now(), now(), ?, ?)";
-      const input_data = [comments, membersId, contentsId];
+      const input_data = [comment, membersId, contentsId];
       const [result1] = await dbcon.query(sql, input_data);
 
       // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-      const sql2 = "SELECT * FROM comments WHERE id=?";
+      const sql2 =
+        "SELECT id, comment, reg_date, edit_date, members_id, contents_id FROM comments WHERE id=?";
       const [result2] = await dbcon.query(sql2, [result1.insertId]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
@@ -162,27 +163,16 @@ module.exports = (app) => {
   });
 
   /** 데이터 수정 --> Update(UPDATE) */
-  router.put("/content/:id", async (req, res, next) => {
-    // id, tab, content, views, reg_date, edit_date, members_id, camp_id;
-    const id = req.get("id");
-    const content = req.post("content");
+  router.put("/comments/:id", async (req, res, next) => {
+    if (!req.session.memberInfo) {
+      return next(new BadRequestException("로그인중이 아닙니다."));
+    }
 
-    // try {
-    //   regexHelper.value(name, "교수이름이 없습니다.");
-    //   regexHelper.value(userid, "아이디가 없습니다.");
-    //   regexHelper.value(position, "직급이 없습니다.");
-    //   regexHelper.value(sal, "급여가 없습니다.");
-    //   regexHelper.value(hiredate, "입사일 없습니다.");
-    //   regexHelper.value(deptno, "소속학과 번호가 없습니다.");
-    //   regexHelper.maxLength(name, 50, "이름이 너무 깁니다.");
-    //   regexHelper.maxLength(userid, 50, "아이디가 너무 깁니다.");
-    //   regexHelper.maxLength(position, 20, "직급이 너무 깁니다.");
-    // } catch (err) {
-    //   return next(err);
-    // }
+    const id = req.get("id");
+    const comment = req.post("comment");
 
     function foundNull() {
-      [id, content].forEach((v) => {
+      [id, comment].forEach((v) => {
         if (v === null) {
           return false;
         }
@@ -203,8 +193,8 @@ module.exports = (app) => {
       await dbcon.connect();
 
       // 데이터 수정하기
-      const sql = "UPDATE contents SET content=? WHERE id=?";
-      const input_data = [content, id];
+      const sql = "UPDATE comments SET comment=?, edit_date=now() WHERE id=?";
+      const input_data = [comment, id];
       const [result1] = await dbcon.query(sql, input_data);
 
       // 결과 행 수가 0이라면 예외처리
@@ -213,7 +203,8 @@ module.exports = (app) => {
       }
 
       // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-      const sql2 = "SELECT * FROM contents WHERE id=?";
+      const sql2 =
+        "SELECT id, comment, reg_date, edit_date, members_id, contents_id FROM comments WHERE id=?";
       const [result2] = await dbcon.query(sql2, [id]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
@@ -229,7 +220,10 @@ module.exports = (app) => {
   });
 
   /** 데이터 삭제 --> Delete(DELETE) */
-  router.delete("/content/:id", async (req, res, next) => {
+  router.delete("/comments/:id", async (req, res, next) => {
+    if (!req.session.memberInfo) {
+      return next(new BadRequestException("로그인중이 아닙니다."));
+    }
     const id = req.get("id");
 
     if (id === null) {
@@ -242,21 +236,8 @@ module.exports = (app) => {
       dbcon = await mysql2.createConnection(config.database);
       await dbcon.connect();
 
-      // 자식데이터 삭제
-      await dbcon.query("DELETE FROM contents-href WHERE id=?", [id]);
-
-      // 자식데이터 null 주기
-      await dbcon.query(
-        "UPDATE contents-comments SET contents_id=null WHERE id=?",
-        [id]
-      );
-      await dbcon.query(
-        "UPDATE contents-likes SET contents_id=null WHERE id=?",
-        [id]
-      );
-
       // 데이터 삭제하기
-      const sql = "DELETE FROM contents WHERE id=?";
+      const sql = "DELETE FROM comments WHERE id=?";
       const [result1] = await dbcon.query(sql, [id]);
 
       json = result1;
