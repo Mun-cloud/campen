@@ -15,7 +15,7 @@ module.exports = (app) => {
   let dbcon = null;
 
   /** 전체 목록 조회 --> Read(SELECT) */
-  router.get("/comments", async (req, res, next) => {
+  router.get("/content", async (req, res, next) => {
     // 데이터 조회 결과가 저장될 빈 변수
     let json = null;
 
@@ -26,7 +26,7 @@ module.exports = (app) => {
 
       // 데이터 조회
       let sql2 =
-        "SELECT id, comment, reg_date, edit_date, members_id, contents_id FROM comments";
+        "SELECT id, tab, content, views, reg_date, edit_date, members_id, camp_id FROM contents";
 
       const [result2] = await dbcon.query(sql2);
 
@@ -83,6 +83,20 @@ module.exports = (app) => {
     const tab = req.post("tab");
     const content = req.post("content");
     const views = req.post("views");
+
+    // try {
+    //   regexHelper.value(name, "교수이름이 없습니다.");
+    //   regexHelper.value(userid, "아이디가 없습니다.");
+    //   regexHelper.value(position, "직급이 없습니다.");
+    //   regexHelper.value(sal, "급여가 없습니다.");
+    //   regexHelper.value(hiredate, "입사일 없습니다.");
+    //   regexHelper.value(deptno, "소속학과 번호가 없습니다.");
+    //   regexHelper.maxLength(name, 50, "이름이 너무 깁니다.");
+    //   regexHelper.maxLength(userid, 50, "아이디가 너무 깁니다.");
+    //   regexHelper.maxLength(position, 20, "직급이 너무 깁니다.");
+    // } catch (err) {
+    //   return next(err);
+    // }
 
     /** 데이터 저장하기 */
     // 데이터 조회 결과가 저장될 빈 변수

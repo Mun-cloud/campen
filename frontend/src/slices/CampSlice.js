@@ -11,7 +11,6 @@ export const getCampList = createAsyncThunk(
       result = await axios.get("/campdata", {
         params: {
           query: payload.query,
-          page: payload.page,
         },
       });
     } catch (err) {

@@ -8,6 +8,7 @@ import qs from "qs";
 import SearchHeader from "../components/Search/SearchHeader";
 import SearchResultBox from "../components/Search/SearchResultBox";
 import { getCampList } from "../slices/CampSlice";
+import axios from "axios";
 
 const ResultCountCount = styled.div`
   padding: 24px 0 10px 14px;
@@ -35,18 +36,27 @@ const Search = () => {
   // 액션함수를 호출하기 위한 디스패치 함수 생성
   const dispatch = useDispatch();
 
-  const [allCamp, setAllCamp] = useState(0);
+  const [allCamp, setAllCamp] = useState();
 
   // 검색이 실행되면 페이지 번호 초기화
   useEffect(() => {
+    (async () => {
+      let response = await axios.get("/campdata/all", {
+        params: {
+          query,
+        },
+      });
+      setAllCamp(response.data.item);
+    })();
     setPage(1);
   }, [query]);
 
   // query값이 변경될 때만 실행되는 hook을 통해 액션함수 디스패치
   useEffect(() => {
     if (!loading) {
-      dispatch(getCampList({ page, query }));
+      dispatch(getCampList({ query }));
     }
+    // }, [query]);
   }, [page, query]);
 
   useEffect(() => {
@@ -55,10 +65,6 @@ const Search = () => {
       setPage(page + 1);
     }
   }, [inView]);
-
-  useEffect(() => {
-    setAllCamp(item?.pagenation?.totalCount);
-  }, [query, item]);
 
   // 지역 옵션 선택값
   const [location, setLocation] = useState("");
@@ -83,11 +89,9 @@ const Search = () => {
 
   // 전체 캠핑장 데이터 필터링 함수
   const handleFilter = () => {
-    let result = item.item.filter((v) =>
+    return item.item.filter((v) =>
       new RegExp(locationRegex(location)).test(v.addr1)
     );
-    setAllCamp(result.length);
-    return result;
   };
 
   return loading ? (
