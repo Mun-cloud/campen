@@ -95,7 +95,7 @@ const PreviewImg = styled.img`
   margin-bottom: 5px;
 `;
 
-const WriteCnt = ({ cntText, cntTab }) => {
+const WriteCnt = ({ cntText, cntTab, setImgs }) => {
   const [files, setFiles] = useState([]);
   const [imgPreview, setImagPreview] = useState([]);
 
@@ -106,6 +106,7 @@ const WriteCnt = ({ cntText, cntTab }) => {
       for (let i = 0; i < fileArr.length; i++) {
         let file = fileArr[i];
         const imageUrl = URL.createObjectURL(file);
+        const reader = new FileReader();
         setFiles((prev) => prev.concat(file));
         setImagPreview((prev) => prev.concat(imageUrl));
       }
@@ -113,8 +114,6 @@ const WriteCnt = ({ cntText, cntTab }) => {
   }
 
   function preview() {
-    console.log(files);
-    console.log(imgPreview);
     if (files.length > 10) {
       alert("최대 업로드 가능한 이미지 수는 10개 입니다.");
       setFiles((prev) => prev.slice(0, 10));
@@ -122,11 +121,13 @@ const WriteCnt = ({ cntText, cntTab }) => {
     }
   }
 
-  useEffect(preview, [imgPreview]);
+  useEffect(() => {
+    preview();
+    setImgs(files);
+  }, [files]);
 
   function onPictuerClick(e) {
-    let i = e.target.id;
-    console.log(i);
+    let i = parseInt(e.target.id);
     setFiles((prev) => prev.slice(0, i).concat(prev.slice(i + 1)));
     setImagPreview((prev) => prev.slice(0, i).concat(prev.slice(i + 1)));
   }

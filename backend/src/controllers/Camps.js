@@ -12,6 +12,7 @@ const RuntimeException = require("../../exceptions/RuntimeException");
 const MultipartException = require("../../exceptions/MultipartException");
 const router = require("express").Router();
 const mysql2 = require("mysql2/promise");
+const axios = require("axios");
 
 /** 라우팅 정의 부분 */
 module.exports = (app) => {

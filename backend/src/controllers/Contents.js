@@ -12,6 +12,7 @@ const RuntimeException = require("../../exceptions/RuntimeException");
 const MultipartException = require("../../exceptions/MultipartException");
 const router = require("express").Router();
 const mysql2 = require("mysql2/promise");
+const axios = require("axios");
 
 /** 라우팅 정의 부분 */
 module.exports = (app) => {
@@ -65,8 +66,12 @@ module.exports = (app) => {
         "SELECT c.id, c.tab, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, camp_id FROM contents c, members m WHERE c.members_id=m.id and c.id=?";
       const [result] = await dbcon.query(sql, [id]);
 
+      const sql2 =
+        "SELECT id, src, reg_date, contents_id FROM `contents-img` WHERE contents_id=?";
+      const [result2] = await dbcon.query(sql2, [id]);
       // 조회 결과를 미리 준비한 변수에 저장함
-      json = result;
+      json = result[0];
+      json.photos = result2;
     } catch (err) {
       return next(err);
     } finally {
@@ -85,6 +90,7 @@ module.exports = (app) => {
     // 저장을 위한 파라미터 입력받기
     const tab = req.post("tab");
     const content = req.post("content");
+    const memberId = req.post("memberId");
 
     // try {
     //   regexHelper.value(name, "교수이름이 없습니다.");
@@ -101,7 +107,7 @@ module.exports = (app) => {
     // }
 
     function foundNull() {
-      [tab, content].forEach((v) => {
+      [tab, content, memberId].forEach((v) => {
         if (v === null) {
           return false;
         }
@@ -123,8 +129,8 @@ module.exports = (app) => {
 
       // 데이터 저장하기
       const sql =
-        "INSERT INTO contents VALUES (null, ?, ?, 0, now(), now(), null, null)";
-      const input_data = [tab, content];
+        "INSERT INTO contents VALUES (null, ?, ?, 0, now(), now(), ?, null)";
+      const input_data = [tab, content, memberId];
       const [result1] = await dbcon.query(sql, input_data);
 
       // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
