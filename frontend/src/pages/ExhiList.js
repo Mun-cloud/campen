@@ -5,7 +5,7 @@ import { useQuery } from "react-query";
 import styled from "styled-components";
 
 const Container = styled.div`
-  padding-bottom: 60px;
+  height: 100vh;
 `;
 
 const SImage = styled.img`

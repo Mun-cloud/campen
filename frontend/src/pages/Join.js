@@ -1,7 +1,8 @@
 import BasicHeaderBar from "../components/BasicHeaderBar";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   width: 100%;
@@ -82,6 +83,11 @@ const Button = styled.button`
 `;
 
 const Join = () => {
+  const { isLoading, item } = useSelector((state) => state.user);
+  useEffect(() => {
+    !isLoading && item.length === 0 && go(-1);
+  }, []);
+
   const [checkList, setCheckList] = useState([
     { name: "check1", checked: false },
     { name: "check2", checked: false },

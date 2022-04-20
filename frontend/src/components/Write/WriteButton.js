@@ -2,9 +2,9 @@ import styled from "styled-components";
 import axios from "axios";
 
 const WriteSubmit = styled.button`
-  max-width: 530px;
-  bottom: 0px;
-  width: 100%;
+  position: fixed;
+  bottom: 60px;
+  width: 530px;
   height: 70px;
   font-size: 11.5pt;
   font-weight: 700;

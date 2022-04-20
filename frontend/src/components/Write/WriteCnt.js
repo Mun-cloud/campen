@@ -1,12 +1,14 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const CntContainer = styled.div`
-  padding: 0px 20px;
+  padding: 0px 20px 90px 20px;
   background: rgb(255, 255, 255);
 `;
 
 const CntBox = styled.div`
   border-bottom: 1px solid rgb(234, 238, 236);
+  height: 65vh;
 `;
 const CntBtn = styled.div`
   display: flex;
@@ -48,7 +50,8 @@ const Cnt = styled.div`
 `;
 
 const PhotoContainer = styled.div`
-  padding: 20px 0px 20px 20px;
+  padding: 20px;
+  padding-bottom: 60px;
   background: rgb(255, 255, 255);
 `;
 
@@ -58,6 +61,8 @@ const PhotoBox = styled.div`
 
 const PhotoUpload = styled.div`
   margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const Photo = styled.label`
@@ -82,53 +87,114 @@ const Photo = styled.label`
   }
 `;
 
-const WriteCnt = ({ cntText, cntTab }) => {
-  return (
-    <>
-      {/* <!-- 컨텐츠 --> */}
-      <CntContainer>
-        <CntBox>
-          {/* <!-- 글쓰기 주제 선택버튼 --> */}
-          <CntBtn>
-            <select
-              onChange={(e) => {
-                cntTab(e.currentTarget.value);
-              }}
-            >
-              <option value="0">캠핑한컷</option>
-              <option value="1">캠핑후기</option>
-              <option value="2">궁금해요</option>
-            </select>
-          </CntBtn>
-          {/* <!-- 글쓰기 입력영역 --> */}
-          <Cnt>
-            <textarea
-              className="text-box"
-              height="100%"
-              placeholder="이곳에 글을 작성해주세요.최소 10자 이상 입력해주세요."
-              name="constents"
-              maxLength="3000"
-              onChange={(e) => {
-                cntText(e.currentTarget.value);
-              }}
-            ></textarea>
-          </Cnt>
-        </CntBox>
+const PreviewImg = styled.img`
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+`;
 
-        {/* <!-- 이미지 업로드 --> */}
-        <PhotoContainer>
-          <PhotoBox>
-            <PhotoUpload>
-              {/* <!-- 이미지 업로드 --> */}
+const WriteCnt = ({ cntText, cntTab }) => {
+  const [files, setFiles] = useState([]);
+  const [imgPreview, setImagPreview] = useState([]);
+
+  function onChange(e) {
+    const fileArr = e.target.files;
+
+    if (fileArr.length > 0) {
+      for (let i = 0; i < fileArr.length; i++) {
+        let file = fileArr[i];
+        const imageUrl = URL.createObjectURL(file);
+        setFiles((prev) => prev.concat(file));
+        setImagPreview((prev) => prev.concat(imageUrl));
+      }
+    }
+  }
+
+  function preview() {
+    console.log(files);
+    console.log(imgPreview);
+    if (files.length > 10) {
+      alert("최대 업로드 가능한 이미지 수는 10개 입니다.");
+      setFiles((prev) => prev.slice(0, 10));
+      setImagPreview((prev) => prev.slice(0, 10));
+    }
+  }
+
+  useEffect(preview, [imgPreview]);
+
+  function onPictuerClick(e) {
+    let i = e.target.id;
+    console.log(i);
+    setFiles((prev) => prev.slice(0, i).concat(prev.slice(i + 1)));
+    setImagPreview((prev) => prev.slice(0, i).concat(prev.slice(i + 1)));
+  }
+
+  return (
+    <CntContainer>
+      <CntBox>
+        {/* <!-- 글쓰기 주제 선택버튼 --> */}
+        <CntBtn>
+          <select
+            onChange={(e) => {
+              cntTab(e.currentTarget.value);
+            }}
+          >
+            <option value="0">캠핑한컷</option>
+            <option value="1">캠핑후기</option>
+            <option value="2">궁금해요</option>
+          </select>
+        </CntBtn>
+        {/* <!-- 글쓰기 입력영역 --> */}
+        <Cnt>
+          <textarea
+            className="text-box"
+            height="100%"
+            placeholder="이곳에 글을 작성해주세요.최소 10자 이상 입력해주세요."
+            name="constents"
+            maxLength="3000"
+            onChange={(e) => {
+              cntText(e.currentTarget.value);
+            }}
+          ></textarea>
+        </Cnt>
+      </CntBox>
+
+      {/* <!-- 이미지 업로드 --> */}
+      <PhotoContainer>
+        <PhotoBox>
+          <PhotoUpload>
+            {imgPreview.length === 0
+              ? null
+              : imgPreview.map((v, i) => (
+                  <PreviewImg
+                    src={v}
+                    alt={v}
+                    key={v}
+                    id={i}
+                    onClick={onPictuerClick}
+                  />
+                ))}
+            {/* <!-- 이미지 업로드 --> */}
+            {imgPreview.length < 10 ? (
               <Photo htmlFor="upload-btn">
+                <input
+                  type="file"
+                  accept="image/jpg,impge/png,image/jpeg,image/gif"
+                  id="upload-btn"
+                  multiple
+                  onChange={onChange}
+                  style={{ display: "none" }}
+                />
                 <span className="material-icons">image</span>
-                <div>0/10</div>
+                <div>{imgPreview.length}/10</div>
               </Photo>
-            </PhotoUpload>
-          </PhotoBox>
-        </PhotoContainer>
-      </CntContainer>
-    </>
+            ) : null}
+          </PhotoUpload>
+        </PhotoBox>
+      </PhotoContainer>
+    </CntContainer>
   );
 };
 

@@ -46,23 +46,16 @@ const IndexSectionTitle = ({ title, btn, sub1, sub2, mt, url }) => {
     <SectionTitle style={{ marginTop: mt }}>
       <div className="area_title">
         <div className="area_title_left">{title}</div>
-        <Link to={url} className="area_title_btn">
-          {/* {... switch(btn){
-           case "업로드" :
-           <i className="fas fa-camera"></i>
-           break;
-            case "글쓰기" :
-                <i className="fas fa-camera"></i>
-                break;
-                default:
-                    null
-                    break;
-}} */}
-          <i className="fas fa-camera"></i>
+        <Link to="/write" className="area_title_btn">
+          {btn === "업로드" ? (
+            <i className="fas fa-camera"></i>
+          ) : btn === "글쓰기" ? (
+            <i className="fas fa-pen"></i>
+          ) : null}{" "}
           {btn}
         </Link>
       </div>
-      <Link to={url} className="commu_link" data_commu="photo">
+      <Link to={url} className="commu_link">
         <span>{sub1}</span>
         <span>
           {sub2}

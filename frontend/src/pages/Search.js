@@ -19,22 +19,21 @@ const ResultCountCount = styled.div`
 `;
 
 const Search = () => {
+  // query값 수신
   const { search } = useLocation();
-
   const { query } = qs.parse(search, { ignoreQueryPrefix: true });
 
   // 페이지 번호 상태값
   const [page, setPage] = useState(1);
-
   // 무한 스크롤 관련
   const [ref, inView] = useInView();
 
   // 리덕스 스토어에 저장되어 있는 상태값 받기
   const { rt, rtmsg, item, loading } = useSelector((state) => state.camp);
-
   // 액션함수를 호출하기 위한 디스패치 함수 생성
   const dispatch = useDispatch();
 
+  // 검색결과 목록 출력 State
   const [allCamp, setAllCamp] = useState(0);
 
   // 검색이 실행되면 페이지 번호 초기화
@@ -83,12 +82,18 @@ const Search = () => {
 
   // 전체 캠핑장 데이터 필터링 함수
   const handleFilter = () => {
-    let result = item.item.filter((v) =>
-      new RegExp(locationRegex(location)).test(v.addr1)
-    );
-    setAllCamp(result.length);
+    let result;
+    if (item) {
+      result = item.item.filter((v) =>
+        new RegExp(locationRegex(location)).test(v.addr1)
+      );
+    }
     return result;
   };
+
+  useEffect(() => {
+    setAllCamp(handleFilter().length);
+  }, [location]);
 
   return loading ? (
     "loading..."
@@ -116,10 +121,11 @@ const Search = () => {
             <div>검색결과가 없습니다.</div>
           ) : (
             <>
-              {handleFilter().map((v) => (
-                <SearchResultBox item={v} key={v.id} />
+              {handleFilter().map((v, i) => (
+                <SearchResultBox item={v} key={i} />
               ))}
-              {handleFilter().length > 3 && <div ref={ref}></div>}
+              {handleFilter().length > 3 &&
+                handleFilter().length !== allCamp && <div ref={ref}></div>}
             </>
           )}
         </>
