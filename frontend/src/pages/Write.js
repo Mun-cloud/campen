@@ -38,7 +38,6 @@ const Write = () => {
   function imgUpload() {
     console.log("업로드 클릭");
   }
-  useEffect(() => console.log(imgs), [imgs]);
 
   const postCommu = async () => {
     try {
@@ -48,7 +47,6 @@ const Write = () => {
         content: text,
         memberId: item.id,
       });
-      console.log(response.data.item[0].id);
 
       // 업로드 한 이미지가 있을 경우 실행
       if (imgs) {

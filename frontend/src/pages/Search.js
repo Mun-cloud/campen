@@ -83,7 +83,7 @@ const Search = () => {
   // 전체 캠핑장 데이터 필터링 함수
   const handleFilter = () => {
     let result;
-    if (item) {
+    if (!loading && item) {
       result = item.item.filter((v) =>
         new RegExp(locationRegex(location)).test(v.addr1)
       );

@@ -86,7 +86,7 @@ const IndexCamplog = () => {
         btn="글쓰기"
         sub1="캠핑 다녀오셨나요?"
         sub2="나만의 캠핑 포스트를 남겨보세요. "
-        url="/join"
+        url="/login"
       />
       <LogSwiper freeMode={true} slidesPerView={"auto"}>
         <SwiperSlide className="swiper-slide">

@@ -69,7 +69,7 @@ module.exports = (app) => {
       const sql2 =
         "SELECT id, src, reg_date, contents_id FROM `contents-img` WHERE contents_id=?";
       const [result2] = await dbcon.query(sql2, [id]);
-      // 조회 결과를 미리 준비한 변수에 저장함
+
       json = result[0];
       json.photos = result2;
     } catch (err) {

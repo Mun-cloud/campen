@@ -43,7 +43,7 @@ const IndexBestPhoto = () => {
         btn="업로드"
         sub1="캠핑 다녀오셨나요?"
         sub2="나만의 추억을 남겨보세요. "
-        url="/join"
+        url="/login"
       />
       {/* <!-- Best Photo 슬라이드 --> */}
       <BestSwiper freeMode={true} slidesPerView={"auto"}>
