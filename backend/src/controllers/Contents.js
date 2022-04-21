@@ -20,6 +20,7 @@ module.exports = (app) => {
 
   /** 전체 목록 조회 --> Read(SELECT) */
   router.get("/content", async (req, res, next) => {
+    const query = req.get("query");
     // 데이터 조회 결과가 저장될 빈 변수
     let json = null;
 
@@ -29,13 +30,16 @@ module.exports = (app) => {
       await dbcon.connect();
 
       // 데이터 조회
-      let sql2 =
+      let sql1 =
         "SELECT c.id, c.tab, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, camp_id FROM contents c, members m where c.members_id=m.id";
 
-      const [result2] = await dbcon.query(sql2);
+      // 최근데이터 조회(대표이미지 포함) select문
+      // SELECT c.id, c.tab, g.src, cast(c.content as char(10000)) content FROM contents c, `contents-img` g,  (select min(id) id, contents_id from `contents-img` group by contents_id) i WHERE c.id=i.contents_id and g.id=i.id order by id desc limit 0, 2
+
+      const [result1] = await dbcon.query(sql1);
 
       // 조회 결과를 미리 준비한 변수에 저장함
-      json = result2;
+      json = result1;
     } catch (err) {
       return next(err);
     } finally {
