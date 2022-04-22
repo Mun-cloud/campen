@@ -29,11 +29,11 @@ const CommuCnt = ({ data }) => {
       {data &&
         data.map((v) => {
           if (v.tab === 0) {
-            return <Category0 data={v} />;
+            return <Category0 data={v} key={v.id} />;
           } else if (v.tab === 1) {
-            return <Category1 data={v} />;
+            return <Category1 data={v} key={v.id} />;
           } else if (v.tab === 2) {
-            return <Category2 data={v} />;
+            return <Category2 data={v} key={v.id} />;
           }
         })}
     </CntBox>

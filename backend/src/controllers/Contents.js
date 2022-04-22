@@ -31,7 +31,7 @@ module.exports = (app) => {
 
       // 데이터 조회
       let sql1 =
-        "SELECT c.id, c.tab,  g.src, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, camp_id FROM contents c, members m, `contents-img` g, (select min(id) id, contents_id from `contents-img` group by contents_id) i where c.members_id=m.id and c.id=i.contents_id and g.id=i.id order by id desc";
+        "SELECT c.id, c.tab,  g.src, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, m.photo userPhoto, camp_id FROM contents c, members m, `contents-img` g, (select min(id) id, contents_id from `contents-img` group by contents_id) i where c.members_id=m.id and c.id=i.contents_id and g.id=i.id order by id desc";
 
       const [result1] = await dbcon.query(sql1);
 
@@ -132,7 +132,7 @@ module.exports = (app) => {
 
       // 데이터 조회
       const sql =
-        "SELECT c.id, c.tab, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, camp_id FROM contents c, members m WHERE c.members_id=m.id and c.id=?";
+        "SELECT c.id, c.tab, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, m.photo userPhoto, camp_id FROM contents c, members m WHERE c.members_id=m.id and c.id=?";
       const [result] = await dbcon.query(sql, [id]);
 
       const sql2 =
