@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const Board = () => {
+const Log = () => {
   const { id } = useParams();
   const [content, setContent] = useState();
 
@@ -14,21 +14,20 @@ const Board = () => {
     (async () => {
       try {
         const response = await axios.get(`/content/${id}`);
-        setContent(response.data.item[0]);
+        setContent(response.data.item);
       } catch (err) {
         console.error(err);
       }
     })();
   }, [id]);
-  return (
-    <>
-      <div style={{ paddingBottom: "60px" }}>
-        <ItemHeader />
-        <ItemProfile content={content} />
-        <ItemCnt content={content} />
-      </div>
-    </>
+
+  return !content ? null : (
+    <div style={{ paddingBottom: "60px" }}>
+      <ItemHeader />
+      <ItemProfile content={content} />
+      <ItemCnt content={content} />
+    </div>
   );
 };
 
-export default Board;
+export default Log;

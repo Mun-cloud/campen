@@ -20,7 +20,6 @@ module.exports = (app) => {
 
   /** 전체 목록 조회 --> Read(SELECT) */
   router.get("/content", async (req, res, next) => {
-    const query = req.get("query");
     // 데이터 조회 결과가 저장될 빈 변수
     let json = null;
 
@@ -132,7 +131,9 @@ module.exports = (app) => {
 
       // 데이터 조회
       const sql =
-        "SELECT c.id, c.tab, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, m.photo userPhoto, camp_id FROM contents c, members m WHERE c.members_id=m.id and c.id=?";
+        "SELECT c.id, c.tab, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, m.photo userPhoto, camp_id, p.name campName, (SELECT count(*) cnt FROM `contents-likes` where contents_id=" +
+        id +
+        ") FROM contents c, members m, camp p WHERE c.members_id=m.id and c.camp_id=p.id and c.id=?";
       const [result] = await dbcon.query(sql, [id]);
 
       const sql2 =

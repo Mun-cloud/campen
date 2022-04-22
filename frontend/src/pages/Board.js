@@ -14,14 +14,14 @@ const Board = () => {
     (async () => {
       try {
         const response = await axios.get(`/content/${id}`);
-        setContent(response.data.item[0]);
+        setContent(response.data.item);
       } catch (err) {
         console.error(err);
       }
     })();
   }, [id]);
 
-  return (
+  return !content ? null : (
     <>
       <ItemHeader />
       <ItemProfile content={content} />

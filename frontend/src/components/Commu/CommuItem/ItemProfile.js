@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -66,7 +66,13 @@ const CntBox = styled.div`
 `;
 
 const ItemProfile = ({ content }) => {
-  console.log(content);
+  // UTC 시간 변환 기능
+  const [reg, setReg] = useState();
+  useEffect(() => {
+    let dateObj = new Date(content.reg_date);
+    setReg(dateObj.toLocaleString("ko-KR", { timeZone: "Asia/Seoul" }));
+  }, [content]);
+
   let category = "";
   if (content) {
     if (content.tab === 0) {
@@ -78,9 +84,7 @@ const ItemProfile = ({ content }) => {
     }
   }
 
-  return !content ? (
-    "Loading..."
-  ) : (
+  return (
     <div>
       <CntBox>
         {/* 프로필, 컨텐츠 업로드 시간 */}
@@ -102,7 +106,7 @@ const ItemProfile = ({ content }) => {
                 </span>
               </li>
             </Link>
-            <li className="cnt-time">{content.reg_date}</li>
+            <li className="cnt-time">{reg}</li>
           </ul>
         </div>
       </CntBox>

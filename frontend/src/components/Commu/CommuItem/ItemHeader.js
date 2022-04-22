@@ -49,26 +49,23 @@ const TopContainer = styled.div`
 const ItemHeader = () => {
   const go = useNavigate();
   return (
-    <>
-      {/* <!-- header: 상세 상단 --> */}
-      <TopContainer>
-        <div
-          className="back-btn"
-          onClick={() => {
-            go(-1);
-          }}
-        >
-          <span className="material-icons">keyboard_backspace</span>
-        </div>
+    <TopContainer>
+      <div
+        className="back-btn"
+        onClick={() => {
+          go(-1);
+        }}
+      >
+        <span className="material-icons">keyboard_backspace</span>
+      </div>
 
-        <Link to="/" className="logo">
-          <img
-            src={require("../../../assets/img/campen_logo.png")}
-            alt="campen"
-          />
-        </Link>
-      </TopContainer>
-    </>
+      <Link to="/" className="logo">
+        <img
+          src={require("../../../assets/img/campen_logo.png")}
+          alt="campen"
+        />
+      </Link>
+    </TopContainer>
   );
 };
 
