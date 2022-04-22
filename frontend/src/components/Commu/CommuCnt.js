@@ -24,8 +24,6 @@ const CntBox = styled.div`
 `;
 
 const CommuCnt = ({ data }) => {
-  useEffect(() => {}, [data]);
-
   return (
     <CntBox>
       {data &&

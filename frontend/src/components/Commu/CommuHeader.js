@@ -37,47 +37,10 @@ const TabItem = styled.li`
   }
 `;
 
-const CommuHeader = ({ getData }) => {
+const CommuHeader = ({ getTabValue }) => {
   const [seletedTab, setSelectedTab] = useState("전체보기");
-
   useEffect(() => {
-    (async () => {
-      let originData = [];
-      let filterData = [];
-      try {
-        originData = (await axios.get("/content")).data.item;
-      } catch (error) {
-        console.error(error);
-      }
-      // eslint-disable-next-line default-case
-      switch (seletedTab) {
-        case "캠핑한컷":
-          filterData = originData.filter((v) => {
-            if (v.tab === 0) {
-              return true;
-            }
-          });
-          break;
-        case "캠핑후기":
-          filterData = originData.filter((v) => {
-            if (v.tab === 1) {
-              return true;
-            }
-          });
-          break;
-        case "궁금해요":
-          filterData = originData.filter((v) => {
-            if (v.tab === 2) {
-              return true;
-            }
-          });
-          break;
-        case "전체보기":
-          filterData = originData;
-          break;
-      }
-      getData(filterData);
-    })();
+    getTabValue(seletedTab);
   }, [seletedTab]);
 
   return (

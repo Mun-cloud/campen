@@ -179,7 +179,6 @@ const CntFooter = styled.div`
 `;
 
 const Category1 = ({ data }) => {
-  console.log(data);
   return (
     <>
       <div style={{ marginBottom: "8px" }}>
