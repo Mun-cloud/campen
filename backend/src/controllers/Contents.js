@@ -31,7 +31,7 @@ module.exports = (app) => {
 
       // 데이터 조회
       let sql1 =
-        "SELECT c.id, c.tab, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, camp_id FROM contents c, members m where c.members_id=m.id order by id desc";
+        "SELECT c.id, c.tab,  g.src, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, camp_id FROM contents c, members m, `contents-img` g, (select min(id) id, contents_id from `contents-img` group by contents_id) i where c.members_id=m.id and c.id=i.contents_id and g.id=i.id order by id desc";
 
       const [result1] = await dbcon.query(sql1);
 
@@ -138,6 +138,9 @@ module.exports = (app) => {
       const sql2 =
         "SELECT id, src, reg_date, contents_id FROM `contents-img` WHERE contents_id=?";
       const [result2] = await dbcon.query(sql2, [id]);
+
+      const sql3 = "UPDATE contents SET views = IFNULL(views,0)+1 WHERE id=?";
+      const [result3] = await dbcon.query(sql3, result[0].id);
 
       json = result[0];
       json.photos = result2;
