@@ -33,8 +33,9 @@ const Search = () => {
   // 액션함수를 호출하기 위한 디스패치 함수 생성
   const dispatch = useDispatch();
 
-  // 검색결과 목록 출력 State
+  // // 검색결과 목록 출력 State
   const [allCamp, setAllCamp] = useState(0);
+  // const [campList, setCampList] = useState([]);
 
   // 검색이 실행되면 페이지 번호 초기화
   useEffect(() => {
@@ -61,39 +62,52 @@ const Search = () => {
 
   // 지역 옵션 선택값
   const [location, setLocation] = useState("");
-  const getLocation = (location) => {
-    setLocation(location);
-  };
 
-  const locationRegex = (location) => {
-    switch (location) {
-      case "경북":
-        return "경북|경상북도";
-      case "경남":
-        return "경남|경상남도";
-      case "전북":
-        return "전북|전라북도";
-      case "전남":
-        return "전남|전라남도";
-      default:
-        return location;
-    }
-  };
+  // const locationRegex = (location) => {
+  //   switch (location) {
+  //     case "경북":
+  //       return "경북|경상북도";
+  //     case "경남":
+  //       return "경남|경상남도";
+  //     case "전북":
+  //       return "전북|전라북도";
+  //     case "전남":
+  //       return "전남|전라남도";
+  //     case "충북":
+  //       return "충북|충청북도";
+  //     case "충남":
+  //       return "충남|충청남도";
+  //     default:
+  //       return location;
+  //   }
+  // };
 
   // 전체 캠핑장 데이터 필터링 함수
-  const handleFilter = () => {
-    let result;
-    if (!loading && item) {
-      result = item.item.filter((v) =>
-        new RegExp(locationRegex(location)).test(v.addr1)
-      );
-    }
-    return result;
-  };
+  // const handleFilter = () => {
+  //   return item.item.filter((v) =>
+  //     new RegExp(locationRegex(location)).test(v.addr1)
+  //   );
+  // };
+  // const handleFilter = () => {
+  //   let result;
+  //   if (!loading && item && item.length > 0) {
+  //     console.log(item);
+  //     result = item.item.filter((v) =>
+  //       new RegExp(locationRegex(location)).test(v.addr1)
+  //     );
+  //   }
+  // };
 
-  useEffect(() => {
-    setAllCamp(handleFilter().length);
-  }, [location]);
+  // useEffect(() => {
+  //   setCampList(result);
+  //   // setAllCamp(handleFilter().length);
+  //   handleFilter();
+  // }, [location]);
+
+  // useEffect(() => {
+  //   console.log(campList);
+  //   setAllCamp(campList.length);
+  // }, [campList]);
 
   return loading ? (
     "loading..."
@@ -107,7 +121,7 @@ const Search = () => {
         </div>
       ) : (
         <>
-          <SearchHeader getLocation={getLocation} />
+          <SearchHeader getLocation={setLocation} />
 
           <ResultCountCount>
             <h2>
@@ -115,17 +129,16 @@ const Search = () => {
             </h2>
           </ResultCountCount>
 
-          {item.item.filter((v) =>
-            new RegExp(locationRegex(location)).test(v.addr1)
-          ).length === 0 ? (
+          {item.item.length === 0 ? (
             <div>검색결과가 없습니다.</div>
           ) : (
             <>
-              {handleFilter().map((v, i) => (
+              {item.item.map((v, i) => (
                 <SearchResultBox item={v} key={i} />
               ))}
-              {handleFilter().length > 3 &&
-                handleFilter().length !== allCamp && <div ref={ref}></div>}
+              {item.item.length > 3 && item.item.length !== allCamp && (
+                <div ref={ref}></div>
+              )}
             </>
           )}
         </>
