@@ -24,7 +24,7 @@ const WriteSubmit = styled.button`
   }
 `;
 
-const WriteButton = ({ btnText, postCommu, imgUpload }) => {
+const WriteButton = ({ btnText, postCommu }) => {
   return (
     <>
       {/* <!-- 하단 버튼 --> */}
@@ -32,10 +32,7 @@ const WriteButton = ({ btnText, postCommu, imgUpload }) => {
       <WriteSubmit
         className={btnText.length >= 10 ? "active" : ""}
         disabled={!(btnText.length >= 10)}
-        onClick={() => {
-          postCommu();
-          imgUpload();
-        }}
+        onClick={postCommu}
       >
         10자 이상 입력해주세요.
       </WriteSubmit>

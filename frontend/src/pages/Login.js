@@ -70,7 +70,7 @@ const Container = styled.div`
 const Login = () => {
   const { item } = useSelector((state) => state.user);
   const go = useNavigate();
-  if (item) {
+  if (item && item.length > 0) {
     go(-1);
   }
 

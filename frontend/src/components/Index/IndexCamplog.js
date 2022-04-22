@@ -5,6 +5,8 @@ import "swiper/css"; //basic
 import "swiper/css/free-mode";
 import { Link } from "react-router-dom";
 import IndexSectionTitle from "./IndexSectionTitle";
+import { useQuery } from "react-query";
+import { getIndexCampLog } from "../../api";
 
 SwiperCore.use([FreeMode]);
 
@@ -78,93 +80,38 @@ const LogSwiper = styled(Swiper)`
 `;
 
 const IndexCamplog = () => {
-  return (
+  // react-query를 통한 ajax 연동
+  const { isLoading, data } = useQuery("indexLog", getIndexCampLog);
+
+  return isLoading ? null : (
     <CampLog id="camp_log">
       <IndexSectionTitle
         mt="50px"
-        title="캠핑로그"
+        title="캠핑후기"
         btn="글쓰기"
         sub1="캠핑 다녀오셨나요?"
         sub2="나만의 캠핑 포스트를 남겨보세요. "
-        url="/login"
       />
       <LogSwiper freeMode={true} slidesPerView={"auto"}>
-        <SwiperSlide className="swiper-slide">
-          <Link to="/">
-            <div className="log_slide">
-              <img
-                src={require("../../assets/img/log-1.jpeg")}
-                alt="캠핑로그"
-                className="log_img_box"
-              />
-              <div className="log_text_box">
-                <span className="log_writer">캠퍼77964</span>
-                <span className="log_camp">
-                  <i className="fas fa-map-marker-alt"></i>
-                  동두천 돈내미캠핑장
-                </span>
-                <p>차박을 할 수 있게 자리 마련해주신 캠장님 감사합니다.</p>
+        {data.map((v) => (
+          <SwiperSlide className="swiper-slide" key={v.id}>
+            <Link to={`/borad/${v.id}`}>
+              <div className="log_slide">
+                <img src={v.src} alt="게시글로 이동" className="log_img_box" />
+                <div className="log_text_box">
+                  <span className="log_writer">
+                    {v.nickname ? v.nickname : `캠퍼${v.memberId}`}
+                  </span>
+                  <span className="log_camp">
+                    <i className="fas fa-map-marker-alt"></i>
+                    동두천 돈내미캠핑장
+                  </span>
+                  <p>{v.content}</p>
+                </div>
               </div>
-            </div>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide className="swiper-slide">
-          <Link to="/">
-            <div className="log_slide">
-              <img
-                src={require("../../assets/img/log-2.jpeg")}
-                alt="캠핑로그"
-                className="log_img_box"
-              />
-              <div className="log_text_box">
-                <span className="log_writer">캠퍼77964</span>
-                <span className="log_camp">
-                  <i className="fas fa-map-marker-alt"></i>
-                  동두천 돈내미캠핑장
-                </span>
-                <p>차박을 할 수 있게 자리 마련해주신 캠장님 감사합니다.</p>
-              </div>
-            </div>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide className="swiper-slide">
-          <Link to="/">
-            <div className="log_slide">
-              <img
-                src={require("../../assets/img/log-3.jpg")}
-                alt="캠핑로그"
-                className="log_img_box"
-              />
-              <div className="log_text_box">
-                <span className="log_writer">캠퍼77964</span>
-                <span className="log_camp">
-                  <i className="fas fa-map-marker-alt"></i>
-                  동두천 돈내미캠핑장
-                </span>
-                <p>차박을 할 수 있게 자리 마련해주신 캠장님 감사합니다.</p>
-              </div>
-            </div>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide className="swiper-slide">
-          <Link to="/">
-            <div className="log_slide">
-              <img
-                src={require("../../assets/img/log-4.jpeg")}
-                alt="캠핑로그"
-                className="log_img_box"
-              />
-              <div className="log_text_box">
-                <span className="log_writer">캠퍼77964</span>
-                <span className="log_camp">
-                  <i className="fas fa-map-marker-alt"></i>
-                  동두천 돈내미캠핑장
-                </span>
-                <p>차박을 할 수 있게 자리 마련해주신 캠장님 감사합니다.</p>
-              </div>
-            </div>
-          </Link>
-        </SwiperSlide>
+            </Link>
+          </SwiperSlide>
+        ))}
       </LogSwiper>
     </CampLog>
   );

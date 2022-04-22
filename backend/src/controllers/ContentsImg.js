@@ -105,19 +105,15 @@ module.exports = (app) => {
       // 데이터베이스 접속
       dbcon = await mysql2.createConnection(config.database);
       await dbcon.connect();
-
-      // 데이터 저장하기
-      const sql = "INSERT INTO `contents-img` VALUES (null, ?, now(), ?)";
-      const input_data = [src, contentId];
-      const [result1] = await dbcon.query(sql, input_data);
-
-      // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-      const sql2 =
-        "SELECT id, src, reg_date, contents_id FROM `contents-img` WHERE id=?";
-      const [result2] = await dbcon.query(sql2, [result1.insertId]);
+      src.forEach(async (v) => {
+        // 데이터 저장하기
+        const sql = "INSERT INTO `contents-img` VALUES (null, ?, now(), ?)";
+        const input_data = [v.url, contentId];
+        const [result1] = await dbcon.query(sql, input_data);
+      });
 
       // 조회 결과를 미리 준비한 변수에 저장함
-      json = result2;
+      json = "이미지 등록 완료";
     } catch (err) {
       return next(err);
     } finally {

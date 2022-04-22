@@ -48,3 +48,23 @@ export const getExhibitionCamp = async (id) => {
     console.error(err);
   }
 };
+
+// index페이지 photo 5개만 로딩
+export const getIndexCampCut = async () => {
+  try {
+    return (await axios.get(`/content/photo`, { params: { query: 5 } })).data
+      .item;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+// index페이지 log 5개만 로딩
+export const getIndexCampLog = async () => {
+  try {
+    return (await axios.get(`/content/log`, { params: { query: 5 } })).data
+      .item;
+  } catch (err) {
+    console.error(err);
+  }
+};

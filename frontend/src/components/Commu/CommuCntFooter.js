@@ -1,6 +1,4 @@
 import axios from "axios";
-import { useState } from "react";
-import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const CntFooter = styled.div`
@@ -25,22 +23,17 @@ const CntFooter = styled.div`
 `;
 
 const like = async (user_id, content_id) => {
-  console.log(user_id, content_id);
   try {
-    const response = await axios.post("/content_like/like", {
+    await axios.post("/content_like/like", {
       user_id,
       content_id,
     });
-
-    console.log(response);
   } catch (err) {
     console.error(err);
   }
 };
 
 const CommuCntFooter = ({ id }) => {
-  const { item } = useSelector((state) => state.user);
-  console.log(item);
   return (
     <div>
       {/* <!-- 컨텐츠:좋아요,댓글 --> */}

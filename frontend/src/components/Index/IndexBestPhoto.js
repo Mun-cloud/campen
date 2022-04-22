@@ -5,6 +5,8 @@ import "swiper/css"; //basic
 import "swiper/css/free-mode";
 import { Link } from "react-router-dom";
 import IndexSectionTitle from "./IndexSectionTitle";
+import { getIndexCampCut } from "../../api";
+import { useQuery } from "react-query";
 
 SwiperCore.use([FreeMode]);
 
@@ -35,7 +37,10 @@ const BestSwiper = styled(Swiper)`
 `;
 
 const IndexBestPhoto = () => {
-  return (
+  // react-query를 통한 ajax 연동
+  const { isLoading, data } = useQuery("indexCut", getIndexCampCut);
+
+  return isLoading ? null : (
     <div>
       <IndexSectionTitle
         mt="40px"
@@ -43,46 +48,20 @@ const IndexBestPhoto = () => {
         btn="업로드"
         sub1="캠핑 다녀오셨나요?"
         sub2="나만의 추억을 남겨보세요. "
-        url="/login"
       />
       {/* <!-- Best Photo 슬라이드 --> */}
       <BestSwiper freeMode={true} slidesPerView={"auto"}>
-        <SwiperSlide className="swiper-slide">
-          <Link to="/community">
-            <img
-              src={require("../../assets/img/best_photo-13.jpeg")}
-              alt="꽃언니"
-            />
-            <span>꽃언니</span>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide className="swiper-slide">
-          <Link to="/community">
-            <img
-              src={require("../../assets/img/best_photo-14.jpeg")}
-              alt="도도캠핑"
-            />
-            <span>도도캠핑</span>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide className="swiper-slide">
-          <Link to="/community">
-            <img
-              src={require("../../assets/img/best_photo-15.jpeg")}
-              alt="마루캠핑"
-            />
-            <span>마루캠핑</span>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide className="swiper-slide">
-          <Link to="/community">
-            <img
-              src={require("../../assets/img/best_photo-16.jpeg")}
-              alt="nl0607"
-            />
-            <span>nl0607</span>
-          </Link>
-        </SwiperSlide>
+        {data.map((v) => (
+          <SwiperSlide className="swiper-slide" key={v.id}>
+            <Link to={`/board/${v.id}`}>
+              <img
+                src={v.src}
+                alt={v.nickname ? v.nickname : `캠퍼${v.memberId}`}
+              />
+              <span>{v.nickname ? v.nickname : `캠퍼${v.memberId}`}</span>
+            </Link>
+          </SwiperSlide>
+        ))}
       </BestSwiper>
     </div>
   );

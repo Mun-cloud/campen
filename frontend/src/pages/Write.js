@@ -23,7 +23,7 @@ const Write = () => {
   const [imgs, setImgs] = useState();
 
   useEffect(() => {
-    !isLoading && item.length === 0 && go("/join");
+    !isLoading && item.length === 0 && go("/login");
   }, []);
 
   const cntText = (text) => {
@@ -34,11 +34,7 @@ const Write = () => {
     setTab(tab);
   };
 
-  // 사진 업로드
-  function imgUpload() {
-    console.log("업로드 클릭");
-  }
-
+  // 게시글 업로드
   const postCommu = async () => {
     try {
       // 텍스트값 전송
@@ -63,13 +59,12 @@ const Write = () => {
         // 이미지 데이터 전송
         const res = await axios.post("/upload/multiple", formdata, config);
         // 멀티 이미지 각각을 데이터베이스에 저장
-        res.data.item.forEach(async (v) => {
-          const imgRes = await axios.post("/contents/img", {
-            src: v.url,
-            contentId: response.data.item[0].id,
-          });
-          console.log(imgRes);
+        await axios.post("/contents/img", {
+          src: res.data.item,
+          contentId: response.data.item[0].id,
         });
+        alert("게시글이 등록되었습니다.");
+        go("/");
       }
     } catch (err) {
       console.error(err);
@@ -82,11 +77,7 @@ const Write = () => {
         <WriteHeader />
         <WriteCnt cntText={cntText} cntTab={cntTab} setImgs={setImgs} />
 
-        <WriteButton
-          btnText={text}
-          postCommu={postCommu}
-          imgUpload={imgUpload}
-        />
+        <WriteButton btnText={text} postCommu={postCommu} />
       </Container>
     </>
   );

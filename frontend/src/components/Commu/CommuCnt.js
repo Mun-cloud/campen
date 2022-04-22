@@ -27,21 +27,18 @@ const CommuCnt = ({ data }) => {
   useEffect(() => {}, [data]);
 
   return (
-    <>
-      {/* <!-- 컨텐츠:프로필,텍스트 --> */}
-      <CntBox>
-        {data &&
-          data.map((v) => {
-            if (v.tab === 0) {
-              return <Category0 data={v} />;
-            } else if (v.tab === 1) {
-              return <Category1 data={v} />;
-            } else if (v.tab === 2) {
-              return <Category2 data={v} />;
-            }
-          })}
-      </CntBox>
-    </>
+    <CntBox>
+      {data &&
+        data.map((v) => {
+          if (v.tab === 0) {
+            return <Category0 data={v} />;
+          } else if (v.tab === 1) {
+            return <Category1 data={v} />;
+          } else if (v.tab === 2) {
+            return <Category2 data={v} />;
+          }
+        })}
+    </CntBox>
   );
 };
 
