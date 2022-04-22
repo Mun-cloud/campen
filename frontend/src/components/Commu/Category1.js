@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -179,6 +180,12 @@ const CntFooter = styled.div`
 `;
 
 const Category1 = ({ data }) => {
+  const [reg, setReg] = useState();
+  useEffect(() => {
+    let dateObj = new Date(data.reg_date);
+    setReg(dateObj.toLocaleString("ko-KR", { timeZone: "Asia/Seoul" }));
+  }, [data]);
+
   return (
     <>
       <div style={{ marginBottom: "8px" }}>
@@ -198,7 +205,7 @@ const Category1 = ({ data }) => {
                     <span className="cnt-user-name">{data.id}</span>
                   </li>
                 </a>
-                <li className="cnt-time">{data.edit_date}</li>
+                <li className="cnt-time">{reg}</li>
               </ul>
 
               <p className="cnt-desc">{data.content}</p>

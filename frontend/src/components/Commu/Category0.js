@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import CommuCntFooter from "./CommuCntFooter";
+import { useState, useEffect } from "react";
 
 const CntBox = styled.div`
   margin-top: 50px;
@@ -169,7 +170,11 @@ const CntImg = styled.div`
 `;
 
 const Category0 = ({ data }) => {
-  // const { item } = useSelector((state) => state.camp);
+  const [reg, setReg] = useState();
+  useEffect(() => {
+    let dateObj = new Date(data.reg_date);
+    setReg(dateObj.toLocaleString("ko-KR", { timeZone: "Asia/Seoul" }));
+  }, [data]);
 
   return (
     <>
@@ -189,7 +194,7 @@ const Category0 = ({ data }) => {
                   {data.nickname ? data.nickname : `캠퍼${data.members_id}`}
                 </span>
               </li>
-              <li className="cnt-time">{data.edit_date}</li>
+              <li className="cnt-time">{reg}</li>
             </ul>
 
             <p className="cnt-desc">{data.content}</p>
