@@ -122,7 +122,6 @@ const Search = () => {
       ) : (
         <>
           <SearchHeader getLocation={setLocation} />
-
           <ResultCountCount>
             <h2>
               캠핏 검색결과 <span id="search_result_count">{allCamp}개</span>
