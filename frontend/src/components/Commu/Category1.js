@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import LikeBtn from "../LikeBtn";
 import CntBoxText from "./CntBoxText";
 import CntImg from "./CntImg";
 
@@ -22,12 +23,6 @@ const CntFooter = styled.div`
   font-size: 10pt;
   color: #666;
   font-weight: 400;
-
-  .cnt-like {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
 `;
 
 const Category1 = ({ data }) => {
@@ -44,12 +39,7 @@ const Category1 = ({ data }) => {
       </CntBox>
       {/* <!-- 컨텐츠:좋아요,댓글 --> */}
       <CntFooter>
-        <div className="cnt-like" href="#">
-          <a href="#">
-            <i className="far fa-heart"></i>
-            좋아요
-          </a>
-        </div>
+        <LikeBtn content={data} />
       </CntFooter>
     </div>
   );

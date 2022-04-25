@@ -176,6 +176,7 @@ module.exports = (app) => {
       let args1 = [user_id, user_pw];
 
       const [result1] = await dbcon.query(sql1, args1);
+
       // console.log(result1);
       // const totalCount = result1[0].cnt;
       // if (totalCount < 1) {
@@ -192,6 +193,12 @@ module.exports = (app) => {
       // login_date값을 now()로 update처리
       let sql2 = "UPDATE members SET login_date=now() WHERE id=?";
       await dbcon.query(sql2, json[0].id);
+
+      let sql3 =
+        "SELECT id, contents_id, reg_date FROM `contents-likes` WHERE members_id=?";
+      const result3 = await dbcon.query(sql2, json[0].id);
+
+      json[0].contentLikes = result3;
     } catch (err) {
       return next(err);
     } finally {

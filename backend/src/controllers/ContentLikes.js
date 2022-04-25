@@ -17,7 +17,7 @@ const mysql2 = require("mysql2/promise");
 module.exports = (app) => {
   let dbcon = null;
 
-  /** 항목별 분류 조회 --> Read(SELECT) */
+  /** 좋아요 한 컨텐츠 목록 --> Read(SELECT) */
   router.post("/content_like/get", async (req, res, next) => {
     const id = req.post("user_id");
     if (id === null) {
