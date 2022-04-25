@@ -1,20 +1,31 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const LikeBtnBox = styled.div`
   align-items: center;
   cursor: pointer;
+
+  .fas {
+    color: red;
+  }
 `;
 
 const LikeBtn = ({ content }) => {
   const [heartOn, setHeartOn] = useState(false);
   const { loading, item } = useSelector((state) => state.user);
 
-  if (item.contentLikes.includes(content.id)) {
-    setHeartOn(true);
-  }
+  useEffect(() => {
+    if (item) {
+      if (
+        item.contentLikes.find((v) => v.contents_id === content.id) !==
+        undefined
+      ) {
+        setHeartOn(true);
+      }
+    }
+  }, [item]);
 
   const onClick = async () => {
     if (heartOn) {

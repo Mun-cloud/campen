@@ -196,7 +196,7 @@ module.exports = (app) => {
 
       let sql3 =
         "SELECT id, contents_id, reg_date FROM `contents-likes` WHERE members_id=?";
-      const result3 = await dbcon.query(sql2, json[0].id);
+      const [result3] = await dbcon.query(sql3, json[0].id);
 
       json[0].contentLikes = result3;
     } catch (err) {

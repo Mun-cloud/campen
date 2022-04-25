@@ -1,5 +1,5 @@
-import axios from "axios";
 import styled from "styled-components";
+import LikeBtn from "../LikeBtn";
 
 const CntFooter = styled.div`
   display: flex;
@@ -22,26 +22,12 @@ const CntFooter = styled.div`
   }
 `;
 
-const like = async (user_id, content_id) => {
-  try {
-    await axios.post("/content_like/like", {
-      user_id,
-      content_id,
-    });
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-const CommuCntFooter = ({ id }) => {
+const CommuCntFooter = ({ data }) => {
   return (
     <div>
       {/* <!-- 컨텐츠:좋아요,댓글 --> */}
       <CntFooter>
-        <div className="cnt-like" href="#">
-          <i className="far fa-heart" onClick={() => like(id)}></i>
-          좋아요
-        </div>
+        <LikeBtn content={data} />
         <div className="cnt-comment" href="#">
           <i className="far fa-comment"></i>
           댓글쓰기

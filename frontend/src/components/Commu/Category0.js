@@ -32,7 +32,7 @@ const Category0 = ({ data }) => {
           <CntImg src={data.src} />
         </Link>
       </CntBox>
-      <CommuCntFooter id={data.id} />
+      <CommuCntFooter data={data} />
     </>
   );
 };

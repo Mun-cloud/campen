@@ -117,6 +117,7 @@ module.exports = (app) => {
   /** contents 상세조회 --> Read(SELECT) */
   router.get("/content/:id", async (req, res, next) => {
     const id = req.get("id");
+    console.log(id);
     if (id === null) {
       return next(new Error(400));
     }
