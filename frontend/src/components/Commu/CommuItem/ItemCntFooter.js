@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import LikeBtn from "../../LikeBtn";
 
 const Footer = styled.div`
   .cnt-footer {
@@ -8,12 +10,6 @@ const Footer = styled.div`
     color: #666;
     font-weight: 400;
     border-bottom: 1px solid rgb(241, 245, 243);
-  }
-
-  .cnt-like {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
   }
 
   .cnt-comment {
@@ -132,28 +128,23 @@ const Footer = styled.div`
   }
 `;
 
-const ItemCntFooter = () => {
+const ItemCntFooter = ({ content }) => {
   return (
     <>
       {/* <!-- 컨텐츠:좋아요,댓글 --> */}
       <Footer>
         <div className="cnt-footer">
-          <div className="cnt-like" href="#">
-            <a href="#">
-              <i className="far fa-heart"></i>
-              좋아요
-            </a>
-          </div>
-          <div className="cnt-comment" href="#">
-            <a href="#">
+          <LikeBtn content={content} />
+          <div className="cnt-comment">
+            <Link to={`/board/${content.id}/#comment`}>
               <i className="far fa-comment"></i>
               댓글쓰기
-            </a>
+            </Link>
           </div>
         </div>
 
         {/* <!-- 댓글영역 --> */}
-        <section className="cmt-container">
+        <section className="cmt-container" id="comment">
           {/* <!-- 댓글 상단  --> */}
           <div className="cmt1-box">
             <span className="material-icons-outlined">textsms</span>
@@ -164,16 +155,6 @@ const ItemCntFooter = () => {
           {/* <!-- 댓글 하단 --> */}
           <div className="cmt2-box">
             <form className="form-box">
-              {/* <!-- 이미지 업로드 --> */}
-              <label className="photo" htmlFor="upload-btn">
-                <span className="material-icons">image</span>
-                <input
-                  type="file"
-                  id="upload-btn"
-                  className="upload"
-                  accept="image/*"
-                />
-              </label>
               {/* <!-- 텍스트 업로드 --> */}
               <div className="textarea">
                 <textarea

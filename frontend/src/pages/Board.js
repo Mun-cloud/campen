@@ -26,7 +26,7 @@ const Board = () => {
       <ItemHeader />
       <ItemProfile content={content} />
       <ItemCnt content={content} />
-      <ItemCntFooter />
+      <ItemCntFooter content={content} />
     </>
   );
 };

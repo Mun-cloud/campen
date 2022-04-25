@@ -117,7 +117,6 @@ module.exports = (app) => {
   /** contents 상세조회 --> Read(SELECT) */
   router.get("/content/:id", async (req, res, next) => {
     const id = req.get("id");
-    console.log(id);
     if (id === null) {
       return next(new Error(400));
     }
@@ -132,9 +131,9 @@ module.exports = (app) => {
 
       // 데이터 조회
       const sql =
-        "SELECT c.id, c.tab, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, m.photo userPhoto, camp_id, p.name campName, (SELECT count(*) cnt FROM `contents-likes` where contents_id=" +
+        "SELECT c.id, c.tab, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, m.photo userPhoto, (SELECT count(*) cnt FROM `contents-likes` where contents_id=" +
         id +
-        ") FROM contents c, members m, camp p WHERE c.members_id=m.id and c.camp_id=p.id and c.id=?";
+        ") FROM contents c, members m WHERE c.members_id=m.id and c.id=?";
       const [result] = await dbcon.query(sql, [id]);
 
       const sql2 =
