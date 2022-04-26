@@ -9,7 +9,8 @@ import Category0 from "./Category0";
 
 const CntBox = styled.div`
   margin-top: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 60px;
+  background-color: rgb(231, 240, 234);
 
   .cnt-box {
     margin-bottom: 8px;

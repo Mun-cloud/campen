@@ -5,10 +5,8 @@ import CntBoxText from "./CntBoxText";
 import CntImg from "./CntImg";
 
 const CntBox = styled.div`
-  .cnt-box {
-    margin-bottom: 8px;
-    background: rgb(255, 255, 255);
-  }
+  margin-bottom: 8px;
+  background: rgb(255, 255, 255);
 
   a {
     text-decoration: none;
@@ -27,21 +25,19 @@ const CntFooter = styled.div`
 
 const Category1 = ({ data }) => {
   return (
-    <div style={{ marginBottom: "8px" }}>
-      <CntBox key={data.id}>
-        {/* <!-- 컨텐츠:프로필,텍스트 --> */}
-        <Link to={`/log/${data.id}`}>
-          <CntBoxText data={data} location={true} />
+    <CntBox key={data.id}>
+      {/* <!-- 컨텐츠:프로필,텍스트 --> */}
+      <Link to={`/log/${data.id}`}>
+        <CntBoxText data={data} location={true} />
 
-          {/* <!-- 컨텐츠:이미지 --> */}
-          <CntImg src={data.src} />
-        </Link>
-      </CntBox>
+        {/* <!-- 컨텐츠:이미지 --> */}
+        <CntImg src={data.src} />
+      </Link>
       {/* <!-- 컨텐츠:좋아요,댓글 --> */}
       <CntFooter>
         <LikeBtn content={data} />
       </CntFooter>
-    </div>
+    </CntBox>
   );
 };
 

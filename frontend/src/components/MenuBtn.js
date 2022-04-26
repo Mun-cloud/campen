@@ -5,10 +5,13 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Backdrop from "@mui/material/Backdrop";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ITEM_HEIGHT = 48;
 
 export default function MenuBtn({ content }) {
+  const go = useNavigate();
   const { item } = useSelector((state) => state.user);
   const [anchorEl, setAnchorEl] = useState(null);
   const [writer, setWriter] = useState(false);
@@ -50,6 +53,33 @@ export default function MenuBtn({ content }) {
     document.body.removeChild(text);
     alert("주소가 복사되었습니다.");
     handleClose();
+  };
+
+  // 게시글 삭제 function
+  const deleteClick = async () => {
+    if (window.confirm("게시글을 삭제하시겠습니까?")) {
+      if (item === null) {
+        alert("로그인 해주시기 바랍니다.");
+        go("/login");
+      } else if (item.id === content.members_id) {
+        try {
+          await axios.delete(`/content/${content.id}`, {
+            data: {
+              id: content.id,
+            },
+          });
+          alert("게시글이 삭제되었습니다.");
+          go("/commu");
+        } catch (err) {
+          alert("게시글 삭제에 실패했습니다.");
+        }
+      } else {
+        alert("게시글 작성자가 아닙니다.");
+        return;
+      }
+    } else {
+      return;
+    }
   };
 
   return (
@@ -96,7 +126,7 @@ export default function MenuBtn({ content }) {
             공유하기
           </MenuItem>
           <MenuItem onClick={handleClose}>수정하기</MenuItem>
-          <MenuItem onClick={handleClose}>삭제하기</MenuItem>
+          <MenuItem onClick={deleteClick}>삭제하기</MenuItem>
         </Menu>
       </Backdrop>
     </div>

@@ -297,7 +297,7 @@ module.exports = (app) => {
     if (!req.session.memberInfo) {
       return next(new BadRequestException("로그인중이 아닙니다."));
     }
-    const id = req.get("id");
+    const id = req.delete("id");
 
     if (id === null) {
       return next(new BadRequestException("잘못된 경로입니다."));
@@ -310,18 +310,11 @@ module.exports = (app) => {
       await dbcon.connect();
 
       // 자식데이터 삭제
-      await dbcon.query("DELETE FROM `contents-href` WHERE 'contents_id'=?", [
+      await dbcon.query("DELETE FROM `contents-img` WHERE contents_id=?", [id]);
+      await dbcon.query("DELETE FROM `contents-likes` WHERE contents_id=?", [
         id,
       ]);
-      await dbcon.query("DELETE FROM `contents-likes` WHERE 'contents_id'=?", [
-        id,
-      ]);
-
-      // 자식데이터 null 주기
-      await dbcon.query(
-        "UPDATE `comments` SET `contents_id`=null WHERE 'contents_id'=?",
-        [id]
-      );
+      await dbcon.query("DELETE FROM comments WHERE contents_id=?", [id]);
 
       // 데이터 삭제하기
       const sql = "DELETE FROM contents WHERE id=?";
