@@ -23,7 +23,7 @@ const Board = () => {
 
   return !content ? null : (
     <>
-      <ItemHeader />
+      <ItemHeader content={content} />
       <ItemProfile content={content} />
       <ItemCnt content={content} />
       <ItemCntFooter content={content} />

@@ -18,15 +18,7 @@ const MyPage = () => {
     })();
   }, []);
 
-  return (
-    <>
-      {isLoading ? null : item.user_id !== undefined ? (
-        <MyLogin />
-      ) : (
-        <MyLogout />
-      )}
-    </>
-  );
+  return <>{isLoading ? null : item !== null ? <MyLogin /> : <MyLogout />}</>;
 };
 
 export default MyPage;

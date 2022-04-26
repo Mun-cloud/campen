@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import MenuBtn from "../../MenuBtn";
 
 const TopContainer = styled.div`
   top: 0px;
@@ -46,7 +47,7 @@ const TopContainer = styled.div`
   }
 `;
 
-const ItemHeader = () => {
+const ItemHeader = ({content}) => {
   const go = useNavigate();
   return (
     <TopContainer>
@@ -65,6 +66,8 @@ const ItemHeader = () => {
           alt="campen"
         />
       </Link>
+
+      <MenuBtn content={content}/>
     </TopContainer>
   );
 };
