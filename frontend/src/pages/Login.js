@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -70,9 +70,12 @@ const Container = styled.div`
 const Login = () => {
   const { item } = useSelector((state) => state.user);
   const go = useNavigate();
-  if (item && item.length > 0) {
-    go(-1);
-  }
+
+  useEffect(() => {
+    if (item) {
+      go(-1);
+    }
+  });
 
   const [id, setId] = useState();
   const [pw, setPw] = useState();

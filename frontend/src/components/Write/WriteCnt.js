@@ -95,10 +95,19 @@ const PreviewImg = styled.img`
   margin-bottom: 5px;
 `;
 
-const WriteCnt = ({ cntText, cntTab, setImgs }) => {
+const WriteCnt = ({ cntText, cntTab, setImgs, prevText, prevTab }) => {
   const [files, setFiles] = useState([]);
   const [imgPreview, setImagPreview] = useState([]);
+  const [text, setText] = useState("");
+  const [tab, setTab] = useState("0");
+  useEffect(() => {
+    if (prevText) {
+      setText(prevText);
+      setTab(prevTab + "");
+    }
+  }, [prevText, prevTab]);
 
+  // 파일 업로드 시 실행
   function onChange(e) {
     const fileArr = e.target.files;
 
@@ -106,13 +115,13 @@ const WriteCnt = ({ cntText, cntTab, setImgs }) => {
       for (let i = 0; i < fileArr.length; i++) {
         let file = fileArr[i];
         const imageUrl = URL.createObjectURL(file);
-        const reader = new FileReader();
         setFiles((prev) => prev.concat(file));
         setImagPreview((prev) => prev.concat(imageUrl));
       }
     }
   }
 
+  // 10개 초과 이미지 업로드 감지
   function preview() {
     if (files.length > 10) {
       alert("최대 업로드 가능한 이미지 수는 10개 입니다.");
@@ -138,7 +147,9 @@ const WriteCnt = ({ cntText, cntTab, setImgs }) => {
         {/* <!-- 글쓰기 주제 선택버튼 --> */}
         <CntBtn>
           <select
+            value={tab}
             onChange={(e) => {
+              setTab(e.currentTarget.value);
               cntTab(e.currentTarget.value);
             }}
           >
@@ -155,7 +166,9 @@ const WriteCnt = ({ cntText, cntTab, setImgs }) => {
             placeholder="이곳에 글을 작성해주세요.최소 10자 이상 입력해주세요."
             name="constents"
             maxLength="3000"
+            value={text}
             onChange={(e) => {
+              setText(e.currentTarget.value);
               cntText(e.currentTarget.value);
             }}
           ></textarea>
@@ -163,38 +176,41 @@ const WriteCnt = ({ cntText, cntTab, setImgs }) => {
       </CntBox>
 
       {/* <!-- 이미지 업로드 --> */}
-      <PhotoContainer>
-        <PhotoBox>
-          <PhotoUpload>
-            {imgPreview.length === 0
-              ? null
-              : imgPreview.map((v, i) => (
-                  <PreviewImg
-                    src={v}
-                    alt={v}
-                    key={v}
-                    id={i}
-                    onClick={onPictuerClick}
+      {/* 게시글 등록시만 이미지 업로드 */}
+      {prevText ? null : (
+        <PhotoContainer>
+          <PhotoBox>
+            <PhotoUpload>
+              {imgPreview.length === 0
+                ? null
+                : imgPreview.map((v, i) => (
+                    <PreviewImg
+                      src={v}
+                      alt={v}
+                      key={v}
+                      id={i}
+                      onClick={onPictuerClick}
+                    />
+                  ))}
+              {/* <!-- 이미지 업로드 --> */}
+              {imgPreview.length < 10 ? (
+                <Photo htmlFor="upload-btn">
+                  <input
+                    type="file"
+                    accept="image/jpg,impge/png,image/jpeg,image/gif"
+                    id="upload-btn"
+                    multiple
+                    onChange={onChange}
+                    style={{ display: "none" }}
                   />
-                ))}
-            {/* <!-- 이미지 업로드 --> */}
-            {imgPreview.length < 10 ? (
-              <Photo htmlFor="upload-btn">
-                <input
-                  type="file"
-                  accept="image/jpg,impge/png,image/jpeg,image/gif"
-                  id="upload-btn"
-                  multiple
-                  onChange={onChange}
-                  style={{ display: "none" }}
-                />
-                <span className="material-icons">image</span>
-                <div>{imgPreview.length}/10</div>
-              </Photo>
-            ) : null}
-          </PhotoUpload>
-        </PhotoBox>
-      </PhotoContainer>
+                  <span className="material-icons">image</span>
+                  <div>{imgPreview.length}/10</div>
+                </Photo>
+              ) : null}
+            </PhotoUpload>
+          </PhotoBox>
+        </PhotoContainer>
+      )}
     </CntContainer>
   );
 };

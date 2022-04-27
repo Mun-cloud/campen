@@ -133,7 +133,7 @@ module.exports = (app) => {
       const sql =
         "SELECT c.id, c.tab, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, m.photo userPhoto, (SELECT count(*) cnt FROM `contents-likes` where contents_id=" +
         id +
-        ") FROM contents c, members m WHERE c.members_id=m.id and c.id=?";
+        ") likes FROM contents c, members m WHERE c.members_id=m.id and c.id=?";
       const [result] = await dbcon.query(sql, [id]);
 
       const sql2 =
@@ -164,20 +164,6 @@ module.exports = (app) => {
     const tab = req.post("tab");
     const content = req.post("content");
     const memberId = req.post("memberId");
-
-    // try {
-    //   regexHelper.value(name, "교수이름이 없습니다.");
-    //   regexHelper.value(userid, "아이디가 없습니다.");
-    //   regexHelper.value(position, "직급이 없습니다.");
-    //   regexHelper.value(sal, "급여가 없습니다.");
-    //   regexHelper.value(hiredate, "입사일 없습니다.");
-    //   regexHelper.value(deptno, "소속학과 번호가 없습니다.");
-    //   regexHelper.maxLength(name, 50, "이름이 너무 깁니다.");
-    //   regexHelper.maxLength(userid, 50, "아이디가 너무 깁니다.");
-    //   regexHelper.maxLength(position, 20, "직급이 너무 깁니다.");
-    // } catch (err) {
-    //   return next(err);
-    // }
 
     function foundNull() {
       [tab, content, memberId].forEach((v) => {
@@ -229,32 +215,20 @@ module.exports = (app) => {
       return next(new BadRequestException("로그인중이 아닙니다."));
     }
     const id = req.get("id");
-    const content = req.post("content");
-
-    // try {
-    //   regexHelper.value(name, "교수이름이 없습니다.");
-    //   regexHelper.value(userid, "아이디가 없습니다.");
-    //   regexHelper.value(position, "직급이 없습니다.");
-    //   regexHelper.value(sal, "급여가 없습니다.");
-    //   regexHelper.value(hiredate, "입사일 없습니다.");
-    //   regexHelper.value(deptno, "소속학과 번호가 없습니다.");
-    //   regexHelper.maxLength(name, 50, "이름이 너무 깁니다.");
-    //   regexHelper.maxLength(userid, 50, "아이디가 너무 깁니다.");
-    //   regexHelper.maxLength(position, 20, "직급이 너무 깁니다.");
-    // } catch (err) {
-    //   return next(err);
-    // }
+    const tab = req.put("tab");
+    const content = req.put("content");
+    const memberId = req.put("memberId");
 
     function foundNull() {
-      [id, content].forEach((v) => {
-        if (v === null || v === "") {
+      [id, tab, content, memberId].forEach((v) => {
+        if (v === null) {
           return false;
         }
       });
     }
 
-    if (!foundNull()) {
-      return next(new BadRequestException("게시글의 내용을 입력해 주십시오."));
+    if (!foundNull) {
+      return next(new BadRequestException("입력사항이 올바르지 않습니다."));
     }
 
     /** 데이터 수정하기 */
@@ -267,7 +241,7 @@ module.exports = (app) => {
       await dbcon.connect();
 
       // 데이터 수정하기
-      const sql = "UPDATE contents SET content=? WHERE id=?";
+      const sql = "UPDATE contents SET content=?, edit_date=now() WHERE id=?";
       const input_data = [content, id];
       const [result1] = await dbcon.query(sql, input_data);
 
@@ -277,7 +251,8 @@ module.exports = (app) => {
       }
 
       // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
-      const sql2 = "SELECT * FROM contents WHERE id=?";
+      const sql2 =
+        "SELECT id, tab, cast(content as char(10000)) as content, views, reg_date, edit_date, members_id, camp_id FROM contents WHERE id=?";
       const [result2] = await dbcon.query(sql2, [id]);
 
       // 조회 결과를 미리 준비한 변수에 저장함

@@ -5,7 +5,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Backdrop from "@mui/material/Backdrop";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const ITEM_HEIGHT = 48;
@@ -82,6 +82,12 @@ export default function MenuBtn({ content }) {
     }
   };
 
+  // 수정 페이지로 이동
+  const updateClick = () => {
+    handleClose();
+    go(`/write/${content.id}`);
+  };
+
   return (
     <div>
       <IconButton
@@ -125,7 +131,7 @@ export default function MenuBtn({ content }) {
           <MenuItem onClick={() => shareClick(window.location.href)}>
             공유하기
           </MenuItem>
-          <MenuItem onClick={handleClose}>수정하기</MenuItem>
+          <MenuItem onClick={updateClick}>수정하기</MenuItem>
           <MenuItem onClick={deleteClick}>삭제하기</MenuItem>
         </Menu>
       </Backdrop>

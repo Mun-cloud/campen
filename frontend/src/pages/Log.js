@@ -22,11 +22,11 @@ const Log = () => {
   }, [id]);
 
   return !content ? null : (
-    <div style={{ paddingBottom: "60px" }}>
-      <ItemHeader />
+    <>
+      <ItemHeader content={content} />
       <ItemProfile content={content} />
       <ItemCnt content={content} />
-    </div>
+    </>
   );
 };
 

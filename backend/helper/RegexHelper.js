@@ -39,7 +39,7 @@ class RegexHelper {
    * @param {int} len     최소 글자수
    * @param {string} msg      값이 없을 경우 표시될 메시지
    */
-  max_length(content, len, msg) {
+  minLength(content, len, msg) {
     if (!this.value(content) || content.length < len) {
       throw new BadRequestException(msg);
     }

@@ -26,7 +26,6 @@ const TopContainer = styled.div`
 
   .logo {
     margin: 0 auto;
-    padding-right: 50px;
   }
 
   .logo3 {
@@ -47,7 +46,7 @@ const TopContainer = styled.div`
   }
 `;
 
-const ItemHeader = ({content}) => {
+const ItemHeader = ({ content }) => {
   const go = useNavigate();
   return (
     <TopContainer>
@@ -67,7 +66,7 @@ const ItemHeader = ({content}) => {
         />
       </Link>
 
-      <MenuBtn content={content}/>
+      <MenuBtn content={content} />
     </TopContainer>
   );
 };
