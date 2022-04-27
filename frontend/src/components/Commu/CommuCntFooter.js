@@ -38,11 +38,11 @@ const CommuCntFooter = ({ id }) => {
     <div>
       {/* <!-- 컨텐츠:좋아요,댓글 --> */}
       <CntFooter>
-        <div className="cnt-like" href="#">
-          <i className="far fa-heart" onClick={() => like(id)}></i>
+        <div className="cnt-like" onClick={() => like(id)}>
+          <i className="far fa-heart"></i>
           좋아요
         </div>
-        <div className="cnt-comment" href="#">
+        <div className="cnt-comment">
           <i className="far fa-comment"></i>
           댓글쓰기
         </div>

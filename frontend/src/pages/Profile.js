@@ -11,7 +11,6 @@ const Profile = () => {
   const { id } = useParams();
   const [content, setContent] = useState();
   const [tab, setTab] = useState();
-  console.log(content);
 
   useEffect(() => {
     (async () => {
