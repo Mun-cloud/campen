@@ -5,7 +5,7 @@ export const getNoticeList = async () => {
   try {
     return (await axios.get("/notice")).data;
   } catch (err) {
-    console.error(err);
+    alert(err.response.data.rtmsg);
   }
 };
 
@@ -27,7 +27,7 @@ export const getImageList = async (contentId) => {
     };
     return (await axios.get(APIurl, urlParams)).data.response.body;
   } catch (err) {
-    console.error(err);
+    alert(err.response.data.rtmsg);
   }
 };
 
@@ -36,7 +36,7 @@ export const getExhibition = async () => {
   try {
     return (await axios.get("/exhi")).data.item;
   } catch (err) {
-    console.error(err);
+    alert(err.response.data.rtmsg);
   }
 };
 
@@ -45,7 +45,7 @@ export const getExhibitionCamp = async (id) => {
   try {
     return (await axios.get(`/exhi/${id}`)).data.item;
   } catch (err) {
-    console.error(err);
+    alert(err.response.data.rtmsg);
   }
 };
 
@@ -55,7 +55,7 @@ export const getIndexCampCut = async () => {
     return (await axios.get(`/content/photo`, { params: { query: 5 } })).data
       .item;
   } catch (err) {
-    console.error(err);
+    alert(err.response.data.rtmsg);
   }
 };
 
@@ -65,6 +65,6 @@ export const getIndexCampLog = async () => {
     return (await axios.get(`/content/log`, { params: { query: 5 } })).data
       .item;
   } catch (err) {
-    console.error(err);
+    alert(err.response.data.rtmsg);
   }
 };

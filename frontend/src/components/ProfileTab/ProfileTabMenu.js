@@ -62,7 +62,6 @@ const ProfileTabMenu = ({ content, tabValue }) => {
           <div
             id="게시글"
             onClick={(e) => {
-              console.log(e.target.id);
               setSelectedTab(e.target.id);
             }}
             className={selectedTab === "게시글" ? "active" : ""}

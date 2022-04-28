@@ -16,7 +16,7 @@ const Log = () => {
         const response = await axios.get(`/content/${id}`);
         setContent(response.data.item);
       } catch (err) {
-        console.error(err);
+        alert(err.response.data.rtmsg);
       }
     })();
   }, [id]);

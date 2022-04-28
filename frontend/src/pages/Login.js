@@ -94,7 +94,6 @@ const Login = () => {
       alert(`${res.user_name}님 환영합니다.`);
       go("/");
     } catch (err) {
-      console.error(err);
       alert(err.response.data.rtmsg);
     }
   };

@@ -19,7 +19,7 @@ const Profile = () => {
         const response = await axios.get(`/member/${id}`);
         setContent(response.data);
       } catch (err) {
-        console.error(err);
+        alert(err.response.data.rtmsg);
       }
     })();
   }, [id]);

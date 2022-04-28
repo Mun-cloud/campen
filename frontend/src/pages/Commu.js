@@ -15,8 +15,8 @@ const Commu = () => {
       let filterData = [];
       try {
         originData = (await axios.get("/content")).data.item;
-      } catch (error) {
-        console.error(error);
+      } catch (err) {
+        alert(err.response.data.rtmsg);
       }
       // eslint-disable-next-line default-case
       switch (seletedTab) {

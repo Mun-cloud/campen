@@ -73,7 +73,7 @@ const Camp = () => {
         response = await axios.get(`/campdata/${id}`);
         setThisCamp(response.data.item[0]);
       } catch (err) {
-        console.error(err);
+        alert(err.response.data.rtmsg);
       }
       try {
         const APIurl =
@@ -92,7 +92,7 @@ const Camp = () => {
         const photorespon = await axios.get(APIurl, urlParams);
         setPictuers(photorespon.data.response.body);
       } catch (err) {
-        console.error(err);
+        alert(err.response.data.rtmsg);
       }
       if (response.data.item.length < 1) {
         alert("캠핑장 정보가 존재하지 않습니다.");

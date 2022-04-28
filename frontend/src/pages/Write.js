@@ -70,7 +70,7 @@ const Write = () => {
         go("/");
       }
     } catch (err) {
-      console.error(err);
+      alert(err.response.data.rtmsg);
     }
   };
 
@@ -86,7 +86,7 @@ const Write = () => {
       alert("게시글이 수정되었습니다.");
       go("/commu");
     } catch (err) {
-      console.error(err);
+      alert(err.response.data.rtmsg);
     }
   };
 

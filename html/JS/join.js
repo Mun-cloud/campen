@@ -78,7 +78,6 @@ backBtn.addEventListener("click", () => {
 
 // 버튼 클릭 이벤트
 footBtn.addEventListener("click", () => {
-  console.log(footBtn.classList);
   if (footBtn.classList != "foot_btn checked") {
     alert("필수동의 항목을 체크해주세요");
   } else {

@@ -177,7 +177,6 @@ module.exports = (app) => {
 
       const [result1] = await dbcon.query(sql1, args1);
 
-      // console.log(result1);
       // const totalCount = result1[0].cnt;
       // if (totalCount < 1) {
       //   throw new BadRequestException("회원정보가 일치하지 않습니다");

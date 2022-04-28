@@ -39,6 +39,10 @@ const MyProfile = styled.div`
 
 const MyLoginProfile = () => {
   const { item: user } = useSelector((state) => state.user);
+
+  if (!user || user.length === 0) {
+    return null;
+  }
   return (
     <Link to="/usersetting">
       <MyProfile>

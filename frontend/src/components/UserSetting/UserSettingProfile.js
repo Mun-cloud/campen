@@ -50,6 +50,11 @@ const Profile = styled.div`
 
 const UserSettingProfile = () => {
   const { item: user } = useSelector((state) => state.user);
+
+  if (!user || user.length === 0) {
+    return null;
+  }
+
   return (
     <Profile>
       <img
