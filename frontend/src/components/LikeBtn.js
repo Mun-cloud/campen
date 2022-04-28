@@ -29,19 +29,27 @@ const LikeBtn = ({ content }) => {
 
   const onClick = async () => {
     if (heartOn) {
-      await axios.delete("content_like/like", {
-        data: {
-          user_id: item.id,
-          content_id: content.id,
-        },
-      });
+      try {
+        await axios.delete("content_like/like", {
+          data: {
+            user_id: item.id,
+            content_id: content.id,
+          },
+        });
+      } catch (err) {
+        alert(err.response.data.rtmsg);
+      }
       setHeartOn(false);
     } else {
-      await axios.post("content_like/like", {
-        user_id: item.id,
-        content_id: content.id,
-      });
-      setHeartOn(true);
+      try {
+        await axios.post("content_like/like", {
+          user_id: item.id,
+          content_id: content.id,
+        });
+        setHeartOn(true);
+      } catch (err) {
+        alert(err.response.data.rtmsg);
+      }
     }
   };
 
