@@ -28,9 +28,14 @@ const LikeBtn = ({ content }) => {
   }, [item, content.id]);
 
   const onClick = async () => {
+    if (!item) {
+      alert("로그인 후 이용해주시기 바랍니다.");
+      return;
+    }
+
     if (heartOn) {
       try {
-        await axios.delete("content_like/like", {
+        await axios.delete("/content_like/like", {
           data: {
             user_id: item.id,
             content_id: content.id,
@@ -42,7 +47,7 @@ const LikeBtn = ({ content }) => {
       setHeartOn(false);
     } else {
       try {
-        await axios.post("content_like/like", {
+        await axios.post("/content_like/like", {
           user_id: item.id,
           content_id: content.id,
         });
