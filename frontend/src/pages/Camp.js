@@ -1,7 +1,6 @@
 import CampBasicInfo from "../components/Camp/CampBasicInfo";
 import CampFacility from "../components/Camp/CampFacility";
 import CampIntro from "../components/Camp/CampIntro";
-import CampLog from "../components/Camp/CampLog";
 import CampMannerTime from "../components/Camp/CampMannerTime";
 import CampMap from "../components/Camp/CampMap";
 import CampPolicy from "../components/Camp/CampPolicy";
@@ -99,6 +98,7 @@ const Camp = () => {
         go("/search");
       }
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

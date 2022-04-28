@@ -53,7 +53,7 @@ const CampTitleBox = ({ item }) => {
         }
       })();
     }
-  }, [item]);
+  }, [item, user]);
 
   // 좋아요 클릭시 이벤트
   const onClick = async () => {

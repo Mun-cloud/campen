@@ -34,6 +34,7 @@ const TabItem = styled.li`
 `;
 
 const ProfileTabMenu = ({ content, tabValue }) => {
+  const [selectedTab, setSelectedTab] = useState("게시글");
   const [left, setLeft] = useState(0);
   const [right, setRight] = useState(0);
   useEffect(() => {
@@ -50,10 +51,6 @@ const ProfileTabMenu = ({ content, tabValue }) => {
     });
   }, [content]);
 
-  const [selectedTab, setSelectedTab] = useState("게시글");
-
-  useEffect(() => tabValue(selectedTab), [selectedTab]);
-
   return (
     <>
       {/* 상단 탭메뉴 */}
@@ -63,10 +60,11 @@ const ProfileTabMenu = ({ content, tabValue }) => {
             id="게시글"
             onClick={(e) => {
               setSelectedTab(e.target.id);
+              tabValue(e.target.id);
             }}
             className={selectedTab === "게시글" ? "active" : ""}
           >
-            {`게시글${left}`}
+            {`게시글 ${left}`}
           </div>
         </TabItem>
         <TabItem>
@@ -74,10 +72,11 @@ const ProfileTabMenu = ({ content, tabValue }) => {
             id="캠핑후기"
             onClick={(e) => {
               setSelectedTab(e.target.id);
+              tabValue(e.target.id);
             }}
             className={selectedTab === "캠핑후기" ? "active" : ""}
           >
-            {`캠핑후기${right}`}
+            {`캠핑후기 ${right}`}
           </div>
         </TabItem>
       </TabContainer>

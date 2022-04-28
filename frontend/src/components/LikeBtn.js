@@ -25,7 +25,7 @@ const LikeBtn = ({ content }) => {
         setHeartOn(true);
       }
     }
-  }, [item]);
+  }, [item, content.id]);
 
   const onClick = async () => {
     if (heartOn) {

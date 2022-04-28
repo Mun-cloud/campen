@@ -5,6 +5,12 @@ import ItemCntFooter from "../components/Commu/CommuItem/ItemCntFooter";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
+
+const Container = styled.div`
+  min-height: 100vh;
+  position: relative;
+`;
 
 const Board = () => {
   const { id } = useParams();
@@ -22,12 +28,12 @@ const Board = () => {
   }, [id]);
 
   return !content ? null : (
-    <>
+    <Container>
       <ItemHeader content={content} />
       <ItemProfile content={content} />
       <ItemCnt content={content} />
       <ItemCntFooter content={content} />
-    </>
+    </Container>
   );
 };
 

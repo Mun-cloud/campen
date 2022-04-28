@@ -24,6 +24,8 @@ const Commu = () => {
           filterData = originData.filter((v) => {
             if (v.tab === 0) {
               return true;
+            } else {
+              return false;
             }
           });
           break;
@@ -31,6 +33,8 @@ const Commu = () => {
           filterData = originData.filter((v) => {
             if (v.tab === 1) {
               return true;
+            } else {
+              return false;
             }
           });
           break;
@@ -38,6 +42,8 @@ const Commu = () => {
           filterData = originData.filter((v) => {
             if (v.tab === 2) {
               return true;
+            } else {
+              return false;
             }
           });
           break;

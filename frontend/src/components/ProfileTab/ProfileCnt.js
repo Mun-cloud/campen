@@ -3,16 +3,27 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import ProfileCntFooter from "./ProfileCntFooter";
-import ProfileCntFooter2 from "./ProfileCntFooter2";
 
 const CntContainer = styled.div`
   display: block;
   margin-bottom: 1px;
-  padding: 25px 20px 20px;
+  padding: 0px 20px 60px;
   background: rgb(255, 255, 255);
 `;
 const CntBox = styled.div`
-  padding-bottom: 10px;
+  padding: 20px 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .cnt-date {
     color: rgb(159, 165, 162);
     font-size: 9pt;
@@ -21,10 +32,8 @@ const CntBox = styled.div`
   }
 
   .cnt-body {
-    margin: 10px 0px 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin: 10px 0px;
+    width: 70%;
   }
 
   .cnt {
@@ -33,7 +42,7 @@ const CntBox = styled.div`
   }
 
   .cnt-title {
-    margin-bottom: 10px;
+    margin: 10px 0;
     font-weight: 500;
     font-size: 13pt;
     line-height: 100%;
@@ -90,29 +99,38 @@ const ProfileCnt = ({ content, tabValue }) => {
       {filter &&
         filter.map((v) => (
           <>
-            <Link to={`/board/${v.contentId}`}>
-              <CntBox>
-                {/*  <!-- 날짜 --> */}
-                <div className="cnt-date">{v.reg_date}</div>
-
+            <CntBox>
+              <Link to={`/board/${v.contentId}`}>
                 {/*  <!-- 컨텐츠 내용 --> */}
                 <div className="cnt-body">
+                  {/*  <!-- 날짜 --> */}
+                  <div className="cnt-date">
+                    {new Date(v.reg_date).toLocaleString("ko-KR", {
+                      timeZone: "Asia/Seoul",
+                    })}
+                  </div>
                   {/* <!-- 제목,본문 --> */}
                   <div className="cnt">
-                    <h3 className="cnt-title">{v.tab}</h3>
+                    <h3 className="cnt-title">
+                      {v.tab === 0
+                        ? "캠핑한컷"
+                        : v.tab === 1
+                        ? "캠핑후기"
+                        : "궁금해요"}
+                    </h3>
                     <div className="cnt-content">{v.content}</div>
-                  </div>
-                  {/*  <!-- 이미지 --> */}
-                  <div className="cnt-img">
-                    <img
-                      src={require("../../assets/img/medium.jpeg")}
-                      alt="컨텐츠 이미지"
-                    />
+                    <ProfileCntFooter hide={v.tab === 1 ? true : false} />
                   </div>
                 </div>
-              </CntBox>
-            </Link>
-            {v.tab === 1 ? <ProfileCntFooter2 /> : <ProfileCntFooter />}
+                {/*  <!-- 이미지 --> */}
+                <div className="cnt-img">
+                  <img
+                    src={require("../../assets/img/medium.jpeg")}
+                    alt="컨텐츠 이미지"
+                  />
+                </div>
+              </Link>
+            </CntBox>
           </>
         ))}
     </CntContainer>

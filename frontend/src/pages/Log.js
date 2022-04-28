@@ -5,6 +5,11 @@ import ItemCnt from "../components/Commu/CommuItem/ItemCnt";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
+
+const Container = styled.div`
+  min-height: 100vh;
+`;
 
 const Log = () => {
   const { id } = useParams();
@@ -22,11 +27,11 @@ const Log = () => {
   }, [id]);
 
   return !content ? null : (
-    <>
+    <Container>
       <ItemHeader content={content} />
       <ItemProfile content={content} />
       <ItemCnt content={content} />
-    </>
+    </Container>
   );
 };
 

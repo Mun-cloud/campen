@@ -31,7 +31,7 @@ const Write = () => {
         setTab(res.data.item.tab);
       })();
     }
-  }, []);
+  }, [commuId]);
 
   useEffect(() => {
     !isLoading && item === null && go("/login");

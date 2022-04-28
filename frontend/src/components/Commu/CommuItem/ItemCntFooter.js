@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import LikeBtn from "../../LikeBtn";
+import InputComment from "./InputComment";
 
 const Footer = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
   .cnt-footer {
     display: flex;
     padding: 14px 15px;
@@ -17,6 +23,10 @@ const Footer = styled.div`
     align-items: center;
     margin-left: 15px;
     cursor: pointer;
+
+    i {
+      margin-right: 3px;
+    }
   }
 
   /* 댓글영역 */
@@ -130,48 +140,30 @@ const Footer = styled.div`
 
 const ItemCntFooter = ({ content }) => {
   return (
-    <>
-      {/* <!-- 컨텐츠:좋아요,댓글 --> */}
-      <Footer>
-        <div className="cnt-footer">
-          <LikeBtn content={content} />
-          <div className="cnt-comment">
-            <Link to={`/board/${content.id}/#comment`}>
-              <i className="far fa-comment"></i>
-              댓글쓰기
-            </Link>
-          </div>
+    <Footer>
+      <div className="cnt-footer">
+        <LikeBtn content={content} />
+        <div className="cnt-comment">
+          <Link to={`/board/${content.id}/#comment`}>
+            <i className="far fa-comment"></i>
+            댓글쓰기
+          </Link>
+        </div>
+      </div>
+
+      {/* <!-- 댓글영역 --> */}
+      <section className="cmt-container" id="comment">
+        {/* <!-- 댓글 상단  --> */}
+        <div className="cmt1-box">
+          <span className="material-icons-outlined">textsms</span>
+          <p>아직 댓글이 없어요.</p>
+          <p>첫번째 댓글을 남겨보세요.</p>
         </div>
 
-        {/* <!-- 댓글영역 --> */}
-        <section className="cmt-container" id="comment">
-          {/* <!-- 댓글 상단  --> */}
-          <div className="cmt1-box">
-            <span className="material-icons-outlined">textsms</span>
-            <p>아직 댓글이 없어요.</p>
-            <p>첫번째 댓글을 남겨보세요.</p>
-          </div>
-
-          {/* <!-- 댓글 하단 --> */}
-          <div className="cmt2-box">
-            <form className="form-box">
-              {/* <!-- 텍스트 업로드 --> */}
-              <div className="textarea">
-                <textarea
-                  placeholder="댓글을 입력해주세요."
-                  name="comment"
-                  className="comment"
-                  rows="1"
-                ></textarea>
-                <div color="primary80" className="submit-btn submit-btn2">
-                  <button type="submit">등록</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </section>
-      </Footer>
-    </>
+        {/* <!-- 댓글 하단 --> */}
+        <InputComment />
+      </section>
+    </Footer>
   );
 };
 

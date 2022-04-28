@@ -77,9 +77,9 @@ const UserIntro = () => {
 
   const onClick = async () => {
     try {
-      const res = await axios.put("/member/intro", { input: value });
+      await axios.put("/member/intro", { input: value });
     } catch (err) {
-      alert(err.rtmsg);
+      alert(err.response.data.rtmsg);
     }
     go(-1);
   };

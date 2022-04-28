@@ -109,7 +109,7 @@ const SignUp = () => {
 
   const poseData = async () => {
     try {
-      const response = await axios.post("/member/join", {
+      await axios.post("/member/join", {
         user_id: userId,
         user_pw: password1,
         user_name: userName,

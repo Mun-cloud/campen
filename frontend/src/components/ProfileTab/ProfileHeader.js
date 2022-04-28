@@ -44,7 +44,7 @@ const ProfileHeader = () => {
             go(-1);
           }}
         >
-          <span class="material-icons-outlined">arrow_back_ios</span>
+          <span className="material-icons-outlined">arrow_back_ios</span>
         </div>
         <p>프로필</p>
       </Header>
