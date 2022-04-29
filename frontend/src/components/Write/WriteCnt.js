@@ -95,7 +95,14 @@ const PreviewImg = styled.img`
   margin-bottom: 5px;
 `;
 
-const WriteCnt = ({ cntText, cntTab, setImgs, prevText, prevTab }) => {
+const WriteCnt = ({
+  cntText,
+  cntTab,
+  setImgs,
+  prevText,
+  prevTab,
+  imgUploadHide,
+}) => {
   const [files, setFiles] = useState([]);
   const [imgPreview, setImagPreview] = useState([]);
   const [text, setText] = useState("");
@@ -177,7 +184,7 @@ const WriteCnt = ({ cntText, cntTab, setImgs, prevText, prevTab }) => {
 
       {/* <!-- 이미지 업로드 --> */}
       {/* 게시글 등록시만 이미지 업로드 */}
-      {prevText ? null : (
+      {imgUploadHide ? null : (
         <PhotoContainer>
           <PhotoBox>
             <PhotoUpload>

@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { getComments, getLikes } from "../../../api";
 import LikeBtn from "../../LikeBtn";
 import InputComment from "./InputComment";
+import { useQuery } from "react-query";
 
 const Footer = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
+  background-color: white;
 
   .cnt-footer {
     display: flex;
@@ -63,30 +66,45 @@ const Footer = styled.div`
 `;
 
 const ItemCntFooter = ({ content }) => {
+  // react-query를 통한 ajax 연동
+  const { data: likes } = useQuery("getLikes", () => getLikes(content.id));
+  const { isLoading, data: comments } = useQuery("comment", () =>
+    getComments(content.id)
+  );
+
+  console.log(comments);
+
   return (
     <Footer>
       <div className="cnt-footer">
         <LikeBtn content={content} />
+        {likes?.item?.length}
         <div className="cnt-comment">
           <Link to={`/board/${content.id}/#comment`}>
             <i className="far fa-comment"></i>
-            댓글쓰기
+            댓글쓰기 {comments?.length}
           </Link>
         </div>
       </div>
 
       {/* <!-- 댓글영역 --> */}
-      <section className="cmt-container" id="comment">
-        {/* <!-- 댓글 상단  --> */}
-        <div className="cmt1-box">
-          <span className="material-icons-outlined">textsms</span>
-          <p>아직 댓글이 없어요.</p>
-          <p>첫번째 댓글을 남겨보세요.</p>
-        </div>
+      {isLoading ? null : (
+        <section className="cmt-container" id="comment">
+          {/* <!-- 댓글 상단  --> */}
+          {!comments?.item || comments?.item.length < 1 ? (
+            <div className="cmt1-box">
+              <span className="material-icons-outlined">textsms</span>
+              <p>아직 댓글이 없어요.</p>
+              <p>첫번째 댓글을 남겨보세요.</p>
+            </div>
+          ) : (
+            <div className="cmt1-box"></div>
+          )}
 
-        {/* <!-- 댓글 하단 --> */}
-        <InputComment />
-      </section>
+          {/* <!-- 댓글 하단 --> */}
+          <InputComment />
+        </section>
+      )}
     </Footer>
   );
 };

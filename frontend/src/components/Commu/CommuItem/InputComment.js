@@ -39,6 +39,10 @@ const InputCommentBox = styled.div`
     border: 0.5px solid rgb(90, 94, 91);
     border-radius: 8px;
     background: rgb(255, 255, 255);
+
+    textarea {
+      overflow: hidden;
+    }
   }
 
   .comment {

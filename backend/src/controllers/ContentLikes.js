@@ -49,6 +49,38 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
+  /** 좋아요 한 컨텐츠 목록 --> Read(SELECT) */
+  router.get("/content_like/:id", async (req, res, next) => {
+    const id = req.get("id");
+    if (id === null) {
+      return next(new Error(400));
+    }
+
+    // 데이터 조회 결과가 저장될 빈 변수
+    let json = null;
+
+    try {
+      // 데이터베이스 접속
+      dbcon = await mysql2.createConnection(config.database);
+      await dbcon.connect();
+
+      // 데이터 조회
+      const sql =
+        "SELECT id, members_id, contents_id FROM `contents-likes` WHERE contents_id=?";
+      const [result] = await dbcon.query(sql, [id]);
+
+      // 조회 결과를 미리 준비한 변수에 저장함
+      json = result;
+    } catch (err) {
+      return next(err);
+    } finally {
+      dbcon.end();
+    }
+
+    // 모든 처리에 성공했으므로 정상 조회 결과 구성
+    res.sendJson({ item: json });
+  });
+
   /** 데이터 추가 --> Create(INSERT) */
   router.post("/content_like/like", async (req, res, next) => {
     // 저장을 위한 파라미터 입력받기

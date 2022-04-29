@@ -1,7 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useQuery } from "react-query";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { getLikes } from "../api";
+import { getUserData } from "../slices/UserSlice";
 
 const LikeBtnBox = styled.div`
   align-items: center;
@@ -15,6 +18,8 @@ const LikeBtnBox = styled.div`
 const LikeBtn = ({ content }) => {
   const [heartOn, setHeartOn] = useState(false);
   const { loading, item } = useSelector((state) => state.user);
+  // react-query를 통한 ajax 연동
+  const { data: likes } = useQuery("getLikes", () => getLikes(content.id));
 
   useEffect(() => {
     if (item) {
@@ -62,7 +67,8 @@ const LikeBtn = ({ content }) => {
 
   return (
     <LikeBtnBox className="cnt-like" onClick={onClick}>
-      <i className={heartOn ? "fas fa-heart" : "far fa-heart"}></i> 좋아요
+      <i className={heartOn ? "fas fa-heart" : "far fa-heart"}></i> 좋아요{" "}
+      {likes?.item?.length === 0 ? null : likes?.item?.length}
     </LikeBtnBox>
   );
 };

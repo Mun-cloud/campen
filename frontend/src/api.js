@@ -68,3 +68,21 @@ export const getIndexCampLog = async () => {
     alert(err.response.data.rtmsg);
   }
 };
+
+// 게시글 아이디 값으로 댓글 로딩
+export const getComments = async (id) => {
+  try {
+    return (await axios.get(`/comments/contents/${id}`)).data;
+  } catch (err) {
+    alert(err.response.data.rtmsg);
+  }
+};
+
+// 좋아요 수 로딩
+export const getLikes = async (id) => {
+  try {
+    return (await axios.get(`/content_like/${id}`)).data;
+  } catch (err) {
+    alert(err.response.data.rtmsg);
+  }
+};

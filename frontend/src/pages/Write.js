@@ -19,6 +19,7 @@ const Write = () => {
   const { isLoading, item } = useSelector((state) => state.user);
   const go = useNavigate();
   const [text, setText] = useState("");
+  const [imgUploadHide, setImgUploadHide] = useState(false);
   const [tab, setTab] = useState("0");
   const [imgs, setImgs] = useState();
   const { id: commuId } = useParams();
@@ -29,6 +30,7 @@ const Write = () => {
         const res = await axios.get(`/content/${commuId}`);
         setText(res.data.item.content);
         setTab(res.data.item.tab);
+        setImgUploadHide(true);
       })();
     }
   }, [commuId]);
@@ -100,6 +102,7 @@ const Write = () => {
           setImgs={setImgs}
           prevText={text}
           prevTab={tab}
+          imgUploadHide={imgUploadHide}
         />
 
         <WriteButton
