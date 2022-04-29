@@ -30,7 +30,7 @@ const LikeBtn = ({ content }) => {
         setHeartOn(true);
       }
     }
-  }, [item, content.id]);
+  }, [item]);
 
   const onClick = async () => {
     if (!item) {

@@ -23,7 +23,7 @@ const Category2 = ({ data }) => {
         <CntBoxText data={data} location={false} />
 
         {/* <!-- 컨텐츠:이미지 --> */}
-        <CntImg src={data.src} />
+        {!data.src ? null : <CntImg src={data.src} />}
       </Link>
 
       {/* <!-- 컨텐츠:좋아요,댓글 --> */}

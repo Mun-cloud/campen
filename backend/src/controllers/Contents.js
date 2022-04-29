@@ -30,7 +30,7 @@ module.exports = (app) => {
 
       // 데이터 조회
       let sql1 =
-        "SELECT c.id, c.tab,  g.src, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, m.photo userPhoto, camp_id FROM contents c, members m, `contents-img` g, (select min(id) id, contents_id from `contents-img` group by contents_id) i where c.members_id=m.id and c.id=i.contents_id and g.id=i.id order by id desc";
+        "SELECT c.id, c.tab, i.src, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, m.photo userPhoto, camp_id FROM contents c left outer join (select src, `contents-img`.contents_id from `contents-img` inner join (select min(id) id, contents_id from `contents-img` group by contents_id) g on `contents-img`.id=g.id) i on c.id=i.contents_id inner join members m on c.members_id=m.id order by id desc";
 
       const [result1] = await dbcon.query(sql1);
 
