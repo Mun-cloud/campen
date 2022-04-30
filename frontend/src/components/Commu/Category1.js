@@ -3,6 +3,7 @@ import styled from "styled-components";
 import LikeBtn from "../LikeBtn";
 import CntBoxText from "./CntBoxText";
 import CntImg from "./CntImg";
+import CommuCntFooter from "./CommuCntFooter";
 
 const CntBox = styled.div`
   margin-bottom: 8px;
@@ -34,9 +35,10 @@ const Category1 = ({ data }) => {
         {!data.src ? null : <CntImg src={data.src} />}
       </Link>
       {/* <!-- 컨텐츠:좋아요,댓글 --> */}
-      <CntFooter>
+      <CommuCntFooter data={data} />
+      {/* <CntFooter>
         <LikeBtn content={data} />
-      </CntFooter>
+      </CntFooter> */}
     </CntBox>
   );
 };

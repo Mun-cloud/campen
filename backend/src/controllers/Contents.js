@@ -268,7 +268,7 @@ module.exports = (app) => {
   });
 
   /** 데이터 삭제 --> Delete(DELETE) */
-  router.delete("/content/:id", async (req, res, next) => {
+  router.delete("/content", async (req, res, next) => {
     if (!req.session.memberInfo) {
       return next(new BadRequestException("로그인중이 아닙니다."));
     }

@@ -16,6 +16,7 @@ const LikeBtnBox = styled.div`
 `;
 
 const LikeBtn = ({ content }) => {
+  console.log(content);
   const [heartOn, setHeartOn] = useState(false);
   const { loading, item } = useSelector((state) => state.user);
   // react-query를 통한 ajax 연동

@@ -72,8 +72,6 @@ const ItemCntFooter = ({ content }) => {
     getComments(content.id)
   );
 
-  console.log(comments);
-
   return (
     <Footer>
       <div className="cnt-footer">

@@ -34,7 +34,8 @@ const CommuCnt = ({ data }) => {
           } else if (v.tab === 1) {
             return <Category1 data={v} key={v.id} />;
           } else if (v.tab === 2) {
-            return <Category2 data={v} key={v.id} />;
+            return null;
+            // return <Category2 data={v} key={v.id} />;
           } else return null;
         })}
     </CntBox>
