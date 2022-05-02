@@ -22,6 +22,10 @@ const CntFooter = styled.div`
     margin-left: 15px;
     cursor: pointer;
   }
+
+  i {
+    margin-right: 4px;
+  }
 `;
 
 const CommuCntFooter = ({ data, comment = true }) => {
@@ -33,7 +37,7 @@ const CommuCntFooter = ({ data, comment = true }) => {
         {!comment ? null : (
           <div className="cnt-comment" href="#">
             <i className="far fa-comment"></i>
-            댓글쓰기
+            댓글 {data.commentsCount}
           </div>
         )}
       </CntFooter>
