@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 const TagBox = styled.div`
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   width: 100%;
-  height: 60px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
