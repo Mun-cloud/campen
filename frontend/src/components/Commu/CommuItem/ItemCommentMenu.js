@@ -10,11 +10,10 @@ import axios from "axios";
 
 const ITEM_HEIGHT = 48;
 
-export default function MenuBtn({ content }) {
+export default function ItemCommentMenu({ comment }) {
   const go = useNavigate();
   const { item } = useSelector((state) => state.user);
   const [anchorEl, setAnchorEl] = useState(null);
-  // const [writer, setWriter] = useState(false);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -23,69 +22,30 @@ export default function MenuBtn({ content }) {
     setAnchorEl(null);
   };
 
-  // 작성자 감지
-  // useEffect(() => {
-  //   if (content?.members_id === item?.id) {
-  //     setWriter(true);
-  //   }
-  // }, [content, item]);
-
-  const shareClick = (copy) => {
-    // 흐름 1.
-    if (!document.queryCommandSupported("copy")) {
-      return alert("복사하기가 지원되지 않는 브라우저입니다.");
-    }
-    // 흐름 2.
-    const text = document.createElement("textarea");
-    text.value = `http://localhost:3000/board/${content.id}`;
-    text.style.top = 0;
-    text.style.left = 0;
-    text.style.position = "fixed";
-    // 흐름 3.
-    document.body.appendChild(text);
-    // focus() -> 사파리 브라우저 서포팅
-    text.focus();
-    // select() -> 사용자가 입력한 내용을 영역을 설정할 때 필요
-    text.select();
-    // 흐름 4.
-    document.execCommand("copy");
-    // 흐름 5.
-    document.body.removeChild(text);
-    alert("주소가 복사되었습니다.");
-    handleClose();
-  };
-
   // 게시글 삭제 function
   const deleteClick = async () => {
-    if (window.confirm("게시글을 삭제하시겠습니까?")) {
+    if (window.confirm("댓글을 삭제하시겠습니까?")) {
       if (item === null) {
         alert("로그인 해주시기 바랍니다.");
         go("/login");
-      } else if (item.id === content.members_id) {
+      } else if (item.id === comment.members_id) {
         try {
-          await axios.delete(`/content/${content.id}`, {
+          await axios.delete(`/comments`, {
             data: {
-              id: content.id,
+              id: comment.id,
             },
           });
-          alert("게시글이 삭제되었습니다.");
-          go("/commu");
+          alert("댓글이 삭제되었습니다.");
         } catch (err) {
-          alert("게시글 삭제에 실패했습니다.");
+          alert("댓글 삭제에 실패했습니다.");
         }
       } else {
-        alert("게시글 작성자가 아닙니다.");
+        alert("댓글 작성자가 아닙니다.");
         return;
       }
     } else {
       return;
     }
-  };
-
-  // 수정 페이지로 이동
-  const updateClick = () => {
-    handleClose();
-    go(`/write/${content.id}`);
   };
 
   return (
@@ -128,10 +88,6 @@ export default function MenuBtn({ content }) {
             horizontal: "right",
           }}
         >
-          <MenuItem onClick={() => shareClick(window.location.href)}>
-            공유하기
-          </MenuItem>
-          <MenuItem onClick={updateClick}>수정하기</MenuItem>
           <MenuItem onClick={deleteClick}>삭제하기</MenuItem>
         </Menu>
       </Backdrop>

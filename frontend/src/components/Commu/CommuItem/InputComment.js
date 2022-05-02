@@ -7,6 +7,8 @@ import styled from "styled-components";
 const InputCommentBox = styled.div`
   width: 100%;
   max-width: 530px;
+  position: fixed;
+  bottom: 60px;
 
   .form-box {
     position: relative;
@@ -97,6 +99,7 @@ const InputComment = () => {
           membersId: user.id,
           contentsId,
         });
+        window.location.reload();
       } catch (err) {
         alert(err.response.data.msg);
       }

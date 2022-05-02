@@ -84,7 +84,7 @@ const CntBoxTextBox = styled.div`
   }
 `;
 
-const CntBoxText = ({ data, location }) => {
+const CntBoxText = ({ data, locationMark }) => {
   // UTC 시간 변환 기능
   const [reg, setReg] = useState();
   useEffect(() => {
@@ -119,7 +119,7 @@ const CntBoxText = ({ data, location }) => {
       <p className="cnt-desc">{data.content}</p>
 
       {/* <!-- 컨텐츠:위치정보 --> */}
-      {!location ? null : (
+      {!locationMark ? null : (
         <div className="cnt-local">
           <i className="fas fa-map-marker-alt"></i>
           <span className="local-txt">{data.camp_id}</span>

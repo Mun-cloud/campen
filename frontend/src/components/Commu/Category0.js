@@ -19,7 +19,7 @@ const Category0 = ({ data }) => {
     <CntBox key={data.id}>
       <Link to={`/board/${data.id}`}>
         {/* <!-- 컨텐츠:프로필,텍스트 --> */}
-        <CntBoxText data={data} location={true} />
+        <CntBoxText data={data} locationMark={false} />
 
         {/* <!-- 컨텐츠:이미지 --> */}
         {!data.src ? null : <CntImg src={data.src} />}

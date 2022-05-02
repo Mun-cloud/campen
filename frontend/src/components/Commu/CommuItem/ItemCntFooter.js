@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { getComments, getLikes } from "../../../api";
+import { getComments } from "../../../api";
 import LikeBtn from "../../LikeBtn";
 import InputComment from "./InputComment";
+import PrintComments from "./PrintComments";
 import { useQuery } from "react-query";
 
 const Footer = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   background-color: white;
+  border-top: 1px solid rgb(241, 245, 243);
 
   .cnt-footer {
     display: flex;
@@ -63,11 +61,15 @@ const Footer = styled.div`
     font-size: 15px;
     font-weight: 700;
   }
+
+  .comment_count_box {
+    padding: 28px 16px 0px;
+    font-weight: 700;
+    font-size: 14px;
+  }
 `;
 
 const ItemCntFooter = ({ content }) => {
-  // react-query를 통한 ajax 연동
-  const { data: likes } = useQuery("getLikes", () => getLikes(content.id));
   const { isLoading, data: comments } = useQuery("comment", () =>
     getComments(content.id)
   );
@@ -76,7 +78,6 @@ const ItemCntFooter = ({ content }) => {
     <Footer>
       <div className="cnt-footer">
         <LikeBtn content={content} />
-        {likes?.item?.length}
         <div className="cnt-comment">
           <Link to={`/board/${content.id}/#comment`}>
             <i className="far fa-comment"></i>
@@ -89,14 +90,21 @@ const ItemCntFooter = ({ content }) => {
       {isLoading ? null : (
         <section className="cmt-container" id="comment">
           {/* <!-- 댓글 상단  --> */}
-          {!comments?.item || comments?.item.length < 1 ? (
+          {!comments || comments.length < 1 ? (
             <div className="cmt1-box">
               <span className="material-icons-outlined">textsms</span>
               <p>아직 댓글이 없어요.</p>
               <p>첫번째 댓글을 남겨보세요.</p>
             </div>
           ) : (
-            <div className="cmt1-box"></div>
+            <>
+              <div className="comment_count_box">
+                총 {comments.length}개 댓글
+              </div>
+              {comments.map((v) => (
+                <PrintComments comment={v} key={v.id} />
+              ))}
+            </>
           )}
 
           {/* <!-- 댓글 하단 --> */}

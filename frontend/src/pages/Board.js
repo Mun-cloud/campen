@@ -10,7 +10,7 @@ import styled from "styled-components";
 const Container = styled.div`
   min-height: 100vh;
   position: relative;
-  padding-bottom: 415px;
+  padding-bottom: 63px;
 `;
 
 const Board = () => {

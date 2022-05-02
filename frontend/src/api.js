@@ -72,7 +72,7 @@ export const getIndexCampLog = async () => {
 // 게시글 아이디 값으로 댓글 로딩
 export const getComments = async (id) => {
   try {
-    return (await axios.get(`/comments/contents/${id}`)).data;
+    return (await axios.get(`/comments/contents/${id}`)).data.item;
   } catch (err) {
     alert(err.response.data.rtmsg);
   }

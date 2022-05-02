@@ -27,7 +27,7 @@ const Category2 = ({ data }) => {
       </Link>
 
       {/* <!-- 컨텐츠:좋아요,댓글 --> */}
-      <CommuCntFooter />
+      <CommuCntFooter data={data} />
     </CntBox>
   );
 };

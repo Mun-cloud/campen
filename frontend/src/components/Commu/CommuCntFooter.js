@@ -24,16 +24,18 @@ const CntFooter = styled.div`
   }
 `;
 
-const CommuCntFooter = ({ data }) => {
+const CommuCntFooter = ({ data, comment = true }) => {
   return (
     <div>
       {/* <!-- 컨텐츠:좋아요,댓글 --> */}
       <CntFooter>
-        <LikeBtn content={data} />
-        <div className="cnt-comment" href="#">
-          <i className="far fa-comment"></i>
-          댓글쓰기
-        </div>
+        {!data ? null : <LikeBtn content={data} />}
+        {!comment ? null : (
+          <div className="cnt-comment" href="#">
+            <i className="far fa-comment"></i>
+            댓글쓰기
+          </div>
+        )}
       </CntFooter>
     </div>
   );
