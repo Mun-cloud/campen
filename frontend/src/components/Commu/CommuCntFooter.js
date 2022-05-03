@@ -1,5 +1,5 @@
-import axios from "axios";
 import styled from "styled-components";
+import LikeBtn from "../LikeBtn";
 
 const CntFooter = styled.div`
   display: flex;
@@ -7,6 +7,8 @@ const CntFooter = styled.div`
   font-size: 10pt;
   color: #666;
   font-weight: 400;
+  background-color: #fff;
+  margin-bottom: 8px;
 
   .cnt-like {
     display: flex;
@@ -20,24 +22,18 @@ const CntFooter = styled.div`
     margin-left: 15px;
     cursor: pointer;
   }
+
+  i {
+    margin-right: 4px;
+  }
 `;
 
-const like = async (user_id, content_id) => {
-  try {
-    await axios.post("/content_like/like", {
-      user_id,
-      content_id,
-    });
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-const CommuCntFooter = ({ id }) => {
+const CommuCntFooter = ({ data, comment = true }) => {
   return (
     <div>
       {/* <!-- 컨텐츠:좋아요,댓글 --> */}
       <CntFooter>
+<<<<<<< HEAD
         <div className="cnt-like" onClick={() => like(id)}>
           <i className="far fa-heart"></i>
           좋아요
@@ -46,6 +42,15 @@ const CommuCntFooter = ({ id }) => {
           <i className="far fa-comment"></i>
           댓글쓰기
         </div>
+=======
+        {!data ? null : <LikeBtn content={data} />}
+        {!comment ? null : (
+          <div className="cnt-comment" href="#">
+            <i className="far fa-comment"></i>
+            댓글 {data.commentsCount}
+          </div>
+        )}
+>>>>>>> 2fea166332773531267f014e61594b6a9bfffda8
       </CntFooter>
     </div>
   );

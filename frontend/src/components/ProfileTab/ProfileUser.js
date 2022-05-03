@@ -25,7 +25,6 @@ const UserProfile = styled.div`
 `;
 
 const ProfileUser = ({ content }) => {
-  console.log(content);
   return !content ? null : (
     <>
       {/*  <!-- 유저프로필 --> */}

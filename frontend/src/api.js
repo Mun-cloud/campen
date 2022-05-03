@@ -5,7 +5,7 @@ export const getNoticeList = async () => {
   try {
     return (await axios.get("/notice")).data;
   } catch (err) {
-    console.error(err);
+    alert(err.response.data.rtmsg);
   }
 };
 
@@ -27,7 +27,7 @@ export const getImageList = async (contentId) => {
     };
     return (await axios.get(APIurl, urlParams)).data.response.body;
   } catch (err) {
-    console.error(err);
+    alert(err.response.data.rtmsg);
   }
 };
 
@@ -36,7 +36,7 @@ export const getExhibition = async () => {
   try {
     return (await axios.get("/exhi")).data.item;
   } catch (err) {
-    console.error(err);
+    alert(err.response.data.rtmsg);
   }
 };
 
@@ -45,7 +45,7 @@ export const getExhibitionCamp = async (id) => {
   try {
     return (await axios.get(`/exhi/${id}`)).data.item;
   } catch (err) {
-    console.error(err);
+    alert(err.response.data.rtmsg);
   }
 };
 
@@ -55,7 +55,7 @@ export const getIndexCampCut = async () => {
     return (await axios.get(`/content/photo`, { params: { query: 5 } })).data
       .item;
   } catch (err) {
-    console.error(err);
+    alert(err.response.data.rtmsg);
   }
 };
 
@@ -65,6 +65,24 @@ export const getIndexCampLog = async () => {
     return (await axios.get(`/content/log`, { params: { query: 5 } })).data
       .item;
   } catch (err) {
-    console.error(err);
+    alert(err.response.data.rtmsg);
+  }
+};
+
+// 게시글 아이디 값으로 댓글 로딩
+export const getComments = async (id) => {
+  try {
+    return (await axios.get(`/comments/contents/${id}`)).data.item;
+  } catch (err) {
+    alert(err.response.data.rtmsg);
+  }
+};
+
+// 좋아요 수 로딩
+export const getLikes = async (id) => {
+  try {
+    return (await axios.get(`/content_like/${id}`)).data;
+  } catch (err) {
+    alert(err.response.data.rtmsg);
   }
 };

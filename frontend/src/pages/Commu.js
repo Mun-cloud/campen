@@ -15,8 +15,8 @@ const Commu = () => {
       let filterData = [];
       try {
         originData = (await axios.get("/content")).data.item;
-      } catch (error) {
-        console.error(error);
+      } catch (err) {
+        alert(err.response.data.rtmsg);
       }
       // eslint-disable-next-line default-case
       switch (seletedTab) {
@@ -24,6 +24,8 @@ const Commu = () => {
           filterData = originData.filter((v) => {
             if (v.tab === 0) {
               return true;
+            } else {
+              return false;
             }
           });
           break;
@@ -31,6 +33,8 @@ const Commu = () => {
           filterData = originData.filter((v) => {
             if (v.tab === 1) {
               return true;
+            } else {
+              return false;
             }
           });
           break;
@@ -38,6 +42,8 @@ const Commu = () => {
           filterData = originData.filter((v) => {
             if (v.tab === 2) {
               return true;
+            } else {
+              return false;
             }
           });
           break;

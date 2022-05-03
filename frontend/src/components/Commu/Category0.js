@@ -5,13 +5,7 @@ import CntImg from "./CntImg";
 import CntBoxText from "./CntBoxText";
 
 const CntBox = styled.div`
-  margin-top: 50px;
-  padding-bottom: 50px;
-
-  .cnt-box {
-    margin-bottom: 8px;
-    background: rgb(255, 255, 255);
-  }
+  background: rgb(255, 255, 255);
 
   a {
     text-decoration: none;
@@ -22,18 +16,16 @@ const CntBox = styled.div`
 
 const Category0 = ({ data }) => {
   return (
-    <>
-      <CntBox key={data.id}>
-        <Link to={`/board/${data.id}`}>
-          {/* <!-- 컨텐츠:프로필,텍스트 --> */}
-          <CntBoxText data={data} location={true} />
+    <CntBox key={data.id}>
+      <Link to={`/board/${data.id}`}>
+        {/* <!-- 컨텐츠:프로필,텍스트 --> */}
+        <CntBoxText data={data} locationMark={false} />
 
-          {/* <!-- 컨텐츠:이미지 --> */}
-          <CntImg src={data.src} />
-        </Link>
-      </CntBox>
-      <CommuCntFooter id={data.id} />
-    </>
+        {/* <!-- 컨텐츠:이미지 --> */}
+        {!data.src ? null : <CntImg src={data.src} />}
+      </Link>
+      <CommuCntFooter data={data} />
+    </CntBox>
   );
 };
 

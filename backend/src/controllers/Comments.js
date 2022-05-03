@@ -94,7 +94,7 @@ module.exports = (app) => {
 
       // 데이터 조회
       const sql =
-        "SELECT id, comment, reg_date, edit_date, members_id, contents_id FROM comments WHERE contents_id=?";
+        "SELECT c.id, c.comment, c.reg_date, c.edit_date, members_id, contents_id, m.nickname, m.photo FROM comments c, members m WHERE c.members_id=m.id and contents_id=?";
       const [result] = await dbcon.query(sql, [id]);
 
       // 조회 결과를 미리 준비한 변수에 저장함
@@ -220,11 +220,12 @@ module.exports = (app) => {
   });
 
   /** 데이터 삭제 --> Delete(DELETE) */
-  router.delete("/comments/:id", async (req, res, next) => {
+  router.delete("/comments", async (req, res, next) => {
     if (!req.session.memberInfo) {
       return next(new BadRequestException("로그인중이 아닙니다."));
     }
-    const id = req.get("id");
+
+    const id = req.delete("id");
 
     if (id === null) {
       return next(new Error(400));

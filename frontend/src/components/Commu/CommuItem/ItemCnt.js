@@ -49,33 +49,31 @@ const CntContainer = styled.div`
 
 const ItemCnt = ({ content }) => {
   return (
-    <div>
-      <CntContainer>
-        {/* <!-- header: 상세 상단 --> */}
-        <div className="cnt-box-txt">
-          <p className="cnt-desc">{content.content}</p>
+    <CntContainer>
+      {/* <!-- header: 상세 상단 --> */}
+      <div className="cnt-box-txt">
+        <p className="cnt-desc">{content.content}</p>
 
-          {/*  <!-- 컨텐츠:위치정보 --> */}
-          {!content.campName ? null : (
-            <div className="cnt-local">
-              <i className="fas fa-map-marker-alt"></i>
-              <span className="local-txt">{content.campName}</span>
-            </div>
-          )}
-        </div>
+        {/*  <!-- 컨텐츠:위치정보 --> */}
+        {!content.campName ? null : (
+          <div className="cnt-local">
+            <i className="fas fa-map-marker-alt"></i>
+            <span className="local-txt">{content.campName}</span>
+          </div>
+        )}
+      </div>
 
-        {/* 컨텐츠:이미지 */}
-        <div className="cnt-img">
-          {content.photos.length < 1
-            ? null
-            : content.photos.map((v) => (
-                <div className="medium" key={v.id}>
-                  <img src={v.src} alt="커뮤니티" />
-                </div>
-              ))}
-        </div>
-      </CntContainer>
-    </div>
+      {/* 컨텐츠:이미지 */}
+      <div className="cnt-img">
+        {content.photos.length < 1
+          ? null
+          : content.photos.map((v) => (
+              <div className="medium" key={v.id}>
+                <img src={v.src} alt="커뮤니티" />
+              </div>
+            ))}
+      </div>
+    </CntContainer>
   );
 };
 

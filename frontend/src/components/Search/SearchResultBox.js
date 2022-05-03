@@ -49,7 +49,7 @@ const SearchResultBox = ({ item }) => {
   );
 
   return isLoading ? null : (
-    <div>
+    <div style={{ "border-top": "1px solid rgba(0, 0, 0, 0.2)" }}>
       {pictures !== undefined ? (
         <SearchSwiper item={item} pictures={pictures} />
       ) : null}
@@ -63,12 +63,15 @@ const SearchResultBox = ({ item }) => {
             <div id="camp_class">{item.addr1}</div>
             <div id="camp_name">{item.name}</div>
           </div>
-          <div id="camp_log_box">
-            캠핑로그 <span id="camp_log_count">184</span>개
-          </div>
         </div>
         <div className="result_charge">
-          <span id="charge">40,000</span>원 부터
+          {!item.price ? (
+            "가격정보없음"
+          ) : (
+            <>
+              <span id="charge">{item.price}</span>원 부터
+            </>
+          )}
         </div>
       </ResultInfo>
       <SearchTagBox />

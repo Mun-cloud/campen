@@ -5,7 +5,7 @@ import WriteHeader from "../components/Write/WriteHeader";
 import WriteCnt from "../components/Write/WriteCnt";
 import WriteButton from "../components/Write/WriteButton";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const Container = styled.div`
@@ -19,20 +19,25 @@ const Write = () => {
   const { isLoading, item } = useSelector((state) => state.user);
   const go = useNavigate();
   const [text, setText] = useState("");
+  const [imgUploadHide, setImgUploadHide] = useState(false);
   const [tab, setTab] = useState("0");
   const [imgs, setImgs] = useState();
+  const { id: commuId } = useParams();
 
   useEffect(() => {
-    !isLoading && item.length === 0 && go("/login");
-  }, []);
+    if (commuId) {
+      (async () => {
+        const res = await axios.get(`/content/${commuId}`);
+        setText(res.data.item.content);
+        setTab(res.data.item.tab);
+        setImgUploadHide(true);
+      })();
+    }
+  }, [commuId]);
 
-  const cntText = (text) => {
-    setText(text);
-  };
-
-  const cntTab = (tab) => {
-    setTab(tab);
-  };
+  useEffect(() => {
+    !isLoading && item === null && go("/login");
+  });
 
   // 게시글 업로드
   const postCommu = async () => {
@@ -45,7 +50,7 @@ const Write = () => {
       });
 
       // 업로드 한 이미지가 있을 경우 실행
-      if (imgs) {
+      if (imgs && !imgs.length) {
         // 이미지 데이터 형식 처리
         const formdata = new FormData();
         imgs.forEach((v) => {
@@ -67,7 +72,23 @@ const Write = () => {
         go("/");
       }
     } catch (err) {
-      console.error(err);
+      alert(err.response.data.rtmsg);
+    }
+  };
+
+  // 게시글 수정
+  const putCommu = async () => {
+    try {
+      // 텍스트값 전송
+      await axios.put(`/content/${commuId}`, {
+        tab,
+        content: text,
+        memberId: item.id,
+      });
+      alert("게시글이 수정되었습니다.");
+      go("/commu");
+    } catch (err) {
+      alert(err.response.data.rtmsg);
     }
   };
 
@@ -75,9 +96,19 @@ const Write = () => {
     <>
       <Container>
         <WriteHeader />
-        <WriteCnt cntText={cntText} cntTab={cntTab} setImgs={setImgs} />
+        <WriteCnt
+          cntText={setText}
+          cntTab={setTab}
+          setImgs={setImgs}
+          prevText={text}
+          prevTab={tab}
+          imgUploadHide={imgUploadHide}
+        />
 
-        <WriteButton btnText={text} postCommu={postCommu} />
+        <WriteButton
+          btnText={text}
+          postCommu={commuId ? putCommu : postCommu}
+        />
       </Container>
     </>
   );

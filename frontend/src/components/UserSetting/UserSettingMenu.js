@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
 const UserContainer = styled.div`
+  height: 100vh;
+
   .user-div {
     width: 100%;
     max-width: 530px;
@@ -45,7 +47,6 @@ const UserContainer = styled.div`
 
 const UserSettingMenu = () => {
   const { item: user } = useSelector((state) => state.user);
-  const go = useNavigate();
 
   const logout = async () => {
     try {
@@ -53,10 +54,27 @@ const UserSettingMenu = () => {
       alert("로그아웃 되었습니다.");
       window.location.replace("/");
     } catch (err) {
-      console.error(err);
-      alert(err.rtmsg);
+      alert(err.response.data.rtmsg);
     }
   };
+
+  const onDelete = async () => {
+    if (window.confirm("정말로 회원탈퇴 하시겠습니까?")) {
+      try {
+        await axios.delete("/member/join");
+        alert("탈퇴를 완료했습니다.");
+        window.location.replace("/");
+      } catch (err) {
+        alert(err.response.data.rtmsg);
+      }
+    } else {
+      return;
+    }
+  };
+
+  if (!user || user.length === 0) {
+    return null;
+  }
 
   return (
     <UserContainer>
@@ -95,6 +113,10 @@ const UserSettingMenu = () => {
 
       <div className="phone user-div" onClick={logout}>
         로그아웃
+      </div>
+
+      <div className="phone user-div" onClick={onDelete}>
+        회원탈퇴
       </div>
     </UserContainer>
   );

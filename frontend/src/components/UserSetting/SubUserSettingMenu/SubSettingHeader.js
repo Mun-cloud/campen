@@ -27,7 +27,7 @@ const SubSettingHeader = () => {
       {/*  <!-- 헤더 --> */}
       <Header>
         <a href="../user-setting.html">
-          <span class="material-icons-outlined">arrow_back_ios</span>
+          <span className="material-icons-outlined">arrow_back_ios</span>
         </a>
       </Header>
     </>

@@ -44,7 +44,7 @@ function App() {
         dispatch(getUserData({ user_id: data.user_id, user_pw: data.user_pw }));
       } catch (err) {}
     })();
-  }, []);
+  });
 
   return (
     <div>
@@ -72,6 +72,7 @@ function App() {
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="/usersetting" element={<UserSetting />} />
         <Route path="/write" element={<Write />} />
+        <Route path="/write/:id" element={<Write />} />
         <Route path="/userintro" element={<UserIntro />} />
         <Route path="/password" element={<Password />} />
         <Route path="/nickname" element={<Nickname />} />

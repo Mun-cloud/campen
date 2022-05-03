@@ -5,41 +5,35 @@ const CntFooter = styled.div`
   font-size: 9pt;
   color: rgb(159, 165, 162);
   font-weight: 400;
-  padding-bottom: 20px;
+  padding: 10px 0;
 
-  .cnt-like {
+  i {
+    margin-right: 3px;
+  }
+
+  div {
     display: flex;
     align-items: center;
     cursor: pointer;
   }
 
   .cnt-comment {
-    display: flex;
-    align-items: center;
     margin-left: 15px;
-    cursor: pointer;
   }
 `;
 
-const ProfileCntFooter = () => {
+const ProfileCntFooter = ({ hide = false }) => {
   return (
-    <>
-      {/* <!-- 컨텐츠:좋아요,댓글 --> */}
-      <CntFooter>
-        <div className="cnt-like">
-          <a href="#">
-            <i className="far fa-heart"></i>
-            좋아요
-          </a>
-        </div>
+    <CntFooter>
+      <div className="cnt-like">
+        <i className="far fa-heart"></i> 좋아요
+      </div>
+      {hide ? null : (
         <div className="cnt-comment">
-          <a href="#">
-            <i className="far fa-comment"></i>
-            댓글쓰기
-          </a>
+          <i className="far fa-comment"></i> 댓글쓰기
         </div>
-      </CntFooter>
-    </>
+      )}
+    </CntFooter>
   );
 };
 

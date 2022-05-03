@@ -1,7 +1,6 @@
 import CampBasicInfo from "../components/Camp/CampBasicInfo";
 import CampFacility from "../components/Camp/CampFacility";
 import CampIntro from "../components/Camp/CampIntro";
-import CampLog from "../components/Camp/CampLog";
 import CampMannerTime from "../components/Camp/CampMannerTime";
 import CampMap from "../components/Camp/CampMap";
 import CampPolicy from "../components/Camp/CampPolicy";
@@ -73,7 +72,7 @@ const Camp = () => {
         response = await axios.get(`/campdata/${id}`);
         setThisCamp(response.data.item[0]);
       } catch (err) {
-        console.error(err);
+        alert(err.response.data.rtmsg);
       }
       try {
         const APIurl =
@@ -92,13 +91,14 @@ const Camp = () => {
         const photorespon = await axios.get(APIurl, urlParams);
         setPictuers(photorespon.data.response.body);
       } catch (err) {
-        console.error(err);
+        alert(err.response.data.rtmsg);
       }
       if (response.data.item.length < 1) {
         alert("캠핑장 정보가 존재하지 않습니다.");
         go("/search");
       }
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -131,7 +131,7 @@ const Camp = () => {
           <CampPolicy item={thisCamp} popViewFunction={popViewFunction} />
           {popView ? <CampPolicyPop popViewFunction={popViewFunction} /> : null}
           {thisCamp.photo && <CampMap item={thisCamp} />}
-          <CampLog item={thisCamp} />
+          {/* <CampLog item={thisCamp} /> */}
           <Footer />
         </CampPage>
       )}

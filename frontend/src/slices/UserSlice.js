@@ -27,7 +27,7 @@ const userSlice = createSlice({
   initialState: {
     rt: null, // HTTP 상태 코드 (200, 404, 500 등)
     rtmsg: null, // 에러메세지
-    item: [], // Ajax 처리를 통해 수신된 데이터
+    item: null, // Ajax 처리를 통해 수신된 데이터
     loading: false, // 로딩 여부
     login: false,
   },

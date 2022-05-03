@@ -6,11 +6,20 @@ import ProfileCnt from "../components/ProfileTab/ProfileCnt";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import styled from "styled-components";
+
+const Container = styled.div`
+  min-height: 100vh;
+`;
 
 const Profile = () => {
   const { id } = useParams();
   const [content, setContent] = useState();
+<<<<<<< HEAD
   const [tab, setTab] = useState();
+=======
+  const [tab, setTab] = useState("게시글");
+>>>>>>> 2fea166332773531267f014e61594b6a9bfffda8
 
   useEffect(() => {
     (async () => {
@@ -18,22 +27,18 @@ const Profile = () => {
         const response = await axios.get(`/member/${id}`);
         setContent(response.data);
       } catch (err) {
-        console.error(err);
+        alert(err.response.data.rtmsg);
       }
     })();
   }, [id]);
 
-  const tabValue = (data) => {
-    setTab(data);
-  };
-
   return (
-    <>
+    <Container>
       <ProfileHeader />
       <ProfileUser content={content} />
-      <ProfileTabMenu content={content} tabValue={tabValue} />
+      <ProfileTabMenu content={content} tabValue={setTab} />
       <ProfileCnt content={content} tabValue={tab} />
-    </>
+    </Container>
   );
 };
 

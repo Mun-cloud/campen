@@ -57,8 +57,8 @@ const ListBox = styled.div`
     position: absolute;
     right: 10px;
     bottom: 10px;
-    color: rgb(67, 192, 131);
-    font-size: 25px;
+    color: red;
+    font-size: 18px;
     z-index: 100;
     cursor: pointer;
   }

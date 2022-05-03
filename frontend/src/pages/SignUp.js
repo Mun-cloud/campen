@@ -100,8 +100,6 @@ const SignUp = () => {
       return false;
     }
     if (password1 !== password2) {
-      console.log(password1);
-      console.log(password2);
       inputPassword1.current.focus();
       alert("비밀번호 입력값이 서로 다릅니다.");
       return false;
@@ -111,17 +109,16 @@ const SignUp = () => {
 
   const poseData = async () => {
     try {
-      const response = await axios.post("/member/join", {
+      await axios.post("/member/join", {
         user_id: userId,
         user_pw: password1,
         user_name: userName,
         email: email,
       });
-      console.log(response);
       alert("회원가입을 환영합니다!");
       go("/");
     } catch (err) {
-      console.error(err);
+      alert(err.response.data.rtmsg);
     }
   };
 

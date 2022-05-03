@@ -76,8 +76,6 @@ const CampBasicInfo = ({ item }) => {
       position: markerPosition,
     });
     marker.setMap(map);
-
-    console.log("loading kakaomap");
   }, [item]);
 
   return (

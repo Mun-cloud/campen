@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import CampHeartBtn from "./CampHeartBtn";
 
 const TitleSection = styled.section`
   .camp_name {
     font-size: 12px;
-    padding-bottom: 16px;
+    padding-bottom: 12px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 
@@ -14,11 +15,12 @@ const TitleSection = styled.section`
 
   .camp_title {
     font-size: 22px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
   }
 
-  .camp_log_count {
+  .camp_heart {
     color: rgb(67, 192, 131);
+    cursor: pointer;
   }
 
   .camp_price {
@@ -38,10 +40,10 @@ const CampTitleBox = ({ item }) => {
         <div className="camp_name">
           <div className="camp_class">{item.lineIntro}</div>
           <div className="camp_title">{item.name}</div>
-          <div className="camp_log_count">캠핑로그 187</div>
+          <CampHeartBtn item={item} />
         </div>
         <div className="camp_price">
-          <span>40,000</span>원 부터
+          <span>{item.price}</span>원 부터
         </div>
       </div>
     </TitleSection>
