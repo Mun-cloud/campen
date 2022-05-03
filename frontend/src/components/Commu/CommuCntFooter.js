@@ -33,16 +33,6 @@ const CommuCntFooter = ({ data, comment = true }) => {
     <div>
       {/* <!-- 컨텐츠:좋아요,댓글 --> */}
       <CntFooter>
-<<<<<<< HEAD
-        <div className="cnt-like" onClick={() => like(id)}>
-          <i className="far fa-heart"></i>
-          좋아요
-        </div>
-        <div className="cnt-comment">
-          <i className="far fa-comment"></i>
-          댓글쓰기
-        </div>
-=======
         {!data ? null : <LikeBtn content={data} />}
         {!comment ? null : (
           <div className="cnt-comment" href="#">
@@ -50,7 +40,6 @@ const CommuCntFooter = ({ data, comment = true }) => {
             댓글 {data.commentsCount}
           </div>
         )}
->>>>>>> 2fea166332773531267f014e61594b6a9bfffda8
       </CntFooter>
     </div>
   );
