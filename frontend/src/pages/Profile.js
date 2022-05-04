@@ -15,11 +15,7 @@ const Container = styled.div`
 const Profile = () => {
   const { id } = useParams();
   const [content, setContent] = useState();
-<<<<<<< HEAD
-  const [tab, setTab] = useState();
-=======
   const [tab, setTab] = useState("게시글");
->>>>>>> 2fea166332773531267f014e61594b6a9bfffda8
 
   useEffect(() => {
     (async () => {
