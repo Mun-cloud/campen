@@ -67,7 +67,6 @@ const Container = styled.div`
   }
 `;
 
-const BACK = "https://campen-server.herokuapp.com";
 const Login = () => {
   const { item } = useSelector((state) => state.user);
   const go = useNavigate();
@@ -88,7 +87,7 @@ const Login = () => {
 
     try {
       let res = (
-        await axios.post(`${BACK}/member/login`, { user_id: id, user_pw: pw })
+        await axios.post("/member/login", { user_id: id, user_pw: pw })
       ).data.item[0];
       dispatch(getUserData({ user_id: id, user_pw: pw }));
 
