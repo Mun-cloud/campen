@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-const BACK = "https://campen-server.herokuapp.com";
 const CampHeartBtn = ({ item }) => {
   const [heartOn, setHeartOn] = useState(false);
   const { item: user } = useSelector((state) => state.user);
@@ -12,7 +11,7 @@ const CampHeartBtn = ({ item }) => {
     if (item && user) {
       (async () => {
         try {
-          const res = await axios.get(`${BACK}/hearts/${item.id}`);
+          const res = await axios.get(`${process.env.BACK}/hearts/${item.id}`);
           if (res.data.item.find((v) => v.camp_id === user.id) !== undefined) {
             setHeartOn(true);
           }
@@ -27,7 +26,7 @@ const CampHeartBtn = ({ item }) => {
     if (heartOn) {
       // 좋아요 등록되어 있을 시
       try {
-        await axios.delete(`${BACK}/hearts`, {
+        await axios.delete(`${process.env.BACK}/hearts`, {
           data: {
             user_id: user.id,
             camp_id: item.id,
@@ -40,7 +39,7 @@ const CampHeartBtn = ({ item }) => {
     } else {
       // 좋아요 등록되어 있지 않을 시
       try {
-        await axios.post(`${BACK}/hearts`, {
+        await axios.post(`${process.env.BACK}/hearts`, {
           user_id: user.id,
           camp_id: item.id,
         });

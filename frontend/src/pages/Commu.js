@@ -14,7 +14,7 @@ const Commu = () => {
       let originData = [];
       let filterData = [];
       try {
-        originData = (await axios.get("/content")).data.item;
+        originData = (await axios.get(`${process.env.BACK}/content`)).data.item;
       } catch (err) {
         alert(err.response.data.rtmsg);
       }

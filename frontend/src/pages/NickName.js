@@ -58,7 +58,7 @@ const NickName = () => {
 
   const onClick = async () => {
     try {
-      await axios.put("/member/nickname", { input: value });
+      await axios.put(`${process.env.BACK}/member/nickname`, { input: value });
     } catch (err) {
       alert(err.response.data.rtmsg);
     }

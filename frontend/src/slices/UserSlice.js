@@ -8,7 +8,7 @@ export const getUserData = createAsyncThunk(
   async ({ user_id, user_pw, rejectWithValue }) => {
     let result;
     try {
-      result = await axios.post("/member/login", {
+      result = await axios.post(`${process.env.BACK}/member/login`, {
         user_id,
         user_pw,
       });

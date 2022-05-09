@@ -50,7 +50,7 @@ const UserSettingMenu = () => {
 
   const logout = async () => {
     try {
-      await axios.delete("/member/logout");
+      await axios.delete(`${process.env.BACK}/member/logout`);
       alert("로그아웃 되었습니다.");
       window.location.replace("/");
     } catch (err) {
@@ -61,7 +61,7 @@ const UserSettingMenu = () => {
   const onDelete = async () => {
     if (window.confirm("정말로 회원탈퇴 하시겠습니까?")) {
       try {
-        await axios.delete("/member/join");
+        await axios.delete(`${process.env.BACK}/member/join`);
         alert("탈퇴를 완료했습니다.");
         window.location.replace("/");
       } catch (err) {

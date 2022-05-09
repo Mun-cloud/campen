@@ -77,7 +77,7 @@ const UserIntro = () => {
 
   const onClick = async () => {
     try {
-      await axios.put("/member/intro", { input: value });
+      await axios.put(`${process.env.BACK}/member/intro`, { input: value });
     } catch (err) {
       alert(err.response.data.rtmsg);
     }

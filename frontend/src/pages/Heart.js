@@ -45,9 +45,12 @@ const Heart = () => {
   useEffect(() => {
     (async () => {
       try {
-        let data = (await axios.get("/member/info")).data.item;
+        let data = (await axios.get(`${process.env.BACK}/member/info`)).data
+          .item;
         dispatch(getUserData({ user_id: data.user_id, user_pw: data.user_pw }));
-        setHearts((await axios.get(`/hearts/${data.id}`)).data.item);
+        setHearts(
+          (await axios.get(`${process.env.BACK}/hearts/${data.id}`)).data.item
+        );
       } catch (err) {
         alert("로그인 페이지로 이동합니다.");
         go("/login");

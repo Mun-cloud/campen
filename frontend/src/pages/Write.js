@@ -27,7 +27,7 @@ const Write = () => {
   useEffect(() => {
     if (commuId) {
       (async () => {
-        const res = await axios.get(`/content/${commuId}`);
+        const res = await axios.get(`${process.env.BACK}/content/${commuId}`);
         setText(res.data.item.content);
         setTab(res.data.item.tab);
         setImgUploadHide(true);
@@ -43,7 +43,7 @@ const Write = () => {
   const postCommu = async () => {
     try {
       // 텍스트값 전송
-      const response = await axios.post("/content", {
+      const response = await axios.post(`${process.env.BACK}/content`, {
         tab,
         content: text,
         memberId: item.id,
@@ -62,9 +62,13 @@ const Write = () => {
           },
         };
         // 이미지 데이터 전송
-        const res = await axios.post("/upload/multiple", formdata, config);
+        const res = await axios.post(
+          `${process.env.BACK}/upload/multiple`,
+          formdata,
+          config
+        );
         // 멀티 이미지 각각을 데이터베이스에 저장
-        await axios.post("/contents/img", {
+        await axios.post(`${process.env.BACK}/contents/img`, {
           src: res.data.item,
           contentId: response.data.item[0].id,
         });
@@ -80,7 +84,7 @@ const Write = () => {
   const putCommu = async () => {
     try {
       // 텍스트값 전송
-      await axios.put(`/content/${commuId}`, {
+      await axios.put(`${process.env.BACK}/content/${commuId}`, {
         tab,
         content: text,
         memberId: item.id,
