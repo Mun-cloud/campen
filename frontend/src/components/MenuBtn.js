@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const ITEM_HEIGHT = 48;
+const BACK = "https://campen-server.herokuapp.com";
 
 export default function MenuBtn({ content }) {
   const go = useNavigate();
@@ -63,7 +64,7 @@ export default function MenuBtn({ content }) {
         go("/login");
       } else if (item.id === content.members_id) {
         try {
-          await axios.delete(`/content/${content.id}`, {
+          await axios.delete(`${BACK}/content/${content.id}`, {
             data: {
               id: content.id,
             },

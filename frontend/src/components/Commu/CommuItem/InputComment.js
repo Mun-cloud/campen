@@ -86,6 +86,7 @@ const InputCommentBox = styled.div`
   }
 `;
 
+const BACK = "https://campen-server.herokuapp.com";
 const InputComment = () => {
   const [text, setText] = useState();
   const { id: contentsId } = useParams();
@@ -94,7 +95,7 @@ const InputComment = () => {
   const onClick = () => {
     (async () => {
       try {
-        await axios.post("/comments", {
+        await axios.post(`${BACK}/comments`, {
           comment: text,
           membersId: user.id,
           contentsId,

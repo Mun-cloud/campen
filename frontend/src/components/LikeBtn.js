@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
+const BACK = "https://campen-server.herokuapp.com";
 const LikeBtnBox = styled.div`
   align-items: center;
   cursor: pointer;
@@ -36,7 +37,7 @@ const LikeBtn = ({ content }) => {
 
     if (heartOn) {
       try {
-        await axios.delete("/content_like/like", {
+        await axios.delete(`${BACK}/content_like/like`, {
           data: {
             user_id: item.id,
             content_id: content.id,
@@ -48,7 +49,7 @@ const LikeBtn = ({ content }) => {
       setHeartOn(false);
     } else {
       try {
-        await axios.post("/content_like/like", {
+        await axios.post(`${BACK}/content_like/like`, {
           user_id: item.id,
           content_id: content.id,
         });

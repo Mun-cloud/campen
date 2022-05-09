@@ -8,6 +8,7 @@ import Backdrop from "@mui/material/Backdrop";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const BACK = "https://campen-server.herokuapp.com";
 const ITEM_HEIGHT = 48;
 
 export default function ItemCommentMenu({ comment }) {
@@ -30,7 +31,7 @@ export default function ItemCommentMenu({ comment }) {
         go("/login");
       } else if (item.id === comment.members_id) {
         try {
-          await axios.delete(`/comments`, {
+          await axios.delete(`${BACK}/comments`, {
             data: {
               id: comment.id,
             },

@@ -64,11 +64,12 @@ const ListBox = styled.div`
   }
 `;
 
+const BACK = "https://campen-server.herokuapp.com";
 const CampListGrid = ({ item, heart = "false" }) => {
   const go = useNavigate();
   const heartDelete = async (event) => {
     try {
-      await axios.delete("/hearts", {
+      await axios.delete(`${BACK}/hearts`, {
         data: {
           user_id: item.members_id,
           camp_id: event.currentTarget.id,
