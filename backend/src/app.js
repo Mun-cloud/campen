@@ -23,6 +23,7 @@ const methodOVerride = require("method-override"); // PUT, DELETE 파라미터 �
 const cookieParser = require("cookie-parser"); // Cookie 처리
 const expressSession = require("express-session"); //Session 처리
 const ExpressMysqlSession = require("express-mysql-session")(expressSession);
+const cors = require("cors");
 
 /*----------------------------------------------------------
  | 2) Express 객체 생성
@@ -39,6 +40,7 @@ const app = express();
 //  --> 초기화 콜백함수에 전달되는 req, res객체를 확장하기 때문에
 //      다른 모듈들보다 먼저 설정되어야 한다.
 app.use(useragent.express());
+app.use(cors());
 
 // 클라이언트의 접속을 감지
 app.use((req, res, next) => {
