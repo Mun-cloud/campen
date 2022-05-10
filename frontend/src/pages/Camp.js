@@ -69,7 +69,9 @@ const Camp = () => {
     (async () => {
       let response;
       try {
-        response = await axios.get(`${process.env.BACK}/campdata/${id}`);
+        response = await axios.get(
+          `https://campen-server.herokuapp.com/campdata/${id}`
+        );
         setThisCamp(response.data.item[0]);
       } catch (err) {
         alert(err.response.data.rtmsg);

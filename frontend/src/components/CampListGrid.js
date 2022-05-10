@@ -68,7 +68,7 @@ const CampListGrid = ({ item, heart = "false" }) => {
   const go = useNavigate();
   const heartDelete = async (event) => {
     try {
-      await axios.delete(`${process.env.BACK}/hearts`, {
+      await axios.delete(`https://campen-server.herokuapp.com/hearts`, {
         data: {
           user_id: item.members_id,
           camp_id: event.currentTarget.id,

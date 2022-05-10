@@ -11,7 +11,9 @@ const CampHeartBtn = ({ item }) => {
     if (item && user) {
       (async () => {
         try {
-          const res = await axios.get(`${process.env.BACK}/hearts/${item.id}`);
+          const res = await axios.get(
+            `https://campen-server.herokuapp.com/hearts/${item.id}`
+          );
           if (res.data.item.find((v) => v.camp_id === user.id) !== undefined) {
             setHeartOn(true);
           }
@@ -26,7 +28,7 @@ const CampHeartBtn = ({ item }) => {
     if (heartOn) {
       // 좋아요 등록되어 있을 시
       try {
-        await axios.delete(`${process.env.BACK}/hearts`, {
+        await axios.delete(`https://campen-server.herokuapp.com/hearts`, {
           data: {
             user_id: user.id,
             camp_id: item.id,
@@ -39,7 +41,7 @@ const CampHeartBtn = ({ item }) => {
     } else {
       // 좋아요 등록되어 있지 않을 시
       try {
-        await axios.post(`${process.env.BACK}/hearts`, {
+        await axios.post(`https://campen-server.herokuapp.com/hearts`, {
           user_id: user.id,
           camp_id: item.id,
         });

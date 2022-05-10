@@ -27,7 +27,9 @@ const Write = () => {
   useEffect(() => {
     if (commuId) {
       (async () => {
-        const res = await axios.get(`${process.env.BACK}/content/${commuId}`);
+        const res = await axios.get(
+          `https://campen-server.herokuapp.com/content/${commuId}`
+        );
         setText(res.data.item.content);
         setTab(res.data.item.tab);
         setImgUploadHide(true);
@@ -43,11 +45,14 @@ const Write = () => {
   const postCommu = async () => {
     try {
       // 텍스트값 전송
-      const response = await axios.post(`${process.env.BACK}/content`, {
-        tab,
-        content: text,
-        memberId: item.id,
-      });
+      const response = await axios.post(
+        `https://campen-server.herokuapp.com/content`,
+        {
+          tab,
+          content: text,
+          memberId: item.id,
+        }
+      );
 
       // 업로드 한 이미지가 있을 경우 실행
       if (imgs && !imgs.length) {
@@ -63,12 +68,12 @@ const Write = () => {
         };
         // 이미지 데이터 전송
         const res = await axios.post(
-          `${process.env.BACK}/upload/multiple`,
+          `https://campen-server.herokuapp.com/upload/multiple`,
           formdata,
           config
         );
         // 멀티 이미지 각각을 데이터베이스에 저장
-        await axios.post(`${process.env.BACK}/contents/img`, {
+        await axios.post(`https://campen-server.herokuapp.com/contents/img`, {
           src: res.data.item,
           contentId: response.data.item[0].id,
         });
@@ -84,11 +89,14 @@ const Write = () => {
   const putCommu = async () => {
     try {
       // 텍스트값 전송
-      await axios.put(`${process.env.BACK}/content/${commuId}`, {
-        tab,
-        content: text,
-        memberId: item.id,
-      });
+      await axios.put(
+        `https://campen-server.herokuapp.com/content/${commuId}`,
+        {
+          tab,
+          content: text,
+          memberId: item.id,
+        }
+      );
       alert("게시글이 수정되었습니다.");
       go("/commu");
     } catch (err) {

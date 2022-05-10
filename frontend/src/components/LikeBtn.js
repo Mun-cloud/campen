@@ -36,22 +36,28 @@ const LikeBtn = ({ content }) => {
 
     if (heartOn) {
       try {
-        await axios.delete(`${process.env.BACK}/content_like/like`, {
-          data: {
-            user_id: item.id,
-            content_id: content.id,
-          },
-        });
+        await axios.delete(
+          `https://campen-server.herokuapp.com/content_like/like`,
+          {
+            data: {
+              user_id: item.id,
+              content_id: content.id,
+            },
+          }
+        );
       } catch (err) {
         alert(err.response.data.rtmsg);
       }
       setHeartOn(false);
     } else {
       try {
-        await axios.post(`${process.env.BACK}/content_like/like`, {
-          user_id: item.id,
-          content_id: content.id,
-        });
+        await axios.post(
+          `https://campen-server.herokuapp.com/content_like/like`,
+          {
+            user_id: item.id,
+            content_id: content.id,
+          }
+        );
         setHeartOn(true);
       } catch (err) {
         alert(err.response.data.rtmsg);

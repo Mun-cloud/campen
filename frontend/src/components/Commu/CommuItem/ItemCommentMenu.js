@@ -30,7 +30,7 @@ export default function ItemCommentMenu({ comment }) {
         go("/login");
       } else if (item.id === comment.members_id) {
         try {
-          await axios.delete(`${process.env.BACK}/comments`, {
+          await axios.delete(`https://campen-server.herokuapp.com/comments`, {
             data: {
               id: comment.id,
             },
