@@ -15,6 +15,9 @@ const SwiperImg = styled.img`
 `;
 
 const IndexEventSlide = () => {
+  console.log(process.env.REACT_APP_BACK);
+  const a = process.env.REACT_APP_BACK;
+  console.log("환경변수", a);
   const { isLoading, data } = useQuery("allExhibition", getExhibition);
 
   return (
