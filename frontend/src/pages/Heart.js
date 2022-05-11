@@ -46,15 +46,12 @@ const Heart = () => {
     (async () => {
       try {
         let data = (
-          await axios.get(`https://campen-server.herokuapp.com/member/info`)
+          await axios.get(`${process.env.REACT_APP_BACK}/member/info`)
         ).data.item;
         dispatch(getUserData({ user_id: data.user_id, user_pw: data.user_pw }));
         setHearts(
-          (
-            await axios.get(
-              `https://campen-server.herokuapp.com/hearts/${data.id}`
-            )
-          ).data.item
+          (await axios.get(`${process.env.REACT_APP_BACK}/hearts/${data.id}`))
+            .data.item
         );
       } catch (err) {
         alert("로그인 페이지로 이동합니다.");

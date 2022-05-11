@@ -14,9 +14,8 @@ const Commu = () => {
       let originData = [];
       let filterData = [];
       try {
-        originData = (
-          await axios.get(`https://campen-server.herokuapp.com/content`)
-        ).data.item;
+        originData = (await axios.get(`${process.env.REACT_APP_BACK}/content`))
+          .data.item;
       } catch (err) {
         alert(err.response.data.rtmsg);
       }

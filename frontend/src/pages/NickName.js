@@ -58,7 +58,7 @@ const NickName = () => {
 
   const onClick = async () => {
     try {
-      await axios.put(`https://campen-server.herokuapp.com/member/nickname`, {
+      await axios.put(`${process.env.REACT_APP_BACK}/member/nickname`, {
         input: value,
       });
     } catch (err) {

@@ -8,13 +8,10 @@ export const getUserData = createAsyncThunk(
   async ({ user_id, user_pw, rejectWithValue }) => {
     let result;
     try {
-      result = await axios.post(
-        `https://campen-server.herokuapp.com/member/login`,
-        {
-          user_id,
-          user_pw,
-        }
-      );
+      result = await axios.post(`${process.env.REACT_APP_BACK}/member/login`, {
+        user_id,
+        user_pw,
+      });
     } catch (err) {
       result = rejectWithValue(err.response);
     }

@@ -77,7 +77,7 @@ const UserIntro = () => {
 
   const onClick = async () => {
     try {
-      await axios.put(`https://campen-server.herokuapp.com/member/intro`, {
+      await axios.put(`${process.env.REACT_APP_BACK}/member/intro`, {
         input: value,
       });
     } catch (err) {

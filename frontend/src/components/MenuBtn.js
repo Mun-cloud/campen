@@ -64,7 +64,7 @@ export default function MenuBtn({ content }) {
       } else if (item.id === content.members_id) {
         try {
           await axios.delete(
-            `https://campen-server.herokuapp.com/content/${content.id}`,
+            `${process.env.REACT_APP_BACK}/content/${content.id}`,
             {
               data: {
                 id: content.id,

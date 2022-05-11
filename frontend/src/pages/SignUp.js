@@ -109,7 +109,7 @@ const SignUp = () => {
 
   const poseData = async () => {
     try {
-      await axios.post(`https://campen-server.herokuapp.com/member/join`, {
+      await axios.post(`${process.env.REACT_APP_BACK}/member/join`, {
         user_id: userId,
         user_pw: password1,
         user_name: userName,

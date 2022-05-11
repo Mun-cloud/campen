@@ -19,7 +19,7 @@ const Log = () => {
     (async () => {
       try {
         const response = await axios.get(
-          `https://campen-server.herokuapp.com/content/${id}`
+          `${process.env.REACT_APP_BACK}/content/${id}`
         );
         setContent(response.data.item);
       } catch (err) {

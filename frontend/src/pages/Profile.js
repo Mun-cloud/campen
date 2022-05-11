@@ -21,7 +21,7 @@ const Profile = () => {
     (async () => {
       try {
         const response = await axios.get(
-          `https://campen-server.herokuapp.com/member/${id}`
+          `${process.env.REACT_APP_BACK}/member/${id}`
         );
         setContent(response.data);
       } catch (err) {

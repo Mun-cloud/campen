@@ -13,7 +13,7 @@ const MyPage = () => {
     (async () => {
       try {
         let data = (
-          await axios.get(`https://campen-server.herokuapp.com/member/info`)
+          await axios.get(`${process.env.REACT_APP_BACK}/member/info`)
         ).data.item;
         dispatch(getUserData({ user_id: data.user_id, user_pw: data.user_pw }));
       } catch (err) {}

@@ -70,7 +70,7 @@ const Camp = () => {
       let response;
       try {
         response = await axios.get(
-          `https://campen-server.herokuapp.com/campdata/${id}`
+          `${process.env.REACT_APP_BACK}/campdata/${id}`
         );
         setThisCamp(response.data.item[0]);
       } catch (err) {

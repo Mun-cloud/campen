@@ -25,7 +25,7 @@ const ExhiList = () => {
       {data.map((v) => {
         return (
           <Link to={`/exhibition/${v.id}`} key={v.id}>
-            <SImage src={v.photo} alt={v.title} />
+            <SImage src={process.env.REACT_APP_BACK + v.photo} alt={v.title} />
           </Link>
         );
       })}

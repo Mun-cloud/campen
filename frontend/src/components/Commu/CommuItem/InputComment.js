@@ -94,7 +94,7 @@ const InputComment = () => {
   const onClick = () => {
     (async () => {
       try {
-        await axios.post(`https://campen-server.herokuapp.com/comments`, {
+        await axios.post(`${process.env.REACT_APP_BACK}/comments`, {
           comment: text,
           membersId: user.id,
           contentsId,

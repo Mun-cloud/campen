@@ -87,7 +87,7 @@ const Login = () => {
 
     try {
       let res = (
-        await axios.post(`https://campen-server.herokuapp.com/member/login`, {
+        await axios.post(`${process.env.REACT_APP_BACK}/member/login`, {
           user_id: id,
           user_pw: pw,
         })

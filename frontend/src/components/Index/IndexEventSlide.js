@@ -15,9 +15,6 @@ const SwiperImg = styled.img`
 `;
 
 const IndexEventSlide = () => {
-  console.log(process.env.REACT_APP_BACK);
-  const a = process.env.REACT_APP_BACK;
-  console.log("환경변수", a);
   const { isLoading, data } = useQuery("allExhibition", getExhibition);
 
   return (
@@ -39,7 +36,10 @@ const IndexEventSlide = () => {
         data.map((v) => (
           <SwiperSlide className="glide__slide slider" key={v.id}>
             <Link to={`/exhibition/${v.id}`}>
-              <SwiperImg src={v.photo} alt={v.title} />
+              <SwiperImg
+                src={process.env.REACT_APP_BACK + v.photo}
+                alt={v.title}
+              />
             </Link>
           </SwiperSlide>
         ))}
