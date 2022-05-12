@@ -40,6 +40,7 @@ const MySwiper = styled(Swiper)`
 const SearchSwiper = ({ item, pictures }) => {
   const go = useNavigate();
   if (pictures.items.item !== undefined) {
+    console.log(pictures.items.item);
     return (
       <MySwiper
         navigation={true}
@@ -63,10 +64,7 @@ const SearchSwiper = ({ item, pictures }) => {
               go(`/camp/${item.id}`);
             }}
           >
-            <img
-              src={process.env.REACT_APP_BACK + v.imageUrl}
-              alt={item.name}
-            />
+            <img src={v.imageUrl} alt={item.name} />
             <span>
               <i className="fas fa-map-marker-alt"></i>
               <span id="profile_local">{item.addr1}</span>

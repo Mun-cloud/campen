@@ -130,12 +130,19 @@ app.use(
     // 세션을 쿠키 상태로 클라이언트에게 노출시킬지 여부
     resave: false,
     proxy: true,
+    cookie: {
+      secure: true,
+      maxAge: 1000 * 60 * 10,
+      sameSite: "none",
+      domain: "everycampen.netlify.app",
+    },
     // 세션이 저장되기 전에 기존의 세션을 초기화 상태로 만들지 여부
     saveUninitialized: false,
     store: new ExpressMysqlSession(config.database),
   })
 );
 
+app.set("trust proxy", 1);
 /** req, res 객체의 기능을 확장하는 모듈 */
 app.use(webHelper());
 
