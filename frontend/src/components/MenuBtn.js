@@ -63,7 +63,7 @@ export default function MenuBtn({ content }) {
         go("/login");
       } else if (item.id === content.members_id) {
         try {
-          await axios.delete(`/api/content/${content.id}`, {
+          await axios.delete(`/api/content`, {
             data: {
               id: content.id,
             },
