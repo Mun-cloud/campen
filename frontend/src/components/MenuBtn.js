@@ -63,14 +63,11 @@ export default function MenuBtn({ content }) {
         go("/login");
       } else if (item.id === content.members_id) {
         try {
-          await axios.delete(
-            `${process.env.REACT_APP_BACK}/content/${content.id}`,
-            {
-              data: {
-                id: content.id,
-              },
-            }
-          );
+          await axios.delete(`/api/content/${content.id}`, {
+            data: {
+              id: content.id,
+            },
+          });
           alert("게시글이 삭제되었습니다.");
           go("/commu");
         } catch (err) {

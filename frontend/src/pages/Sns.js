@@ -58,7 +58,7 @@ const Password = () => {
 
   const onClick = async () => {
     try {
-      await axios.put(`${process.env.REACT_APP_BACK}/member/sns_addr`, {
+      await axios.put(`/api/member/sns_addr`, {
         input: value,
       });
     } catch (err) {

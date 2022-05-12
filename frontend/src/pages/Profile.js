@@ -20,9 +20,7 @@ const Profile = () => {
   useEffect(() => {
     (async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_BACK}/member/${id}`
-        );
+        const response = await axios.get(`/api/member/${id}`);
         setContent(response.data);
       } catch (err) {
         alert(err.response.data.rtmsg);

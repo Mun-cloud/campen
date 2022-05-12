@@ -11,9 +11,7 @@ const CampHeartBtn = ({ item }) => {
     if (item && user) {
       (async () => {
         try {
-          const res = await axios.get(
-            `${process.env.REACT_APP_BACK}/hearts/${item.id}`
-          );
+          const res = await axios.get(`/api/hearts/${item.id}`);
           if (res.data.item.find((v) => v.camp_id === user.id) !== undefined) {
             setHeartOn(true);
           }
@@ -28,7 +26,7 @@ const CampHeartBtn = ({ item }) => {
     if (heartOn) {
       // 좋아요 등록되어 있을 시
       try {
-        await axios.delete(`${process.env.REACT_APP_BACK}/hearts`, {
+        await axios.delete(`/api/hearts`, {
           data: {
             user_id: user.id,
             camp_id: item.id,
@@ -41,7 +39,7 @@ const CampHeartBtn = ({ item }) => {
     } else {
       // 좋아요 등록되어 있지 않을 시
       try {
-        await axios.post(`${process.env.REACT_APP_BACK}/hearts`, {
+        await axios.post(`/api/hearts`, {
           user_id: user.id,
           camp_id: item.id,
         });

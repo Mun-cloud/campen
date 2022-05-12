@@ -36,7 +36,7 @@ const LikeBtn = ({ content }) => {
 
     if (heartOn) {
       try {
-        await axios.delete(`${process.env.REACT_APP_BACK}/content_like/like`, {
+        await axios.delete(`/api/content_like/like`, {
           data: {
             user_id: item.id,
             content_id: content.id,
@@ -48,7 +48,7 @@ const LikeBtn = ({ content }) => {
       setHeartOn(false);
     } else {
       try {
-        await axios.post(`${process.env.REACT_APP_BACK}/content_like/like`, {
+        await axios.post(`/api/content_like/like`, {
           user_id: item.id,
           content_id: content.id,
         });

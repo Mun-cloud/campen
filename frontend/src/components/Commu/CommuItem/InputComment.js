@@ -94,7 +94,7 @@ const InputComment = () => {
   const onClick = () => {
     (async () => {
       try {
-        await axios.post(`${process.env.REACT_APP_BACK}/comments`, {
+        await axios.post(`/api/comments`, {
           comment: text,
           membersId: user.id,
           contentsId,

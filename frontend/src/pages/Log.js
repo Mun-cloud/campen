@@ -18,9 +18,7 @@ const Log = () => {
   useEffect(() => {
     (async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_BACK}/content/${id}`
-        );
+        const response = await axios.get(`/api/content/${id}`);
         setContent(response.data.item);
       } catch (err) {
         alert(err.response.data.rtmsg);

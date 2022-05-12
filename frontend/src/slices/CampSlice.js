@@ -8,7 +8,7 @@ export const getCampList = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     let result;
     try {
-      result = await axios.get(`${process.env.REACT_APP_BACK}/campdata`, {
+      result = await axios.get(`/api/campdata`, {
         params: {
           query: payload.query,
           page: payload.page,

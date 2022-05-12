@@ -3,7 +3,7 @@ import axios from "axios";
 // 전체 notice값 GET
 export const getNoticeList = async () => {
   try {
-    return (await axios.get(`${process.env.REACT_APP_BACK}/notice`)).data;
+    return (await axios.get(`/api/notice`)).data;
   } catch (err) {
     alert(err.response.data.rtmsg);
   }
@@ -34,7 +34,7 @@ export const getImageList = async (contentId) => {
 // 전체 기획전 리스트 가져오기
 export const getExhibition = async () => {
   try {
-    return (await axios.get(`${process.env.REACT_APP_BACK}/exhi`)).data.item;
+    return (await axios.get(`/api/exhi`)).data.item;
   } catch (err) {
     alert(err.response.data.rtmsg);
   }
@@ -43,8 +43,7 @@ export const getExhibition = async () => {
 // 기획전에 해당하는 CAMP 데이터 받기
 export const getExhibitionCamp = async (id) => {
   try {
-    return (await axios.get(`${process.env.REACT_APP_BACK}/exhi/${id}`)).data
-      .item;
+    return (await axios.get(`/api/exhi/${id}`)).data.item;
   } catch (err) {
     alert(err.response.data.rtmsg);
   }
@@ -54,7 +53,7 @@ export const getExhibitionCamp = async (id) => {
 export const getIndexCampCut = async () => {
   try {
     return (
-      await axios.get(`${process.env.REACT_APP_BACK}/content/photo`, {
+      await axios.get(`/api/content/photo`, {
         params: { query: 5 },
       })
     ).data.item;
@@ -67,7 +66,7 @@ export const getIndexCampCut = async () => {
 export const getIndexCampLog = async () => {
   try {
     return (
-      await axios.get(`${process.env.REACT_APP_BACK}/content/log`, {
+      await axios.get(`/api/content/log`, {
         params: { query: 5 },
       })
     ).data.item;
@@ -79,9 +78,7 @@ export const getIndexCampLog = async () => {
 // 게시글 아이디 값으로 댓글 로딩
 export const getComments = async (id) => {
   try {
-    return (
-      await axios.get(`${process.env.REACT_APP_BACK}/comments/contents/${id}`)
-    ).data.item;
+    return (await axios.get(`/api/comments/contents/${id}`)).data.item;
   } catch (err) {
     alert(err.response.data.rtmsg);
   }
@@ -90,8 +87,7 @@ export const getComments = async (id) => {
 // 좋아요 수 로딩
 export const getLikes = async (id) => {
   try {
-    return (await axios.get(`${process.env.REACT_APP_BACK}/content_like/${id}`))
-      .data;
+    return (await axios.get(`/api/content_like/${id}`)).data;
   } catch (err) {
     alert(err.response.data.rtmsg);
   }
