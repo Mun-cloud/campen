@@ -84,13 +84,13 @@ const Camp = () => {
         const APIurl =
           "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/imageList";
         const KEY =
-          "5APlXd7ZkPeuONbcZe2isYf2o238wB9owyYEmdkJEV7AeGwMGLtF2cB2ku18d/iA5dcfs9UX/wA+qck++FPT3A==";
+          "5APlXd7ZkPeuONbcZe2isYf2o238wB9owyYEmdkJEV7AeGwMGLtF2cB2ku18d%2FiA5dcfs9UX%2FwA%2Bqck%2B%2BFPT3A%3D%3D";
 
         const urlParams = {
           params: {
             ServiceKey: KEY,
             MobileOS: "ETC",
-            MobileApp: "AppTest",
+            MobileApp: "everycampen",
             contentId: response.data.item[0].contentId,
           },
         };
