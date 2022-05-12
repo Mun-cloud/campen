@@ -39,8 +39,8 @@ const MySwiper = styled(Swiper)`
 `;
 const SearchSwiper = ({ item, pictures }) => {
   const go = useNavigate();
+  console.log(pictures);
   if (pictures.items.item !== undefined) {
-    console.log(pictures.items.item);
     return (
       <MySwiper
         navigation={true}
