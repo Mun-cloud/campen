@@ -14,7 +14,6 @@ export default function MenuBtn({ content }) {
   const go = useNavigate();
   const { item } = useSelector((state) => state.user);
   const [anchorEl, setAnchorEl] = useState(null);
-  // const [writer, setWriter] = useState(false);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

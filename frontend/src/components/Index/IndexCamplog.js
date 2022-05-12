@@ -95,7 +95,7 @@ const IndexCamplog = () => {
       <LogSwiper freeMode={true} slidesPerView={"auto"}>
         {data.map((v) => (
           <SwiperSlide className="swiper-slide" key={v.id}>
-            <Link to={`/borad/${v.id}`}>
+            <Link to={`/board/${v.id}`}>
               <div className="log_slide">
                 <img
                   src={process.env.REACT_APP_BACK + v.src}
@@ -107,8 +107,8 @@ const IndexCamplog = () => {
                     {v.nickname ? v.nickname : `캠퍼${v.memberId}`}
                   </span>
                   <span className="log_camp">
-                    <i className="fas fa-map-marker-alt"></i>
-                    동두천 돈내미캠핑장
+                    {/* <i className="fas fa-map-marker-alt"></i>
+                    동두천 돈내미캠핑장 */}
                   </span>
                   <p>{v.content}</p>
                 </div>
