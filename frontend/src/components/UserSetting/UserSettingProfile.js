@@ -58,7 +58,11 @@ const UserSettingProfile = () => {
   return (
     <Profile>
       <img
-        src={user.photo ? user.photo : require("../../assets/img/user-img.png")}
+        src={
+          user.photo
+            ? process.env.REACT_APP_BACK + user.photo
+            : require("../../assets/img/user-img.png")
+        }
         alt={user.user_name}
       />
       <div className="user-name">{user.user_name}</div>

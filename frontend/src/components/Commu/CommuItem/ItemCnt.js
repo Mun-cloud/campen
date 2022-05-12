@@ -69,7 +69,7 @@ const ItemCnt = ({ content }) => {
           ? null
           : content.photos.map((v) => (
               <div className="medium" key={v.id}>
-                <img src={v.src} alt="커뮤니티" />
+                <img src={process.env.REACT_APP_BACK + v.src} alt="커뮤니티" />
               </div>
             ))}
       </div>

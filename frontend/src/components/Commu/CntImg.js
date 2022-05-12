@@ -71,7 +71,7 @@ const CntImg = ({ src }) => {
   return (
     <CntImgBox>
       <div className="default">
-        <img src={src} alt="커뮤니티" />
+        <img src={process.env.REACT_APP_BACK + src} alt="커뮤니티" />
       </div>
     </CntImgBox>
   );

@@ -22,7 +22,9 @@ const Category0 = ({ data }) => {
         <CntBoxText data={data} locationMark={false} />
 
         {/* <!-- 컨텐츠:이미지 --> */}
-        {!data.src ? null : <CntImg src={data.src} />}
+        {!data.src ? null : (
+          <CntImg src={process.env.REACT_APP_BACK + data.src} />
+        )}
       </Link>
       <CommuCntFooter data={data} />
     </CntBox>

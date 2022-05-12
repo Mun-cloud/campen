@@ -104,7 +104,7 @@ const CntBoxText = ({ data, locationMark }) => {
             className="cnt-user-img"
             src={
               data.userPhoto
-                ? data.userPhoto
+                ? process.env.REACT_APP_BACK + data.userPhoto
                 : require("../../assets/img/user-img.png")
             }
             alt={data.nickname ? data.nickname : `캠퍼${data.members_id}`}

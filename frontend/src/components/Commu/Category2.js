@@ -23,7 +23,9 @@ const Category2 = ({ data }) => {
         <CntBoxText data={data} location={false} />
 
         {/* <!-- 컨텐츠:이미지 --> */}
-        {!data.src ? null : <CntImg src={data.src} />}
+        {!data.src ? null : (
+          <CntImg src={process.env.REACT_APP_BACK + data.src} />
+        )}
       </Link>
 
       {/* <!-- 컨텐츠:좋아요,댓글 --> */}

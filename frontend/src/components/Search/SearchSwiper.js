@@ -63,7 +63,10 @@ const SearchSwiper = ({ item, pictures }) => {
               go(`/camp/${item.id}`);
             }}
           >
-            <img src={v.imageUrl} alt={item.name} />
+            <img
+              src={process.env.REACT_APP_BACK + v.imageUrl}
+              alt={item.name}
+            />
             <span>
               <i className="fas fa-map-marker-alt"></i>
               <span id="profile_local">{item.addr1}</span>

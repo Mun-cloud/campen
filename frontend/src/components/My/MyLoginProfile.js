@@ -48,7 +48,9 @@ const MyLoginProfile = () => {
       <MyProfile>
         <img
           src={
-            user.photo ? user.photo : require("../../assets/img/user-img.png")
+            user.photo
+              ? process.env.REACT_APP_BACK + user.photo
+              : require("../../assets/img/user-img.png")
           }
           alt="상"
         />

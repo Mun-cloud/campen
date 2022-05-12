@@ -84,7 +84,7 @@ const CampListGrid = ({ item, heart = "false" }) => {
     <ListBox>
       <div className="exhi_list_img">
         <img
-          src={item.campPhoto}
+          src={process.env.REACT_APP_BACK + item.campPhoto}
           alt={item.name}
           onClick={() => go(`/camp/${item.camp_id}`)}
         />

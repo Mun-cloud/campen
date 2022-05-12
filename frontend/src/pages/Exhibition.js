@@ -42,7 +42,10 @@ const Exhibition = () => {
     <Container>
       <BasicHeaderBar title={data[0].title} />
       <div className="exhi_img_box">
-        <img src={data[0].photo} alt={data[0].title} />
+        <img
+          src={process.env.REACT_APP_BACK + data[0].photo}
+          alt={data[0].title}
+        />
       </div>
       <div className="exhi_list_container">
         {data.map((v) => (

@@ -78,7 +78,7 @@ const PrintComments = ({ comment }) => {
           <img
             src={
               comment.photo
-                ? comment.photo
+                ? process.env.REACT_APP_BACK + comment.photo
                 : require("../../../assets/img/user-img.png")
             }
             alt="캠퍼1103"
