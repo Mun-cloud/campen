@@ -129,6 +129,7 @@ app.use(
     secret: config.secure.session_encrypt_key,
     // 세션을 쿠키 상태로 클라이언트에게 노출시킬지 여부
     resave: false,
+    proxy: true,
     // 세션이 저장되기 전에 기존의 세션을 초기화 상태로 만들지 여부
     saveUninitialized: false,
     store: new ExpressMysqlSession(config.database),

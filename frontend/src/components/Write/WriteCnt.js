@@ -192,7 +192,7 @@ const WriteCnt = ({
                 ? null
                 : imgPreview.map((v, i) => (
                     <PreviewImg
-                      src={process.env.REACT_APP_BACK + v}
+                      src={v}
                       alt={v}
                       key={v}
                       id={i}
