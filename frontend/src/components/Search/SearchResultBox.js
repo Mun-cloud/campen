@@ -4,6 +4,7 @@ import SearchSwiper from "./SearchSwiper";
 import SearchTagBox from "./SearchTagBox";
 import { useQuery } from "react-query";
 import { getImageList } from "../../api";
+import { useEffect } from "react";
 
 const ResultInfo = styled.div`
   width: 100%;
@@ -48,6 +49,9 @@ const SearchResultBox = ({ item }) => {
     () => getImageList(item.contentId)
   );
 
+  useEffect(() => {
+    console.log("이미지 정보" + pictures);
+  }, [pictures]);
   return isLoading ? null : (
     <div style={{ "border-top": "1px solid rgba(0, 0, 0, 0.2)" }}>
       {pictures !== undefined ? (
