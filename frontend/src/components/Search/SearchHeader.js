@@ -37,7 +37,7 @@ const Header = styled.header`
   }
 `;
 
-const SearchHeader = ({ getLocation }) => {
+const SearchHeader = () => {
   const go = useNavigate();
   const [keyword, setKeyword] = useState("");
 
@@ -64,7 +64,7 @@ const SearchHeader = ({ getLocation }) => {
         </form>
       </div>
       <div>
-        <select onChange={(e) => getLocation(e.currentTarget.value)}>
+        <select>
           <option value="">지역</option>
           <option value="경기">경기</option>
           <option value="인천">인천</option>

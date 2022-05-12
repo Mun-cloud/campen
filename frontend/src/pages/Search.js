@@ -60,55 +60,6 @@ const Search = () => {
     setAllCamp(item?.pagenation?.totalCount);
   }, [query, item]);
 
-  // 지역 옵션 선택값
-  const [location, setLocation] = useState("");
-
-  // const locationRegex = (location) => {
-  //   switch (location) {
-  //     case "경북":
-  //       return "경북|경상북도";
-  //     case "경남":
-  //       return "경남|경상남도";
-  //     case "전북":
-  //       return "전북|전라북도";
-  //     case "전남":
-  //       return "전남|전라남도";
-  //     case "충북":
-  //       return "충북|충청북도";
-  //     case "충남":
-  //       return "충남|충청남도";
-  //     default:
-  //       return location;
-  //   }
-  // };
-
-  // 전체 캠핑장 데이터 필터링 함수
-  // const handleFilter = () => {
-  //   return item.item.filter((v) =>
-  //     new RegExp(locationRegex(location)).test(v.addr1)
-  //   );
-  // };
-  // const handleFilter = () => {
-  //   let result;
-  //   if (!loading && item && item.length > 0) {
-  //     console.log(item);
-  //     result = item.item.filter((v) =>
-  //       new RegExp(locationRegex(location)).test(v.addr1)
-  //     );
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   setCampList(result);
-  //   // setAllCamp(handleFilter().length);
-  //   handleFilter();
-  // }, [location]);
-
-  // useEffect(() => {
-  //   console.log(campList);
-  //   setAllCamp(campList.length);
-  // }, [campList]);
-
   return loading ? (
     "loading..."
   ) : (
@@ -121,7 +72,7 @@ const Search = () => {
         </div>
       ) : (
         <>
-          <SearchHeader getLocation={setLocation} />
+          <SearchHeader />
           <ResultCountCount>
             <h2>
               캠핏 검색결과 <span id="search_result_count">{allCamp}개</span>
