@@ -45,11 +45,7 @@ const Heart = () => {
   useEffect(() => {
     (async () => {
       try {
-        let data = (
-          await axios.get(`${process.env.REACT_APP_BACK}/member/info`, {
-            withCredentials: true,
-          })
-        ).data.item;
+        let data = (await axios.get(`/api/member/info`)).data.item;
         dispatch(getUserData({ user_id: data.user_id, user_pw: data.user_pw }));
         setHearts(
           (await axios.get(`${process.env.REACT_APP_BACK}/hearts/${data.id}`))

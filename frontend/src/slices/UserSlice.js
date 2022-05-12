@@ -8,14 +8,10 @@ export const getUserData = createAsyncThunk(
   async ({ user_id, user_pw, rejectWithValue }) => {
     let result;
     try {
-      result = await axios.post(
-        `${process.env.REACT_APP_BACK}/member/login`,
-        {
-          user_id,
-          user_pw,
-        },
-        { withCredentials: true }
-      );
+      result = await axios.post(`/api/member/login`, {
+        user_id,
+        user_pw,
+      });
     } catch (err) {
       result = rejectWithValue(err.response);
     }

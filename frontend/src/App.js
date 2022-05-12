@@ -41,7 +41,7 @@ function App() {
     (async () => {
       try {
         let data = (
-          await axios.get(`${process.env.REACT_APP_BACK}/member/info`, {
+          await axios.get(`/api/member/info`, {
             withCredentials: true,
           })
         ).data.item;
