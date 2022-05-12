@@ -77,6 +77,10 @@ const Camp = () => {
         alert(err.response.data.rtmsg);
       }
       try {
+        console.log(
+          "캠프페이지 콘텐츠 아이디 정보",
+          response.data.item[0].contentId
+        );
         const APIurl =
           "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/imageList";
         const KEY =
@@ -91,6 +95,7 @@ const Camp = () => {
           },
         };
         const photorespon = await axios.get(APIurl, urlParams);
+        console.log("캠프 페이지 openAPI 이미지 가져온 데이터", photorespon);
         setPictuers(photorespon.data.response.body);
       } catch (err) {
         alert(err.response.data.rtmsg);
