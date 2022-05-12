@@ -123,6 +123,8 @@ app.use(methodOVerride("_method")); // HTML form
 app.use(cookieParser(config.secure.cookie_encrypt_key));
 
 /** 세션 설정 */
+app.set("trust proxy", 1);
+
 app.use(
   expressSession({
     // 암호화 키
@@ -142,7 +144,6 @@ app.use(
   })
 );
 
-app.set("trust proxy", 1);
 /** req, res 객체의 기능을 확장하는 모듈 */
 app.use(webHelper());
 

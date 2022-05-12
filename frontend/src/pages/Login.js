@@ -87,10 +87,14 @@ const Login = () => {
 
     try {
       let res = (
-        await axios.post(`${process.env.REACT_APP_BACK}/member/login`, {
-          user_id: id,
-          user_pw: pw,
-        })
+        await axios.post(
+          `${process.env.REACT_APP_BACK}/member/login`,
+          {
+            user_id: id,
+            user_pw: pw,
+          },
+          { withCredentials: true }
+        )
       ).data.item[0];
       dispatch(getUserData({ user_id: id, user_pw: pw }));
 
