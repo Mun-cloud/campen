@@ -28,7 +28,6 @@ const ListBox = styled.div`
 
   .exhi_list_info {
     margin-top: 8px;
-    /* position: relative; */
   }
 
   .exhi_list_gray {
