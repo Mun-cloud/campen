@@ -85,7 +85,7 @@ const Button = styled.button`
 const Join = () => {
   const { isLoading, item } = useSelector((state) => state.user);
   useEffect(() => {
-    !isLoading && item.length === 0 && go(-1);
+    !isLoading && item?.length > 0 && go(-1);
   }, []);
 
   const [checkList, setCheckList] = useState([
