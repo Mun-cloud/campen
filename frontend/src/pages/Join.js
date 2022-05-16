@@ -83,6 +83,7 @@ const Button = styled.button`
 `;
 
 const Join = () => {
+  const go = useNavigate();
   const { isLoading, item } = useSelector((state) => state.user);
   useEffect(() => {
     if (!isLoading && item?.length > 0) {
@@ -96,8 +97,6 @@ const Join = () => {
     { name: "check2", checked: false },
     { name: "check3", checked: false },
   ]);
-
-  const go = useNavigate();
 
   return (
     <Container>
