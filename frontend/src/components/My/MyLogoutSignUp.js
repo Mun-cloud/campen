@@ -32,12 +32,12 @@ const MyLogoutSignUp = () => {
     <>
       <SignupLogin>
         {/* 회원가입 */}
-        <Btn type="button" mode="outlined" onClick={go("/sign-up")}>
+        <Btn type="button" mode="outlined" onClick={() => go("/sign-up")}>
           <span>회원가입</span>
         </Btn>
 
         {/*   <!-- 로그인 --> */}
-        <Btn type="button" mode="outlined" onClick={go("/login")}>
+        <Btn type="button" mode="outlined" onClick={() => go("/login")}>
           <span>로그인</span>
         </Btn>
       </SignupLogin>
