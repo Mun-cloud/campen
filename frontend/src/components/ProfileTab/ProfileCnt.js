@@ -89,6 +89,8 @@ const ProfileCnt = ({ content, tabValue }) => {
             return true;
           }
         });
+      } else {
+        return false;
       }
       setFilter(filterArr);
     }

@@ -5,13 +5,15 @@ const SignupLogin = styled.div`
   background: rgb(255, 255, 255);
   padding: 28px 20px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const Btn = styled.button`
   width: 45%;
   height: 48px;
   padding: 6px 8px;
-  margin-right: 10px;
   border: 1px solid rgb(212, 217, 214);
   border-radius: 8px;
   background: rgb(255, 255, 255);

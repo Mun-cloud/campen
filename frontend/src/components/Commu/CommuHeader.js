@@ -40,7 +40,7 @@ const CommuHeader = ({ getTabValue }) => {
   const [seletedTab, setSelectedTab] = useState("전체보기");
   useEffect(() => {
     getTabValue(seletedTab);
-  }, [seletedTab]);
+  }, [seletedTab, getTabValue]);
 
   return (
     <div>

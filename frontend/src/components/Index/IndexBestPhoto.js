@@ -37,6 +37,7 @@ const BestSwiper = styled(Swiper)`
 `;
 
 const IndexBestPhoto = () => {
+  const BACK = process.env.REACT_APP_BACK;
   // react-query를 통한 ajax 연동
   const { isLoading, data } = useQuery("indexCut", getIndexCampCut);
 
@@ -55,7 +56,7 @@ const IndexBestPhoto = () => {
           <SwiperSlide className="swiper-slide" key={v.id}>
             <Link to={`/board/${v.id}`}>
               <img
-                src={process.env.REACT_APP_BACK + v.src}
+                src={BACK + v.src}
                 alt={v.nickname ? v.nickname : `캠퍼${v.memberId}`}
               />
               <span>{v.nickname ? v.nickname : `캠퍼${v.memberId}`}</span>

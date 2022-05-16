@@ -63,6 +63,7 @@ const CommentArticle = styled.div`
 `;
 
 const PrintComments = ({ comment }) => {
+  const BACK = process.env.REACT_APP_BACK;
   const { item: user } = useSelector((state) => state.user);
   // UTC 시간 변환 기능
   const [reg, setReg] = useState();
@@ -78,7 +79,7 @@ const PrintComments = ({ comment }) => {
           <img
             src={
               comment.photo
-                ? process.env.REACT_APP_BACK + comment.photo
+                ? BACK + comment.photo
                 : require("../../../assets/img/user-img.png")
             }
             alt="캠퍼1103"

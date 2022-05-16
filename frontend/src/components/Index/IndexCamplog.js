@@ -80,6 +80,7 @@ const LogSwiper = styled(Swiper)`
 `;
 
 const IndexCamplog = () => {
+  const BACK = process.env.REACT_APP_BACK;
   // react-query를 통한 ajax 연동
   const { isLoading, data } = useQuery("indexLog", getIndexCampLog);
 
@@ -98,7 +99,7 @@ const IndexCamplog = () => {
             <Link to={`/board/${v.id}`}>
               <div className="log_slide">
                 <img
-                  src={process.env.REACT_APP_BACK + v.src}
+                  src={BACK + v.src}
                   alt="게시글로 이동"
                   className="log_img_box"
                 />

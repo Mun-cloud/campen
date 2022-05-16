@@ -6,7 +6,6 @@ import "swiper/css/pagination";
 import { useQuery } from "react-query";
 import { getExhibition } from "../../api";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 
 SwiperCore.use([Autoplay, Pagination]);
 
@@ -15,6 +14,7 @@ const SwiperImg = styled.img`
 `;
 
 const IndexEventSlide = () => {
+  const BACK = process.env.REACT_APP_BACK;
   const { isLoading, data } = useQuery("allExhibition", getExhibition);
 
   return (
@@ -36,10 +36,7 @@ const IndexEventSlide = () => {
         data.map((v) => (
           <SwiperSlide className="glide__slide slider" key={v.id}>
             <Link to={`/exhibition/${v.id}`}>
-              <SwiperImg
-                src={process.env.REACT_APP_BACK + v.photo}
-                alt={v.title}
-              />
+              <SwiperImg src={BACK + v.photo} alt={v.title} />
             </Link>
           </SwiperSlide>
         ))}

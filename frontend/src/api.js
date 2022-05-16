@@ -11,11 +11,12 @@ export const getNoticeList = async () => {
 
 // 고캠핑 API의 ID값에 따른 이미지 URL 받아오기
 export const getImageList = async (contentId) => {
+  const GOCAMP_KEY = process.env.REACT_APP_GOCAMP_KEY;
+
   try {
     const APIurl =
       "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/imageList";
-    const KEY =
-      "5APlXd7ZkPeuONbcZe2isYf2o238wB9owyYEmdkJEV7AeGwMGLtF2cB2ku18d/iA5dcfs9UX/wA+qck++FPT3A==";
+    const KEY = GOCAMP_KEY;
 
     const urlParams = {
       params: {

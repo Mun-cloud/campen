@@ -85,6 +85,7 @@ const CntBoxTextBox = styled.div`
 `;
 
 const CntBoxText = ({ data, locationMark }) => {
+  const BACK = process.env.REACT_APP_BACK;
   // UTC 시간 변환 기능
   const [reg, setReg] = useState();
   useEffect(() => {
@@ -104,7 +105,7 @@ const CntBoxText = ({ data, locationMark }) => {
             className="cnt-user-img"
             src={
               data.userPhoto
-                ? process.env.REACT_APP_BACK + data.userPhoto
+                ? BACK + data.userPhoto
                 : require("../../assets/img/user-img.png")
             }
             alt={data.nickname ? data.nickname : `캠퍼${data.members_id}`}

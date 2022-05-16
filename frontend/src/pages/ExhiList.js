@@ -15,6 +15,7 @@ const SImage = styled.img`
 `;
 
 const ExhiList = () => {
+  const BACK = process.env.REACT_APP_BACK;
   const { isLoading, data } = useQuery("allExhibition", getExhibition);
 
   return isLoading ? (
@@ -25,7 +26,7 @@ const ExhiList = () => {
       {data.map((v) => {
         return (
           <Link to={`/exhibition/${v.id}`} key={v.id}>
-            <SImage src={process.env.REACT_APP_BACK + v.photo} alt={v.title} />
+            <SImage src={BACK + v.photo} alt={v.title} />
           </Link>
         );
       })}

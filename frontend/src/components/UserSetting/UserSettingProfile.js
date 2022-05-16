@@ -49,6 +49,7 @@ const Profile = styled.div`
 `;
 
 const UserSettingProfile = () => {
+  const BACK = process.env.REACT_APP_BACK;
   const { item: user } = useSelector((state) => state.user);
 
   if (!user || user.length === 0) {
@@ -60,7 +61,7 @@ const UserSettingProfile = () => {
       <img
         src={
           user.photo
-            ? process.env.REACT_APP_BACK + user.photo
+            ? BACK + user.photo
             : require("../../assets/img/user-img.png")
         }
         alt={user.user_name}

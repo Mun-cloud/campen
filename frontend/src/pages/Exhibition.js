@@ -31,6 +31,7 @@ const Container = styled.div`
 `;
 
 const Exhibition = () => {
+  const BACK = process.env.REACT_APP_BACK;
   const { id } = useParams();
   const { isLoading, data } = useQuery("Exhibition", () =>
     getExhibitionCamp(id)
@@ -42,10 +43,7 @@ const Exhibition = () => {
     <Container>
       <BasicHeaderBar title={data[0].title} />
       <div className="exhi_img_box">
-        <img
-          src={process.env.REACT_APP_BACK + data[0].photo}
-          alt={data[0].title}
-        />
+        <img src={BACK + data[0].photo} alt={data[0].title} />
       </div>
       <div className="exhi_list_container">
         {data.map((v) => (
