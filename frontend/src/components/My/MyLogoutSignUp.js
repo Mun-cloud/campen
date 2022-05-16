@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const SignupLogin = styled.div`
@@ -14,6 +14,7 @@ const Btn = styled.button`
   width: 45%;
   height: 48px;
   padding: 6px 8px;
+  margin-right: 10px;
   border: 1px solid rgb(212, 217, 214);
   border-radius: 8px;
   background: rgb(255, 255, 255);
@@ -25,30 +26,20 @@ const Btn = styled.button`
 `;
 
 const MyLogoutSignUp = () => {
+  const go = useNavigate();
+
   return (
     <>
       <SignupLogin>
         {/* 회원가입 */}
-        <Link to="/sign-up" className="signup">
-          <Btn
-            type="button
-                "
-            mode="outlined"
-          >
-            <span>회원가입</span>
-          </Btn>
-        </Link>
+        <Btn type="button" mode="outlined" onClick={go("/sign-up")}>
+          <span>회원가입</span>
+        </Btn>
 
         {/*   <!-- 로그인 --> */}
-        <Link to="/login" className="login">
-          <Btn
-            type="button
-                "
-            mode="outlined"
-          >
-            <span>로그인</span>
-          </Btn>
-        </Link>
+        <Btn type="button" mode="outlined" onClick={go("/login")}>
+          <span>로그인</span>
+        </Btn>
       </SignupLogin>
     </>
   );
