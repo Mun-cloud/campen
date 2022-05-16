@@ -14,7 +14,6 @@ const Meta = (props) => {
         <meta property="og:type" content="website" />
         <meta property="og:title" content={props.title} />
         <meta property="og:description" content={props.description} />
-        <meta property="og:image" content={props.image} />
         <meta property="og:url" content={props.url} />
       </Helmet>
     </HelmetProvider>
@@ -26,14 +25,6 @@ Meta.defaultProps = {
   description: "React.js로 구현한 covid19 OpenAPI 연동",
   keywords: "React, Kakao, OpenAPI",
   author: "문태호, 양소현",
-  image:
-    window.location.protocol +
-    "//" +
-    window.location.hostname +
-    ":" +
-    window.location.port +
-    "/logo512.png",
-
   url: window.location.href,
 };
 

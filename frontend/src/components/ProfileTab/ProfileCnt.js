@@ -81,16 +81,18 @@ const ProfileCnt = ({ content, tabValue }) => {
         filterArr = content.contents.filter((v) => {
           if (v.tab === 0 || v.tab === 2) {
             return true;
+          } else {
+            return false;
           }
         });
       } else if (tabValue === "캠핑후기") {
         filterArr = content.contents.filter((v) => {
           if (v.tab === 1) {
             return true;
+          } else {
+            return false;
           }
         });
-      } else {
-        return false;
       }
       setFilter(filterArr);
     }
