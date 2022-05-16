@@ -85,8 +85,11 @@ const Button = styled.button`
 const Join = () => {
   const { isLoading, item } = useSelector((state) => state.user);
   useEffect(() => {
-    !isLoading && item?.length > 0 && go(-1);
-  }, []);
+    if (!isLoading && item?.length > 0) {
+      alert("이미 로그인 중입니다.");
+      go("/");
+    }
+  }, [isLoading, item]);
 
   const [checkList, setCheckList] = useState([
     { name: "check1", checked: false },
