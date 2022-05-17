@@ -107,10 +107,7 @@ const IndexCamplog = () => {
                   <span className="log_writer">
                     {v.nickname ? v.nickname : `캠퍼${v.memberId}`}
                   </span>
-                  <span className="log_camp">
-                    {/* <i className="fas fa-map-marker-alt"></i>
-                    동두천 돈내미캠핑장 */}
-                  </span>
+                  <span className="log_camp"></span>
                   <p>{v.content}</p>
                 </div>
               </div>
