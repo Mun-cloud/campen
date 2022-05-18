@@ -33,6 +33,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { getUserData } from "./slices/UserSlice";
+import Term1 from "./pages/Term1";
+import Term2 from "./pages/Term2";
 
 function App() {
   const dispatch = useDispatch();
@@ -51,7 +53,7 @@ function App() {
   });
 
   return (
-    <div>
+    <>
       <Meta />
 
       <GlobalStyle />
@@ -81,10 +83,12 @@ function App() {
         <Route path="/password" element={<Password />} />
         <Route path="/nickname" element={<Nickname />} />
         <Route path="/sns" element={<Sns />} />
+        <Route path="/term1" element={<Term1 />} />
+        <Route path="/term2" element={<Term2 />} />
       </Routes>
 
       <Nav />
-    </div>
+    </>
   );
 }
 

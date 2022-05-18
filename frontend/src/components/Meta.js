@@ -22,8 +22,7 @@ const Meta = (props) => {
 
 Meta.defaultProps = {
   title: "Campen",
-  description: "React.js로 구현한 covid19 OpenAPI 연동",
-  keywords: "React, Kakao, OpenAPI",
+  description: "캠핑할땐 Campen",
   author: "문태호, 양소현",
   url: window.location.href,
 };
