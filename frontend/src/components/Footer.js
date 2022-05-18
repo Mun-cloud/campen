@@ -97,8 +97,8 @@ const Footer = () => {
       <div className="container">
         <div className="footer_logo">CAMPEN</div>
         <div className="footer_clause">
-          <Link to="/term">서비스 이용약관</Link>
-          <Link to="/term">개인정보 처리 방침</Link>
+          <Link to="/term1">서비스 이용약관</Link>
+          <Link to="/term2">개인정보 처리 방침</Link>
         </div>
         <div className="cs">
           <div className="cs_link">
