@@ -120,6 +120,65 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
+  /** 이미지 URL정보 저장 */
+  router.get("/getcampimage", async (req, res, next) => {
+    /** 데이터 저장하기 */
+    // 데이터 조회 결과가 저장될 빈 변수
+    let json = null;
+
+    try {
+      // 데이터베이스 접속
+      dbcon = await mysql2.createConnection(config.database);
+      await dbcon.connect();
+
+      // 전체 캠핑장 openAPI id 값 조회
+      const [result1] = await dbcon.query("SELECT contentId FROM camp");
+
+      // 데이터 저장하기
+      result1.forEach(async (v) => {
+        // id값마다 image url return
+        let imageResult;
+        try {
+          const APIurl =
+            "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/imageList";
+          const GOCAMP_KEY =
+            "5APlXd7ZkPeuONbcZe2isYf2o238wB9owyYEmdkJEV7AeGwMGLtF2cB2ku18d/iA5dcfs9UX/wA+qck++FPT3A==";
+          const urlParams = {
+            params: {
+              ServiceKey: GOCAMP_KEY,
+              MobileOS: "ETC",
+              MobileApp: "AppTest",
+              contentId: v.contentId,
+            },
+          };
+          imageResult = (await axios.get(APIurl, urlParams)).data.response.body;
+        } catch (err) {
+          console.error(err);
+        }
+        // image 값이 있으면 DB에 저장
+        if (imageResult.items !== "") {
+          imageResult?.items?.item.forEach(async (x) => {
+            const sql = "INSERT INTO `camp-image` VALUES (null, ?, ?)";
+            const input_data = [x.imageUrl, x.contentId];
+            await dbcon.query(sql, input_data);
+          });
+          // 없으면 null
+        } else {
+          await dbcon.query("INSERT INTO `camp-image` VALUES (null, null, ?)", [
+            v.contentId,
+          ]);
+        }
+      });
+    } catch (err) {
+      return next(err);
+    } finally {
+      dbcon.end();
+    }
+
+    // 모든 처리에 성공했으므로 정상 조회 결과 구성
+    res.send("OK");
+  });
+
   /** 특정 항목에 대한 상세 조회 --> Read(SELECT) */
   router.get("/campdata/:id", async (req, res, next) => {
     const id = req.get("id");
@@ -154,10 +213,6 @@ module.exports = (app) => {
 
   /** 데이터 추가 --> Create(INSERT) */
   router.get("/getcamp", async (req, res, next) => {
-    // 저장을 위한 파라미터 입력받기
-    // const dname = req.post("dname");
-    // const loc = req.post("loc");
-
     /** Ajax 파라미터 정리 및 axios */
     const APIurl =
       "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/basedList";
@@ -182,12 +237,6 @@ module.exports = (app) => {
     } catch (err) {
       console.error(err);
     }
-    // try {
-    //   regexHelper.value(dname, "학과이름이 없습니다.");
-    //   regexHelper.maxLength(dname, 10, "학과이름이 너무 깁니다.");
-    // } catch (err) {
-    //   return next(err);
-    // }
 
     /** 데이터 저장하기 */
     // 데이터 조회 결과가 저장될 빈 변수
