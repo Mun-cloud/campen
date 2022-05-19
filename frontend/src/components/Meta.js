@@ -6,6 +6,10 @@ const Meta = (props) => {
     <HelmetProvider>
       <Helmet>
         <meta charset="utf-8" />
+        <meta
+          http-equiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        ></meta>
         <title>{props.title}</title>
         {/* SEO 태그 */}
         <meta name="description" content={props.description} />
