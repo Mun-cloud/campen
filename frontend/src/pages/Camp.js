@@ -71,30 +71,8 @@ const Camp = () => {
       try {
         response = await axios.get(`/api/campdata/${id}`);
         setThisCamp(response.data.item[0]);
-      } catch (err) {
-        alert(err.response.data.rtmsg);
-      }
-      try {
-        console.log(
-          "캠프페이지 콘텐츠 아이디 정보",
-          response.data.item[0].contentId
-        );
-        const APIurl =
-          "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/imageList";
-        const KEY =
-          "5APlXd7ZkPeuONbcZe2isYf2o238wB9owyYEmdkJEV7AeGwMGLtF2cB2ku18d%2FiA5dcfs9UX%2FwA%2Bqck%2B%2BFPT3A%3D%3D";
-
-        const urlParams = {
-          params: {
-            ServiceKey: KEY,
-            MobileOS: "ETC",
-            MobileApp: "everycampen",
-            contentId: response.data.item[0].contentId,
-          },
-        };
-        const photorespon = await axios.get(APIurl, urlParams);
-        console.log("캠프 페이지 openAPI 이미지 가져온 데이터", photorespon);
-        setPictuers(photorespon.data.response.body);
+        console.log(response.data.item[0]);
+        // setPictuers(response.data.item[0].campSlide);
       } catch (err) {
         alert(err.response.data.rtmsg);
       }

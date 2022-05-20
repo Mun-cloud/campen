@@ -132,10 +132,10 @@ module.exports = (app) => {
       await dbcon.connect();
 
       // 전체 캠핑장 openAPI id 값 조회
-      const [result1] = await dbcon.query("SELECT contentId FROM camp");
+      const [result1] = await dbcon.query("SELECT id, contentId FROM camp");
 
-      // 데이터 저장하기
-      result1.forEach(async (v) => {
+      // 데이터 저장하기 65-70
+      result1.slice(65, 70).forEach(async (v) => {
         // id값마다 image url return
         let imageResult;
         try {
@@ -152,21 +152,39 @@ module.exports = (app) => {
             },
           };
           imageResult = (await axios.get(APIurl, urlParams)).data.response.body;
+          // console.log(imageResult.items);
         } catch (err) {
           console.error(err);
         }
         // image 값이 있으면 DB에 저장
-        if (imageResult.items !== "") {
-          imageResult?.items?.item.forEach(async (x) => {
+        if (imageResult.items == "") {
+          // 데이터베이스 접속
+          dbcon = await mysql2.createConnection(config.database);
+          await dbcon.connect();
+
+          await dbcon.query("INSERT INTO `camp-image` VALUES (null, null, ?)", [
+            v.id,
+          ]);
+          // 없으면 null
+        } else if (imageResult.items.item.length === undefined) {
+          // 데이터베이스 접속
+          dbcon = await mysql2.createConnection(config.database);
+          await dbcon.connect();
+
+          await dbcon.query("INSERT INTO `camp-image` VALUES (null, ?, ?)", [
+            imageResult?.items.item.imageUrl,
+            v.id,
+          ]);
+        } else {
+          // 데이터베이스 접속
+          dbcon = await mysql2.createConnection(config.database);
+          await dbcon.connect();
+
+          imageResult?.items.item.forEach(async (x) => {
             const sql = "INSERT INTO `camp-image` VALUES (null, ?, ?)";
-            const input_data = [x.imageUrl, x.contentId];
+            const input_data = [x.imageUrl, v.id];
             await dbcon.query(sql, input_data);
           });
-          // 없으면 null
-        } else {
-          await dbcon.query("INSERT INTO `camp-image` VALUES (null, null, ?)", [
-            v.contentId,
-          ]);
         }
       });
     } catch (err) {
@@ -198,9 +216,13 @@ module.exports = (app) => {
       const sql =
         "SELECT id, contentId, name, addr1, addr2, tel, lctCl, price, cast(photo as char(10000)) as photo, `basic_fac`, `add_fac`, lineIntro, cast(intro as char(10000)) as intro, cast(tag as char(10000)) as tag, mapX, mapY, cast(homepage as char(10000)) as homepage, `manner_start`, `manner_end`, policy, map, is_reg, reg_date, edit_date FROM camp WHERE id=?";
       const [result] = await dbcon.query(sql, [id]);
-
       // 조회 결과를 미리 준비한 변수에 저장함
       json = result;
+
+      const sql2 =
+        "SELECT i.id, imageURL FROM `camp-image` i, camp c where i.camp_id=c.id and c.id=?";
+      const [campSlide] = await dbcon.query(sql2, [id]);
+      json[0].campSlide = campSlide;
     } catch (err) {
       return next(err);
     } finally {

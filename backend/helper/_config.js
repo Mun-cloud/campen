@@ -63,6 +63,11 @@ module.exports = {
     user: "bf9dc00d14dfdb", // 접근 권한 아이디 (root=관리자)
     password: "5fb8026e", // 설치시 입력한 비밀번호
     database: "heroku_ea837c295bb7059", // 사용할 데이터베이스 이름
+    connectionLimit: 100,
+    waitForConnections: true,
+    queueLimit: 0,
+    keepAliveInitialDelay: 10000, // 0 by default.
+    enableKeepAlive: true, // false by default.
 
     // ----------- 세션
     // 세션 만료시간.(지정된 시간동안 페이지 이동이 없을 경우 로그아웃)
