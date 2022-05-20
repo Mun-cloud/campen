@@ -40,7 +40,7 @@ const MySwiper = styled(Swiper)`
 const SearchSwiper = ({ item, pictures }) => {
   const go = useNavigate();
   console.log(pictures);
-  if (pictures.items.item !== undefined) {
+  if (pictures !== "") {
     return (
       <MySwiper
         navigation={true}
@@ -56,7 +56,7 @@ const SearchSwiper = ({ item, pictures }) => {
         }}
         className="glide"
       >
-        {pictures.items.item.map((v, i) => (
+        {pictures.map((v, i) => (
           <SwiperSlide
             className="glide__slide"
             key={i}
@@ -64,7 +64,7 @@ const SearchSwiper = ({ item, pictures }) => {
               go(`/camp/${item.id}`);
             }}
           >
-            <img src={v.imageUrl} alt={item.name} />
+            <img src={v.imageURL} alt={item.name} />
             <span>
               <i className="fas fa-map-marker-alt"></i>
               <span id="profile_local">{item.addr1}</span>

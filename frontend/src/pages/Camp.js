@@ -70,6 +70,8 @@ const Camp = () => {
       let response;
       try {
         response = await axios.get(`/api/campdata/${id}`);
+        console.log(response);
+        console.log(response.data.item[0]);
         setThisCamp(response.data.item[0]);
         setPictuers(response.data.item[0].campSlide);
       } catch (err) {
