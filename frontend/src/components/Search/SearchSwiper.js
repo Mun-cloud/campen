@@ -47,7 +47,7 @@ const SearchSwiper = ({ item }) => {
   const go = useNavigate();
 
   const { isLoading, data: pictures } = useQuery("getSlidePictuers", () =>
-    getImageList(item.contentId)
+    getImageList(item.id)
   );
 
   if (isLoading || pictures === "") return null;
