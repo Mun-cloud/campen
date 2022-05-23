@@ -212,7 +212,7 @@ module.exports = (app) => {
       // 전체 캠핑장 openAPI id 값 조회
       const sql =
         "SELECT i.id, imageURL FROM `camp-image` i, camp c where i.camp_id=c.id and c.id=?";
-      const [result] = await dbcon.query(sql2, [id]);
+      const [result] = await dbcon.query(sql, [id]);
       json = result;
     } catch (err) {
       return next(err);

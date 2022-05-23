@@ -10,7 +10,7 @@ export const getNoticeList = async () => {
 };
 
 // 고캠핑 API의 ID값에 따른 이미지 URL 받아오기
-export const getImageList = async (contentId) => {
+export const getOpenApiImageList = async (contentId) => {
   const GOCAMP_KEY = process.env.REACT_APP_GOCAMP_KEY;
 
   try {
@@ -27,6 +27,15 @@ export const getImageList = async (contentId) => {
       },
     };
     return (await axios.get(APIurl, urlParams)).data.response.body;
+  } catch (err) {
+    alert(err.response.data.rtmsg);
+  }
+};
+
+// DB저장된 이미지 경로 도출
+export const getImageList = async (campId) => {
+  try {
+    return (await axios.get(`/api/getcampimage/${campId}`)).data.item;
   } catch (err) {
     alert(err.response.data.rtmsg);
   }
