@@ -41,16 +41,14 @@ const MySwiper = styled(Swiper)`
   }
 `;
 const SearchSwiper = ({ item }) => {
-  useEffect(() => {
-    if (!item) return null;
-  }, [item]);
   const go = useNavigate();
 
-  const { isLoading, data: pictures } = useQuery("getSlidePictuers", () =>
-    getImageList(item.id)
+  const { isLoading, data: pictures } = useQuery(
+    ["getSlidePictuers", item.id],
+    () => getImageList(item.id)
   );
 
-  if (isLoading || pictures === "") return null;
+  if (isLoading || pictures.length === 0) return null;
   console.log(pictures);
   return (
     <MySwiper
