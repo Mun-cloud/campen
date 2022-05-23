@@ -47,7 +47,7 @@ const SearchSwiper = ({ item }) => {
     () => getImageList(item.id)
   );
 
-  if (isLoading) return null;
+  if (isLoading || pictures[0].imageURL === null) return null;
   return (
     <MySwiper
       navigation={true}
@@ -63,23 +63,21 @@ const SearchSwiper = ({ item }) => {
       }}
       className="glide"
     >
-      {pictures.map((v, i) =>
-        !v.imageURL ? null : (
-          <SwiperSlide
-            className="glide__slide"
-            key={i}
-            onClick={() => {
-              go(`/camp/${item.id}`);
-            }}
-          >
-            <img src={v.imageURL} alt={item.name} />
-            <span>
-              <i className="fas fa-map-marker-alt"></i>
-              <span id="profile_local">{item.addr1}</span>
-            </span>
-          </SwiperSlide>
-        )
-      )}
+      {pictures.map((v, i) => (
+        <SwiperSlide
+          className="glide__slide"
+          key={i}
+          onClick={() => {
+            go(`/camp/${item.id}`);
+          }}
+        >
+          <img src={v.imageURL} alt={item.name} />
+          <span>
+            <i className="fas fa-map-marker-alt"></i>
+            <span id="profile_local">{item.addr1}</span>
+          </span>
+        </SwiperSlide>
+      ))}
     </MySwiper>
   );
 };
