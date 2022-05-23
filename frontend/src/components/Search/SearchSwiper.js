@@ -6,7 +6,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
-import { useEffect } from "react";
 import { getImageList } from "../../api";
 
 SwiperCore.use([Navigation, Pagination]);
@@ -49,7 +48,6 @@ const SearchSwiper = ({ item }) => {
   );
 
   if (isLoading || pictures.length === 0) return null;
-  console.log(pictures);
   return (
     <MySwiper
       navigation={true}

@@ -2,9 +2,6 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import SearchSwiper from "./SearchSwiper";
 import SearchTagBox from "./SearchTagBox";
-import { useQuery } from "react-query";
-import { getImageList } from "../../api";
-import { useEffect } from "react";
 
 const ResultInfo = styled.div`
   width: 100%;
@@ -44,16 +41,9 @@ const ResultInfo = styled.div`
 
 const SearchResultBox = ({ item }) => {
   const navigate = useNavigate();
-  // const { isLoading, data: pictures } = useQuery(
-  //   ["swiperImage", item.contentId],
-  //   () => getImageList(item.contentId)
-  // );
-  return item ? null : (
+  return !item ? null : (
     <div style={{ "border-top": "1px solid rgba(0, 0, 0, 0.2)" }}>
-      <SearchSwiper
-        item={item}
-        // pictures={pictures}
-      />
+      <SearchSwiper item={item} />
       <ResultInfo
         onClick={() => {
           navigate(`/camp/${item.id}`);
