@@ -5,6 +5,9 @@ import "swiper/css"; //basic
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "react-query";
+import { useEffect } from "react";
+import { getImageList } from "../../api";
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -37,45 +40,50 @@ const MySwiper = styled(Swiper)`
     }
   }
 `;
-const SearchSwiper = ({ item, pictures }) => {
+const SearchSwiper = ({ item }) => {
+  useEffect(() => {
+    if (!item) return null;
+  }, [item]);
   const go = useNavigate();
+
+  const { isLoading, data: pictures } = useQuery("getSlidePictuers", () =>
+    getImageList(item.contentId)
+  );
+
+  if (isLoading || pictures === "") return null;
   console.log(pictures);
-  if (pictures !== "") {
-    return (
-      <MySwiper
-        navigation={true}
-        spaceBetween={0}
-        slidesPerView={"auto"}
-        loop={true}
-        centeredSlides={true}
-        scrollbar={{ draggable: true }}
-        pagination={{
-          clickable: true,
-          dynamicBullets: true,
-          dynamicMainBullets: 5,
-        }}
-        className="glide"
-      >
-        {pictures.map((v, i) => (
-          <SwiperSlide
-            className="glide__slide"
-            key={i}
-            onClick={() => {
-              go(`/camp/${item.id}`);
-            }}
-          >
-            <img src={v.imageURL} alt={item.name} />
-            <span>
-              <i className="fas fa-map-marker-alt"></i>
-              <span id="profile_local">{item.addr1}</span>
-            </span>
-          </SwiperSlide>
-        ))}
-      </MySwiper>
-    );
-  } else {
-    return null;
-  }
+  return (
+    <MySwiper
+      navigation={true}
+      spaceBetween={0}
+      slidesPerView={"auto"}
+      loop={true}
+      centeredSlides={true}
+      scrollbar={{ draggable: true }}
+      pagination={{
+        clickable: true,
+        dynamicBullets: true,
+        dynamicMainBullets: 5,
+      }}
+      className="glide"
+    >
+      {pictures.map((v, i) => (
+        <SwiperSlide
+          className="glide__slide"
+          key={i}
+          onClick={() => {
+            go(`/camp/${item.id}`);
+          }}
+        >
+          <img src={v.imageURL} alt={item.name} />
+          <span>
+            <i className="fas fa-map-marker-alt"></i>
+            <span id="profile_local">{item.addr1}</span>
+          </span>
+        </SwiperSlide>
+      ))}
+    </MySwiper>
+  );
 };
 
 export default SearchSwiper;

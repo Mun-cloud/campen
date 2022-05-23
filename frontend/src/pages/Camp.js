@@ -57,7 +57,7 @@ const Camp = () => {
   let { id } = useParams();
   const go = useNavigate();
   const [popView, setPopView] = useState(false);
-  const [pictures, setPictuers] = useState();
+  // const [pictures, setPictuers] = useState();
   const [thisCamp, setThisCamp] = useState([]);
 
   // 팝업 구현. 하위컴포넌트에서 데이터 받기
@@ -73,7 +73,7 @@ const Camp = () => {
         console.log(response);
         console.log(response.data.item[0]);
         setThisCamp(response.data.item[0]);
-        setPictuers(response.data.item[0].campSlide);
+        // setPictuers(response.data.item[0].campSlide);
       } catch (err) {
         alert(err.response.data.rtmsg);
       }
@@ -99,9 +99,10 @@ const Camp = () => {
       ) : (
         <CampPage>
           <CampHeader item={thisCamp} />
-          {pictures === undefined ? null : (
-            <SearchSwiper item={thisCamp} pictures={pictures} />
-          )}
+          <SearchSwiper
+            item={thisCamp}
+            // pictures={pictures}
+          />
           <CampTitleBox item={thisCamp} />
           <CampSwiperScroll item={thisCamp} />
           <CampBasicInfo item={thisCamp} />

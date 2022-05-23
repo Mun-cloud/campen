@@ -44,19 +44,16 @@ const ResultInfo = styled.div`
 
 const SearchResultBox = ({ item }) => {
   const navigate = useNavigate();
-  const { isLoading, data: pictures } = useQuery(
-    ["swiperImage", item.contentId],
-    () => getImageList(item.contentId)
-  );
-
-  useEffect(() => {
-    console.log("이미지 정보" + pictures);
-  }, [pictures]);
-  return isLoading ? null : (
+  // const { isLoading, data: pictures } = useQuery(
+  //   ["swiperImage", item.contentId],
+  //   () => getImageList(item.contentId)
+  // );
+  return item ? null : (
     <div style={{ "border-top": "1px solid rgba(0, 0, 0, 0.2)" }}>
-      {pictures !== undefined ? (
-        <SearchSwiper item={item} pictures={pictures} />
-      ) : null}
+      <SearchSwiper
+        item={item}
+        // pictures={pictures}
+      />
       <ResultInfo
         onClick={() => {
           navigate(`/camp/${item.id}`);
