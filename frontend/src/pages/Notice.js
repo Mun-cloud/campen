@@ -15,7 +15,7 @@ const Container = styled.div`
     align-items: center;
     padding: 14px 20px;
     justify-content: space-between;
-    border-bottom: 1px solid rgb(234, 238, 236);
+    border-bottom: 1px solid ${(props) => props.theme.lightGray};
   }
 
   .notice_info {
@@ -57,7 +57,7 @@ const Container = styled.div`
 
   .notice_article_title {
     padding-bottom: 16px;
-    border-bottom: 1px solid rgb(234, 238, 236);
+    border-bottom: 1px solid ${(props) => props.theme.lightGray};
     font-size: 15px;
     font-weight: 700;
   }

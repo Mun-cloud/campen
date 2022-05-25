@@ -10,7 +10,7 @@ const TitleSection = styled.section`
 
   .camp_class {
     margin-bottom: 10px;
-    color: rgb(90, 94, 91);
+    color: ${(props) => props.theme.darkGray};
   }
 
   .camp_title {
@@ -19,7 +19,7 @@ const TitleSection = styled.section`
   }
 
   .camp_heart {
-    color: rgb(67, 192, 131);
+    color: ${(props) => props.theme.mainColor};
     cursor: pointer;
   }
 

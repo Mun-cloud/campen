@@ -16,8 +16,8 @@ const SectionTitle = styled.div`
 
   .area_title_btn {
     display: block;
-    color: rgb(67, 192, 131);
-    border: 1.5px solid rgb(67, 192, 131);
+    color: ${(props) => props.theme.mainColor};
+    border: 1.5px solid ${(props) => props.theme.mainColor};
     padding: 4px 6px;
     border-radius: 7px;
     font-size: 13px;
@@ -28,7 +28,7 @@ const SectionTitle = styled.div`
   .commu_link {
     display: block;
     font-size: 13px;
-    color: rgb(90, 94, 91);
+    color: ${(props) => props.theme.darkGray};
     font-weight: bold;
     margin-top: 7px;
     margin-bottom: 23px;

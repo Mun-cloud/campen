@@ -10,7 +10,7 @@ const CntBoxTextBox = styled.div`
     margin-top: 8px;
     padding: 0px 5px;
     margin-bottom: 15px;
-    background: rgb(234, 238, 236);
+    background: ${(props) => props.theme.lightGray};
     border-radius: 3px;
     color: #555;
     font-weight: 500;
@@ -55,7 +55,7 @@ const CntBoxTextBox = styled.div`
   .cnt-Q::before {
     margin-right: 2px;
     content: "Q.";
-    color: rgb(67, 192, 131);
+    color: ${(props) => props.theme.mainColor};
     font-size: 14pt;
     font-weight: 500;
   }

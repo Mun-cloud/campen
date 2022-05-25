@@ -4,7 +4,7 @@ import BasicHeaderBar from "../components/BasicHeaderBar";
 
 const Container = styled.div`
   height: 100vh;
-  background-color: rgb(234, 238, 236);
+  background-color: ${(props) => props.theme.lightGray};
 
   .settings_container {
     background-color: #fff;

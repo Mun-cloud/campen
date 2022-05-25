@@ -36,7 +36,7 @@ const Container = styled.div`
         outline: none;
         width: 100%;
         padding: 0px 0px 6px 4px;
-        border-bottom: 1px solid rgb(234, 238, 236);
+        border-bottom: 1px solid ${(props) => props.theme.lightGray};
         font-size: 16px;
         box-shadow: white 0px 0px 0px 1000px inset;
 
@@ -50,7 +50,7 @@ const Container = styled.div`
       width: 100%;
       height: 56px;
       margin-top: 0px;
-      background: rgb(67, 192, 131);
+      background: ${(props) => props.theme.mainColor};
       border-radius: 8px;
       color: rgb(255, 255, 255);
       font-weight: 700;
@@ -61,7 +61,7 @@ const Container = styled.div`
     > p {
       margin: 30px 0px 28px;
       text-align: center;
-      color: rgb(90, 94, 91);
+      color: ${(props) => props.theme.darkGray};
       font-size: 14px;
     }
   }

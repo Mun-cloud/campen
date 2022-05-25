@@ -16,7 +16,7 @@ const InputCommentBox = styled.div`
     align-items: center;
     padding: 8px 16px;
     background: rgb(241, 245, 243);
-    border-top: 1px solid rgb(234, 238, 236);
+    border-top: 1px solid ${(props) => props.theme.lightGray};
   }
 
   /* 이미지 업로드*/
@@ -38,7 +38,7 @@ const InputCommentBox = styled.div`
     align-items: center;
     width: 100%;
     padding: 10px 12px;
-    border: 0.5px solid rgb(90, 94, 91);
+    border: 0.5px solid ${(props) => props.theme.darkGray};
     border-radius: 8px;
     background: rgb(255, 255, 255);
 
@@ -73,7 +73,7 @@ const InputCommentBox = styled.div`
   .submit-btn2 {
     font-size: 11pt;
     font-weight: 700;
-    color: rgb(67, 192, 131);
+    color: ${(props) => props.theme.mainColor};
   }
 
   .submit-btn2 button {

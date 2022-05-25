@@ -37,7 +37,7 @@ const Form = styled.form`
 const Button = styled.button`
   width: 100%;
   height: 56px;
-  background-color: rgb(234, 238, 236);
+  background-color: ${(props) => props.theme.lightGray};
   color: rgb(133, 138, 136);
   font-weight: 700;
   font-size: 16px;
@@ -47,7 +47,7 @@ const Button = styled.button`
   transition: background-color 0.1s ease-in;
 
   &.checked {
-    background-color: rgb(67, 192, 131);
+    background-color: ${(props) => props.theme.mainColor};
     color: white;
   }
 `;

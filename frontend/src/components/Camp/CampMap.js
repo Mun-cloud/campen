@@ -10,7 +10,7 @@ const MapBox = styled.section`
 
   .caption {
     margin-top: 8px;
-    color: rgb(90, 94, 91);
+    color: ${(props) => props.theme.darkGray};
     font-size: 12px;
   }
 `;

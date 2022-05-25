@@ -7,7 +7,7 @@ const TabContainer = styled.ul`
   width: 100%;
   top: 0px;
   background-color: rgb(255, 255, 255);
-  border-bottom: 1px solid rgb(212, 217, 214);
+  border-bottom: 1px solid ${(props) => props.theme.nomalGray};
   position: fixed;
   display: flex;
   z-index: 1000;

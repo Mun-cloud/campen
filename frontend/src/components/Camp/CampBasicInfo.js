@@ -21,7 +21,7 @@ const CampBox = styled.div`
   }
 
   td:first-child {
-    color: rgb(67, 192, 131);
+    color: ${(props) => props.theme.mainColor};
   }
 
   td {
@@ -42,7 +42,7 @@ const CampBox = styled.div`
     margin: 0 0 0 auto;
     font-size: 11px;
     color: #fff;
-    background-color: rgb(67, 192, 131);
+    background-color: ${(props) => props.theme.mainColor};
     border: none;
     font-weight: 700;
     border-radius: 4px;

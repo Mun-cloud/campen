@@ -5,7 +5,7 @@ const CampIntroBox = styled.section`
   #camp_intro_article {
     line-height: 22px;
     white-space: pre-line;
-    color: rgb(90, 94, 91);
+    color: ${(props) => props.theme.darkGray};
     font-size: 13px;
   }
 
@@ -33,9 +33,9 @@ const CampIntroBox = styled.section`
   .intro_tag {
     padding: 6px 10px;
     margin: 4px 4px 0px 0px;
-    background-color: rgba(62, 204, 121, 0.18);
+    background-color: ${(props) => props.theme.darkDarkGreen};
     border-radius: 20px;
-    color: rgb(34, 119, 88);
+    color: ${(props) => props.theme.darkMainColor};
     font-size: 13px;
   }
 
@@ -43,7 +43,7 @@ const CampIntroBox = styled.section`
     margin-top: 20px;
     width: 100%;
     height: 46px;
-    border: 1px solid rgb(212, 217, 214);
+    border: 1px solid ${(props) => props.theme.nomalGray};
     border-radius: 8px;
     background-color: white;
     color: rgb(37, 40, 38);

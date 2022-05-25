@@ -6,7 +6,7 @@ const MannerTimeBox = styled.section`
     display: flex;
     padding: 14px 0px;
     border-radius: 8px;
-    background-color: rgba(62, 204, 121, 0.18);
+    background-color: ${(props) => props.theme.darkDarkGreen};
     margin-bottom: 16px;
   }
 
@@ -19,24 +19,24 @@ const MannerTimeBox = styled.section`
   }
 
   .time_area_box:first-child {
-    border-right: 1px solid rgba(34, 119, 88, 0.4);
+    border-right: 1px solid ${(props) => props.theme.darkGreen};
   }
 
   .time {
     font-weight: 700;
     font-size: 18px;
     margin-bottom: 6px;
-    color: rgb(34, 119, 88);
+    color: ${(props) => props.theme.darkMainColor};
   }
 
   .time_text {
-    color: rgb(34, 119, 88);
+    color: ${(props) => props.theme.darkMainColor};
     opacity: 0.6;
     font-weight: 500;
   }
 
   .manner_article {
-    color: rgb(90, 94, 91);
+    color: ${(props) => props.theme.darkGray};
     font-weight: 500;
     font-size: 13px;
     line-height: 19px;

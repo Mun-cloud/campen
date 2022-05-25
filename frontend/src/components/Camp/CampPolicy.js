@@ -4,12 +4,12 @@ const PolicyBox = styled.section`
   .policy_anno {
     margin-bottom: 12px;
     font-weight: 700;
-    color: rgb(67, 192, 131);
+    color: ${(props) => props.theme.mainColor};
     font-size: 13px;
   }
 
   .policy_text {
-    color: rgb(90, 94, 91);
+    color: ${(props) => props.theme.darkGray};
     line-height: 22px;
   }
 `;

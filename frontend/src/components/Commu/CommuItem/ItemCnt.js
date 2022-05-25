@@ -9,7 +9,7 @@ const CntContainer = styled.div`
   .cnt-Q::before {
     margin-right: 2px;
     content: "Q.";
-    color: rgb(67, 192, 131);
+    color: ${(props) => props.theme.mainColor};
     font-size: 14pt;
     font-weight: 500;
   }

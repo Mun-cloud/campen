@@ -6,7 +6,7 @@ const Btn = styled.button`
   width: 530px;
   height: 70px;
   font-size: 11.5pt;
-  background: rgb(234, 238, 236);
+  background: ${(props) => props.theme.lightGray};
   color: rgb(133, 138, 136);
   font-weight: 700;
   font-size: 12pt;

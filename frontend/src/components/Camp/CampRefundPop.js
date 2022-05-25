@@ -21,7 +21,7 @@ const RefundBox = styled.div`
     justify-content: center;
     height: 53px;
     width: 100%;
-    border-bottom: 1px solid rgb(234, 238, 236);
+    border-bottom: 1px solid ${(props) => props.theme.lightGray};
   }
 
   .pop_chev {
@@ -55,24 +55,24 @@ const RefundBox = styled.div`
 
   .refund_section_title {
     padding-bottom: 8px;
-    border-bottom: 1px solid rgb(234, 238, 236);
+    border-bottom: 1px solid ${(props) => props.theme.lightGray};
     font-size: 13px;
     font-weight: 700;
-    color: rgb(67, 192, 131);
+    color: ${(props) => props.theme.mainColor};
   }
 
   .refund_text_box {
     display: flex;
     justify-content: space-between;
     padding: 10px 0px;
-    border-bottom: 1px solid rgb(234, 238, 236);
+    border-bottom: 1px solid ${(props) => props.theme.lightGray};
   }
 
   .refund_section_partition {
     display: flex;
     justify-content: space-between;
     padding: 8px 0px 4px;
-    border-bottom: 1px solid rgb(234, 238, 236);
+    border-bottom: 1px solid ${(props) => props.theme.lightGray};
   }
 
   .refund_section_partition > * {
@@ -85,7 +85,7 @@ const RefundBox = styled.div`
   }
 
   .refund_gay_text {
-    color: rgb(90, 94, 91);
+    color: ${(props) => props.theme.darkGray};
   }
 
   .refund_days {

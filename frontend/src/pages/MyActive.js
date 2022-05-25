@@ -7,7 +7,7 @@ const Container = styled.div`
   height: 100vh;
   position: relative;
   padding: 0;
-  background-color: rgb(234, 238, 236);
+  background-color: ${(props) => props.theme.lightGray};
 
   > div {
     margin-bottom: 5px;

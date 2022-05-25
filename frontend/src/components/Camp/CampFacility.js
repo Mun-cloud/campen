@@ -4,8 +4,8 @@ const FacilityBox = styled.section`
   .basic_facility {
     width: 100%;
     display: flex;
-    border-top: 1px solid rgb(212, 217, 214);
-    border-bottom: 1px solid rgb(212, 217, 214);
+    border-top: 1px solid ${(props) => props.theme.nomalGray};
+    border-bottom: 1px solid ${(props) => props.theme.nomalGray};
     padding-top: 12px;
   }
 
@@ -17,7 +17,7 @@ const FacilityBox = styled.section`
 
   .facility_title {
     width: 20%;
-    color: rgb(34, 119, 88);
+    color: ${(props) => props.theme.darkMainColor};
     font-weight: bold;
   }
 
@@ -37,9 +37,9 @@ const FacilityBox = styled.section`
     display: block;
     width: 90px;
     padding: 8px 0;
-    background-color: rgba(62, 204, 121, 0.18);
+    background-color: ${(props) => props.theme.darkDarkGreen};
     border-radius: 20px;
-    color: rgb(34, 119, 88);
+    color: ${(props) => props.theme.darkMainColor};
     font-size: 13px;
   }
 `;

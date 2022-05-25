@@ -7,7 +7,7 @@ const CntContainer = styled.div`
 `;
 
 const CntBox = styled.div`
-  border-bottom: 1px solid rgb(234, 238, 236);
+  border-bottom: 1px solid ${(props) => props.theme.lightGray};
   height: 65vh;
 `;
 const CntBtn = styled.div`
@@ -34,7 +34,7 @@ const CntBtn = styled.div`
 `;
 
 const Cnt = styled.div`
-  border-top: 1px solid rgb(234, 238, 236);
+  border-top: 1px solid ${(props) => props.theme.lightGray};
 
   textarea {
     padding: 20px 0px;
@@ -73,7 +73,7 @@ const Photo = styled.label`
   align-items: center;
   width: 80px;
   height: 80px;
-  border: 1px solid rgb(212, 217, 214);
+  border: 1px solid ${(props) => props.theme.nomalGray};
   border-radius: 8px;
 
   span {

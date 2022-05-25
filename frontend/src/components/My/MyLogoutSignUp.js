@@ -15,7 +15,7 @@ const Btn = styled.button`
   height: 48px;
   padding: 6px 8px;
   margin-right: 10px;
-  border: 1px solid rgb(212, 217, 214);
+  border: 1px solid ${(props) => props.theme.nomalGray};
   border-radius: 8px;
   background: rgb(255, 255, 255);
   color: rgb(37, 40, 38);

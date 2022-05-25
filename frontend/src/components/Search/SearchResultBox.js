@@ -25,7 +25,7 @@ const ResultInfo = styled.div`
   }
 
   #camp_log_box {
-    color: rgb(67, 192, 131);
+    color: ${(props) => props.theme.mainColor};
   }
 
   .result_charge {

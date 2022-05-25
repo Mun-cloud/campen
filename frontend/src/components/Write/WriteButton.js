@@ -10,7 +10,7 @@ const WriteSubmit = styled.button`
   font-size: 12pt;
   border: none;
   cursor: pointer;
-  background-color: rgb(234, 238, 236);
+  background-color: ${(props) => props.theme.lightGray};
   color: rgb(133, 138, 136);
 
   &.active {

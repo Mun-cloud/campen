@@ -16,7 +16,7 @@ const LogBox = styled.section`
       margin-bottom: 0;
 
       span {
-        color: rgb(67, 192, 131);
+        color: ${(props) => props.theme.mainColor};
         font-size: 12px;
         margin-left: 5px;
       }
@@ -36,7 +36,7 @@ const LogBox = styled.section`
 
   /* 로그 리스트 */
   .log_box {
-    border-top: 1px solid rgb(212, 217, 214);
+    border-top: 1px solid ${(props) => props.theme.nomalGray};
     padding: 12px 20px;
   }
 
@@ -61,7 +61,7 @@ const LogBox = styled.section`
     font-size: 12px;
     line-height: 16px;
     height: 16px;
-    color: rgb(90, 94, 91);
+    color: ${(props) => props.theme.darkGray};
   }
 
   .log_chev {

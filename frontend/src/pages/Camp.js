@@ -45,7 +45,7 @@ const CampPage = styled.div`
     margin-top: 20px;
     width: 100%;
     height: 46px;
-    border: 1px solid rgb(212, 217, 214);
+    border: 1px solid ${(props) => props.theme.nomalGray};
     border-radius: 8px;
     background-color: white;
     color: rgb(37, 40, 38);

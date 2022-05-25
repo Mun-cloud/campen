@@ -20,7 +20,7 @@ const PoliciPop = styled.div`
     justify-content: center;
     height: 53px;
     width: 100%;
-    border-bottom: 1px solid rgb(234, 238, 236);
+    border-bottom: 1px solid ${(props) => props.theme.lightGray};
   }
   .pop_chev {
     position: absolute;

@@ -7,7 +7,7 @@ const RefundBox = styled.section`
   align-items: center;
   height: 83px;
   padding: 0 20px;
-  border-bottom: 1px solid rgb(234, 238, 236);
+  border-bottom: 1px solid ${(props) => props.theme.lightGray};
   cursor: pointer;
 
   .last_section:last-child {
@@ -21,7 +21,7 @@ const RefundBox = styled.section`
 
   .section_title_sub {
     font-weight: 500;
-    color: rgb(90, 94, 91);
+    color: ${(props) => props.theme.darkGray};
     padding-top: 8px;
     font-size: 13px;
   }
