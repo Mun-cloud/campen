@@ -46,7 +46,7 @@ const SearchSwiper = ({ item }) => {
     ["getSlidePictuers", item.id],
     () => getImageList(item.id)
   );
-  console.log(pictures[0].imageURL);
+
   if (isLoading || pictures[0].imageURL === null) return null;
   return (
     <MySwiper
