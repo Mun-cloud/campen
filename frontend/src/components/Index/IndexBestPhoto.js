@@ -26,7 +26,7 @@ const BestSwiper = styled(Swiper)`
     color: white;
   }
   .swiper-pagination-bullet-active {
-    background-color: white;
+    background: white;
   }
 
   img {
