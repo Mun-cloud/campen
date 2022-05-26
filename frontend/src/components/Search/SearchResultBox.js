@@ -39,7 +39,7 @@ const ResultInfo = styled.div`
   }
 `;
 
-const SearchResultBox = ({ item, total = null, key = null, ref = null }) => {
+const SearchResultBox = ({ item }) => {
   const navigate = useNavigate();
   return !item ? null : (
     <div style={{ "border-top": "1px solid rgba(0, 0, 0, 0.2)" }}>
@@ -66,13 +66,6 @@ const SearchResultBox = ({ item, total = null, key = null, ref = null }) => {
         </div>
       </ResultInfo>
       <SearchTagBox />
-      {total !== null ? (
-        key !== null ? (
-          total === key ? (
-            <div ref={ref}></div>
-          ) : null
-        ) : null
-      ) : null}
     </div>
   );
 };

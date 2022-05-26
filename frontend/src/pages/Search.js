@@ -84,16 +84,11 @@ const Search = () => {
           ) : (
             <>
               {item.item.map((v, i) => (
-                <SearchResultBox
-                  item={v}
-                  total={item.item.length - 1}
-                  key={i}
-                  ref={ref}
-                />
+                <SearchResultBox item={v} key={i} />
               ))}
-              {/* {item.item.length > 2 && item.item.length !== allCamp && (
-                <div></div>
-              )} */}
+              {item.item.length > 2 && item.item.length !== allCamp && (
+                <div ref={ref}></div>
+              )}
             </>
           )}
         </>
