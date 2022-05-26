@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getImageList } from "../../api";
+import { useState } from "react";
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -41,14 +42,18 @@ const MySwiper = styled(Swiper)`
 `;
 const SearchSwiper = ({ item }) => {
   const go = useNavigate();
+  const [noimg, setNoimg] = useState(true);
 
   const { isLoading, data: pictures } = useQuery(
     ["getSlidePictuers", item.id],
     () => getImageList(item.id)
   );
 
-  if (isLoading || pictures === null || pictures[0]?.imageURL === null)
-    return null;
+  if (isLoading) return null;
+
+  if (pictures !== null && pictures[0]?.imageURL !== null) {
+    setNoimg(false);
+  }
   return (
     <MySwiper
       navigation={true}
@@ -72,7 +77,12 @@ const SearchSwiper = ({ item }) => {
             go(`/camp/${item.id}`);
           }}
         >
-          <img src={v.imageURL} alt={item.name} />
+          <img
+            src={
+              noimg ? require("../../assets/img/no_camp_img.png") : v.imageURL
+            }
+            alt={item.name}
+          />
           <span>
             <i className="fas fa-map-marker-alt"></i>
             <span id="profile_local">{item.addr1}</span>

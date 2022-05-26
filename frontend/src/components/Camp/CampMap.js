@@ -31,7 +31,7 @@ const CampMap = ({ item }) => {
       <MapBox className="camp_container" id="camp_map">
         <div className="box_title">캠핑장 안내 이미지</div>
         <img src={item.photo} alt="배치도" onClick={onClick} />
-        <div className="caption">지도를 터치하여 크게 볼 수 있습니다.</div>
+        <div className="caption">이미지를 터치하여 크게 볼 수 있습니다.</div>
       </MapBox>
     );
   }

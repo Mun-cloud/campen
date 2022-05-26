@@ -43,7 +43,13 @@ const CampTitleBox = ({ item }) => {
           <CampHeartBtn item={item} />
         </div>
         <div className="camp_price">
-          <span>{item.price}</span>원 부터
+          {!item.price ? (
+            "가격정보 없음"
+          ) : (
+            <>
+              <span>{item.price}</span>원 부터
+            </>
+          )}
         </div>
       </div>
     </TitleSection>
