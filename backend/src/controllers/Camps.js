@@ -55,8 +55,12 @@ module.exports = (app) => {
       logger.debug(JSON.stringify(pagenation));
 
       // 데이터 조회
-      let sql2 =
-        "SELECT id, contentId, name, addr1, addr2, tel, lctCl, price, cast(photo as char(10000)) as photo, `basic_fac`, `add_fac`, lineIntro ,cast(intro as char(10000))as intro, tag, mapX, mapY, cast(homepage as char(10000)) as homepage, `manner_start`, `manner_end`, policy, map, is_reg, reg_date, edit_date FROM camp";
+      let sql2 = "SELECT id, contentId, name, addr1, addr2, tel, lctCl, price,";
+      sql2 += " cast(photo as char(10000)) as photo, `basic_fac`,";
+      sql2 += " `add_fac`, lineIntro ,cast(intro as char(10000))as intro,";
+      sql2 += " tag, mapX, mapY, cast(homepage as char(10000)) as homepage,";
+      sql2 += " `manner_start`, `manner_end`, policy, map, is_reg,";
+      sql2 += " reg_date, edit_date FROM camp";
 
       // SQL문에 설정할 치환값
       let args2 = [];

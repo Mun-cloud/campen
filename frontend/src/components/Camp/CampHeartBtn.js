@@ -23,6 +23,10 @@ const CampHeartBtn = ({ item }) => {
   }, [item, user]);
   // 좋아요 클릭시 이벤트
   const onClick = async () => {
+    if (!user) {
+      alert("로그인후 이용해주시기 바랍니다");
+      return null;
+    }
     if (heartOn) {
       // 좋아요 등록되어 있을 시
       try {
