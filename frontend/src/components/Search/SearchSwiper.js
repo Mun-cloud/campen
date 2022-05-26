@@ -23,7 +23,7 @@ const MySwiper = styled(Swiper)`
     color: white;
   }
   .swiper-pagination-bullet-active {
-    color: white;
+    background-color: white;
   }
 
   .glide__slide {

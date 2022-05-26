@@ -35,7 +35,7 @@ const LogSwiper = styled(Swiper)`
     color: white;
   }
   .swiper-pagination-bullet-active {
-    color: white;
+    background-color: white;
   }
 
   .log_img_box {
