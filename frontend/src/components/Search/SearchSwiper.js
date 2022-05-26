@@ -69,18 +69,15 @@ const SearchSwiper = ({ item }) => {
       }}
       className="glide"
     >
-      {pictures.map((v, i) => (
+      {noimg ? (
         <SwiperSlide
           className="glide__slide"
-          key={i}
           onClick={() => {
             go(`/camp/${item.id}`);
           }}
         >
           <img
-            src={
-              noimg ? require("../../assets/img/no_camp_img.png") : v.imageURL
-            }
+            src={require("../../assets/img/no_camp_img.png")}
             alt={item.name}
           />
           <span>
@@ -88,7 +85,23 @@ const SearchSwiper = ({ item }) => {
             <span id="profile_local">{item.addr1}</span>
           </span>
         </SwiperSlide>
-      ))}
+      ) : (
+        pictures.map((v, i) => (
+          <SwiperSlide
+            className="glide__slide"
+            key={i}
+            onClick={() => {
+              go(`/camp/${item.id}`);
+            }}
+          >
+            <img src={v.imageURL} alt={item.name} />
+            <span>
+              <i className="fas fa-map-marker-alt"></i>
+              <span id="profile_local">{item.addr1}</span>
+            </span>
+          </SwiperSlide>
+        ))
+      )}
     </MySwiper>
   );
 };
