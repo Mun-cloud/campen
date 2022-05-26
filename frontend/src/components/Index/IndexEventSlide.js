@@ -9,6 +9,12 @@ import { Link } from "react-router-dom";
 
 SwiperCore.use([Autoplay, Pagination]);
 
+const ExhiSwiper = styled(Swiper)`
+  .swiper-pagination-bullet-active {
+    background: white;
+  }
+`;
+
 const SwiperImg = styled.img`
   width: 100%;
 `;
@@ -19,7 +25,7 @@ const IndexEventSlide = () => {
 
   return (
     // <!-- 이벤트 슬라이드 -->
-    <Swiper
+    <ExhiSwiper
       spaceBetween={0}
       slidesPerView={"auto"}
       loopedSlides={3}
@@ -40,7 +46,7 @@ const IndexEventSlide = () => {
             </Link>
           </SwiperSlide>
         ))}
-    </Swiper>
+    </ExhiSwiper>
   );
 };
 

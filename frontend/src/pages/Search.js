@@ -86,7 +86,7 @@ const Search = () => {
               {item.item.map((v, i) => (
                 <SearchResultBox item={v} key={i} />
               ))}
-              {item.item.length > 3 && item.item.length !== allCamp && (
+              {item.item.length > 2 && item.item.length !== allCamp && (
                 <div ref={ref}></div>
               )}
             </>
