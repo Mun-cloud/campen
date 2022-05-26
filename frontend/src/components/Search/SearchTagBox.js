@@ -21,12 +21,19 @@ const TagBox = styled.div`
   }
 `;
 
-const SearchTagBox = () => {
+const SearchTagBox = ({ item }) => {
+  if (!item.tag) return null;
   return (
     <TagBox>
-      <span className="tag">#경기도캠핑장</span>
-      <span className="tag">#키즈캠핑장</span>
-      <span className="tag">#서울인근캠핑장</span>
+      {/* 태그값을 정렬화하여 값 앞에 #을 붙여주고 반복문 수행 */}
+      {item.tag
+        .split(", ")
+        .map((word) => (word.startsWith("#") ? word : `#${word}`))
+        .map((tag, index) => (
+          <span className="intro_tag" key={index}>
+            {tag}
+          </span>
+        ))}
     </TagBox>
   );
 };

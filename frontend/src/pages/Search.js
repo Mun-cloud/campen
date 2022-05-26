@@ -88,6 +88,9 @@ const Search = () => {
                 <SearchResultBox item={v} key={i} />
               ))}
               {/* HEROKU 서버 제한 오류 방지 */}
+              {/* {item.item.length > 2 && item.item.length !== allCamp && (
+                <div ref={ref}></div>
+              )} */}
             </>
           )}
         </>

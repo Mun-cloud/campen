@@ -56,7 +56,7 @@ module.exports = (app) => {
 
       // 데이터 조회
       let sql2 =
-        "SELECT id, contentId, name, addr1, addr2, tel, lctCl, price, cast(photo as char(10000)) as photo, `basic_fac`, `add_fac`, lineIntro ,cast(intro as char(10000))as intro, cast(tag as char(10000)) as tag, mapX, mapY, cast(homepage as char(10000)) as homepage, `manner_start`, `manner_end`, policy, map, is_reg, reg_date, edit_date FROM camp";
+        "SELECT id, contentId, name, addr1, addr2, tel, lctCl, price, cast(photo as char(10000)) as photo, `basic_fac`, `add_fac`, lineIntro ,cast(intro as char(10000))as intro, tag, mapX, mapY, cast(homepage as char(10000)) as homepage, `manner_start`, `manner_end`, policy, map, is_reg, reg_date, edit_date FROM camp";
 
       // SQL문에 설정할 치환값
       let args2 = [];
@@ -245,7 +245,7 @@ module.exports = (app) => {
 
       // 데이터 조회
       const sql =
-        "SELECT id, contentId, name, addr1, addr2, tel, lctCl, price, cast(photo as char(10000)) as photo, `basic_fac`, `add_fac`, lineIntro, cast(intro as char(10000)) as intro, cast(tag as char(10000)) as tag, mapX, mapY, cast(homepage as char(10000)) as homepage, `manner_start`, `manner_end`, policy, map, is_reg, reg_date, edit_date FROM camp WHERE id=?";
+        "SELECT id, contentId, name, addr1, addr2, tel, lctCl, price, cast(photo as char(10000)) as photo, `basic_fac`, `add_fac`, lineIntro, cast(intro as char(10000)) as intro, tag, mapX, mapY, cast(homepage as char(10000)) as homepage, `manner_start`, `manner_end`, policy, map, is_reg, reg_date, edit_date FROM camp WHERE id=?";
       const [result] = await dbcon.query(sql, [id]);
       // 조회 결과를 미리 준비한 변수에 저장함
       json = result;
@@ -367,7 +367,7 @@ module.exports = (app) => {
 
       // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
       const sql2 =
-        "SELECT id, contentId, name, addr1, addr2, tel, lctCl, price, cast(photo as char(10000)) as photo, `basic_fac`, `add_fac`, lineIntro ,cast(intro as char(10000))as intro, cast(tag as char(10000)) as tag, mapX, mapY, cast(homepage as char(10000)) as homepage, `manner_start`, `manner_end`, policy, map, is_reg, reg_date, edit_date FROM camp WHERE id=?";
+        "SELECT id, contentId, name, addr1, addr2, tel, lctCl, price, cast(photo as char(10000)) as photo, `basic_fac`, `add_fac`, lineIntro ,cast(intro as char(10000))as intro, tag, mapX, mapY, cast(homepage as char(10000)) as homepage, `manner_start`, `manner_end`, policy, map, is_reg, reg_date, edit_date FROM camp WHERE id=?";
       const [result2] = await dbcon.query(sql2, [id]);
 
       // 조회 결과를 미리 준비한 변수에 저장함

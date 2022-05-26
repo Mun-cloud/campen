@@ -65,7 +65,7 @@ const SearchResultBox = ({ item }) => {
           )}
         </div>
       </ResultInfo>
-      <SearchTagBox />
+      <SearchTagBox item={item} />
     </div>
   );
 };
