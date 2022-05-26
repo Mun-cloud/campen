@@ -47,7 +47,7 @@ const SearchSwiper = ({ item }) => {
     () => getImageList(item.id)
   );
 
-  if (isLoading || pictures === null || pictures[0].imageURL === null)
+  if (isLoading || pictures === null || pictures[0]?.imageURL === null)
     return null;
   return (
     <MySwiper
