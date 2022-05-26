@@ -22,11 +22,20 @@ const LogSwiper = styled(Swiper)`
     flex-direction: column;
     width: 140px;
     height: 250px;
-    /* border: 1px solid black; */
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin-right: 10px;
     overflow: hidden;
+  }
+
+  .swiper-button-next {
+    color: white;
+  }
+  .swiper-button-prev {
+    color: white;
+  }
+  .swiper-pagination-bullet-active {
+    color: white;
   }
 
   .log_img_box {

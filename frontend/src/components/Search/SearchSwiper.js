@@ -16,6 +16,16 @@ const MySwiper = styled(Swiper)`
   cursor: pointer;
   height: 298px;
 
+  .swiper-button-next {
+    color: white;
+  }
+  .swiper-button-prev {
+    color: white;
+  }
+  .swiper-pagination-bullet-active {
+    color: white;
+  }
+
   .glide__slide {
     height: 100%;
     position: relative;

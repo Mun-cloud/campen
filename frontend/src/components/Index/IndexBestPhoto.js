@@ -19,6 +19,16 @@ const BestSwiper = styled(Swiper)`
     width: fit-content;
   }
 
+  .swiper-button-next {
+    color: white;
+  }
+  .swiper-button-prev {
+    color: white;
+  }
+  .swiper-pagination-bullet-active {
+    color: white;
+  }
+
   img {
     width: 195px;
     height: 250px;
