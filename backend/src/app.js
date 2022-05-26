@@ -143,13 +143,6 @@ app.use(
   })
 );
 
-app.use(
-  cors({
-    credentials: true,
-    origin: [process.env.FRONTEND_APP_URL],
-  })
-);
-
 /** req, res 객체의 기능을 확장하는 모듈 */
 app.use(webHelper());
 

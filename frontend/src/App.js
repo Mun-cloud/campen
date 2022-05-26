@@ -39,14 +39,11 @@ import Term2 from "./pages/Term2";
 function App() {
   const dispatch = useDispatch();
 
+  // 로그인 여부 확인
   useEffect(() => {
     (async () => {
       try {
-        let data = (
-          await axios.get(`/api/member/info`, {
-            withCredentials: true,
-          })
-        ).data.item;
+        let data = (await axios.get(`/api/member/info`)).data.item;
         dispatch(getUserData({ user_id: data.user_id, user_pw: data.user_pw }));
       } catch (err) {}
     })();

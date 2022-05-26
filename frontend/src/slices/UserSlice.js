@@ -1,3 +1,8 @@
+/**
+ * 작성자 : 문태호
+ * 기능 : 유저 로그인 정보를 Redux store에 저장하고 리턴함.
+ */
+
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
