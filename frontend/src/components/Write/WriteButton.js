@@ -15,7 +15,7 @@ const WriteSubmit = styled.button`
 
   &.active {
     background-color: #43c083;
-    color: rgb(255, 255, 255);
+    color: ${(props) => props.theme.white};
   }
 
   span {

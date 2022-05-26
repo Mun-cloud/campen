@@ -8,7 +8,7 @@ const CntContainer = styled.div`
   display: block;
   margin-bottom: 1px;
   padding: 0px 20px 60px;
-  background: rgb(255, 255, 255);
+  background: ${(props) => props.theme.white};
 `;
 const CntBox = styled.div`
   padding: 20px 10px 0;

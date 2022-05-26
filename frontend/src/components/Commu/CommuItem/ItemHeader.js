@@ -12,7 +12,7 @@ const TopContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  background-color: rgb(255, 255, 255);
+  background-color: ${(props) => props.theme.white};
   border-bottom: 1px solid rgb(241, 245, 243);
 
   .back-btn {

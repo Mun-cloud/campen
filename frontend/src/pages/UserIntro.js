@@ -20,7 +20,7 @@ const UserHeader = styled.div`
   height: 52px;
   max-width: 530px;
   width: 100%;
-  background: rgb(255, 255, 255);
+  background: ${(props) => props.theme.white};
   border-bottom: 1px solid rgb(241, 245, 243);
   color: #333;
 
@@ -43,7 +43,7 @@ const SettingCnt = styled.div`
   padding: 20px;
   height: 100%;
   margin-bottom: -60px;
-  background: rgb(255, 255, 255);
+  background: ${(props) => props.theme.white};
 
   .cnt-text {
     margin: 18px 0px 43px;

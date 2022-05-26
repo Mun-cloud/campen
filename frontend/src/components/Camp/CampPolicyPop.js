@@ -10,7 +10,7 @@ const PoliciPop = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
-  background: rgb(255, 255, 255);
+  background: ${(props) => props.theme.white};
 
   .pop_header {
     top: 0px;

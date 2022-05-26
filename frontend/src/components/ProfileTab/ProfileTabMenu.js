@@ -6,7 +6,7 @@ const TabContainer = styled.ul`
   height: 45px;
   width: 100%;
   top: 0px;
-  background-color: rgb(255, 255, 255);
+  background-color: ${(props) => props.theme.white};
   display: flex;
 `;
 

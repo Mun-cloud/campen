@@ -16,7 +16,7 @@ const Container = styled.div`
 
   div > a:nth-child(2) > .settings_container {
     margin-top: 0;
-    border-top: 1px solid rgb(241, 245, 243);
+    border-top: 1px solid ${(props) => props.theme.lightGray};
   }
 `;
 

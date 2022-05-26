@@ -40,7 +40,7 @@ const InputCommentBox = styled.div`
     padding: 10px 12px;
     border: 0.5px solid ${(props) => props.theme.darkGray};
     border-radius: 8px;
-    background: rgb(255, 255, 255);
+    background: ${(props) => props.theme.white};
 
     textarea {
       overflow: hidden;

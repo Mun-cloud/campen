@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const SignupLogin = styled.div`
-  background: rgb(255, 255, 255);
+  background: ${(props) => props.theme.white};
   padding: 28px 20px;
   width: 100%;
   display: flex;
@@ -17,7 +17,7 @@ const Btn = styled.button`
   margin-right: 10px;
   border: 1px solid ${(props) => props.theme.nomalGray};
   border-radius: 8px;
-  background: rgb(255, 255, 255);
+  background: ${(props) => props.theme.white};
   color: rgb(37, 40, 38);
   font-family: SpoqaHanSans;
   font-weight: 400;

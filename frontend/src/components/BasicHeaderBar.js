@@ -9,7 +9,7 @@ const Pop = styled.div`
   z-index: 2000;
   width: 100%;
   height: 53px;
-  background: rgb(255, 255, 255);
+  background: ${(props) => props.theme.white};
 `;
 
 const HeaderBar = styled.div`

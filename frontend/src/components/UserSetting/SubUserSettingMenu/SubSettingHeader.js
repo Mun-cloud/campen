@@ -8,7 +8,7 @@ const Header = styled.div`
   height: 52px;
   max-width: 530px;
   width: 100%;
-  background: rgb(255, 255, 255);
+  background: ${(props) => props.theme.white};
   border-bottom: 1px solid rgb(241, 245, 243);
   color: #333;
 

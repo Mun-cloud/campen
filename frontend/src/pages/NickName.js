@@ -23,7 +23,7 @@ const Cnt = styled.div`
   padding: 20px;
   height: 100%;
   margin-bottom: -60px;
-  background: rgb(255, 255, 255);
+  background: ${(props) => props.theme.white};
 
   .title {
     margin: 18px 0px 43px;

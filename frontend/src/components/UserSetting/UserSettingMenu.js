@@ -13,7 +13,7 @@ const UserContainer = styled.div`
     line-height: 30px;
     margin-top: 4px;
     padding: 15px 25px;
-    background: rgb(255, 255, 255);
+    background: ${(props) => props.theme.white};
     font-size: 10.5pt;
     display: flex;
     justify-content: space-between;

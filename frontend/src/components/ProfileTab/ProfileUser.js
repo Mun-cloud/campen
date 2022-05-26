@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const UserProfile = styled.div`
-  background: rgb(255, 255, 255);
+  background: ${(props) => props.theme.white};
   padding: 31px 0px 24px;
   border-bottom: 0.5px solid rgb(201, 207, 204);
 

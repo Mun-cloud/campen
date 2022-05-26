@@ -7,7 +7,7 @@ const UserContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
-  background-color: rgb(241, 245, 243);
+  background-color: ${(props) => props.theme.lightGray};
 
   a {
     text-decoration: none;
@@ -19,7 +19,7 @@ const UserContainer = styled.div`
 const Cnt = styled.div`
   padding: 20px;
   height: 670px;
-  background: rgb(255, 255, 255);
+  background: ${(props) => props.theme.white};
 
   .title {
     margin: 18px 0px 43px;

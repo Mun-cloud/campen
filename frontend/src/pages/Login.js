@@ -52,7 +52,7 @@ const Container = styled.div`
       margin-top: 0px;
       background: ${(props) => props.theme.mainColor};
       border-radius: 8px;
-      color: rgb(255, 255, 255);
+      color: ${(props) => props.theme.white};
       font-weight: 700;
       font-size: 17px;
       border: none;

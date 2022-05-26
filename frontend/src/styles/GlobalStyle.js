@@ -9,7 +9,7 @@ a{
 }
 
 body{
-    background-color: rgb(231, 240, 234);
+    background-color: ${(props) => props.theme.lightGray};
     max-width: 530px;
     margin-left: auto;
   margin-right: auto;

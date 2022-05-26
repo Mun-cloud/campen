@@ -6,7 +6,7 @@ const MyProfile = styled.div`
   display: flex;
   padding: 20px 20px;
   align-items: center;
-  background: rgb(255, 255, 255);
+  background: ${(props) => props.theme.white};
 
   img {
     margin-right: 12px;

@@ -13,7 +13,7 @@ const Box = styled.div`
     line-height: 40px;
     margin-top: 8px;
     padding: 20px 20px;
-    background: rgb(255, 255, 255);
+    background: ${(props) => props.theme.white};
     cursor: pointer;
     border-top: none;
   }

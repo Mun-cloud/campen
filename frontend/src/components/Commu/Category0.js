@@ -5,7 +5,7 @@ import CntImg from "./CntImg";
 import CntBoxText from "./CntBoxText";
 
 const CntBox = styled.div`
-  background: rgb(255, 255, 255);
+  background: ${(props) => props.theme.white};
 
   a {
     text-decoration: none;

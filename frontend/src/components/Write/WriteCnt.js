@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const CntContainer = styled.div`
   padding: 0px 20px 90px 20px;
-  background: rgb(255, 255, 255);
+  background: ${(props) => props.theme.white};
 `;
 
 const CntBox = styled.div`
@@ -52,7 +52,7 @@ const Cnt = styled.div`
 const PhotoContainer = styled.div`
   padding: 20px;
   padding-bottom: 60px;
-  background: rgb(255, 255, 255);
+  background: ${(props) => props.theme.white};
 `;
 
 const PhotoBox = styled.div`
