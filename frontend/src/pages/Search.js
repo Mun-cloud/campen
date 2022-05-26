@@ -87,9 +87,10 @@ const Search = () => {
               {item.item.map((v, i) => (
                 <SearchResultBox item={v} key={i} />
               ))}
-              {item.item.length > 2 && item.item.length !== allCamp && (
+              {/* HEROKU 서버 제한 오류 방지 */}
+              {/* {item.item.length > 2 && item.item.length !== allCamp && (
                 <div ref={ref}></div>
-              )}
+              )} */}
             </>
           )}
         </>
