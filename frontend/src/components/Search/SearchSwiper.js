@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getImageList } from "../../api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -49,11 +49,14 @@ const SearchSwiper = ({ item }) => {
     () => getImageList(item.id)
   );
 
+  useEffect(() => {
+    if (pictures !== null && pictures[0]?.imageURL !== null) {
+      setNoimg(false);
+    }
+  }, [pictures]);
+
   if (isLoading) return null;
 
-  if (pictures !== null && pictures[0]?.imageURL !== null) {
-    setNoimg(false);
-  }
   return (
     <MySwiper
       navigation={true}
