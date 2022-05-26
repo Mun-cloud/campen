@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const CampHeartBtn = ({ item }) => {
+  const go = useNavigate();
   const [heartOn, setHeartOn] = useState(false);
   const { item: user } = useSelector((state) => state.user);
 
@@ -24,8 +26,11 @@ const CampHeartBtn = ({ item }) => {
   // 좋아요 클릭시 이벤트
   const onClick = async () => {
     if (!user) {
-      alert("로그인후 이용해주시기 바랍니다");
-      return null;
+      if (window.confirm("로그인후 이용하시겠습니까?")) {
+        go("/login");
+      } else {
+        return null;
+      }
     }
     if (heartOn) {
       // 좋아요 등록되어 있을 시
