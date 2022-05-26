@@ -70,10 +70,8 @@ const Camp = () => {
       let response;
       try {
         response = await axios.get(`/api/campdata/${id}`);
-        console.log(response);
         console.log(response.data.item[0]);
         setThisCamp(response.data.item[0]);
-        // setPictuers(response.data.item[0].campSlide);
       } catch (err) {
         alert(err.response.data.rtmsg);
       }
@@ -88,7 +86,7 @@ const Camp = () => {
   return (
     <>
       {/* 결과값이 실패인 경우 에러메시지 표시, 성공인 경우 목록 컴포넌트 호출 */}
-      {thisCamp === undefined ? (
+      {thisCamp.length === 0 ? (
         <button
           onClick={() => {
             go(-1);
@@ -99,10 +97,7 @@ const Camp = () => {
       ) : (
         <CampPage>
           <CampHeader item={thisCamp} />
-          <SearchSwiper
-            item={thisCamp}
-            // pictures={pictures}
-          />
+          <SearchSwiper item={thisCamp} />
           <CampTitleBox item={thisCamp} />
           <CampSwiperScroll item={thisCamp} />
           <CampBasicInfo item={thisCamp} />

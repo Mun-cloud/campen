@@ -204,17 +204,8 @@ module.exports = (app) => {
     // 데이터 조회 결과가 저장될 빈 변수
     let json = null;
 
+    // Pool 생성
     const pool = mysql2.createPool(config.database);
-
-    // pool.getConnection(function (err, dbcon) {
-    //   const sql =
-    //     "SELECT i.id, imageURL FROM `camp-image` i, camp c where i.camp_id=c.id and c.id=?";
-    //   const [result] = dbcon.query(sql, [id], function (err, rows) {
-    //     dbcon.release();
-    //     console.log("rows", rows);
-    //   });
-    //   json = result;
-    // });
     // 데이터베이스 접속
     try {
       const dbcon = await pool.getConnection(async (conn) => conn);
