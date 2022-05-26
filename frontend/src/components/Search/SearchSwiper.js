@@ -50,8 +50,10 @@ const SearchSwiper = ({ item }) => {
   );
 
   useEffect(() => {
-    if (pictures !== null && pictures[0]?.imageURL !== null) {
-      setNoimg(false);
+    if (!isLoading) {
+      if (pictures !== null && pictures[0]?.imageURL !== null) {
+        setNoimg(false);
+      }
     }
   }, [pictures]);
 
