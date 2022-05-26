@@ -9,6 +9,10 @@ import SearchHeader from "../components/Search/SearchHeader";
 import SearchResultBox from "../components/Search/SearchResultBox";
 import { getCampList } from "../slices/CampSlice";
 
+const Container = styled.div`
+  padding-bottom: 60px;
+`;
+
 const ResultCountCount = styled.div`
   padding: 24px 0 10px 14px;
   background-color: white;
@@ -64,7 +68,7 @@ const Search = () => {
   return loading ? (
     "loading..."
   ) : (
-    <div>
+    <Container>
       {/* 결과값이 실패인 경우 에러메시지 표시, 성공인 경우 목록 컴포넌트 호출 */}
       {rt !== 200 ? (
         <div>
@@ -95,7 +99,7 @@ const Search = () => {
           )}
         </>
       )}
-    </div>
+    </Container>
   );
 };
 

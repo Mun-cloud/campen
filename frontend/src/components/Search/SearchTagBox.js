@@ -30,7 +30,7 @@ const SearchTagBox = ({ item }) => {
         .split(", ")
         .map((word) => (word.startsWith("#") ? word : `#${word}`))
         .map((tag, index) => (
-          <span className="intro_tag" key={index}>
+          <span className="tag" key={index}>
             {tag}
           </span>
         ))}

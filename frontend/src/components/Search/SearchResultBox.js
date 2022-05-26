@@ -43,7 +43,9 @@ const SearchResultBox = ({ item }) => {
   const navigate = useNavigate();
   return !item ? null : (
     <div style={{ "border-top": "1px solid rgba(0, 0, 0, 0.2)" }}>
+      {/* 이미지리스트 슬라이드 */}
       <SearchSwiper item={item} />
+      {/* 검색결과 정보 출력 */}
       <ResultInfo
         onClick={() => {
           navigate(`/camp/${item.id}`);
@@ -65,6 +67,7 @@ const SearchResultBox = ({ item }) => {
           )}
         </div>
       </ResultInfo>
+      {/* 태그 박스 */}
       <SearchTagBox item={item} />
     </div>
   );
