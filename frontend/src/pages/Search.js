@@ -52,9 +52,9 @@ const Search = () => {
   useEffect(() => {
     // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면
     if (inView && !loading) {
-      setPage(page + 1);
+      setPage((prev) => prev + 1);
     }
-  }, [inView]);
+  }, [inView, loading]);
 
   useEffect(() => {
     setAllCamp(item?.pagenation?.totalCount);
@@ -84,11 +84,16 @@ const Search = () => {
           ) : (
             <>
               {item.item.map((v, i) => (
-                <SearchResultBox item={v} key={i} />
+                <SearchResultBox
+                  item={v}
+                  total={item.item.length - 1}
+                  key={i}
+                  ref={ref}
+                />
               ))}
-              {item.item.length > 2 && item.item.length !== allCamp && (
-                <div ref={ref}></div>
-              )}
+              {/* {item.item.length > 2 && item.item.length !== allCamp && (
+                <div></div>
+              )} */}
             </>
           )}
         </>
