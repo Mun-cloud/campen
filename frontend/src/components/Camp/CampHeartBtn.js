@@ -14,7 +14,7 @@ const CampHeartBtn = ({ item }) => {
       (async () => {
         try {
           const res = await axios.get(`/api/hearts/${item.id}`);
-          if (res.data.item.find((v) => v.camp_id === user.id) !== undefined) {
+          if (res.data.item.find((v) => v.camp_id === item.id) !== undefined) {
             setHeartOn(true);
           }
         } catch (err) {

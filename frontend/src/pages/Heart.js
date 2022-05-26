@@ -42,6 +42,7 @@ const Heart = () => {
   const { isLoading } = useSelector((state) => state.user);
   const [hearts, setHearts] = useState();
 
+  // 유저 로그인 확인 및 리다이렉트
   useEffect(() => {
     (async () => {
       try {
