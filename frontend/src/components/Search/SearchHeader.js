@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import qs from "qs";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = styled.header`
@@ -40,6 +41,12 @@ const Header = styled.header`
 const SearchHeader = () => {
   const go = useNavigate();
   const [keyword, setKeyword] = useState("");
+  const { search } = useLocation();
+  const { query } = qs.parse(search, { ignoreQueryPrefix: true });
+
+  useEffect(() => {
+    setKeyword(query);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
