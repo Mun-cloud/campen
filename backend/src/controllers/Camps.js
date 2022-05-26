@@ -27,7 +27,7 @@ module.exports = (app) => {
     const page = req.get("page", 1);
 
     // 한 페이지에 보여질 목록 수 받기(기본값은 10, 최소 10, 최대 30)
-    const rows = req.get("rows", 10);
+    const rows = req.get("rows", 3);
 
     // 데이터 조회 결과가 저장될 빈 변수
     let json = null;
@@ -198,7 +198,7 @@ module.exports = (app) => {
   });
 
   /** 슬라이드 이미지 전송 */
-  router.get("/getcampimage/:id", (req, res, next) => {
+  router.get("/getcampimage/:id", async (req, res, next) => {
     const id = req.get("id");
 
     // 데이터 조회 결과가 저장될 빈 변수
@@ -206,32 +206,32 @@ module.exports = (app) => {
 
     const pool = mysql2.createPool(config.database);
 
-    pool.getConnection(function (err, dbcon) {
-      const sql =
-        "SELECT i.id, imageURL FROM `camp-image` i, camp c where i.camp_id=c.id and c.id=?";
-      const [result] = dbcon.query(sql, [id], function (err, rows) {
-        dbcon.release();
-        console.log("rows", rows);
-      });
-      json = result;
-    });
-    // 데이터베이스 접속
-    // try {
-    //   const dbcon = pool.getConnection();
-    //   try {
-    //     // 저장된 이미지URL경로 리턴
-    //     const sql =
-    //       "SELECT i.id, imageURL FROM `camp-image` i, camp c where i.camp_id=c.id and c.id=?";
-    //     const [result] = await dbcon.query(sql, [id]);
-    //     json = result;
-    //   } catch (err) {
-    //     return next(err);
-    //   } finally {
+    // pool.getConnection(function (err, dbcon) {
+    //   const sql =
+    //     "SELECT i.id, imageURL FROM `camp-image` i, camp c where i.camp_id=c.id and c.id=?";
+    //   const [result] = dbcon.query(sql, [id], function (err, rows) {
     //     dbcon.release();
-    //   }
-    // } catch (err) {
-    //   return next(err);
-    // }
+    //     console.log("rows", rows);
+    //   });
+    //   json = result;
+    // });
+    // 데이터베이스 접속
+    try {
+      const dbcon = await pool.getConnection(async (conn) => conn);
+      try {
+        // 저장된 이미지URL경로 리턴
+        const sql =
+          "SELECT i.id, imageURL FROM `camp-image` i, camp c where i.camp_id=c.id and c.id=?";
+        const [result] = await dbcon.query(sql, [id]);
+        json = result;
+      } catch (err) {
+        return next(err);
+      } finally {
+        dbcon.release();
+      }
+    } catch (err) {
+      return next(err);
+    }
 
     // 모든 처리에 성공했으므로 정상 조회 결과 구성
     res.sendJson({ item: json });
