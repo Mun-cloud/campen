@@ -10,7 +10,7 @@ module.exports = (app) => {
   const path = require("path");
 
   const multer = require("multer"); // 업로드 모듈
-  const multer3 = require("multer3");
+  const multerS3 = require("multer-s3");
   const thumbnail = require("node-thumbnail").thumb; // 썸네일 이미지 생성 모듈
 
   /** multer 객체 설정 --> 파일 제한 : 5개 ,20M */
@@ -21,8 +21,7 @@ module.exports = (app) => {
     },
   });
 
-  const imageUploader = multer({
-    storage: multerS3({
+  const imageUploader = multerS3({
       s3: s3,
       bucket: "campen",
       /** 업로드 된 파일이 저장될 파일명 설정 */
@@ -46,7 +45,6 @@ module.exports = (app) => {
         callback(null, saveName);
       },
     }),
-  });
 
   const thumnailUploader = multer({
     storage: multerS3({

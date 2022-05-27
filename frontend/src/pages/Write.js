@@ -51,6 +51,7 @@ const Write = () => {
 
       // 업로드 한 이미지가 있을 경우 실행
       if (imgs && !imgs.length) {
+        console.log("imgs", imgs);
         // 이미지 데이터 형식 처리
         const formdata = new FormData();
         imgs.forEach((v) => {
@@ -63,6 +64,7 @@ const Write = () => {
         };
         // 이미지 데이터 전송
         const res = await axios.post(`/api/upload/multiple`, formdata, config);
+        console.log("res", res);
         // 멀티 이미지 각각을 데이터베이스에 저장
         await axios.post(`/api/contents/img`, {
           src: res.data.item,
