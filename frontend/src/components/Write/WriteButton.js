@@ -34,7 +34,7 @@ const WriteButton = ({ btnText, postCommu }) => {
         disabled={!(btnText.length >= 10)}
         onClick={postCommu}
       >
-        10자 이상 입력해주세요.
+        {btnText.length >= 10 ? "작성 완료" : "10자 이상 입력해주세요."}
       </WriteSubmit>
     </>
   );
