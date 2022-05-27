@@ -66,7 +66,7 @@ const IndexBestPhoto = () => {
           <SwiperSlide className="swiper-slide" key={v.id}>
             <Link to={`/board/${v.id}`}>
               <img
-                src={BACK + v.src}
+                src={v.src}
                 alt={v.nickname ? v.nickname : `캠퍼${v.memberId}`}
               />
               <span>{v.nickname ? v.nickname : `캠퍼${v.memberId}`}</span>
