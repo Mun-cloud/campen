@@ -41,6 +41,7 @@ const Write = () => {
 
   // 게시글 업로드
   const postCommu = async () => {
+    console.log("게시글 업로드 시작");
     try {
       // 텍스트값 전송
       const response = await axios.post(`/api/content`, {
@@ -48,7 +49,9 @@ const Write = () => {
         content: text,
         memberId: item.id,
       });
+      console.log("텍스트 전송 완료");
 
+      console.log("imgs 값 확인", imgs);
       // 업로드 한 이미지가 있을 경우 실행
       if (imgs && !imgs.length) {
         console.log("imgs", imgs);
