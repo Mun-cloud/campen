@@ -108,7 +108,7 @@ module.exports = (app) => {
       src.forEach(async (v) => {
         // 데이터 저장하기
         const sql = "INSERT INTO `contents-img` VALUES (null, ?, now(), ?)";
-        const input_data = [v.url, contentId];
+        const input_data = [v.location, contentId];
         const [result1] = await dbcon.query(sql, input_data);
       });
 

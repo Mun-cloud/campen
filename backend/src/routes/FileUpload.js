@@ -6,7 +6,6 @@ module.exports = (app) => {
   const logger = require("../../helper/LogHelper");
   const fileHelper = require("../../helper/FileHelper");
   const aws = require("aws-sdk");
-  const { S3Client } = require("@aws-sdk/client-s3");
 
   const path = require("path");
 
@@ -26,7 +25,7 @@ module.exports = (app) => {
 
   const imageUploader = multerS3({
     s3: s3,
-    bucket: "campen",
+    bucket: "campen/contentsimg",
     contentType: multerS3.AUTO_CONTENT_TYPE,
     /** 업로드 된 파일이 저장될 파일명 설정 */
     // file.originalname 변수에 파일이름이 저장되어 있다. ex) helloworld.png
@@ -119,7 +118,6 @@ module.exports = (app) => {
   router.route("/upload/simple").post((req, res, next) => {
     // name속성값이 myphoto인 경우, 업로드를 수행.
     const upload = multipart.single("photo");
-    console.log(upload);
 
     upload(req, res, async (err) => {
       let result_code = 200;
@@ -199,7 +197,6 @@ module.exports = (app) => {
   });
 
   router.route("/upload/multiple").post((req, res, next) => {
-    console.log(process.env.AWS_ID);
     // 요청정보 안에 업로드된 파일의 정보를 저장할 빈 배열을 준비
     req.file = [];
 
@@ -207,7 +204,6 @@ module.exports = (app) => {
     const upload = multipart.array("photo");
 
     upload(req, res, (err) => {
-      console.log("업로드 시작");
       let result_code = 200;
       let result_msg = "ok";
 
@@ -233,7 +229,6 @@ module.exports = (app) => {
         result_code = err.result_code;
         result_msg = err.result_msg;
       }
-      console.log("파일정보", req.files);
       /** 업로드 결과에 이상이 없다면 썸네일 이미지 생성 */
       // const thumb_size_list = config.thumbnail.sizes;
 
@@ -281,9 +276,9 @@ module.exports = (app) => {
       const result = {
         rt: result_code,
         rtmsg: result_msg,
-        item: req.file,
+        item: req.files,
       };
-      res.status(200).send(result);
+      res.status(result_code).send(result);
     });
   });
   return router;

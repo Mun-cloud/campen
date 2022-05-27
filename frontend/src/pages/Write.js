@@ -62,12 +62,11 @@ const Write = () => {
         };
         // 이미지 데이터 전송
         const res = await axios.post(`/api/upload/multiple`, formdata, config);
-        console.log(res);
         // 멀티 이미지 각각을 데이터베이스에 저장
-        // await axios.post(`/api/contents/img`, {
-        //   src: res.data.item,
-        //   contentId: response.data.item[0].id,
-        // });
+        await axios.post(`/api/contents/img`, {
+          src: res.data.item,
+          contentId: response.data.item[0].id,
+        });
         alert("게시글이 등록되었습니다.");
         go("/");
       }
