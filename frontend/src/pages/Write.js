@@ -21,7 +21,7 @@ const Write = () => {
   const [text, setText] = useState("");
   const [imgUploadHide, setImgUploadHide] = useState(false);
   const [tab, setTab] = useState("0");
-  const [imgs, setImgs] = useState();
+  const [imgs, setImgs] = useState([]);
   const { id: commuId } = useParams();
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const Write = () => {
 
       console.log("imgs 값 확인", imgs);
       // 업로드 한 이미지가 있을 경우 실행
-      if (imgs && !imgs.length) {
+      if (imgs.length > 0) {
         console.log("imgs", imgs);
         // 이미지 데이터 형식 처리
         const formdata = new FormData();
