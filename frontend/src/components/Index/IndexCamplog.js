@@ -107,7 +107,11 @@ const IndexCamplog = () => {
           <SwiperSlide className="swiper-slide" key={v.id}>
             <Link to={`/board/${v.id}`}>
               <div className="log_slide">
-                <img src={v.src} alt="게시글로 이동" className="log_img_box" />
+                <img
+                  src={BACK + v.src}
+                  alt="게시글로 이동"
+                  className="log_img_box"
+                />
                 <div className="log_text_box">
                   <span className="log_writer">
                     {v.nickname ? v.nickname : `캠퍼${v.memberId}`}

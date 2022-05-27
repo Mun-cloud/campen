@@ -28,6 +28,7 @@ module.exports = (app) => {
     bucket: "campen/contentsimg",
     contentType: multerS3.AUTO_CONTENT_TYPE,
     /** 업로드 된 파일이 저장될 파일명 설정 */
+    acl: "public-read",
     // file.originalname 변수에 파일이름이 저장되어 있다. ex) helloworld.png
     key: (req, file, callback) => {
       // 파일의 확장자만 추출 --> .png
