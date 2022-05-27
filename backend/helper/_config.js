@@ -46,7 +46,7 @@ module.exports = {
   upload: {
     path: "/upload",
     dir: path.join(__dirname, "../_files/upload"),
-    max_size: 1024 * 1024 * 20,
+    max_size: 1024 * 1024 * 5,
     max_count: 10,
   },
 
