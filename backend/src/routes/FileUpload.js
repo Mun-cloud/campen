@@ -6,6 +6,7 @@ module.exports = (app) => {
   const logger = require("../../helper/LogHelper");
   const fileHelper = require("../../helper/FileHelper");
   const aws = require("aws-sdk");
+  const { S3Client } = require("@aws-sdk/client-s3");
 
   const path = require("path");
 
@@ -14,16 +15,19 @@ module.exports = (app) => {
   const thumbnail = require("node-thumbnail").thumb; // 썸네일 이미지 생성 모듈
 
   /** multer 객체 설정 --> 파일 제한 : 5개 ,20M */
+  // const s3 = new S3Client();
   const s3 = new aws.S3({
     credentials: {
       accessKeyId: process.env.AWS_ID,
-      secretAccessKey: process.env.AWS_ACCESS,
+      secretAccessKey: process.env.AWS_SECRET,
+      region: process.env.AWS_REGION,
     },
   });
 
   const imageUploader = multerS3({
     s3: s3,
     bucket: "campen",
+    contentType: multerS3.AUTO_CONTENT_TYPE,
     /** 업로드 된 파일이 저장될 파일명 설정 */
     // file.originalname 변수에 파일이름이 저장되어 있다. ex) helloworld.png
     key: (req, file, callback) => {
@@ -94,7 +98,7 @@ module.exports = (app) => {
     /** 최대 업로드 파일 수, 용량 제한 설정 */
     limits: {
       files: config.upload.max_count,
-      fileSize: config.upload.max_size, // 20메가
+      fileSize: config.upload.max_size, // 5메가
     },
     /** 업로드 될 파일의 확장자 제한 */
     fileFilter: (req, file, callback) => {
@@ -195,6 +199,7 @@ module.exports = (app) => {
   });
 
   router.route("/upload/multiple").post((req, res, next) => {
+    console.log(process.env.AWS_ID);
     // 요청정보 안에 업로드된 파일의 정보를 저장할 빈 배열을 준비
     req.file = [];
 
@@ -202,10 +207,12 @@ module.exports = (app) => {
     const upload = multipart.array("photo");
 
     upload(req, res, (err) => {
+      console.log("업로드 시작");
       let result_code = 200;
       let result_msg = "ok";
 
       if (err) {
+        console.log("에러발생", err);
         if (err instanceof multer.MulterError) {
           switch (err.code) {
             case "LIMIT_FILE-COUNT":
@@ -226,8 +233,7 @@ module.exports = (app) => {
         result_code = err.result_code;
         result_msg = err.result_msg;
       }
-
-      console.log(req.file);
+      console.log("파일정보", req.files);
       /** 업로드 결과에 이상이 없다면 썸네일 이미지 생성 */
       // const thumb_size_list = config.thumbnail.sizes;
 
@@ -277,7 +283,7 @@ module.exports = (app) => {
         rtmsg: result_msg,
         item: req.file,
       };
-      res.status(result_code).send(result);
+      res.status(200).send(result);
     });
   });
   return router;

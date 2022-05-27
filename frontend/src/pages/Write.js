@@ -41,7 +41,6 @@ const Write = () => {
 
   // 게시글 업로드
   const postCommu = async () => {
-    console.log("게시글 업로드 시작");
     try {
       // 텍스트값 전송
       const response = await axios.post(`/api/content`, {
@@ -49,12 +48,8 @@ const Write = () => {
         content: text,
         memberId: item.id,
       });
-      console.log("텍스트 전송 완료");
-
-      console.log("imgs 값 확인", imgs);
       // 업로드 한 이미지가 있을 경우 실행
       if (imgs.length > 0) {
-        console.log("imgs", imgs);
         // 이미지 데이터 형식 처리
         const formdata = new FormData();
         imgs.forEach((v) => {
@@ -67,12 +62,12 @@ const Write = () => {
         };
         // 이미지 데이터 전송
         const res = await axios.post(`/api/upload/multiple`, formdata, config);
-        console.log("res", res);
+        console.log(res);
         // 멀티 이미지 각각을 데이터베이스에 저장
-        await axios.post(`/api/contents/img`, {
-          src: res.data.item,
-          contentId: response.data.item[0].id,
-        });
+        // await axios.post(`/api/contents/img`, {
+        //   src: res.data.item,
+        //   contentId: response.data.item[0].id,
+        // });
         alert("게시글이 등록되었습니다.");
         go("/");
       }
