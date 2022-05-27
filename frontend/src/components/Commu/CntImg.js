@@ -68,11 +68,10 @@ const CntImgBox = styled.div`
 `;
 
 const CntImg = ({ src }) => {
-  const BACK = process.env.REACT_APP_BACK;
   return (
     <CntImgBox>
       <div className="default">
-        <img src={BACK + src} alt="커뮤니티" />
+        <img src={src} alt="커뮤니티" />
       </div>
     </CntImgBox>
   );

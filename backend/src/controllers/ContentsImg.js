@@ -106,6 +106,7 @@ module.exports = (app) => {
       dbcon = await mysql2.createConnection(config.database);
       await dbcon.connect();
       src.forEach(async (v) => {
+        console.log(v);
         // 데이터 저장하기
         const sql = "INSERT INTO `contents-img` VALUES (null, ?, now(), ?)";
         const input_data = [v.location, contentId];

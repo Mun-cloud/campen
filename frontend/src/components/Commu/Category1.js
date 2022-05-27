@@ -16,7 +16,6 @@ const CntBox = styled.div`
 `;
 
 const Category1 = ({ data }) => {
-  console.log(data.src);
   return (
     <CntBox key={data.id}>
       {/* <!-- 컨텐츠:프로필,텍스트 --> */}
