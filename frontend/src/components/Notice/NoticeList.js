@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const NoticeList = ({ data }) => {
+  // 보여질 공지사항 수(pagenation)
   const [viewMore, setViewMore] = useState(4);
   return (
     <>

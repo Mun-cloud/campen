@@ -48,7 +48,6 @@ const CntContainer = styled.div`
 `;
 
 const ItemCnt = ({ content }) => {
-  const BACK = process.env.REACT_APP_BACK;
   return (
     <CntContainer>
       {/* <!-- header: 상세 상단 --> */}

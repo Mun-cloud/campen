@@ -6,6 +6,7 @@ const UserContainer = styled.div`
   max-width: 530px;
   margin-left: auto;
   margin-right: auto;
+  height: 100vh;
   overflow: hidden;
   background-color: ${(props) => props.theme.lightGray};
 

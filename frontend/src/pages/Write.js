@@ -16,14 +16,21 @@ const Container = styled.div`
 `;
 
 const Write = () => {
+  // 유저 정보 수신
   const { isLoading, item } = useSelector((state) => state.user);
   const go = useNavigate();
+  // 게시글 텍스트 state
   const [text, setText] = useState("");
+  // 게시글 수정 시 이미지 추가 업로드 제한
   const [imgUploadHide, setImgUploadHide] = useState(false);
+  // 게시글 탭 value 저장 state
   const [tab, setTab] = useState("0");
+  // 게시글 이미지 저장 state
   const [imgs, setImgs] = useState([]);
+  // 커뮤니티 아이디 값 params에서 받기
   const { id: commuId } = useParams();
 
+  // 게시글 수정으로 접속 시 게시글 데이터 수신하여 출력
   useEffect(() => {
     if (commuId) {
       (async () => {
@@ -35,6 +42,7 @@ const Write = () => {
     }
   }, [commuId]);
 
+  // 로그인 정보 없을 시 로그인 페이지 이동
   useEffect(() => {
     !isLoading && item === null && go("/login");
   });

@@ -14,7 +14,6 @@ module.exports = (app) => {
   const thumbnail = require("node-thumbnail").thumb; // 썸네일 이미지 생성 모듈
 
   /** multer 객체 설정 --> 파일 제한 : 5개 ,20M */
-  // const s3 = new S3Client();
   const s3 = new aws.S3({
     credentials: {
       accessKeyId: process.env.AWS_ID,

@@ -74,6 +74,7 @@ const InputCommentBox = styled.div`
     font-size: 11pt;
     font-weight: 700;
     color: ${(props) => props.theme.mainColor};
+    cursor: pointer;
   }
 
   .submit-btn2 button {

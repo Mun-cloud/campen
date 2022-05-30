@@ -13,6 +13,7 @@ const LikeBtnBox = styled.div`
 `;
 
 const LikeBtn = ({ content }) => {
+  // 하트 채움 여부 state
   const [heartOn, setHeartOn] = useState(false);
   const { loading, item } = useSelector((state) => state.user);
 
@@ -34,6 +35,7 @@ const LikeBtn = ({ content }) => {
       return;
     }
 
+    // 하트가 이미 채워진 상태(좋아요 한 상태)라면
     if (heartOn) {
       try {
         await axios.delete(`/api/content_like/like`, {
