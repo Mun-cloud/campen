@@ -5,7 +5,8 @@ const UserPhotoUpload = () => {
   const go = useNavigate();
 
   const onChange = async (e) => {
-    const image = e.target.files;
+    console.log(e.eventTarget.value);
+    const image = e.eventTarget.value.files;
     console.log(image);
 
     try {
@@ -39,7 +40,7 @@ const UserPhotoUpload = () => {
         type="file"
         accept="image/jpg,impge/png,image/jpeg,image/gif"
         id="upload-button"
-        onChange={(e) => onChange(e.eventTarget.value)}
+        onChange={onChange}
         style={{ display: "none" }}
       />
     </label>
