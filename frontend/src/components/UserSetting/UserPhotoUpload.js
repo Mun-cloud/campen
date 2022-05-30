@@ -5,8 +5,8 @@ const UserPhotoUpload = () => {
   const go = useNavigate();
 
   const onChange = async (e) => {
-    console.log(e.eventTarget.value);
-    const image = e.eventTarget.value.files;
+    console.log(e.currentTarget.value);
+    const image = e.currentTarget.value.files;
     console.log(image);
 
     try {
