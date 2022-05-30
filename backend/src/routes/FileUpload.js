@@ -8,10 +8,10 @@ module.exports = (app) => {
   const aws = require("aws-sdk");
 
   const path = require("path");
+  const thumbnail = require("node-thumbnail").thumb; // 썸네일 이미지 생성 모듈
 
   const multer = require("multer"); // 업로드 모듈
   const multerS3 = require("multer-s3");
-  const thumbnail = require("node-thumbnail").thumb; // 썸네일 이미지 생성 모듈
 
   /** multer 객체 설정 --> 파일 제한 : 5개 ,20M */
   const s3 = new aws.S3({
@@ -82,8 +82,8 @@ module.exports = (app) => {
     callback(null, true);
   };
 
-  const userMulter = multer({
-    storage: userPhotoUploader,
+  const contentsMulter = multer({
+    storage: imageUploader,
     /** 최대 업로드 파일 수, 용량 제한 설정 */
     limits: {
       files: config.upload.max_count,
@@ -93,8 +93,8 @@ module.exports = (app) => {
     fileFilter: fileFilter,
   });
 
-  const contentsMulter = multer({
-    storage: imageUploader,
+  const userMulter = multer({
+    storage: userPhotoUploader,
     // multer.diskStorage({
     //   /** 업로드 된 파일이 저장될 디렉토리 설정 */
     //   // req는 요청정보, file은 최종적으로 업로드 된 결과 데이터가 저장되어있을 객체
