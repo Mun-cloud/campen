@@ -5,14 +5,13 @@ const UserPhotoUpload = () => {
   const go = useNavigate();
 
   const onChange = async (e) => {
-    console.log(e.target.files);
-    const image = e.target.files;
-    console.log(image);
+    const image = e.target.files[0];
 
     try {
       // 이미지 데이터 형식 처리
       const formdata = new FormData();
       formdata.append("photo", image);
+      console.log(formdata);
       const config = {
         Headers: {
           "content-type": "multipart/form-data",
