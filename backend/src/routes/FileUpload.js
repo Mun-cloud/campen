@@ -39,7 +39,7 @@ module.exports = (app) => {
       req.file = file;
     }
     callback(null, saveName);
-  },
+  };
 
   const imageUploader = multerS3({
     s3: s3,
@@ -52,7 +52,7 @@ module.exports = (app) => {
       },
     },
     // file.originalname 변수에 파일이름이 저장되어 있다. ex) helloworld.png
-    key: key
+    key: key,
   });
 
   const userPhotoUploader = multerS3({
@@ -66,7 +66,7 @@ module.exports = (app) => {
       },
     },
     // file.originalname 변수에 파일이름이 저장되어 있다. ex) helloworld.png
-    key: key
+    key: key,
   });
 
   const fileFilter = (req, file, callback) => {
@@ -81,7 +81,7 @@ module.exports = (app) => {
       return callback(err);
     }
     callback(null, true);
-  },
+  };
 
   const userMulter = multer({
     storage: userPhotoUploader,
@@ -91,7 +91,7 @@ module.exports = (app) => {
       fileSize: config.upload.max_size, // 5메가
     },
     /** 업로드 될 파일의 확장자 제한 */
-    fileFilter: fileFilter
+    fileFilter: fileFilter,
   });
 
   const contentsMulter = multer({
@@ -139,7 +139,7 @@ module.exports = (app) => {
       fileSize: config.upload.max_size, // 5메가
     },
     /** 업로드 될 파일의 확장자 제한 */
-    fileFilter: fileFilter
+    fileFilter: fileFilter,
   });
 
   router.route("/upload/simple").post((req, res, next) => {
