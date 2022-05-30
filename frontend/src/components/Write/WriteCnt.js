@@ -142,7 +142,7 @@ const WriteCnt = ({
     setImgs(files);
   }, [files]);
 
-  function onPictuerClick(e) {
+  function onPictureClick(e) {
     let i = parseInt(e.target.id);
     setFiles((prev) => prev.slice(0, i).concat(prev.slice(i + 1)));
     setImagPreview((prev) => prev.slice(0, i).concat(prev.slice(i + 1)));
@@ -196,7 +196,7 @@ const WriteCnt = ({
                       alt={v}
                       key={v}
                       id={i}
-                      onClick={onPictuerClick}
+                      onClick={onPictureClick}
                     />
                   ))}
               {/* <!-- 이미지 업로드 --> */}

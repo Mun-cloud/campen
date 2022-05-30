@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import UserPhotoUpload from "./UserPhotoUpload";
 
 const UserContainer = styled.div`
   height: 100vh;
@@ -78,11 +79,7 @@ const UserSettingMenu = () => {
 
   return (
     <UserContainer>
-      <label className="img-upload" htmlFor="upload-button">
-        <div className="user-div">프로필 사진 변경</div>
-        <input type="file" id="upload-button" accept="image/*" />
-      </label>
-
+      <UserPhotoUpload />
       <Link to="/nickname">
         <div className="nickname user-div">
           닉네임
