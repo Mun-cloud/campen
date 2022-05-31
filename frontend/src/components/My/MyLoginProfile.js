@@ -11,8 +11,8 @@ const MyProfile = styled.div`
   img {
     margin-right: 12px;
     display: block;
-    max-width: 28px;
-    max-height: 28px;
+    width: 88px;
+    height: 88px;
     border-radius: 50%;
     border: 1px solid rgb(201, 207, 204);
     background-clip: border-box;
