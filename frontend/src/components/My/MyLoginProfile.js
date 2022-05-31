@@ -10,7 +10,13 @@ const MyProfile = styled.div`
 
   img {
     margin-right: 12px;
-    width: 15%;
+    display: block;
+    max-width: 28px;
+    max-height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgb(201, 207, 204);
+    background-clip: border-box;
+    object-fit: cover;
   }
 
   .my-user {
