@@ -57,6 +57,7 @@ const Write = () => {
         memberId: item.id,
       });
       // 업로드 한 이미지가 있을 경우 실행
+      console.log(imgs.length);
       if (imgs.length > 0) {
         // 이미지 데이터 형식 처리
         const formdata = new FormData();
