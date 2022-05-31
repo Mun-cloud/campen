@@ -38,7 +38,6 @@ const MyProfile = styled.div`
 `;
 
 const MyLoginProfile = () => {
-  const BACK = process.env.REACT_APP_BACK;
   const { item: user } = useSelector((state) => state.user);
 
   if (!user || user.length === 0) {
@@ -49,9 +48,7 @@ const MyLoginProfile = () => {
       <MyProfile>
         <img
           src={
-            user.photo
-              ? BACK + user.photo
-              : require("../../assets/img/user-img.png")
+            user.photo ? user.photo : require("../../assets/img/user-img.png")
           }
           alt="상"
         />

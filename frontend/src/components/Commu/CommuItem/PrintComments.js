@@ -63,7 +63,6 @@ const CommentArticle = styled.div`
 `;
 
 const PrintComments = ({ comment }) => {
-  const BACK = process.env.REACT_APP_BACK;
   const { item: user } = useSelector((state) => state.user);
   // UTC 시간 변환 기능
   const [reg, setReg] = useState();
@@ -71,7 +70,6 @@ const PrintComments = ({ comment }) => {
     let dateObj = new Date(comment.reg_date);
     setReg(dateObj.toLocaleString("ko-KR", { timeZone: "Asia/Seoul" }));
   }, [comment]);
-  console.log(comment);
   return (
     <CommentBox>
       <UserTitle>
@@ -79,7 +77,7 @@ const PrintComments = ({ comment }) => {
           <img
             src={
               comment.photo
-                ? BACK + comment.photo
+                ? comment.photo
                 : require("../../../assets/img/user-img.png")
             }
             alt="캠퍼1103"

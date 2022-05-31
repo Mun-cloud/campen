@@ -49,7 +49,6 @@ const Profile = styled.div`
 `;
 
 const UserSettingProfile = () => {
-  const BACK = process.env.REACT_APP_BACK;
   const { item: user } = useSelector((state) => state.user);
 
   if (!user || user.length === 0) {
@@ -59,11 +58,7 @@ const UserSettingProfile = () => {
   return (
     <Profile>
       <img
-        src={
-          user.photo
-            ? BACK + user.photo
-            : require("../../assets/img/user-img.png")
-        }
+        src={user.photo ? user.photo : require("../../assets/img/user-img.png")}
         alt={user.user_name}
       />
       <div className="user-name">{user.user_name}</div>

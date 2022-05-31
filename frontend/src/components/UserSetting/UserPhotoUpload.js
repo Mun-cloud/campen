@@ -1,21 +1,13 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const UserPhotoUpload = () => {
-  const go = useNavigate();
-
   const onChange = async (e) => {
-    console.log(e.target.files[0]);
-    console.log(e.target.file);
-    console.log(e.currentTarget);
     const image = e.target.files[0];
-    console.log(image);
 
     try {
       // 이미지 데이터 형식 처리
       const formdata = new FormData();
       formdata.append("photo", image);
-      console.log(formdata);
       const config = {
         Headers: {
           "content-type": "multipart/form-data",
@@ -23,14 +15,12 @@ const UserPhotoUpload = () => {
       };
       // 이미지 데이터 전송
       const res = await axios.post(`/api/upload/simple`, formdata, config);
-      console.log("res", res);
       // 멀티 이미지 각각을 데이터베이스에 저장
-      const rr = await axios.put(`/api/member/photo`, {
+      await axios.put(`/api/member/photo`, {
         input: res.data.item,
       });
-      console.log(rr);
-      // alert("프로필 사진이 등록되었습니다..");
-      // go("/usersetting");
+      alert("프로필 사진이 등록되었습니다.");
+      window.location.reload();
     } catch (err) {
       alert(err.response.data.rtmsg);
     }
@@ -42,6 +32,7 @@ const UserPhotoUpload = () => {
       <input
         type="file"
         accept="image/jpg,impge/png,image/jpeg,image/gif"
+        name="photo"
         id="upload-button"
         onChange={onChange}
         style={{ display: "none" }}

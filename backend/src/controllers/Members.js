@@ -281,8 +281,10 @@ module.exports = (app) => {
       await dbcon.connect();
 
       // 데이터 수정하기
+      console.log("put", put);
+      console.log("input", input);
       const sql = `UPDATE members SET ${put}=?, edit_date=now() WHERE id=?`;
-      const input_data = [input, id];
+      const input_data = [input.location, id];
       const [result1] = await dbcon.query(sql, input_data);
 
       // 결과 행 수가 0이라면 예외처리
