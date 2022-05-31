@@ -51,6 +51,7 @@ const Write = () => {
   const postCommu = async () => {
     try {
       // 텍스트값 전송
+      console.log(imgs.length);
       const response = await axios.post(`/api/content`, {
         tab,
         content: text,
