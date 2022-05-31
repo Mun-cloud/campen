@@ -5,7 +5,11 @@ const UserPhotoUpload = () => {
   const go = useNavigate();
 
   const onChange = async (e) => {
+    console.log(e.target.files[0]);
+    console.log(e.target.file);
+    console.log(e.currentTarget);
     const image = e.target.files[0];
+    console.log(image);
 
     try {
       // 이미지 데이터 형식 처리
