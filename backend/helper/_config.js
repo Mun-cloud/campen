@@ -1,3 +1,9 @@
+/**
+ * @ Filename : _config.js
+ * @ Author : 문태호
+ * @ Description : 백엔드 개인 설정사항 저장파일
+ */
+
 const path = require("path");
 
 module.exports = {

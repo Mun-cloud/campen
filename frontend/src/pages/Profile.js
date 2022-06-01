@@ -14,14 +14,14 @@ const Container = styled.div`
 
 const Profile = () => {
   const { id } = useParams();
-  const [content, setContent] = useState();
+  const [item, setItem] = useState();
   const [tab, setTab] = useState("게시글");
 
   useEffect(() => {
     (async () => {
       try {
         const response = await axios.get(`/api/member/${id}`);
-        setContent(response.data);
+        setItem(response.data);
       } catch (err) {
         alert(err.response.data.rtmsg);
       }
@@ -31,9 +31,9 @@ const Profile = () => {
   return (
     <Container>
       <ProfileHeader />
-      <ProfileUser content={content} />
-      <ProfileTabMenu content={content} tabValue={setTab} />
-      <ProfileCnt content={content} tabValue={tab} />
+      <ProfileUser item={item} />
+      <ProfileTabMenu item={item} tabValue={setTab} />
+      <ProfileCnt item={item} tabValue={tab} />
     </Container>
   );
 };

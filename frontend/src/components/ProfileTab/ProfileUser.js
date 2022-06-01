@@ -24,21 +24,19 @@ const UserProfile = styled.div`
   }
 `;
 
-const ProfileUser = ({ content }) => {
-  return !content ? null : (
+const ProfileUser = ({ item }) => {
+  return !item ? null : (
     <>
       {/*  <!-- 유저프로필 --> */}
       <UserProfile>
         <img
           src={
-            content.photo
-              ? content.photo
-              : require("../../assets/img/user-img.png")
+            item.photo ? item.photo : require("../../assets/img/user-img.png")
           }
-          alt={content.nickname ? content.nickname : `캠퍼${content.id}`}
+          alt={item.nickname ? item.nickname : `캠퍼${item.id}`}
         />
         <div className="user-name">
-          {content.nickname ? content.nickname : `캠퍼 ${content.id}`}
+          {item.nickname ? item.nickname : `캠퍼 ${item.id}`}
         </div>
       </UserProfile>
     </>

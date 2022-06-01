@@ -419,8 +419,12 @@ module.exports = (app) => {
 
       const [result1] = await dbcon.query(sql1, args1);
 
+      // 해당 사용자가 작성한 게시글과 대표이미지 응답
       let sql2 =
-        "SELECT id contentId, reg_date, tab, cast(content as char(10000)) content FROM contents WHERE members_id=?";
+        "SELECT c.id contentId, c.reg_date, tab, cast(content as char(10000)) content, i.src photo FROM contents c ";
+      sql2 +=
+        "LEFT OUTER JOIN (select min(id) id, contents_id, src from `contents-img` group by contents_id) i ON c.id = i.contents_id ";
+      sql2 += "WHERE members_id=?";
       const [result2] = await dbcon.query(sql2, [id]);
 
       json = result1[0];

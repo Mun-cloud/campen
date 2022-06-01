@@ -1,5 +1,7 @@
 /**
- * camp 테이블에 대한 CRUD 기능을 수행하는 Restful API
+ * @ Filename : Camp.js
+ * @ Author : 문태호
+ * @ Description : camp 테이블에 대한 CRUD 기능을 수행하는 Restful API
  */
 
 /** 모듈 참조 부분 */
@@ -96,14 +98,11 @@ module.exports = (app) => {
       dbcon = await mysql2.createConnection(config.database);
       await dbcon.connect();
 
-      // let sql = "SELECT COUNT(*) cnt FROM camp";
-      // "SELECT id, contentId, name, addr1, addr2, tel, lctCl, price, photo, `basic_fac`, `add_fac`, lineIntro, intro, tag, mapX, mapY, homepage, `manner_start`, `manner_end`, policy, map, is_reg, reg_date, edit_date FROM camp";
-      // const [result] = await dbcon.query(sql);
-
       // 전체 데이터 수를 조회
       let sql1 = "SELECT COUNT(*) 'cnt' FROM camp";
       let args1 = [];
 
+      // 검색어 값이 있는 경우
       if (query != null) {
         sql1 += " WHERE name LIKE concat('%', ?, '%')";
         args1.push(query);
@@ -124,84 +123,7 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
-  /** 이미지 URL정보 저장 */
-  router.get("/getcampimage", async (req, res, next) => {
-    /** 데이터 저장하기 */
-    // 데이터 조회 결과가 저장될 빈 변수
-    let json = null;
-
-    try {
-      // 데이터베이스 접속
-      dbcon = await mysql2.createConnection(config.database);
-      await dbcon.connect();
-
-      // 전체 캠핑장 openAPI id 값 조회
-      const [result1] = await dbcon.query("SELECT id, contentId FROM camp");
-
-      // 데이터 저장하기 65-70
-      result1.slice(65, 70).forEach(async (v) => {
-        // id값마다 image url return
-        let imageResult;
-        try {
-          const APIurl =
-            "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/imageList";
-          const GOCAMP_KEY =
-            "5APlXd7ZkPeuONbcZe2isYf2o238wB9owyYEmdkJEV7AeGwMGLtF2cB2ku18d/iA5dcfs9UX/wA+qck++FPT3A==";
-          const urlParams = {
-            params: {
-              ServiceKey: GOCAMP_KEY,
-              MobileOS: "ETC",
-              MobileApp: "AppTest",
-              contentId: v.contentId,
-            },
-          };
-          imageResult = (await axios.get(APIurl, urlParams)).data.response.body;
-          // console.log(imageResult.items);
-        } catch (err) {
-          console.error(err);
-        }
-        // image 값이 있으면 DB에 저장
-        if (imageResult.items == "") {
-          // 데이터베이스 접속
-          dbcon = await mysql2.createConnection(config.database);
-          await dbcon.connect();
-
-          await dbcon.query("INSERT INTO `camp-image` VALUES (null, null, ?)", [
-            v.id,
-          ]);
-          // 없으면 null
-        } else if (imageResult.items.item.length === undefined) {
-          // 데이터베이스 접속
-          dbcon = await mysql2.createConnection(config.database);
-          await dbcon.connect();
-
-          await dbcon.query("INSERT INTO `camp-image` VALUES (null, ?, ?)", [
-            imageResult?.items.item.imageUrl,
-            v.id,
-          ]);
-        } else {
-          // 데이터베이스 접속
-          dbcon = await mysql2.createConnection(config.database);
-          await dbcon.connect();
-
-          imageResult?.items.item.forEach(async (x) => {
-            const sql = "INSERT INTO `camp-image` VALUES (null, ?, ?)";
-            const input_data = [x.imageUrl, v.id];
-            await dbcon.query(sql, input_data);
-          });
-        }
-      });
-    } catch (err) {
-      return next(err);
-    } finally {
-      dbcon.end();
-    }
-
-    // 모든 처리에 성공했으므로 정상 조회 결과 구성
-    res.send("OK");
-  });
-
-  /** 슬라이드 이미지 전송 */
+  /** 슬라이드 이미지 URL 정보 전송 */
   router.get("/getcampimage/:id", async (req, res, next) => {
     const id = req.get("id");
 
@@ -232,7 +154,7 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
-  /** 특정 항목에 대한 상세 조회 --> Read(SELECT) */
+  /** 특정 캠핑장에 대한 상세 조회 --> Read(SELECT) */
   router.get("/campdata/:id", async (req, res, next) => {
     const id = req.get("id");
     if (id === null) {
@@ -257,6 +179,8 @@ module.exports = (app) => {
       const sql2 =
         "SELECT i.id, imageURL FROM `camp-image` i, camp c where i.camp_id=c.id and c.id=?";
       const [campSlide] = await dbcon.query(sql2, [id]);
+
+      // 조회된 데이터에 이미지 URL 배열을 추가하여 response
       json[0].campSlide = campSlide;
     } catch (err) {
       return next(err);
@@ -268,7 +192,7 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
-  /** 데이터 추가 --> Create(INSERT) */
+  /** 데이터베이스에 OPEN API 캠핑장 정보 저장 (1회용 코드) */
   router.get("/getcamp", async (req, res, next) => {
     /** Ajax 파라미터 정리 및 axios */
     const APIurl =
@@ -329,6 +253,82 @@ module.exports = (app) => {
         // // 새로 저장된 데이터의 PK값을 활용하여 다시 조회
         // const sql2 = "SELECT deptno, dname, loc FROM department WHERE deptno=?";
         // const [result2] = await dbcon.query(sql2, [result1.insertId]);
+      });
+    } catch (err) {
+      return next(err);
+    } finally {
+      dbcon.end();
+    }
+
+    // 모든 처리에 성공했으므로 정상 조회 결과 구성
+    res.send("OK");
+  });
+
+  /** 데이터베이스에 OPEN API 이미지 URL정보 저장 (1회용 코드) */
+  router.get("/getcampimage", async (req, res, next) => {
+    /** 데이터 저장하기 */
+    // 데이터 조회 결과가 저장될 빈 변수
+    let json = null;
+
+    try {
+      // 데이터베이스 접속
+      dbcon = await mysql2.createConnection(config.database);
+      await dbcon.connect();
+
+      // 전체 캠핑장 openAPI id 값 조회
+      const [result1] = await dbcon.query("SELECT id, contentId FROM camp");
+
+      // 데이터 전송에 제한이 있으므로 슬라이스로 부분씩 저장
+      result1.slice(65, 70).forEach(async (v) => {
+        // id값마다 image url return
+        let imageResult;
+        try {
+          const APIurl =
+            "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/imageList";
+          const GOCAMP_KEY =
+            "5APlXd7ZkPeuONbcZe2isYf2o238wB9owyYEmdkJEV7AeGwMGLtF2cB2ku18d/iA5dcfs9UX/wA+qck++FPT3A==";
+          const urlParams = {
+            params: {
+              ServiceKey: GOCAMP_KEY,
+              MobileOS: "ETC",
+              MobileApp: "AppTest",
+              contentId: v.contentId,
+            },
+          };
+          imageResult = (await axios.get(APIurl, urlParams)).data.response.body;
+        } catch (err) {
+          console.error(err);
+        }
+        // image 값이 있으면 DB에 저장
+        if (imageResult.items == "") {
+          // 데이터베이스 접속
+          dbcon = await mysql2.createConnection(config.database);
+          await dbcon.connect();
+
+          await dbcon.query("INSERT INTO `camp-image` VALUES (null, null, ?)", [
+            v.id,
+          ]);
+          // 없으면 null
+        } else if (imageResult.items.item.length === undefined) {
+          // 데이터베이스 접속
+          dbcon = await mysql2.createConnection(config.database);
+          await dbcon.connect();
+
+          await dbcon.query("INSERT INTO `camp-image` VALUES (null, ?, ?)", [
+            imageResult?.items.item.imageUrl,
+            v.id,
+          ]);
+        } else {
+          // 데이터베이스 접속
+          dbcon = await mysql2.createConnection(config.database);
+          await dbcon.connect();
+
+          imageResult?.items.item.forEach(async (x) => {
+            const sql = "INSERT INTO `camp-image` VALUES (null, ?, ?)";
+            const input_data = [x.imageUrl, v.id];
+            await dbcon.query(sql, input_data);
+          });
+        }
       });
     } catch (err) {
       return next(err);

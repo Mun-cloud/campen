@@ -33,14 +33,14 @@ const TabItem = styled.li`
   }
 `;
 
-const ProfileTabMenu = ({ content, tabValue }) => {
+const ProfileTabMenu = ({ item, tabValue }) => {
   const [selectedTab, setSelectedTab] = useState("게시글");
   const [left, setLeft] = useState(0);
   const [right, setRight] = useState(0);
   useEffect(() => {
     let leftCount = 0;
     let rightCount = 0;
-    content?.contents.forEach((v) => {
+    item?.contents.forEach((v) => {
       if (v.tab === 0 || v.tab === 2) {
         leftCount++;
       } else if (v.tab === 1) {
@@ -49,7 +49,7 @@ const ProfileTabMenu = ({ content, tabValue }) => {
       setLeft(leftCount);
       setRight(rightCount);
     });
-  }, [content]);
+  }, [item]);
 
   return (
     <>

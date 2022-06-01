@@ -72,13 +72,13 @@ const CntBox = styled.div`
   }
 `;
 
-const ProfileCnt = ({ content, tabValue }) => {
+const ProfileCnt = ({ item, tabValue }) => {
   const [filter, setFilter] = useState([]);
   useEffect(() => {
-    if (content && tabValue) {
+    if (item && tabValue) {
       let filterArr = [];
       if (tabValue === "게시글") {
-        filterArr = content.contents.filter((v) => {
+        filterArr = item.contents.filter((v) => {
           if (v.tab === 0 || v.tab === 2) {
             return true;
           } else {
@@ -86,7 +86,7 @@ const ProfileCnt = ({ content, tabValue }) => {
           }
         });
       } else if (tabValue === "캠핑후기") {
-        filterArr = content.contents.filter((v) => {
+        filterArr = item.contents.filter((v) => {
           if (v.tab === 1) {
             return true;
           } else {
@@ -96,9 +96,9 @@ const ProfileCnt = ({ content, tabValue }) => {
       }
       setFilter(filterArr);
     }
-  }, [content, tabValue]);
+  }, [item, tabValue]);
 
-  return !content ? null : (
+  return !item ? null : (
     <CntContainer>
       {filter &&
         filter.map((v) => (
@@ -127,12 +127,11 @@ const ProfileCnt = ({ content, tabValue }) => {
                   </div>
                 </div>
                 {/*  <!-- 이미지 --> */}
-                <div className="cnt-img">
-                  <img
-                    src={require("../../assets/img/medium.jpeg")}
-                    alt="컨텐츠 이미지"
-                  />
-                </div>
+                {v.photo ? (
+                  <div className="cnt-img">
+                    <img src={v.photo} alt={v.content} />
+                  </div>
+                ) : null}
               </Link>
             </CntBox>
           </>
