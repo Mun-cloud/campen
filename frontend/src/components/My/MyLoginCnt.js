@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -19,7 +20,8 @@ const Box = styled.div`
   }
 `;
 
-const MyLoginCnt = ({ item }) => {
+const MyLoginCnt = () => {
+  const { item } = useSelector((state) => state.user);
   return (
     <>
       {/* <!-- 공지사항,설정,고객센터 박스  --> */}

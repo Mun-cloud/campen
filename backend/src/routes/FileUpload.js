@@ -1,4 +1,8 @@
-const { createSecretKey } = require("crypto");
+/**
+ * @ Filename : FileUpload.js
+ * @ Author : 문태호
+ * @ Description : 파일 업로드 라우팅
+ */
 
 module.exports = (app) => {
   const router = require("express").Router();
@@ -40,6 +44,7 @@ module.exports = (app) => {
     callback(null, saveName);
   };
 
+  // AWS S3 multer storage setting
   const imageUploader = multerS3({
     s3: s3,
     bucket: "campen/contentsimg",
