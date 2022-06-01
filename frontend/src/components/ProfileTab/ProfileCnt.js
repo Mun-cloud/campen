@@ -96,6 +96,7 @@ const ProfileCnt = ({ item, tabValue }) => {
       }
       setFilter(filterArr);
     }
+    console.log(filter);
   }, [item, tabValue]);
 
   return !item ? null : (
