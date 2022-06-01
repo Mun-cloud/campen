@@ -51,14 +51,12 @@ const Write = () => {
   const postCommu = async () => {
     try {
       // 텍스트값 전송
-      console.log(imgs.length);
       const response = await axios.post(`/api/content`, {
         tab,
         content: text,
         memberId: item.id,
       });
       // 업로드 한 이미지가 있을 경우 실행
-      console.log(imgs.length);
       if (imgs.length > 0) {
         // 이미지 데이터 형식 처리
         const formdata = new FormData();
@@ -77,9 +75,9 @@ const Write = () => {
           src: res.data.item,
           contentId: response.data.item[0].id,
         });
-        alert("게시글이 등록되었습니다.");
-        go("/");
       }
+      alert("게시글이 등록되었습니다.");
+      go("/commu");
     } catch (err) {
       alert(err.response.data.rtmsg);
     }

@@ -95,8 +95,16 @@ const ItemProfile = ({ content }) => {
               <li className="cnt-user">
                 <img
                   className="cnt-user-img"
-                  src={require("../../../assets/img/user-img.png")}
-                  alt="캠퍼1103"
+                  src={
+                    content.userPhoto
+                      ? content.userPhoto
+                      : require("../../../assets/img/user-img.png")
+                  }
+                  alt={
+                    content.nickname
+                      ? content.nickname
+                      : `캠퍼${content.members_id}`
+                  }
                 />
                 <span className="cnt-user-name">
                   {content.nickname
