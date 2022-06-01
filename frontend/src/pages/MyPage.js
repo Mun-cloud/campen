@@ -18,7 +18,15 @@ const MyPage = () => {
     })();
   }, []);
 
-  return <>{isLoading ? null : item !== null ? <MyLogin /> : <MyLogout />}</>;
+  return (
+    <>
+      {isLoading ? null : item !== null ? (
+        <MyLogin item={item} />
+      ) : (
+        <MyLogout />
+      )}
+    </>
+  );
 };
 
 export default MyPage;

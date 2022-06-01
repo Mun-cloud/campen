@@ -19,12 +19,12 @@ const Box = styled.div`
   }
 `;
 
-const MyLoginCnt = () => {
+const MyLoginCnt = ({ item }) => {
   return (
     <>
       {/* <!-- 공지사항,설정,고객센터 박스  --> */}
       <Box>
-        <Link className="my-content" to="/profile">
+        <Link className="my-content" to={`/profile/${item.id}`}>
           <div className="my-div">내가 작성한글</div>
         </Link>
       </Box>

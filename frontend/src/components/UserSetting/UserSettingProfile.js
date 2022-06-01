@@ -62,7 +62,7 @@ const UserSettingProfile = () => {
         alt={user.user_name}
       />
       <div className="user-name">{user.user_name}</div>
-      <Link className="user-intro" to={`/userintro/${user.id}`}>
+      <Link className="user-intro" to="/userintro">
         <p>{user.intro}</p>
         <span className="material-icons"> edit</span>
       </Link>
