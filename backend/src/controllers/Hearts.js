@@ -1,15 +1,12 @@
 /**
- * contents 테이블에 대한 CRUD 기능을 수행하는 Restful API
+ * @ Filename : Hearts.js
+ * @ Author : 문태호
+ * @ Description : hearts 테이블에 대한 CRUD 기능을 수행하는 Restful API
  */
 
 /** 모듈 참조 부분 */
 const config = require("../../helper/_config");
-const logger = require("../../helper/LogHelper");
-const regexHelper = require("../../helper/RegexHelper");
-const utilHelper = require("../../helper/UtilHelper");
 const BadRequestException = require("../../exceptions/BadRequestException");
-const RuntimeException = require("../../exceptions/RuntimeException");
-const MultipartException = require("../../exceptions/MultipartException");
 const router = require("express").Router();
 const mysql2 = require("mysql2/promise");
 
@@ -17,7 +14,7 @@ const mysql2 = require("mysql2/promise");
 module.exports = (app) => {
   let dbcon = null;
 
-  /** 항목별 분류 조회 --> Read(SELECT) */
+  /** 찜한 목록 및 캠핑장 정보 응답 --> Read(SELECT) */
   router.get("/hearts/:id", async (req, res, next) => {
     const id = req.get("id");
     if (id === null) {
@@ -49,7 +46,7 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
-  /** 데이터 추가 --> Create(INSERT) */
+  /** 찜한 목록 추가 --> Create(INSERT) */
   router.post("/hearts", async (req, res, next) => {
     if (!req.session.memberInfo) {
       return next(new BadRequestException("로그인중이 아닙니다."));
@@ -89,7 +86,7 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
-  /** 데이터 삭제 --> Delete(DELETE) */
+  /** 찜한 목록 삭제 --> Delete(DELETE) */
   router.delete("/hearts", async (req, res, next) => {
     if (!req.session.memberInfo) {
       return next(new BadRequestException("로그인중이 아닙니다."));
