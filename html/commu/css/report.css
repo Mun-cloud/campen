@@ -1,0 +1,109 @@
+@import "./reset.css";
+body{
+    background-color: rgb(231, 240, 234);
+    font-family: SpoqaHanSans;
+    
+}
+
+.contaniner {
+    max-width: 530px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* 글쓰기 상단 */
+.top-container {
+    top:0px;
+    padding-top: 3px;
+    height:55px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(241,245,243);
+}
+
+.back-btn {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 52px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.back-btn span{
+    font-size:12pt;
+    cursor: pointer;
+}
+
+.title {
+    margin: 0px auto;
+    padding-right: 52px;
+    font-size: 12.5pt;
+}
+
+/* 컨텐츠 */
+.report-container {
+    padding: 0px 20px;
+    background: rgb(255, 255, 255);
+    height:800px;
+}
+
+.report-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+    border-bottom: 1px solid rgb(234, 238, 236);
+    cursor: pointer;
+    font-size: 11.5pt;
+    color:#444;
+}
+
+.report-box:nth-child(7){
+    border: none;
+}
+
+.report-text {
+    display: flex;
+
+}
+textarea {
+    border: 0.5px solid rgb(212, 217, 214);
+    padding:10px 5px;
+    width:100%;
+    height: 300px;
+    font-family: SpoqaHanSans;
+    font-weight: 400;
+    font-size:10pt;
+    outline: none;
+    resize: none;
+}
+
+/* 하단 버튼 */
+.write-submit {
+    max-width: 530px;
+    position:fixed;
+    bottom:0px;
+    width: 100%;
+    height: 55px;
+    font-size: 11.5pt;
+    background: rgb(234, 238, 236);
+    color: rgb(133, 138, 136);
+    font-weight: 700;
+    font-size: 12pt;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+
+
+

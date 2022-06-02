@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/write.css">
+
+    <title>글쓰기</title>
+</head>
+
+<body>
+    <div class="contaniner">
+        <!-- 글쓰기 상단  -->
+        <header class="top-container">
+            <a class="back-btn" href="../commu/commu2.html">
+                <span class="material-icons-outlined">
+                    arrow_back_ios
+                </span>
+            </a>
+            <p class="title">
+                글쓰기
+            </p>
+        </header>
+
+        <!-- 컨텐츠 -->
+        <div class="cnt-container">
+            <div class="cnt-box">
+                <!-- 글쓰기 주제 선택버튼 -->
+                <button class="cnt-button">
+                    <p>게시글의 주제를 선택해주세요.</p>
+                    <span class="material-icons-outlined">expand_more</span>
+                </button>
+                <!-- 글쓰기 입력영역 -->
+                <div class="cnt">
+                    <textarea height="100%" placeholder="이곳에 글을 작성해주세요.최소 10자 이상 입력해주세요." name="constents"
+                        maxlength="3000"></textarea>
+                </div>
+            </div>
+
+            <!-- 이미지 업로드 -->
+            <div class="photo-container">
+                <div class="photo-box">
+                    <div class="photo-upload">
+                        <!-- 이미지 업로드 -->
+                        <label class="photo" for="upload-btn">
+                            <span class="material-icons">
+                                image
+                            </span>
+                            <div class="photo-count">0/10</div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 하단 버튼 -->
+        <button type="button" class="write-submit">
+            <span>
+                최소 10자 이상 입력해주세요.
+            </span>
+        </button>
+
+    </div>
+</body>
+
+<script src="https://kit.fontawesome.com/def66b134a.js" crossorigin="anonymous"></script>
+
+</html>

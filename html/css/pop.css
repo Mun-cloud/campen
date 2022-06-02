@@ -1,0 +1,144 @@
+/*
+    @ Filename : pop.css
+    @ Author : 문태호
+    @ Description : 팝업페이지 및 기본 header 레이아웃
+*/
+
+body {
+  position: relative;
+}
+
+.pop {
+  position: fixed;
+  top: 0px;
+  left: auto;
+  right: auto;
+  z-index: 2000;
+  max-width: 530px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgb(255, 255, 255);
+}
+
+.pop_header {
+  top: 0px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 53px;
+  width: 100%;
+  border-bottom: 1px solid rgb(234, 238, 236);
+}
+
+.pop_chev {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 20px;
+  cursor: pointer;
+  font-size: 17px;
+  padding: 10px;
+}
+
+.pop_title {
+  font-size: 16px;
+}
+
+.pop_main {
+  padding: 40px 20px;
+}
+
+.pop_small {
+  padding-bottom: 8px;
+  font-size: 12px;
+  color: rgb(26, 29, 27);
+}
+
+.pop_policy {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.pop_text {
+  padding-top: 32px;
+  white-space: pre-line;
+  word-break: break-all;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* 취소환불규정 팝업 */
+.refund_section {
+  padding-top: 32px;
+  font-size: 12px;
+}
+
+.refund_section_title {
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgb(234, 238, 236);
+  font-size: 13px;
+  font-weight: 700;
+  color: rgb(67, 192, 131);
+}
+
+.refund_text_box {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px;
+  border-bottom: 1px solid rgb(234, 238, 236);
+}
+
+.refund_section_partition {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0px 4px;
+  border-bottom: 1px solid rgb(234, 238, 236);
+}
+
+.refund_section_partition > * {
+  flex: 1 1 0%;
+}
+
+.refund_partition_right {
+  display: flex;
+  justify-content: space-between;
+}
+
+.refund_gay_text {
+  color: rgb(90, 94, 91);
+}
+
+.refund_days {
+  padding-bottom: 6px;
+}
+
+.refund_per {
+  padding-bottom: 6px;
+  text-align: right;
+}
+
+/* 사업자정보 표 형식 */
+.pop_table {
+  width: 100%;
+}
+
+.pop_table tbody {
+  border-top: 1px solid rgb(234, 238, 236);
+  font-size: 12px;
+}
+
+.pop_table tr {
+  border-bottom: 1px solid rgb(234, 238, 236);
+}
+
+.pop_table td {
+  padding: 14px 12px;
+  vertical-align: middle;
+}
+
+.pop_table_name {
+  width: 35%;
+  background: rgba(241, 245, 243, 0.7);
+}

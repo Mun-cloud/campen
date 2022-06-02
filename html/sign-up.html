@@ -1,0 +1,82 @@
+<!--
+    @ Filename : sign-up.html
+    @ Author : 문태호
+    @ Description : 회원가입 회원정보 입력 페이지
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>캠핀</title>
+    <link rel="stylesheet" href="css/sign_up.css" />
+    <link href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/1818959bdb.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="pop policy_pop">
+            <div class="pop_header">
+                <div class="pop_chev">
+                    <i class="fas fa-chevron-left policy_btn_chev"></i>
+                </div>
+                <p class="pop_title">회원정보 입력</p>
+            </div>
+            <div class="pop_main">
+                <div class="pop_policy">회원정보를 입력해주세요.</div>
+                <form>
+                    <input id="user_name" type="text" placeholder="이름">
+                    <input id="email" type="email" placeholder="이메일">
+                    <input id="user_id" type="text" placeholder="아이디">
+                    <input id="password" type="password" placeholder="비밀번호">
+                    <span class="password_guide">8자 이상, 숫자와 영문 필수 포함</span>
+                    <input id="password2" type="password" placeholder="비밀번호 확인">
+                </form>
+            </div>
+            <button class="foot_btn">다음</button>
+        </div>
+    </div>
+    <script src="./JS/regex_helper.js"></script>
+    <script>
+        const regexHelper = new RegexHelper();
+
+        const footBtn = document.querySelector(".foot_btn")
+        const backBtn = document.querySelector(".pop_chev")
+
+        backBtn.addEventListener("click", () => {
+            location.href = "join.html"
+        })
+
+        footBtn.addEventListener("click", () => {
+            const regexHelper = new RegexHelper();
+
+            // 유효성 검사
+            if (!regexHelper.value("#user_name", "이름을 입력하세요")) { return false; }
+            if (!regexHelper.max_length("#user_name", 20, "이름은 최대 20자 까지만 입력 가능합니다.")) { return false; }
+
+            if (!regexHelper.value("#email", "이메일를 입력하세요")) { return false; }
+            if (!regexHelper.email("#email", "이메일 형식을 확인해 주세요")) { return false; }
+
+            if (!regexHelper.value("#user_id", "아이디를 입력하세요")) { return false; }
+            if (!regexHelper.min_length("#user_id", 4, "아이디는 최소 4자 이상 입력 가능합니다.")) { return false; }
+            if (!regexHelper.max_length("#user_id", 20, "아이디는 최대 20자 까지만 입력 가능합니다.")) { return false; }
+
+            if (!regexHelper.value("#password", "비밀번호를 입력하세요")) { return false; }
+            if (!regexHelper.min_length("#password", 8, "비밀번호는 최소 8자 이상 입력 가능합니다.")) { return false; }
+            if (!regexHelper.numEng("#password", "비밀번호는 영문과 숫자를 조합하여야 합니다.")) { return false; }
+            if (!regexHelper.value("#password2", "비밀번호 확인을 입력하세요")) { return false; }
+            if (!regexHelper.compare_to("#password", "#password2", "비밀번호 확인이 잘못되었습니다.")) { return false; }
+
+            // 처리 완료
+            alert("회원 가입을 환영합니다.")
+
+            location.href = "/"
+        })
+    </script>
+</body>
+
+</html>

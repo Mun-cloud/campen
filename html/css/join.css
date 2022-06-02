@@ -1,0 +1,75 @@
+/*
+    @ Filename : join.css
+    @ Author : 문태호
+    @ Description : 가입 약관 동의 페이지 레이아웃
+*/
+
+@import url("reset.css");
+@import url("style.css");
+@import url("pop.css");
+
+.container {
+  min-height: 100vh;
+}
+
+.foot_btn {
+  width: 100%;
+  height: 56px;
+  background-color: rgb(234, 238, 236);
+  color: rgb(133, 138, 136);
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  position: absolute;
+  bottom: 0;
+  transition: background-color 0.1s ease-in;
+}
+
+.pop_policy {
+  margin-bottom: 50px;
+}
+
+.check_box {
+  padding: 0 5px;
+}
+
+.check_box input {
+  margin: 0;
+  margin-right: 13px;
+  width: 15px;
+  height: 15px;
+}
+
+.check_box > label {
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgb(234, 238, 236);
+}
+
+label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.check_list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  height: 22px;
+  margin-top: 14px;
+  position: relative;
+  z-index: 4;
+}
+
+.check_list i {
+  color: rgba(19, 34, 28, 0.4);
+  margin-right: 7px;
+}
+
+/* 버튼 색 변경 */
+.foot_btn.checked {
+  background-color: rgb(67, 192, 131);
+  color: white;
+}

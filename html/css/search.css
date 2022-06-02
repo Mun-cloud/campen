@@ -1,0 +1,133 @@
+/*
+    @ Filename : search.css
+    @ Author : 문태호
+    @ Description : 캠핑장 검색 레이아웃
+*/
+
+@import url("reset.css");
+@import url("style.css");
+
+header {
+  min-height: 150px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+.result_count_box {
+  padding: 24px 0 10px 14px;
+  background-color: white;
+}
+
+.result_count_box h2 {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+#search_result_count {
+  color: rgb(67, 192, 131);
+}
+
+/* 캠핑장 이미지 슬라이드 */
+.glide__track {
+  width: 100%;
+  max-height: 298px;
+}
+
+.glide__slides {
+  height: 100%;
+}
+
+.glide__slide {
+  position: relative;
+}
+
+.glide__slide img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.glide__bullets {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.glide__slide > span {
+  position: absolute;
+  left: 10px;
+  bottom: 12px;
+  color: white;
+  font-size: 11px;
+  z-index: 10;
+}
+
+.glide__slide i {
+  margin-right: 3px;
+}
+
+/* 캠핑장 정보 */
+.result_box {
+  cursor: pointer;
+}
+
+.result_box .glide {
+  cursor: pointer;
+}
+
+.result_info {
+  width: 100%;
+  height: 85px;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #050606;
+}
+
+#camp_class {
+  opacity: 0.5;
+}
+
+#camp_name {
+  font-size: 13px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+#camp_log_box {
+  color: rgb(67, 192, 131);
+}
+
+.result_charge {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+#charge {
+  font-size: 20px;
+}
+
+/* 태그 박스 */
+.tag_box {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 12px;
+  margin: 0 4px;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background-color: #c1efd9;
+  color: #268764;
+}

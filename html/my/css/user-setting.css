@@ -1,0 +1,136 @@
+@import "./reset.css";
+
+
+body{
+    background-color: rgb(231, 240, 234);
+    
+}
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.user-container {
+    max-width: 530px;
+    height:100%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    background-color: rgb(241, 245, 243);
+}
+
+/* 헤더 */
+.user-header {
+    top: 0px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    height: 52px;
+    max-width: 530px;
+    width: 100%;
+    background: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(241, 245, 243);
+    color:#333;
+}
+.user-header span {
+    width: 50px;
+    margin-left:20px;
+    font-size:13pt;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.user-header p {
+    margin: 0px auto;
+    padding-right: 70px;
+    font-size: 12.5pt;
+}
+
+
+
+
+/* 유저 마이 프로필 */
+.user-profile {
+    background: rgb(255, 255, 255);
+    padding: 31px 0px 24px;
+}
+
+.user-profile img {
+    display: block;
+    margin: 0px auto;
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    border: 1px solid rgb(201, 207, 204);
+    background-clip: border-box;
+    object-fit: cover;
+}
+
+.user-name {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14pt;
+    font-weight: 500;
+}
+
+.user-intro, .user-intro span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:5px;
+    font-size: 11pt;
+    font-weight: 500;
+    color: rgb(26, 29, 27);
+    line-height: 15px;
+}
+
+.user-intro span{
+    padding-bottom: 4px;
+    margin-left: 4px;
+}
+
+
+.my-user-intro  span {
+    font-size: 10pt;
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+
+/* 세부세팅기능 */
+
+.user-div {
+    width: 100%;
+    max-width: 530px;
+    min-height: 30px;
+    line-height: 30px;
+    margin-top: 4px;
+    padding: 15px 25px;
+    background: rgb(255, 255, 255);
+    font-size: 10.5pt;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-div span {
+    margin-right: 50px;
+    color: #666;
+}
+
+.img-upload input {
+    display: none;
+}
+
+.event p {
+    font-size: 9pt;
+    color:#666;
+}
+.event-set span {
+    font-size:35pt;
+}
+
+.img-upload, .nickname, .password, .sns, .event-set span {
+    cursor: pointer;
+}

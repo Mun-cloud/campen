@@ -1,0 +1,26 @@
+/*
+    @ Filename : settings.css
+    @ Author : 문태호
+    @ Description : 설정 페이지 레이아웃
+*/
+
+@import url("reset.css");
+@import url("style.css");
+@import url("pop.css");
+
+body {
+  height: 100vh;
+}
+
+.settings_container {
+  background-color: #fff;
+  margin-top: 8px;
+  padding: 16px 20px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+div > a:nth-child(2) > .settings_container {
+  margin-top: 0;
+  border-top: 1px solid rgb(241, 245, 243);
+}

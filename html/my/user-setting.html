@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    rel="stylesheet">
+<link rel="stylesheet" href="./css/user-setting.css">
+
+    <title>user-setting</title>
+</head>
+
+<body>
+    <div class="user-container">
+        <!-- 헤더 -->
+        <header class="user-header">
+            <a href="./my-login.html">
+                <span class="material-icons-outlined">arrow_back_ios</span>
+            </a>
+                <p>
+                    내 정보 관리
+                </p>
+        </header>
+
+        <!-- 유저프로필 -->
+        <div class="user-profile">
+            <img src="../commu/img/user-img.png" alt="프로필">
+            <div class="user-name">인생한번</div>
+            <a class="user-intro" href="#">
+                <p>나는 자연인을 꿈꿉니다.</p>
+                <span class="material-icons"> edit</span>
+            </a>
+        </div>
+
+
+
+        <!-- 세부세팅기능 -->
+        <label class="img-upload"for="upload-button">
+            <div class="user-div">
+                프로필 사진 변경
+            </div>
+            <input type="file" id="upload-button" accept="image/*">
+        </label>
+
+        <a href="./setting-pages/nickname-set.html" class="nickname-set">
+            <div class="nickname user-div">
+                닉네임
+                <span> 인생한번</span>
+            </div>
+        </a>
+
+        <div class="id user-div">
+            아이디
+            <span> ssonnni</span>
+        </div>
+
+        <a href="./setting-pages/password-set.html" class="password-set">
+            <div class="password user-div">
+                비밀번호
+                <span>**********</span>
+            </div>
+        </a>
+
+        <div class="email user-div">
+            이메일
+            <span> sohyun@gmail.com</span>
+        </div>
+
+        <div class="phone user-div">
+            휴대폰 번호
+            <span>010-1234-5678</span>
+        </div>
+
+        <a href="./setting-pages/sns.html" class="sns-set">
+            <div class="sns user-div">
+                SNS
+            </div>
+        </a>
+
+        <div class="event-set user-div">
+            <div class="event">
+                이벤트/마케팅 수신 동의
+                <p>회원가입 시 설정됨</p>
+            </div>
+            <div>
+                <span class="material-icons">
+                    toggle_on
+                    </span>
+            </div>    
+        </div>
+
+    </div>
+</body>
+<script src="https://kit.fontawesome.com/def66b134a.js" crossorigin="anonymous"></script>
+</html>

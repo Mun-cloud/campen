@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/commu3,4.css">
+
+    <title>궁금해요 상세</title>
+</head>
+
+<body>
+    <div class="contaniner">
+        <!-- header: 상세 상단 -->
+        <header class="top-container">
+            <a class="back-btn" href="../commu4.html">
+                <span class="material-icons">keyboard_backspace</span>
+            </a>
+            <a class="logo3" href="#">
+                <img src="../img/campen_logo.png" alt="campen">
+            </a>
+            <a class="option-btn" href="../report.html">
+                <span class="material-icons-outlined">more_vert</span>
+            </a>
+        </header>
+
+
+        <!-- 컨텐츠 영역 -->
+        <section id="tab4-1" class="cnt-detail">
+            <!-- ab3-cnt1 -->
+            <article class="cnt-box">
+                <a href="#">
+                    <!-- 컨텐츠:프로필,텍스트 -->
+                    <div class="cnt-box-txt">
+                        <div class="cnt-category">궁금해요</div>
+                        <ul class="cnt-profile">
+                            <li class="cnt-user">
+                                <img class="cnt-user-img" src="../img/user-img.png" alt="캠퍼1103">
+                                <span class="cnt-user-name">수상한캠핑</span>
+                            </li>
+                            <li class="cnt-time">2시간 전</li>
+                        </ul>
+                        <p class="cnt-Q">
+                            영하의 추운날씨에 캠핑가려고 합니다. 비바돔쉘터 좌식모드로 동계캠핑이 가능할까요? 우레탄창은 보통 몇개를 설치해야 춥지도 않고 뷰도 좋을까요?
+                        </p>
+                    </div>
+
+                    <!-- 컨텐츠:이미지 -->
+                </a>
+
+                <!-- 컨텐츠:좋아요,댓글 -->
+                <div class="cnt-footer">
+                    <div clsss="cnt-like" href="#">
+                        <a href="#">
+                            <i class="far fa-heart"></i>
+                            좋아요
+                        </a>
+                    </div>
+                    <div class="cnt-comment" href="#">
+                        <a href="#"><i class="far fa-comment"></i>
+                            댓글쓰기
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- 댓글 영역 -->
+        <section class="cmt-container">
+            <!-- 댓글 상단 -->
+            <div class="cmt1-box">
+                <span class="material-icons-outlined">
+                    textsms
+                </span>
+                <p>아직 댓글이 없어요.</p>
+                <p>첫번째 댓글을 남겨보세요.</p>
+            </div>
+
+            <!-- 댓글 하단 -->
+            <div class="cmt2-box">
+                <form class="form-box">
+                    <!-- 이미지 업로드 -->
+                    <label class="photo" for="upload-btn">
+                        <span class="material-icons">
+                            image
+                        </span>
+                        <input type="file" id="upload-btn" class="upload" accept="image/*">
+                    </label>
+                    <!-- 텍스트 업로드 -->
+                    <div class="textarea">
+                        <textarea placeholder="댓글을 입력해주세요." name="comment" class="comment" rows="1"></textarea>
+                        <div color="primary80" class="submit-btn submit-btn2">
+                            <button type="submit">등록</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 위로 올라가기 버튼 -->
+            <div class="up-btn">
+                <button>
+                    <span class="material-icons-outlined">
+                        expand_less
+                    </span>
+                </button>
+            </div>
+        </section>
+        
+    </div>
+</body>
+
+<script src="https://kit.fontawesome.com/def66b134a.js" crossorigin="anonymous"></script>
+
+</html>

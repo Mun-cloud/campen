@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">회원관리</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">캠핑장 관리</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">게시판 관리</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">일반관리</a>
+        </li>
+    </ul>
+    <div class="col-md-2">
+        <nav class="nav nav-pills nav-fill">
+            <a class="nav-link active" aria-current="page" href="#">관리자 회원</a>
+            <a class="nav-link" href="#">일반 회원</a>
+        </nav>
+    </div>
+    <div class="container">
+        <h1>관리자페이지 - 회원관리</h1>
+        <table class="table table-striped table-hover table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">번호</th>
+                    <th scope="col">아이디</th>
+                    <th scope="col">이름</th>
+                    <th scope="col">이메일</th>
+                    <th scope="col">휴대폰 번호</th>
+                    <th scope="col">등급</th>
+                    <th scope="col">관리</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">0</th>
+                    <td>mun05170</td>
+                    <td>문태호</td>
+                    <td>mun05170@naver.com</td>
+                    <td>010-1111-1111</td>
+                    <td>A</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">수정</button>
+                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop2">삭제</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>asdfasf</td>
+                    <td>김우주</td>
+                    <td>asdfas@naver.com</td>
+                    <td>010-2222-2222</td>
+                    <td>B</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">수정</button>
+                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop2">삭제</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>bcvbxc</td>
+                    <td>홍길동</td>
+                    <td>rrrr@gmail.com</td>
+                    <td>010-3333-3333</td>
+                    <td>C</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">수정</button>
+                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop2">삭제</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>nghjdty</td>
+                    <td>정지훈</td>
+                    <td>qqqq@gmail.com</td>
+                    <td>010-4444-4444</td>
+                    <td>D</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">수정</button>
+                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop2">삭제</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        수정된 정보를 저장하시겠습니까?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">취소</button>
+                        <button type="button" class="btn btn-sm btn-primary">저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        선택한 회원의 정보를 삭제하시겠습니까?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">취소</button>
+                        <button type="button" class="btn btn-sm btn-danger">삭제</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

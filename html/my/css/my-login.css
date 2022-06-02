@@ -1,0 +1,117 @@
+@import "./reset.css";
+
+
+body{
+    background-color: rgb(231, 240, 234);
+    
+}
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.my-container {
+    max-width: 530px;
+    height:100%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    background-color: rgb(241, 245, 243);
+}
+
+/* 유저 마이 프로필 */
+.my-profile {
+    display: flex;
+    padding:20px 20px;
+    align-items: center;
+    background: rgb(255, 255, 255);
+}
+
+.my-profile img {
+    margin-right: 12px;
+    width: 15%;
+}
+
+.my-user {
+    margin-left:5px;
+}
+
+.my-user-name {
+    font-size: 14pt;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.my-user-intro {
+    display: flex;
+    align-items: center;
+    color:#555;
+    font-size:11pt;
+}
+
+.my-user-intro  span {
+    font-size: 10pt;
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+
+/* 내가작성한글,공지사항,설정 박스 */
+.my-content, .my-notice, .my-set {
+    display:block;
+    font-size:11pt;
+    color: rgb(37, 40, 38);
+    cursor: pointer;
+}
+
+.my-div {
+    width: 100%;
+    min-height: 40px;
+    line-height: 40px;
+    margin-top: 8px;
+    padding: 20px 20px;
+    background: rgb(255, 255, 255);
+    cursor: pointer;
+    border-top: none;
+}
+
+/* 하단메뉴탭 */
+#nav-container{
+    position: fixed;
+    bottom: 0px;
+    z-index: 100;
+    max-width: 530px;
+    width: 100%;
+    background: rgb(255, 255, 255);
+}
+
+.nav-tab{
+    display: flex;
+    margin: 0px auto;
+    width: 100%;
+    padding: 9px 0px 9px;
+    border-top: 1px solid rgb(212, 217, 214);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex:1 1 0%;
+    height: 100%;
+    letter-spacing: -0.05pt;
+    line-height: 15px;
+}
+
+.nav-icon{
+    font-size:15pt;
+    color:#555;
+}
+
+.nav-txt{
+    margin-top:5px;
+    font-size:9pt;
+    color:#555;
+}
