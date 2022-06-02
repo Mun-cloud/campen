@@ -26,19 +26,17 @@ const CntFooter = styled.div`
 `;
 
 const ProfileCntFooter = ({ hide = false, content }) => {
-  useEffect(() => console.log(content), [content]);
   return (
     <CntFooter>
-      {/* 좋아요 버튼 */}
-      <LikeBtn content={content} />
-      {/* 댓글쓰기 버튼 */}
+      {/* 좋아요 수 */}
+      <div className="cnt-like">
+        <i className="far fa-heart"></i> {content.likesCount}
+      </div>
+      {/* 댓글 수 */}
       {hide ? null : (
-        <Link to={`/board/${content.id}`}>
-          {content.likesCount}
-          <div className="cnt-comment">
-            <i className="far fa-comment"></i> 댓글쓰기 {content.commentsCount}
-          </div>
-        </Link>
+        <div className="cnt-comment">
+          <i className="far fa-comment"></i> {content.commentsCount}
+        </div>
       )}
     </CntFooter>
   );
