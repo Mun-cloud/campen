@@ -1,15 +1,13 @@
 /**
- * contents 테이블에 대한 CRUD 기능을 수행하는 Restful API
+ * @ Filename : Content.js
+ * @ Author : 문태호
+ * @ Description : contents 테이블에 대한 CRUD 기능을 수행하는 Restful API
  */
 
 /** 모듈 참조 부분 */
 const config = require("../../helper/_config");
-const logger = require("../../helper/LogHelper");
 const regexHelper = require("../../helper/RegexHelper");
-const utilHelper = require("../../helper/UtilHelper");
 const BadRequestException = require("../../exceptions/BadRequestException");
-const RuntimeException = require("../../exceptions/RuntimeException");
-const MultipartException = require("../../exceptions/MultipartException");
 const router = require("express").Router();
 const mysql2 = require("mysql2/promise");
 const axios = require("axios");
@@ -18,7 +16,7 @@ const axios = require("axios");
 module.exports = (app) => {
   let dbcon = null;
 
-  /** 전체 목록 조회 --> Read(SELECT) */
+  /** 게시글 전체 목록 조회 --> Read(SELECT) */
   router.get("/content", async (req, res, next) => {
     // 데이터 조회 결과가 저장될 빈 변수
     let json = null;
@@ -33,15 +31,15 @@ module.exports = (app) => {
         "SELECT c.id, c.tab, i.src, cast(c.content as char(10000)) content, views, c.reg_date, c.edit_date, members_id, m.nickname, m.user_name, m.photo userPhoto, camp_id, likes, commentsCount FROM contents c ";
       // 대표이미지 조회
       sql1 +=
-        "left outer join (select src, `contents-img`.contents_id from `contents-img` inner join (select min(id) id, contents_id from `contents-img` group by contents_id) g on `contents-img`.id=g.id) i on c.id=i.contents_id ";
+        "LEFT OUTER JOIN (select src, `contents-img`.contents_id from `contents-img` inner join (select min(id) id, contents_id from `contents-img` group by contents_id) g on `contents-img`.id=g.id) i ON c.id=i.contents_id ";
       // 좋아요 수 조회
       sql1 +=
-        "left outer join (SELECT count(members_id) likes, contents_id FROM `contents-likes` group by contents_id) l on c.id=l.contents_id ";
+        "LEFT OUTER JOIN (SELECT count(members_id) likes, contents_id FROM `contents-likes` group by contents_id) l ON c.id=l.contents_id ";
       // 댓글 수 조회
       sql1 +=
-        "left outer join (SELECT count(id) commentsCount, contents_id FROM comments group by contents_id) k on c.id=k.contents_id ";
+        "LEFT OUTER JOIN (SELECT count(id) commentsCount, contents_id FROM comments group by contents_id) k ON c.id=k.contents_id ";
       // 작성자 조회
-      sql1 += "inner join members m on c.members_id=m.id order by id desc";
+      sql1 += "inner join members m ON c.members_id=m.id order by id desc";
 
       const [result1] = await dbcon.query(sql1);
 
@@ -57,6 +55,7 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
+  /** query값에 따른 최신 캠핑한컷 응답 --> Read(SELECT) */
   router.get("/content/photo", async (req, res, next) => {
     const query = req.get("query");
     // 데이터 조회 결과가 저장될 빈 변수
@@ -72,6 +71,7 @@ module.exports = (app) => {
         "SELECT c.id, g.src, m.nickname, m.id memberId FROM contents c, members m, `contents-img` g,  (select min(id) id, contents_id from `contents-img` group by contents_id) i WHERE c.id=i.contents_id and g.id=i.id and c.members_id=m.id and c.tab=0 order by id desc";
 
       let args1 = [];
+      // query값에 따른 출력 데이터 수 조절
       if (query) {
         sql1 += " limit 0, ?";
         args1.push(parseInt(query));
@@ -91,6 +91,7 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
+  /** query값에 따른 최신 캠핑로그 응답 --> Read(SELECT) */
   router.get("/content/log", async (req, res, next) => {
     const query = req.get("query");
     // 데이터 조회 결과가 저장될 빈 변수
@@ -168,6 +169,7 @@ module.exports = (app) => {
 
   /** 데이터 추가 --> Create(INSERT) */
   router.post("/content", async (req, res, next) => {
+    // 로그인 에러처리
     if (!req.session.memberInfo) {
       return next(new BadRequestException("로그인중이 아닙니다."));
     }
@@ -176,6 +178,7 @@ module.exports = (app) => {
     const content = req.post("content");
     const memberId = req.post("memberId");
 
+    // null값 예외처리
     function foundNull() {
       [tab, content, memberId].forEach((v) => {
         if (v === null) {
@@ -185,7 +188,7 @@ module.exports = (app) => {
     }
 
     if (!foundNull) {
-      return next(new Error(400));
+      return next(new BadRequestException("입력값이 올바르지 않습니다."));
     }
 
     /** 데이터 저장하기 */
@@ -222,6 +225,7 @@ module.exports = (app) => {
 
   /** 데이터 수정 --> Update(UPDATE) */
   router.put("/content/:id", async (req, res, next) => {
+    // 로그인 에러처리
     if (!req.session.memberInfo) {
       return next(new BadRequestException("로그인중이 아닙니다."));
     }
@@ -230,6 +234,7 @@ module.exports = (app) => {
     const content = req.put("content");
     const memberId = req.put("memberId");
 
+    // null값 에러처리
     function foundNull() {
       [id, tab, content, memberId].forEach((v) => {
         if (v === null) {

@@ -6,12 +6,8 @@
 
 /** 모듈 참조 부분 */
 const config = require("../../helper/_config");
-const logger = require("../../helper/LogHelper");
 const regexHelper = require("../../helper/RegexHelper");
-const utilHelper = require("../../helper/UtilHelper");
 const BadRequestException = require("../../exceptions/BadRequestException");
-const RuntimeException = require("../../exceptions/RuntimeException");
-const MultipartException = require("../../exceptions/MultipartException");
 const router = require("express").Router();
 const mysql2 = require("mysql2/promise");
 

@@ -1,22 +1,19 @@
 /**
- * camp 테이블에 대한 CRUD 기능을 수행하는 Restful API
+ * @ Filename : Exhibition.js
+ * @ Author : 문태호
+ * @ Description : exhibition 테이블에 대한 CRUD 기능을 수행하는 Restful API
  */
 
 /** 모듈 참조 부분 */
 const config = require("../../helper/_config");
-const logger = require("../../helper/LogHelper");
-const regexHelper = require("../../helper/RegexHelper");
-const utilHelper = require("../../helper/UtilHelper");
 const BadRequestException = require("../../exceptions/BadRequestException");
-const RuntimeException = require("../../exceptions/RuntimeException");
-const MultipartException = require("../../exceptions/MultipartException");
 const router = require("express").Router();
 const mysql2 = require("mysql2/promise");
 /** 라우팅 정의 부분 */
 module.exports = (app) => {
   let dbcon = null;
 
-  /** 전체 목록 조회(페이지번호 구현) --> Read(SELECT) */
+  /** 기획전 전체 조회 --> Read(SELECT) */
   router.get("/exhi", async (req, res, next) => {
     let item = null;
 

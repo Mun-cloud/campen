@@ -1,7 +1,4 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import LikeBtn from "../LikeBtn";
 
 const CntFooter = styled.div`
   display: flex;
@@ -30,12 +27,14 @@ const ProfileCntFooter = ({ hide = false, content }) => {
     <CntFooter>
       {/* 좋아요 수 */}
       <div className="cnt-like">
-        <i className="far fa-heart"></i> {content.likesCount}
+        <i className="far fa-heart"></i>{" "}
+        {content.likesCount !== null ? content.likesCount : 0}
       </div>
       {/* 댓글 수 */}
       {hide ? null : (
         <div className="cnt-comment">
-          <i className="far fa-comment"></i> {content.commentsCount}
+          <i className="far fa-comment"></i>{" "}
+          {content.commentsCount !== null ? content.commentsCount : 0}
         </div>
       )}
     </CntFooter>

@@ -80,8 +80,6 @@ module.exports = () => {
 
     /** 에러처리 출력 */
     res.sendError = (error) => {
-      // logger.error(error.name);
-      // logger.error(error.message);
       logger.error(error.stack);
       res.sendResult(error.statusCode, error.message);
     };

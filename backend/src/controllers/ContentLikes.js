@@ -1,15 +1,12 @@
 /**
- * contents 테이블에 대한 CRUD 기능을 수행하는 Restful API
+ * @ Filename : ContentLikes.js
+ * @ Author : 문태호
+ * @ Description : contents-likes 테이블에 대한 CRUD 기능을 수행하는 Restful API
  */
 
 /** 모듈 참조 부분 */
 const config = require("../../helper/_config");
-const logger = require("../../helper/LogHelper");
-const regexHelper = require("../../helper/RegexHelper");
-const utilHelper = require("../../helper/UtilHelper");
 const BadRequestException = require("../../exceptions/BadRequestException");
-const RuntimeException = require("../../exceptions/RuntimeException");
-const MultipartException = require("../../exceptions/MultipartException");
 const router = require("express").Router();
 const mysql2 = require("mysql2/promise");
 
@@ -17,43 +14,11 @@ const mysql2 = require("mysql2/promise");
 module.exports = (app) => {
   let dbcon = null;
 
-  /** 좋아요 한 컨텐츠 목록 --> Read(SELECT) */
-  router.post("/content_like/get", async (req, res, next) => {
-    const id = req.post("user_id");
-    if (id === null) {
-      return next(new Error(400));
-    }
-
-    // 데이터 조회 결과가 저장될 빈 변수
-    let json = null;
-
-    try {
-      // 데이터베이스 접속
-      dbcon = await mysql2.createConnection(config.database);
-      await dbcon.connect();
-
-      // 데이터 조회
-      const sql =
-        "SELECT l.id, members_id, contents_id, m.nickname, m.user_name FROM `contents-likes` l, members m WHERE l.members_id=m.id and m.id=?";
-      const [result] = await dbcon.query(sql, [id]);
-
-      // 조회 결과를 미리 준비한 변수에 저장함
-      json = result;
-    } catch (err) {
-      return next(err);
-    } finally {
-      dbcon.end();
-    }
-
-    // 모든 처리에 성공했으므로 정상 조회 결과 구성
-    res.sendJson({ item: json });
-  });
-
-  /** 좋아요 한 컨텐츠 목록 --> Read(SELECT) */
+  /** 특정 유저의 좋아요 한 컨텐츠 목록 --> Read(SELECT) */
   router.get("/content_like/:id", async (req, res, next) => {
     const id = req.get("id");
     if (id === null) {
-      return next(new Error(400));
+      return next(new BadRequestException());
     }
 
     // 데이터 조회 결과가 저장될 빈 변수
@@ -81,7 +46,7 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
-  /** 데이터 추가 --> Create(INSERT) */
+  /** 좋아요 추가 --> Create(INSERT) */
   router.post("/content_like/like", async (req, res, next) => {
     // 저장을 위한 파라미터 입력받기
     const user_id = req.post("user_id");
@@ -118,11 +83,12 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
-  /** 데이터 삭제 --> Delete(DELETE) */
+  /** 좋아요 삭제 --> Delete(DELETE) */
   router.delete("/content_like/like", async (req, res, next) => {
     const user_id = req.post("user_id");
     const content_id = req.post("content_id");
 
+    // 에러처리
     if (user_id === null || content_id === null) {
       return next(new BadRequestException("잘못된 경로입니다."));
     }
