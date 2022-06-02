@@ -113,8 +113,8 @@ const ProfileCnt = ({ item, tabValue }) => {
                       timeZone: "Asia/Seoul",
                     })}
                   </div>
-                  {/* <!-- 제목,본문 --> */}
                   <div className="cnt">
+                    {/* 탭 이름 */}
                     <h3 className="cnt-title">
                       {v.tab === 0
                         ? "캠핑한컷"
@@ -122,8 +122,13 @@ const ProfileCnt = ({ item, tabValue }) => {
                         ? "캠핑후기"
                         : "궁금해요"}
                     </h3>
+                    {/* 게시글 요약 표시 */}
                     <div className="cnt-content">{v.content}</div>
-                    <ProfileCntFooter hide={v.tab === 1 ? true : false} />
+                    {/* 좋아요, 댓글쓰기 */}
+                    <ProfileCntFooter
+                      hide={v.tab === 1 ? true : false}
+                      content={v}
+                    />
                   </div>
                 </div>
                 {/*  <!-- 이미지 --> */}

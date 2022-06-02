@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import LikeBtn from "../LikeBtn";
 
 const CntFooter = styled.div`
   display: flex;
@@ -22,16 +24,18 @@ const CntFooter = styled.div`
   }
 `;
 
-const ProfileCntFooter = ({ hide = false }) => {
+const ProfileCntFooter = ({ hide = false, content }) => {
   return (
     <CntFooter>
-      <div className="cnt-like">
-        <i className="far fa-heart"></i> 좋아요
-      </div>
+      {/* 좋아요 버튼 */}
+      <LikeBtn content={content} />
+      {/* 댓글쓰기 버튼 */}
       {hide ? null : (
-        <div className="cnt-comment">
-          <i className="far fa-comment"></i> 댓글쓰기
-        </div>
+        <Link to={`/board/${content.id}`}>
+          <div className="cnt-comment">
+            <i className="far fa-comment"></i> 댓글쓰기
+          </div>
+        </Link>
       )}
     </CntFooter>
   );
