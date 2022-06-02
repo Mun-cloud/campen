@@ -422,8 +422,13 @@ module.exports = (app) => {
       // 해당 사용자가 작성한 게시글과 대표이미지 응답
       let sql2 =
         "SELECT c.id contentId, c.reg_date, tab, cast(content as char(10000)) content, i.src photo FROM contents c ";
+      // 대표 이미지 조회
       sql2 +=
         "LEFT OUTER JOIN (SELECT min(id) id, contents_id, src from `contents-img` group by contents_id) i ON c.id = i.contents_id ";
+      // 좋아요 수 조회
+      sql1 +=
+        "LEFT OUTER JOIN (SELECT count(id) likesCount, contents_id FROM `contents-likes` group by contents_id) k ON c.id=k.contents_id ";
+      // 댓글 수 조회
       sql1 +=
         "LEFT OUTER JOIN (SELECT count(id) commentsCount, contents_id FROM comments group by contents_id) k ON c.id=k.contents_id ";
       sql2 += "WHERE members_id=?";

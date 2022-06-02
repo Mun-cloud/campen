@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import LikeBtn from "../LikeBtn";
@@ -25,7 +26,7 @@ const CntFooter = styled.div`
 `;
 
 const ProfileCntFooter = ({ hide = false, content }) => {
-  console.log(content);
+  useEffect(() => console.log(content), [content]);
   return (
     <CntFooter>
       {/* 좋아요 버튼 */}
@@ -33,6 +34,7 @@ const ProfileCntFooter = ({ hide = false, content }) => {
       {/* 댓글쓰기 버튼 */}
       {hide ? null : (
         <Link to={`/board/${content.id}`}>
+          {content.likesCount}
           <div className="cnt-comment">
             <i className="far fa-comment"></i> 댓글쓰기 {content.commentsCount}
           </div>
