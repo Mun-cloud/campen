@@ -412,7 +412,7 @@ module.exports = (app) => {
       dbcon = await mysql2.createConnection(config.database);
       await dbcon.connect();
 
-      // 아이디가 중복되는 데이터 수를 조회
+      // 유저 정보 조회
       let sql1 =
         "SELECT id, user_id, user_name, email, photo, intro, sns_addr, nickname FROM members WHERE id=?";
       let args1 = [id];
@@ -423,7 +423,9 @@ module.exports = (app) => {
       let sql2 =
         "SELECT c.id contentId, c.reg_date, tab, cast(content as char(10000)) content, i.src photo FROM contents c ";
       sql2 +=
-        "LEFT OUTER JOIN (select min(id) id, contents_id, src from `contents-img` group by contents_id) i ON c.id = i.contents_id ";
+        "LEFT OUTER JOIN (SELECT min(id) id, contents_id, src from `contents-img` group by contents_id) i ON c.id = i.contents_id ";
+      sql1 +=
+        "LEFT OUTER JOIN (SELECT count(id) commentsCount, contents_id FROM comments group by contents_id) k ON c.id=k.contents_id ";
       sql2 += "WHERE members_id=?";
       const [result2] = await dbcon.query(sql2, [id]);
 

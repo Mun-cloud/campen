@@ -25,6 +25,7 @@ const CntFooter = styled.div`
 `;
 
 const ProfileCntFooter = ({ hide = false, content }) => {
+  console.log(content);
   return (
     <CntFooter>
       {/* 좋아요 버튼 */}
@@ -33,7 +34,7 @@ const ProfileCntFooter = ({ hide = false, content }) => {
       {hide ? null : (
         <Link to={`/board/${content.id}`}>
           <div className="cnt-comment">
-            <i className="far fa-comment"></i> 댓글쓰기
+            <i className="far fa-comment"></i> 댓글쓰기 {content.commentsCount}
           </div>
         </Link>
       )}
