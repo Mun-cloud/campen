@@ -1,3 +1,9 @@
+/**
+ * @ Filename : Members.js
+ * @ Author : 문태호
+ * @ Description : members 테이블에 대한 CRUD 기능을 수행하는 Restful API
+ */
+
 /** 모듈 참조 부분 */
 const config = require("../../helper/_config");
 const logger = require("../../helper/LogHelper");
@@ -20,7 +26,7 @@ module.exports = (app) => {
   router.post("/member/id_unique_check", async (req, res, next) => {
     // 파라미터 받기
     const user_id = req.post("user_id");
-
+    // 입력값이 없는 경우 에외처리
     try {
       regexHelper.value(user_id, "아이디를 입력하세요.");
     } catch (err) {
@@ -59,16 +65,6 @@ module.exports = (app) => {
    * [POST] /member
    */
   router.post("/member/join", async (req, res, next) => {
-    // // WebHelper에 추가된 기능을 활용하여 업로드 객체 반환받기
-    // const multipart = req.getMultipart();
-
-    // // 업로드 수행하기
-    // const upload = multipart.single("profile_img");
-
-    // // 업로드 된 파일의 정보를 로그로 기록 (필요에 따른 선택 사항)
-    // logger.debug(JSON.stringify(req.file));
-    // const photo = req.file.url;
-
     // 텍스트 파라미터 받기
     const user_id = req.post("user_id");
     const user_pw = req.post("user_pw");
@@ -78,10 +74,10 @@ module.exports = (app) => {
     // 유효성 검사
     try {
       regexHelper.value(user_id, "아이디를 입력하세요.");
-      // regexHelper.value(user_pw, "비밀번호를 입력하세요.");
-      // regexHelper.value(user_name, "이름를 입력하세요.");
-      // regexHelper.value(email, "이메일를 입력하세요.");
-      // regexHelper.value(phone, "휴대폰 번호를 입력하세요.");
+      regexHelper.value(user_pw, "비밀번호를 입력하세요.");
+      regexHelper.value(user_name, "이름를 입력하세요.");
+      regexHelper.value(email, "이메일를 입력하세요.");
+      regexHelper.value(phone, "휴대폰 번호를 입력하세요.");
     } catch (err) {
       return next(err);
     }
