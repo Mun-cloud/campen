@@ -1,7 +1,7 @@
 /**
- * @FileName : FileHelper.js
+ * @Filename : FileHelper.js
+ * @Author : 문태호
  * @Description : 파일, 폴더 처리 관련 유틸리티 함수 구현
- * @Author : EZEN 아카데미 Node.js 강의 (이광호, lee4232@gmail.com)
  */
 
 const fs = require("fs"); // FileSystem 모듈
