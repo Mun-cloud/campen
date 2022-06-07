@@ -98,7 +98,9 @@ const Nav = () => {
         </Link>
         <Link to="/commu" className="nav_btn">
           <ActiveIcon
-            className="far fa-comment-alt"
+            className={
+              commuActive ? "fas fa-comment-alt" : "far fa-comment-alt"
+            }
             isActive={commuActive}
           ></ActiveIcon>
           <ActiveIconText className="nav_text" isActive={commuActive}>
@@ -106,7 +108,10 @@ const Nav = () => {
           </ActiveIconText>
         </Link>
         <Link to="/mypage" className="nav_btn">
-          <ActiveIcon className="far fa-user" isActive={myActive}></ActiveIcon>
+          <ActiveIcon
+            className={myActive ? "fas fa-user" : "far fa-user"}
+            isActive={myActive}
+          ></ActiveIcon>
           <ActiveIconText className="nav_text" isActive={myActive}>
             마이
           </ActiveIconText>
