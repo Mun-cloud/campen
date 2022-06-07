@@ -1,4 +1,4 @@
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 import styled from "styled-components";
 
 const NavBar = styled.nav`
@@ -37,10 +37,10 @@ const NavBar = styled.nav`
 `;
 
 const Nav = () => {
-  const homeMatch = useRouteMatch("/");
-  const searchMatch = useRouteMatch("/search/*");
-  const commuMatch = useRouteMatch("/commu/*");
-  const myPageMatch = useRouteMatch("/mypage/*");
+  const homeMatch = useMatch("/");
+  const searchMatch = useMatch("/search/*");
+  const commuMatch = useMatch("/commu/*");
+  const myPageMatch = useMatch("/mypage/*");
 
   return (
     <NavBar id="nav">
