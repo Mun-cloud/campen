@@ -36,15 +36,44 @@ const ActiveIcon = styled.i`
   color: ${(props) => (props.isActive ? props.theme.mainColor : "black")};
 `;
 
+const ActiveIconText = styled.span`
+  color: ${(props) => (props.isActive ? props.theme.mainColor : "black")};
+`;
+
 const Nav = () => {
-  const homeMatch = useMatch(`/`);
+  // 홈 버튼 링크
+  const homeMatch = useMatch("/");
+
+  // 검색 버튼 링크
   const searchMatch = useMatch("/search/*");
+
+  // 커뮤니티 버튼 링크
   const commuMatch = useMatch("/commu/*");
+  const boardMatch = useMatch("/board/:id");
+  const logMatch = useMatch("/log/:id");
+  const writeMatch = useMatch("/write/*");
+  const commuActive =
+    commuMatch !== null ||
+    boardMatch !== null ||
+    logMatch !== null ||
+    writeMatch;
+
+  // 마이 버튼 링크
   const myPageMatch = useMatch("/mypage/*");
-  console.log(homeMatch);
-  console.log(searchMatch);
-  console.log(commuMatch);
-  console.log(myPageMatch);
+  const settingsMatch = useMatch("/usersetting/*");
+  const loginMatch = useMatch("/login");
+  const userintroMatch = useMatch("/userintro");
+  const passwordMatch = useMatch("/password");
+  const nicknameMatch = useMatch("/nickname");
+  const snsMatch = useMatch("/sns");
+  const myActive =
+    myPageMatch !== null ||
+    settingsMatch !== null ||
+    loginMatch !== null ||
+    userintroMatch !== null ||
+    passwordMatch !== null ||
+    nicknameMatch !== null ||
+    snsMatch !== null;
 
   return (
     <NavBar id="nav">
@@ -54,25 +83,33 @@ const Nav = () => {
             className="fas fa-home"
             isActive={homeMatch !== null}
           ></ActiveIcon>
-          <span className="nav_text">홈</span>
+          <ActiveIconText className="nav_text" isActive={homeMatch !== null}>
+            홈
+          </ActiveIconText>
         </Link>
         <Link to="/search" className="nav_btn">
           <ActiveIcon
             className="fas fa-search"
             isActive={searchMatch !== null}
           ></ActiveIcon>
-          <span className="nav_text">갬핑장 검색</span>
+          <ActiveIconText className="nav_text" isActive={searchMatch !== null}>
+            갬핑장 검색
+          </ActiveIconText>
         </Link>
         <Link to="/commu" className="nav_btn">
           <ActiveIcon
             className="far fa-comment-alt"
-            isActive={commuMatch !== null}
+            isActive={commuActive}
           ></ActiveIcon>
-          <span className="nav_text">커뮤니티</span>
+          <ActiveIconText className="nav_text" isActive={commuActive}>
+            커뮤니티
+          </ActiveIconText>
         </Link>
         <Link to="/mypage" className="nav_btn">
-          <i className="far fa-user" isActive={myPageMatch !== null}></i>
-          <span className="nav_text">마이</span>
+          <ActiveIcon className="far fa-user" isActive={myActive}></ActiveIcon>
+          <ActiveIconText className="nav_text" isActive={myActive}>
+            마이
+          </ActiveIconText>
         </Link>
       </div>
     </NavBar>
