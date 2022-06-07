@@ -37,10 +37,14 @@ const NavBar = styled.nav`
 `;
 
 const Nav = () => {
-  const homeMatch = useMatch("/");
+  const homeMatch = useMatch(`/`);
   const searchMatch = useMatch("/search/*");
   const commuMatch = useMatch("/commu/*");
   const myPageMatch = useMatch("/mypage/*");
+  console.log(homeMatch);
+  console.log(searchMatch);
+  console.log(commuMatch);
+  console.log(myPageMatch);
 
   return (
     <NavBar id="nav">
