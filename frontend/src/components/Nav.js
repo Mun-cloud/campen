@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 
 const NavBar = styled.nav`
@@ -32,27 +32,33 @@ const NavBar = styled.nav`
   .nav_btn i {
     font-size: 21px;
     margin-bottom: 10px;
+    color: ${(props) => (props.isActive ? props.theme.mainColor : "black")};
   }
 `;
 
 const Nav = () => {
+  const homeMatch = useRouteMatch("/");
+  const searchMatch = useRouteMatch("/search/*");
+  const commuMatch = useRouteMatch("/commu/*");
+  const myPageMatch = useRouteMatch("/mypage/*");
+
   return (
     <NavBar id="nav">
       <div>
         <Link to="/" className="nav_btn">
-          <i className="fas fa-home"></i>
+          <i className="fas fa-home" isActive={homeMatch !== null}></i>
           <span className="nav_text">홈</span>
         </Link>
         <Link to="/search" className="nav_btn">
-          <i className="fas fa-search"></i>
+          <i className="fas fa-search" isActive={searchMatch !== null}></i>
           <span className="nav_text">갬핑장 검색</span>
         </Link>
         <Link to="/commu" className="nav_btn">
-          <i className="far fa-comment-alt"></i>
+          <i className="far fa-comment-alt" isActive={commuMatch !== null}></i>
           <span className="nav_text">커뮤니티</span>
         </Link>
         <Link to="/mypage" className="nav_btn">
-          <i className="far fa-user"></i>
+          <i className="far fa-user" isActive={myPageMatch !== null}></i>
           <span className="nav_text">마이</span>
         </Link>
       </div>
