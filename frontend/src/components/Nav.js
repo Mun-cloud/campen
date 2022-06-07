@@ -28,12 +28,12 @@ const NavBar = styled.nav`
     align-items: center;
     font-size: 11px;
   }
+`;
 
-  .nav_btn i {
-    font-size: 21px;
-    margin-bottom: 10px;
-    color: ${(props) => (props.isActive ? props.theme.mainColor : "black")};
-  }
+const ActiveIcon = styled.i`
+  font-size: 21px;
+  margin-bottom: 10px;
+  color: ${(props) => (props.isActive ? props.theme.mainColor : "black")};
 `;
 
 const Nav = () => {
@@ -50,15 +50,24 @@ const Nav = () => {
     <NavBar id="nav">
       <div>
         <Link to="/" className="nav_btn">
-          <i className="fas fa-home" isActive={homeMatch !== null}></i>
+          <ActiveIcon
+            className="fas fa-home"
+            isActive={homeMatch !== null}
+          ></ActiveIcon>
           <span className="nav_text">홈</span>
         </Link>
         <Link to="/search" className="nav_btn">
-          <i className="fas fa-search" isActive={searchMatch !== null}></i>
+          <ActiveIcon
+            className="fas fa-search"
+            isActive={searchMatch !== null}
+          ></ActiveIcon>
           <span className="nav_text">갬핑장 검색</span>
         </Link>
         <Link to="/commu" className="nav_btn">
-          <i className="far fa-comment-alt" isActive={commuMatch !== null}></i>
+          <ActiveIcon
+            className="far fa-comment-alt"
+            isActive={commuMatch !== null}
+          ></ActiveIcon>
           <span className="nav_text">커뮤니티</span>
         </Link>
         <Link to="/mypage" className="nav_btn">
