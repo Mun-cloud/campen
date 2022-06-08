@@ -108,8 +108,11 @@ class RegexHelper {
    * @param {string} content 입력내용
    * @param {string} msg      표시할 메세지
    */
-  eng_num(content, msg) {
-    return this.field(content, msg, /^[a-zA-Z0-9]*$/);
+  eng_num(content, num, msg) {
+    const engNumRegex = new RegExp(
+      "/^(?=.*[A-Za-z])(?=.*d)[A-Za-zd]{" + num + ",}$/"
+    );
+    return this.field(content, msg, engNumRegex);
   }
 
   /**

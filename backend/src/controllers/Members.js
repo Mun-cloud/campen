@@ -79,6 +79,7 @@ module.exports = (app) => {
       regexHelper.minLength(user_pw, 8, "비밀번호를 8자 이상 입력해주세요.");
       regexHelper.eng_num(
         user_pw,
+        8,
         "비밀번호를 숫자와 영문을 혼합하여 입력해주세요."
       );
       regexHelper.value(user_pw2, "비밀번호를 확인을 입력하세요.");
