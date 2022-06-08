@@ -22,13 +22,6 @@ export default function MenuBtn({ content }) {
     setAnchorEl(null);
   };
 
-  // 작성자 감지
-  // useEffect(() => {
-  //   if (content?.members_id === item?.id) {
-  //     setWriter(true);
-  //   }
-  // }, [content, item]);
-
   const shareClick = (copy) => {
     // 흐름 1.
     if (!document.queryCommandSupported("copy")) {

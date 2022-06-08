@@ -98,7 +98,7 @@ const SignUp = () => {
       alert("비밀번호를 입력해주세요");
       return false;
     }
-    if (!password1.length > 7 || !/^[a-zA-Z0-9]*$/.text(password1)) {
+    if (!password1.length > 7 || !/^[a-zA-Z0-9]*$/.test(password1)) {
       inputPassword1.current.focus();
       alert("비밀번호를 숫자와 영문을 혼합하여 8자 이상 작성해주세요.");
       return false;
