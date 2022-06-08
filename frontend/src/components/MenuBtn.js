@@ -5,7 +5,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import Backdrop from "@mui/material/Backdrop";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const ITEM_HEIGHT = 48;
@@ -21,16 +21,14 @@ export default function MenuBtn({ content }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const location = useLocation();
   const shareClick = (copy) => {
-    console.log(window.location);
     // 흐름 1.
     if (!document.queryCommandSupported("copy")) {
       return alert("복사하기가 지원되지 않는 브라우저입니다.");
     }
     // 흐름 2.
     const text = document.createElement("textarea");
-    text.value = `http://localhost:3000${location.pathname}`;
+    text.value = window.location.href;
     text.style.top = 0;
     text.style.left = 0;
     text.style.position = "fixed";
