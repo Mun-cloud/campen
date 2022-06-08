@@ -6,8 +6,6 @@
 const BadRequestException = require("../exceptions/BadRequestException");
 
 class RegexHelper {
-  // constructor() {}
-
   /**
    * 값의 존재 여부를 검사한다.
    * @param {string} content 검사할 값
@@ -110,7 +108,7 @@ class RegexHelper {
    * @param {string} content 입력내용
    * @param {string} msg      표시할 메세지
    */
-  eng_nim(content, msg) {
+  eng_num(content, msg) {
     return this.field(content, msg, /^[a-zA-Z0-9]*$/);
   }
 

@@ -1,7 +1,7 @@
 /**
- * @ Filename : Comments.js
- * @ Author : 문태호
- * @ Description : comments 테이블에 대한 CRUD 기능을 수행하는 Restful API
+ * @Filename : Comments.js
+ * @Author : 문태호
+ * @Description : comments 테이블에 대한 CRUD 기능을 수행하는 Restful API
  */
 
 /** 모듈 참조 부분 */

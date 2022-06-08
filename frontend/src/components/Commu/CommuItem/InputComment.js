@@ -102,7 +102,7 @@ const InputComment = () => {
         });
         window.location.reload();
       } catch (err) {
-        alert(err.response.data.msg);
+        alert(err.response.data.rtmsg);
       }
     })();
   };

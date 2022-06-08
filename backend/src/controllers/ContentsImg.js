@@ -1,7 +1,7 @@
 /**
- * @ Filename : ContentImg.js
- * @ Author : 문태호
- * @ Description : contents-img 테이블에 대한 CRUD 기능을 수행하는 Restful API
+ * @Filename : ContentImg.js
+ * @Author : 문태호
+ * @Description : contents-img 테이블에 대한 CRUD 기능을 수행하는 Restful API
  */
 
 /** 모듈 참조 부분 */

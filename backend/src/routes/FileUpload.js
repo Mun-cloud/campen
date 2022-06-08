@@ -1,7 +1,7 @@
 /**
- * @ Filename : FileUpload.js
- * @ Author : 문태호
- * @ Description : 파일 업로드 라우팅
+ * @Filename : FileUpload.js
+ * @Author : 문태호
+ * @Description : 파일 업로드 라우팅
  */
 
 module.exports = (app) => {

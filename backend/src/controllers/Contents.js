@@ -1,7 +1,7 @@
 /**
- * @ Filename : Content.js
- * @ Author : 문태호
- * @ Description : contents 테이블에 대한 CRUD 기능을 수행하는 Restful API
+ * @Filename : Content.js
+ * @Author : 문태호
+ * @Description : contents 테이블에 대한 CRUD 기능을 수행하는 Restful API
  */
 
 /** 모듈 참조 부분 */
@@ -190,6 +190,12 @@ module.exports = (app) => {
     if (!foundNull) {
       return next(new BadRequestException("입력값이 올바르지 않습니다."));
     }
+    // 유효성 검사
+    try {
+      regexHelper.minLength(content, 10, "10자 이상 입력해주세요");
+    } catch (err) {
+      return next(err);
+    }
 
     /** 데이터 저장하기 */
     // 데이터 조회 결과가 저장될 빈 변수
@@ -246,7 +252,12 @@ module.exports = (app) => {
     if (!foundNull) {
       return next(new BadRequestException("입력사항이 올바르지 않습니다."));
     }
-
+    // 유효성 검사
+    try {
+      regexHelper.minLength(content, 10, "10자 이상 입력해주세요");
+    } catch (err) {
+      return next(err);
+    }
     /** 데이터 수정하기 */
     // 데이터 조회 결과가 저장될 빈 변수
     let json = null;

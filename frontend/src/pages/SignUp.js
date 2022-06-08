@@ -71,12 +71,14 @@ const SignUp = () => {
   const isFill =
     userName && email && userId && password1 && password2 ? true : false;
 
+  // 유효성 검사
   const regax = () => {
-    console.log("유효성 검사");
+    // 이름
     if (!userName || !(userName.length > 2)) {
       inputUserName.current.focus();
       alert("이름을 확인해주세요");
     }
+    // 이메일
     const emailRegax =
       /^([\w-]+(?:\.[\w-]+)*)@*((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     if (!email || !emailRegax.test(email)) {
@@ -84,14 +86,21 @@ const SignUp = () => {
       alert("이메일 확인해주세요");
       return false;
     }
+    // 아이디
     if (!userId) {
       inputUserId.current.focus();
       alert("아이디를 입력해주세요");
       return false;
     }
+    // 비밀번호
     if (!password1) {
       inputPassword1.current.focus();
       alert("비밀번호를 입력해주세요");
+      return false;
+    }
+    if (!password1.length > 7 || !/^[a-zA-Z0-9]*$/.text(password1)) {
+      inputPassword1.current.focus();
+      alert("비밀번호를 숫자와 영문을 혼합하여 8자 이상 작성해주세요.");
       return false;
     }
     if (!password2) {
@@ -112,6 +121,7 @@ const SignUp = () => {
       await axios.post(`/api/member/join`, {
         user_id: userId,
         user_pw: password1,
+        user_pw2: password2,
         user_name: userName,
         email: email,
       });

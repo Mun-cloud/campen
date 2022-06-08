@@ -1,7 +1,7 @@
 /**
- * @ Filename : Members.js
- * @ Author : 문태호
- * @ Description : members 테이블에 대한 CRUD 기능을 수행하는 Restful API
+ * @Filename : Members.js
+ * @Author : 문태호
+ * @Description : members 테이블에 대한 CRUD 기능을 수행하는 Restful API
  */
 
 /** 모듈 참조 부분 */
@@ -68,6 +68,7 @@ module.exports = (app) => {
     // 텍스트 파라미터 받기
     const user_id = req.post("user_id");
     const user_pw = req.post("user_pw");
+    const user_pw2 = req.post("user_pw2");
     const user_name = req.post("user_name");
     const email = req.post("email");
 
@@ -75,9 +76,20 @@ module.exports = (app) => {
     try {
       regexHelper.value(user_id, "아이디를 입력하세요.");
       regexHelper.value(user_pw, "비밀번호를 입력하세요.");
+      regexHelper.minLength(user_pw, 8, "비밀번호를 8자 이상 입력해주세요.");
+      regexHelper.eng_num(
+        user_pw,
+        "비밀번호를 숫자와 영문을 혼합하여 입력해주세요."
+      );
+      regexHelper.value(user_pw2, "비밀번호를 확인을 입력하세요.");
+      regexHelper.compare_to(
+        user_pw,
+        user_pw2,
+        "비밀번호와 확인이 일치하지 않습니다."
+      );
       regexHelper.value(user_name, "이름를 입력하세요.");
       regexHelper.value(email, "이메일를 입력하세요.");
-      regexHelper.value(phone, "휴대폰 번호를 입력하세요.");
+      regexHelper.email(email, "이메일 형식을 확인해주세요.");
     } catch (err) {
       return next(err);
     }

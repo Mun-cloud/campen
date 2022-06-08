@@ -75,7 +75,7 @@ const CampListGrid = ({ item, heart = "false" }) => {
       });
       window.location.replace("/heart");
     } catch (err) {
-      console.log(err.response.data.rtmsg);
+      alert(err.response.data.rtmsg);
     }
   };
 

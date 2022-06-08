@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 
 const RefundBox = styled.div`
@@ -99,12 +99,7 @@ const CampRefundPop = () => {
   return (
     <RefundBox className="pop refund_pop" ref={refundPop}>
       <div className="pop_header">
-        <div
-          onClick={(props) => {
-            console.log(props);
-          }}
-          className="pop_chev refund_chev"
-        >
+        <div className="pop_chev refund_chev">
           <i className="fas fa-chevron-left"></i>
         </div>
         <p className="pop_title">취소환불규정</p>
