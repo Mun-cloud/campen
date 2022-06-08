@@ -15,6 +15,7 @@ const CampLog = styled.div`
 `;
 
 const LogSwiper = styled(Swiper)`
+  padding: 4px;
   margin: 10px 0;
 
   .swiper-slide {
