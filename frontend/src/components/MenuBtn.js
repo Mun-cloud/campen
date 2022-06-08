@@ -21,27 +21,8 @@ export default function MenuBtn({ content }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const shareClick = (copy) => {
-    // 흐름 1.
-    if (!document.queryCommandSupported("copy")) {
-      return alert("복사하기가 지원되지 않는 브라우저입니다.");
-    }
-    // 흐름 2.
-    const text = document.createElement("textarea");
-    text.value = window.location.href;
-    text.style.top = 0;
-    text.style.left = 0;
-    text.style.position = "fixed";
-    // 흐름 3.
-    document.body.appendChild(text);
-    // focus() -> 사파리 브라우저 서포팅
-    text.focus();
-    // select() -> 사용자가 입력한 내용을 영역을 설정할 때 필요
-    text.select();
-    // 흐름 4.
-    document.execCommand("copy");
-    // 흐름 5.
-    document.body.removeChild(text);
+  const shareClick = async (copy) => {
+    await navigator.clipboard.writeText(window.location.href);
     alert("주소가 복사되었습니다.");
     handleClose();
   };
