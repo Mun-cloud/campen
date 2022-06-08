@@ -45,7 +45,7 @@ module.exports = {
     host: "smtp.gmail.com", // SMTP 서버명: smtp.gamil.com
     port: 465, // SMTP 포트: 587
     secure: true, // 보안연결(SSL) 필요
-    auth: { user: "mun05170@gmail.com", pass: "qrmvzfebvcagrttl" },
+    auth: { user: "mun05170@gmail.com", pass: process.env.MAIL_PASS },
   },
 
   /** 업로드 경로 */
@@ -67,7 +67,7 @@ module.exports = {
     host: "us-cdbr-east-05.cleardb.net", // MYSQL 서버 주소 (다른 PC인 경우 IP주소)
     port: 3306, // MySQL 설치시 기본값 3306
     user: "bf9dc00d14dfdb", // 접근 권한 아이디 (root=관리자)
-    password: "5fb8026e", // 설치시 입력한 비밀번호
+    password: process.env.DB_PASS, // 설치시 입력한 비밀번호
     database: "heroku_ea837c295bb7059", // 사용할 데이터베이스 이름
     connectionLimit: 100,
     waitForConnections: true,

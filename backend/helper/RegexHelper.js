@@ -110,7 +110,7 @@ class RegexHelper {
    */
   eng_num(content, num, msg) {
     const engNumRegex = new RegExp(
-      "/^(?=.*[A-Za-z])(?=.*d)[A-Za-zd]{" + num + ",}$/"
+      `^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{${num},}$`
     );
     return this.field(content, msg, engNumRegex);
   }

@@ -18,48 +18,6 @@ const mysql2 = require("mysql2/promise");
 /** 라우팅 정의 부분 */
 module.exports = (app) => {
   let dbcon = null;
-
-  /**
-   * 아이디 중복검사
-   * [POST] /member/id_unique_check
-   */
-  router.post("/member/id_unique_check", async (req, res, next) => {
-    // 파라미터 받기
-    const user_id = req.post("user_id");
-    // 입력값이 없는 경우 에외처리
-    try {
-      regexHelper.value(user_id, "아이디를 입력하세요.");
-    } catch (err) {
-      return next(err);
-    }
-
-    // 데이터 조회 결과가 저장될 빈 변수
-    let json = null;
-
-    try {
-      // 데이터베이스 접속
-      dbcon = await mysql2.createConnection(config.database);
-      await dbcon.connect();
-
-      // 아이디가 중복되는 데이터 수를 조회
-      let sql1 = "SELECT COUNT(*) 'cnt' FROM members WHERE user_id=?";
-      let args1 = [user_id];
-
-      const [result1] = await dbcon.query(sql1, args1);
-      const totalCount = result1[0].cnt;
-
-      if (totalCount > 0) {
-        throw new BadRequestException("이미 사용중인 아이디 입니다.");
-      }
-    } catch (err) {
-      return next(err);
-    } finally {
-      dbcon.end();
-    }
-
-    res.sendJson();
-  });
-
   /**
    * 회원가입
    * [POST] /member
@@ -138,14 +96,14 @@ module.exports = (app) => {
     const subject = `${user_name}님의 회원가입을 환영합니다.`;
     const html = `<p><striong>${user_name}</striong>님, 회원가입해 주셔서 감사합니다.</p><p>앞으로 많은 이용 바랍니다.</p>`;
 
-    // try {
-    //   res.send(receiver, subject, html);
-    //   // res.sendMail(receiver, subject, html);
-    // } catch (err) {
-    //   throw new RuntimeException(
-    //     "회원가입은 완료 되었지만 가입 환영 메일 발송에 실패했습니다."
-    //   );
-    // }
+    try {
+      // WebHelper 메일 발송 함수
+      res.sendMail(receiver, subject, html);
+    } catch (err) {
+      throw new RuntimeException(
+        "회원가입은 완료 되었지만 가입 환영 메일 발송에 실패했습니다."
+      );
+    }
 
     // 처리 성공시에 대한 응답 처리
     res.sendJson({ item: json });
