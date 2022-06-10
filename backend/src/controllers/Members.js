@@ -97,7 +97,7 @@ module.exports = (app) => {
     const html = `<p><striong>${user_name}</striong>님, 회원가입해 주셔서 감사합니다.</p><p>앞으로 많은 이용 바랍니다.</p>`;
 
     try {
-      // WebHelper 메일 발송 함수
+      // WebHelper.js 메일 발송 함수
       res.sendMail(receiver, subject, html);
     } catch (err) {
       throw new RuntimeException(
@@ -143,12 +143,6 @@ module.exports = (app) => {
       let args1 = [user_id, user_pw];
 
       const [result1] = await dbcon.query(sql1, args1);
-
-      // const totalCount = result1[0].cnt;
-      // if (totalCount < 1) {
-      //   throw new BadRequestException("회원정보가 일치하지 않습니다");
-      // }
-      // 조회된 회원정보 객체를 저장하고 있는 1차원 배열(원소는 1개)
       json = result1;
       // 조회된 데이터가 없다면? WHERE절이 맞지 않다는 의미 -> 아이디, 비번 틀림
       if (json == null || json.length == 0) {
@@ -156,17 +150,21 @@ module.exports = (app) => {
           new BadRequestException("아이디나 비밀번호가 잘못되었습니다.")
         );
       }
+
       // login_date값을 now()로 update처리
       let sql2 = "UPDATE members SET login_date=now() WHERE id=?";
       await dbcon.query(sql2, json[0].id);
 
+      // 게시글 좋아요 한 목록 조회(SELECT)
       let sql3 =
         "SELECT id, contents_id, reg_date FROM `contents-likes` WHERE members_id=?";
       const [result3] = await dbcon.query(sql3, json[0].id);
 
+      // 찜 한 캠핑장 목록 조회(SELECT)
       let sql4 = "SELECT id, camp_id, reg_date FROM hearts WHERE members_id=?";
       const [result4] = await dbcon.query(sql4, json[0].id);
 
+      // 조회한 데이터 결과값에 추가
       json[0].contentLikes = result3;
       json[0].campHearts = result4;
     } catch (err) {
@@ -208,6 +206,7 @@ module.exports = (app) => {
     }
 
     try {
+      // 세션 삭제
       req.session.destroy();
     } catch (err) {
       return next(err);
@@ -248,8 +247,6 @@ module.exports = (app) => {
       await dbcon.connect();
 
       // 데이터 수정하기
-      console.log("put", put);
-      console.log("input", input);
       const sql = `UPDATE members SET ${put}=?, edit_date=now() WHERE id=?`;
       const input_data = [input.location, id];
       const [result1] = await dbcon.query(sql, input_data);
@@ -276,59 +273,9 @@ module.exports = (app) => {
     res.sendJson({ item: json });
   });
 
-  // /** 데이터 삭제 --> Delete(DELETE) */
-  // router.delete("/member/:id", async (req, res, next) => {
-  //   const id = req.get("id");
-
-  //   if (id === null) {
-  //     return next(new Error(400));
-  //   }
-
-  //   /** 데이터 삭제하기 */
-  //   try {
-  //     // 데이터베이스 접속
-  //     dbcon = await mysql2.createConnection(config.database);
-  //     await dbcon.connect();
-
-  //     // 삭제하고자 하는 원 데이터를 참조하는 자식 데이터를 먼저 삭제해야 한다.
-  //     // 만약 자식데이터를 유지해야 한다면 참조키 값을 null로 업데이트 해야 한다.
-  //     // 단, 자식 데이터는 결과행 수가 0이더라도 무시한다.
-  //     // await dbcon.query("DELETE FROM student WHERE deptno=?", [deptno]);
-  //     // await dbcon.query("DELETE FROM professor WHERE deptno=?", [deptno]);
-
-  //     // 데이터 삭제하기
-  //     const sql = "UPDATE members SET is_out='Y', edit_date=now() WHERE id=?";
-  //     const [result1] = await dbcon.query(sql, [deptno]);
-
-  //     json = result1;
-  //     // 결과 행 수가 0이라면 예외처리
-  //     if (result1.affectedRows < 1) {
-  //       throw new Error("삭제된 데이터가 없습니다.");
-  //     }
-  //   } catch (err) {
-  //     return next(err);
-  //   } finally {
-  //     dbcon.end();
-  //   }
-
-  //   // 모든 처리에 성공했으므로 정상 조회 결과 구성
-  //   res.sendJson({ item: json });
-  // });
-  // // //  (프로필 사진 업로드) 업로드 처리 후 파라미터 받기
-  // // upload(req, res, async (err) => {
-  // //   // 업로드 에러 처리
-  // //   if (err) {
-  // //     throw new MultipartException(err);
-  // //   }
-
-  // // });
-
   /**
    * 회원탈퇴
-   * 탈퇴 처리가 회원 데이터를 삭제하는 것을 의미하므로 DELETE방식의 접근이 맞지만,
-   * 실제 비지니스 로직에서는 회원 데이터를 즉시 삭제하는 것이 아니라 탈퇴 여부를 의미하는 컬럼의 값을 UPDATE하는 것으로 처리 (실제 SQL문은 UPDATE)
-   * 별도의 batch 프로그램으로 탈퇴 여부를 의미하는 컬럼(is_out)의 값이 Y이고
-   * 데이터가 변경된 시기가 3개월 전인지를 검사하여 일괄 삭제 한다.
+   * 회원 데이터를 즉시 삭제하는 것이 아니라 탈퇴 여부를 의미하는 컬럼의 값을 UPDATE하는 것으로 처리 (실제 SQL문은 UPDATE)
    * [DELETE]] /member/out
    */
   router.delete("/member/join", async (req, res, next) => {
