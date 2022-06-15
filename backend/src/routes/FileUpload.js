@@ -98,45 +98,6 @@ module.exports = (app) => {
 
   const userMulter = multer({
     storage: userPhotoUploader,
-    /** local storage용 디렉토리 설정 */
-    // multer.diskStorage({
-    //   /** 업로드 된 파일이 저장될 디렉토리 설정 */
-    //   // req는 요청정보, file은 최종적으로 업로드 된 결과 데이터가 저장되어있을 객체
-    //   destination: (req, file, callback) => {
-    //     // 폴더 생성
-    //     fileHelper.mkdirs(config.upload.dir);
-    //     fileHelper.mkdirs(config.thumbnail.dir);
-
-    //     console.debug(file);
-
-    //     // 업로드 정보에 백엔드의 업로드 파일 저장 폴더 위치를 추가한다.
-    //     file.dir = config.upload.dir.replace(/\\/gi, "/");
-
-    //     // multer 객체에게 업로드 경로를 전달.
-    //     callback(null, config.upload.dir);
-    //   },
-    //   /** 업로드 된 파일이 저장될 파일명 설정 */
-    //   // file.originalname 변수에 파일이름이 저장되어 있다. ex) helloworld.png
-    //   filename: (req, file, callback) => {
-    //     // 파일의 확장자만 추출 --> .png
-    //     const extName = path.extname(file.originalname);
-    //     // 파일이 저장될 이름 (현재시각)
-    //     const saveName =
-    //       new Date().getTime().toString() + extName.toLowerCase();
-    //     // 업로드 정보에 백엔드의 업로드 파일 이름을 추가한다.
-    //     file.savename = saveName;
-    //     // 업로드 정보에 파일에 접근할 수 있는 URL값 추가
-    //     file.url = path.join("/upload", saveName).replace(/\\/gi, "/");
-    //     // 구성된 정보를 req 객체에 추가
-    //     if (req.file instanceof Array) {
-    //       req.file.push(file);
-    //     } else {
-    //       req.file = file;
-    //     }
-    //     callback(null, saveName);
-    //   },
-    // }),
-
     /** 최대 업로드 파일 수, 용량 제한 설정 */
     limits: {
       files: config.upload.max_count,
@@ -151,6 +112,7 @@ module.exports = (app) => {
     const upload = userMulter.single("photo");
 
     upload(req, res, async (err) => {
+      // 응답 코드 설정
       let result_code = 200;
       let result_msg = "ok";
 
@@ -225,7 +187,6 @@ module.exports = (app) => {
         rtmsg: result_msg,
         item: req.files,
       };
-      console.log("결과코드", result.rt);
       res.send(result);
     });
   });
