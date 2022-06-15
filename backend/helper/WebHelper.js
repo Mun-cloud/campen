@@ -1,3 +1,9 @@
+/**
+ * @Filename : WebHelper.js
+ * @Author : 문태호
+ * @Description : 서버 응답 관련 유틸리티 함수 구현
+ */
+
 const multer = require("multer");
 const path = require("path");
 const logger = require("./LogHelper");
@@ -101,68 +107,6 @@ module.exports = () => {
         // 이 함수(res.sendMail)를 호출한 곳으로 에러를 전달
         throw err;
       }
-    };
-
-    /** 업로드 초기화 */
-    req.getMultipart = () => {
-      const multipart = multer({
-        storage: multer.diskStorage({
-          /** 업로드 된 파일이 저장될 디렉토리 설정 */
-          // req는 요청정보, file은 최종적으로 업로드 된 결과 데이터가 저장되어있을 객체
-          destination: (req, file, callback) => {
-            // 폴더 생성
-            fileHelper.mkdirs(config.upload.dir);
-            fileHelper.mkdirs(config.thumbnail.dir);
-
-            // 업로드 정보에 백엔드의 업로드 파일 저장 폴더 위치를 추가한다.
-            file.dir = config.upload.dir.replace(/\\/gi, "/");
-
-            // multer 객체에게 업로드 경로를 전달.
-            callback(null, config.upload.dir);
-          },
-          /** 업로드 된 파일이 저장될 파일명 설정 */
-          // file.originalname 변수에 파일이름이 저장되어 있다. ex) helloworld.png
-          filename: (req, file, callback) => {
-            // 파일의 확장자만 추출 --> .png
-            const extName = path.extname(file.originalname);
-            // 파일이 저장될 이름 (현재시각)
-            const saveName =
-              new Date().getTime().toString() + extName.toLocaleLowerCase();
-            // 업로드 정보에 백엔드의 업로드 파일 이름을 추가한다.
-            file.savename = saveName;
-            file.path = path.join(file.dir, saveName);
-            // 업로드 정보에 파일에 접근할 수 있는 URL값 추가
-            file.url = path.join("/upload", saveName).replace(/\\/gi, "/");
-            // 구성된 정보를 req 객체에 추가
-            if (req.file instanceof Array) {
-              req.file.push(file);
-            } else {
-              req.file = file;
-            }
-            callback(null, saveName);
-          },
-        }),
-        /** 최대 업로드 파일 수, 용량 제한 설정 */
-        limits: {
-          files: 5,
-          fileSize: 1024 * 1024 * 20, // 20메가
-        },
-        /** 업로드 될 파일의 확장자 제한 */
-        fileFilter: (req, file, callback) => {
-          // 파일의 종류 얻기
-          let mimetype = file.mimetype;
-
-          // 파일 종류 문자열에 "image/"가 포함되어 있지 않은 경우
-          if (mimetype.indexOf("image/") == -1) {
-            const err = new Error();
-            err.result_code = 500;
-            err.result_msg = "이미지 파일만 업로드 가능합니다.";
-            return callback(err);
-          }
-          callback(null, true);
-        },
-      });
-      return multipart;
     };
 
     next();

@@ -1,7 +1,7 @@
 /**
- * @ Filename : _config.js
- * @ Author : 문태호
- * @ Description : 백엔드 개인 설정사항 저장파일
+ * @Filename : _config.js
+ * @Author : 문태호
+ * @Description : 백엔드 개인 설정사항 저장파일
  */
 
 const path = require("path");
@@ -32,7 +32,7 @@ module.exports = {
   /** 쿠키 저장시 사용할 도메인 */
   // 1) localhost인 경우 공백으로 설정
   // 2) 도메인이 itpaper.co.kr 인 경우 앞에 점을 붙여서 명시 --> ".itpaper.co.kr"
-  cookie_domain: "",
+  cookie_domain: ".everycampen.netlify.app",
 
   /** 보안키 (암호화 키) */
   secure: {
@@ -54,12 +54,6 @@ module.exports = {
     dir: path.join(__dirname, "../_files/upload"),
     max_size: 1024 * 1024 * 5,
     max_count: 10,
-  },
-
-  /** 썸네일 이미지 생성 경로 */
-  thumbnail: {
-    sizes: [640, 750, 1080],
-    dir: path.join(__dirname, "../_files/thumb"),
   },
 
   /** 데이터베이스 연동 정보 */

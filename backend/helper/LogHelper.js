@@ -1,3 +1,9 @@
+/**
+ * @Filename : LogHelper.js
+ * @Author : 문태호
+ * @Description : 로컬 서버 로그 관련 유틸리티 함수 구현
+ */
+
 /**-------------------------------------------------
  * 로그 처리 모듈
  * npm i --save winstion   => 로그를 남기는 기능
@@ -5,7 +11,7 @@
  *-------------------------------------------------*/
 
 /** 1) 패키지 참조 */
-const fileHelper = require("./FileHelper.js"); // 로그 처리 모듈
+const fileHelper = require("./FileHelper.js");
 const winston = require("winston");
 const winstonDaily = require("winston-daily-rotate-file");
 const path = require("path");

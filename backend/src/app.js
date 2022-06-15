@@ -1,3 +1,9 @@
+/**
+ * @Filename : app.js
+ * @Author : 문태호
+ * @Description : 백엔드 메인 파일
+ */
+
 /*----------------------------------------------------------
  | 1) 모듈참조
  -----------------------------------------------------------*/
@@ -135,7 +141,7 @@ app.use(
       secure: true,
       maxAge: 1000 * 60 * 10,
       sameSite: "none",
-      domain: "everycampen.netlify.app",
+      domain: config.cookie_domain,
     },
     // 세션이 저장되기 전에 기존의 세션을 초기화 상태로 만들지 여부
     saveUninitialized: false,
@@ -152,8 +158,6 @@ app.use(webHelper());
 app.use("/", static(config.public_path));
 // --> upload 폴더의 웹 상의 위치 : http://아이피:포트번호/upload
 app.use("/upload", static(config.upload.dir));
-// --> 썸네일 이미지가 생성될 폴더의 웹 상의 위치 : http://아이피:포트번호/thumb
-app.use("/thumb", static(config.thumbnail.dir));
 
 /** favicon 설정 */
 // app.use(favicon(config.favicon_path));
