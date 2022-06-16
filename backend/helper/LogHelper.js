@@ -1,9 +1,8 @@
 /**
- * @Filename : LogHelper.js
- * @Author : 문태호
- * @Description : 로컬 서버 로그 관련 유틸리티 함수 구현
+ * @Filename    : LogHelper.js
+ * @Author      : 문태호
+ * @Description : 로컬 서버 로그 관련 유틸리티 함수 구현모음
  */
-
 /**-------------------------------------------------
  * 로그 처리 모듈
  * npm i --save winstion   => 로그를 남기는 기능

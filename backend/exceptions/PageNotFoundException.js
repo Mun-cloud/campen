@@ -1,3 +1,8 @@
+/**
+ * @Filename    : PageNotFoundException.js
+ * @Author      : 문태호
+ * @Description : PageNotFoundException 에러 응답
+ */
 class PageNotFoundException extends Error {
   constructor(msg = "페이지를 찾을 수 없습니다.") {
     super(msg);

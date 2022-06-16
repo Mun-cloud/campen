@@ -1,8 +1,9 @@
 /**
- * @filename    : regex_helper.js
- * @author      : 이광호 (leekh4232@gmail.com)
- * @description : 정규표현식 검사 수행 후, true/false로 해당 정규표현식 충족하는지 여부를 반환하는 함수들의 모음
+ * @Filename    : RegexHelper.js
+ * @Author      : 문태호
+ * @Description : 정규표현식 검사 수행 후, true/false로 해당 정규표현식 충족하는지 여부를 반환하는 함수들의 모음
  */
+
 const BadRequestException = require("../exceptions/BadRequestException");
 
 class RegexHelper {

@@ -1,6 +1,6 @@
 /**
  * @FimeName : UtilHelper.js
- * @Description : 백엔드 개발시 자주 사용되는 독립 함수들 모음
+ * @Description : 백엔드 개발시 자주 사용되는 독립 함수들 모음(PageNation)
  * @Author : EZEN 아카데미 Node.js 강의 (이광호)
  */
 
