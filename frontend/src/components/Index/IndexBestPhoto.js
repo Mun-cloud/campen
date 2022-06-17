@@ -47,7 +47,7 @@ const BestSwiper = styled(Swiper)`
 `;
 
 const IndexBestPhoto = () => {
-  // react-query를 통한 ajax 연동 - 캠핑한컷 불러옴
+  // react-query를 통한 ajax 연동 - 캠핑한컷 query값(5) 개만 불러옴
   const { isLoading, data } = useQuery("indexCut", getIndexCampCut);
 
   return isLoading ? null : (

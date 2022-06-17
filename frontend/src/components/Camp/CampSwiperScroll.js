@@ -24,6 +24,7 @@ const SwiperBox = styled(Swiper)`
 
 const CampSwiperScroll = ({ item }) => {
   return (
+    // 각 학목 데이터 유무에 따른 출력 설정
     <div className="swiper scroll_box">
       <SwiperBox freeMode={true} slidesPerView={"auto"}>
         <SwiperSlide className="scroll_link swiper-slide">

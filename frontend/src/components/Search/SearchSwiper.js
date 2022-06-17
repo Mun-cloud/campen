@@ -52,8 +52,9 @@ const MySwiper = styled(Swiper)`
 `;
 const SearchSwiper = ({ item }) => {
   const go = useNavigate();
-  const [noimg, setNoimg] = useState(true);
+  const [noImg, setNoImg] = useState(true);
 
+  // 이미지URL 백엔드에서 호출
   const { isLoading, data: pictures } = useQuery(
     ["getSlidePictuers", item.id],
     () => getImageList(item.id)
@@ -62,7 +63,7 @@ const SearchSwiper = ({ item }) => {
   useEffect(() => {
     if (!isLoading) {
       if (pictures !== null && pictures[0]?.imageURL !== null) {
-        setNoimg(false);
+        setNoImg(false);
       }
     }
   }, [pictures]);
@@ -84,7 +85,8 @@ const SearchSwiper = ({ item }) => {
       }}
       className="glide"
     >
-      {noimg ? (
+      {noImg ? (
+        // 이미지 url 정보가 없을 경우
         <SwiperSlide
           className="glide__slide"
           onClick={() => {
@@ -101,6 +103,7 @@ const SearchSwiper = ({ item }) => {
           </span>
         </SwiperSlide>
       ) : (
+        // 이미지 url 정보에 따라 출력
         pictures.map((v, i) => (
           <SwiperSlide
             className="glide__slide"

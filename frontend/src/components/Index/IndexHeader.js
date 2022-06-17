@@ -18,7 +18,7 @@ const IndexHeader = () => {
   return (
     <IndexHeaderBox>
       {/* <!-- 로고 영역 --> */}
-      <Link to="/" id="logoArea">
+      <Link to="/">
         <img
           src={require("../../assets/img/campen_logo.png")}
           alt="홈페이지로 이동"

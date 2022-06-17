@@ -46,6 +46,7 @@ const IndexSectionTitle = ({ title, btn, sub1, sub2, mt }) => {
     <SectionTitle style={{ marginTop: mt }}>
       <div className="area_title">
         <div className="area_title_left">{title}</div>
+        {/* props의 텍스트 값에 따른 이모지 변경 */}
         <Link to="/write" className="area_title_btn">
           {btn === "업로드" ? (
             <i className="fas fa-camera"></i>

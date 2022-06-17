@@ -39,7 +39,6 @@ const Search = () => {
 
   // // 검색결과 목록 출력 State
   const [allCamp, setAllCamp] = useState(0);
-  // const [campList, setCampList] = useState([]);
 
   // 검색이 실행되면 페이지 번호 초기화
   useEffect(() => {

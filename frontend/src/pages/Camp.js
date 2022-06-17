@@ -54,16 +54,12 @@ const CampPage = styled.div`
 `;
 
 const Camp = () => {
-  let { id } = useParams();
   const go = useNavigate();
+  // 팝업창 상태관리
   const [popView, setPopView] = useState(false);
-  // const [pictures, setPictuers] = useState();
+  // 파라미터 값으로 캠핑장 조회 및 state 저장
+  const { id } = useParams();
   const [thisCamp, setThisCamp] = useState([]);
-
-  // 팝업 구현. 하위컴포넌트에서 데이터 받기
-  const popViewFunction = (popView) => {
-    setPopView(popView);
-  };
 
   useEffect(() => {
     (async () => {
@@ -107,8 +103,8 @@ const Camp = () => {
           {thisCamp.manner_start && thisCamp.manner_end && (
             <CampMannerTime item={thisCamp} />
           )}
-          <CampPolicy item={thisCamp} popViewFunction={popViewFunction} />
-          {popView ? <CampPolicyPop popViewFunction={popViewFunction} /> : null}
+          <CampPolicy item={thisCamp} setPopView={setPopView} />
+          {popView ? <CampPolicyPop setPopView={setPopView} /> : null}
           {thisCamp.photo && <CampMap item={thisCamp} />}
           {/* <CampLog item={thisCamp} /> */}
           <Footer />

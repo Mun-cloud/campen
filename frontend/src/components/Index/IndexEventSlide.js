@@ -21,6 +21,7 @@ const SwiperImg = styled.img`
 
 const IndexEventSlide = () => {
   const BACK = process.env.REACT_APP_BACK;
+  // data : 기획전 리스트
   const { isLoading, data } = useQuery("allExhibition", getExhibition);
 
   return (

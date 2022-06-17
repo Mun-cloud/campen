@@ -14,7 +14,7 @@ const PolicyBox = styled.section`
   }
 `;
 
-const CampPolicy = ({ popViewFunction }) => {
+const CampPolicy = ({ setPopView }) => {
   return (
     <PolicyBox className="camp_container" id="camp_policy">
       <div className="box_title">캠핑장 운영정책</div>
@@ -29,7 +29,7 @@ const CampPolicy = ({ popViewFunction }) => {
         className="camp_btn"
         id="policy_btn"
         onClick={() => {
-          popViewFunction(true);
+          setPopView(true);
         }}
       >
         캠핑장 운영정책 더보기

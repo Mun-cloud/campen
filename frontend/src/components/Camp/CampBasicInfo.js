@@ -62,6 +62,7 @@ const CampBasicInfo = ({ item }) => {
     addr += item.addr2;
   }
 
+  // 카카오맵 API 관련 설정
   useEffect(() => {
     let container = document.getElementById("map");
 
@@ -69,7 +70,6 @@ const CampBasicInfo = ({ item }) => {
       center: new window.kakao.maps.LatLng(item.mapY, item.mapX),
       level: 4,
     };
-
     let map = new window.kakao.maps.Map(container, options);
     let markerPosition = new kakao.maps.LatLng(item.mapY, item.mapX);
     let marker = new kakao.maps.Marker({

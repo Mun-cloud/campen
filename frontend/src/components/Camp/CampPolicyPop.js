@@ -60,14 +60,14 @@ const PoliciPop = styled.div`
   }
 `;
 
-const CampPolicyPop = ({ popViewFunction }) => {
+const CampPolicyPop = ({ setPopView }) => {
   return (
     <PoliciPop>
       <div className="pop_header">
         <div
           className="pop_chev policy_chev"
           onClick={(e) => {
-            popViewFunction(false);
+            setPopView(false);
           }}
         >
           <i className="fas fa-chevron-left policy_btn_chev"></i>

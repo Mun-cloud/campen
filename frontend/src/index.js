@@ -10,6 +10,7 @@ import { ThemeProvider } from "styled-components";
 
 const queryClient = new QueryClient();
 
+// 캠핀 테마 컬러 지정
 const campen = {
   white: "#fff",
   mainColor: "rgb(67, 192, 131)",
