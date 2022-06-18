@@ -16,6 +16,7 @@ const SImage = styled.img`
 
 const ExhiList = () => {
   const BACK = process.env.REACT_APP_BACK;
+  /** @data : 기획전 목록 */
   const { isLoading, data } = useQuery("allExhibition", getExhibition);
 
   return isLoading ? (
@@ -26,6 +27,7 @@ const ExhiList = () => {
       {data.map((v) => {
         return (
           <Link to={`/exhibition/${v.id}`} key={v.id}>
+            {/* 기획전 타이틀 이미지 출력 */}
             <SImage src={BACK + v.photo} alt={v.title} />
           </Link>
         );

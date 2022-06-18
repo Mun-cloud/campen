@@ -106,7 +106,6 @@ const Camp = () => {
           <CampPolicy item={thisCamp} setPopView={setPopView} />
           {popView ? <CampPolicyPop setPopView={setPopView} /> : null}
           {thisCamp.photo && <CampMap item={thisCamp} />}
-          {/* <CampLog item={thisCamp} /> */}
           <Footer />
         </CampPage>
       )}

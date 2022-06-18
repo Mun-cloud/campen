@@ -63,8 +63,13 @@ const ListBox = styled.div`
   }
 `;
 
+/**
+ * @data : 출력할 캠핑장 데이터
+ * @heart : 찜 버튼 표시 유무
+ */
 const CampListGrid = ({ item, heart = "false" }) => {
   const go = useNavigate();
+  // 찜 버튼 클릭 이벤트
   const heartDelete = async (event) => {
     try {
       await axios.delete(`/api/hearts`, {

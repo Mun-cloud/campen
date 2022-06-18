@@ -33,6 +33,7 @@ const Container = styled.div`
 const Exhibition = () => {
   const BACK = process.env.REACT_APP_BACK;
   const { id } = useParams();
+  /** @data : 해당 기획전에 속한 캠핑장 목록 */
   const { isLoading, data } = useQuery("Exhibition", () =>
     getExhibitionCamp(id)
   );
