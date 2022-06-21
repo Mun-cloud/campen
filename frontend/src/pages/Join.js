@@ -84,7 +84,7 @@ const Button = styled.button`
 
 const Join = () => {
   const go = useNavigate();
-  // 유저 정보 redux
+  // 유저 정보 redux불러옴
   const { isLoading, item } = useSelector((state) => state.user);
   // 로그인 여부 체크
   useEffect(() => {
@@ -115,6 +115,7 @@ const Join = () => {
               checked={
                 checkList.find((v) => (v.checked ? false : true)) === undefined
               }
+              // 전체 체크 버튼 동작
               onChange={(e) => {
                 setCheckList(
                   checkList.map((v) => {
