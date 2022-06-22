@@ -116,6 +116,7 @@ const SignUp = () => {
     poseData();
   };
 
+  // 유저 입력정보 전송
   const poseData = async () => {
     try {
       await axios.post(`/api/member/join`, {
