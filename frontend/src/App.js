@@ -13,7 +13,6 @@ import Exhibition from "./pages/Exhibition";
 import ExhiList from "./pages/ExhiList";
 import Heart from "./pages/Heart";
 import Join from "./pages/Join";
-import MyActive from "./pages/MyActive";
 import SignUp from "./pages/SignUp";
 import Notice from "./pages/Notice";
 import Commu from "./pages/Commu";
@@ -63,7 +62,6 @@ function App() {
         <Route path="/heart" element={<Heart />} />
         <Route path="/join" element={<Join />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/my-active" element={<MyActive />} />
         <Route path="/notice/*" element={<Notice />} />
         <Route path="/login" element={<Login />} />
         <Route path="/commu/*" element={<Commu />} />
