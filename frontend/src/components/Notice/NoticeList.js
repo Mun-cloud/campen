@@ -24,6 +24,7 @@ const NoticeList = ({ data }) => {
             </Link>
           ))}
       </div>
+      {/* 공지사항 더보기 버튼 */}
       {data.item.length <= viewMore ? null : (
         <div
           className="pop_view_more"
