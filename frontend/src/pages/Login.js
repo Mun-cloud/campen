@@ -68,9 +68,11 @@ const Container = styled.div`
 `;
 
 const Login = () => {
+  // item : User 로그인 정보 조회
   const { item } = useSelector((state) => state.user);
   const go = useNavigate();
 
+  // 로그인 정보가 있다면 뒤로가기.
   useEffect(() => {
     if (item) {
       go(-1);
@@ -82,9 +84,10 @@ const Login = () => {
 
   // 액션함수를 호출하기 위한 디스패치 함수 생성
   const dispatch = useDispatch();
+
+  // 로그인 버튼 클릭 이벤트
   const onClick = async (e) => {
     e.preventDefault();
-
     try {
       let res = (
         await axios.post(`/api/member/login`, {
@@ -92,6 +95,7 @@ const Login = () => {
           user_pw: pw,
         })
       ).data.item[0];
+      // 로그인 정보를 redux에 dispatch
       dispatch(getUserData({ user_id: id, user_pw: pw }));
 
       alert(`${res.user_name}님 환영합니다.`);
