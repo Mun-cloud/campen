@@ -6,9 +6,11 @@ import CommuHeader from "../components/Commu/CommuHeader";
 import axios from "axios";
 
 const Commu = () => {
+  // 탭 선택값 state
   const [seletedTab, setSelectedTab] = useState("전체보기");
   const [data, setData] = useState();
 
+  // 탭 값에 따라 컨텐츠 filter
   useEffect(() => {
     (async () => {
       let originData = [];
