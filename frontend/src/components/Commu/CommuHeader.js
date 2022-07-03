@@ -37,6 +37,7 @@ const TabItem = styled.li`
 `;
 
 const CommuHeader = ({ getTabValue }) => {
+  // getTabValue : 상위 컴포넌트 setState함수
   const [seletedTab, setSelectedTab] = useState("전체보기");
   useEffect(() => {
     getTabValue(seletedTab);

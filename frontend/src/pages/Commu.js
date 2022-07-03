@@ -59,8 +59,11 @@ const Commu = () => {
 
   return (
     <div>
+      {/* 상단 탭 메뉴 */}
       <CommuHeader getTabValue={setSelectedTab} />
+      {/* 내용 영역 */}
       <CommuCnt data={data} />
+      {/* 글 쓰기 버튼 */}
       <CommuWrite />
     </div>
   );
