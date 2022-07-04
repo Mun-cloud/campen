@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const NoticeList = ({ data }) => {
+  console.log(data);
   // 보여질 공지사항 수(pagenation)
   const [viewMore, setViewMore] = useState(4);
   // UTC 시간 변환 기능
