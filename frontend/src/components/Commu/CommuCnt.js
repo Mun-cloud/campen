@@ -25,6 +25,7 @@ const CommuCnt = ({ data }) => {
     <CntBox>
       {data &&
         data.map((v) => {
+          // tab값에 따라 출력 형식 변경
           if (v.tab === 0 || v.tab === 2) {
             return <Category0 data={v} key={v.id} />;
           } else if (v.tab === 1) {
